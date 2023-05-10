@@ -1,22 +1,20 @@
 export default function TrashIcon({ color = "white", ...props }) {
   return (
     <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="none"
+      viewBox="0 0 16 16"
       {...props}
     >
-      <g id="Property 2=trash">
-        <path
-          id="Mask"
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M18 19C18 19.551 17.552 20 17 20H7C6.448 20 6 19.551 6 19V8H18V19ZM10 4.328C10 4.173 10.214 4 10.5 4H13.5C13.786 4 14 4.173 14 4.328V6H10V4.328ZM21 6H20H16V4.328C16 3.044 14.879 2 13.5 2H10.5C9.121 2 8 3.044 8 4.328V6H4H3C2.45 6 2 6.45 2 7C2 7.55 2.45 8 3 8H4V19C4 20.654 5.346 22 7 22H17C18.654 22 20 20.654 20 19V8H21C21.55 8 22 7.55 22 7C22 6.45 21.55 6 21 6Z"
-          fill={color}
-        />
-      </g>
+      <path
+        stroke={color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.125"
+        d="M2 4h1.333m0 0H14M3.333 4v9.333a1.333 1.333 0 001.334 1.334h6.666a1.333 1.333 0 001.334-1.334V4H3.333zm2 0V2.667a1.333 1.333 0 011.334-1.334h2.666a1.333 1.333 0 011.334 1.334V4"
+      />
     </svg>
   );
 }

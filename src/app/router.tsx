@@ -1,18 +1,12 @@
 import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 import { Error404 } from "../common/components";
 import LoginView from "@features/auth/login-view";
-import GeneralView from "@features/admin/dashboard/general/general-view";
 import AdminLayout from "@features/admin/admin-layout/admin-layout";
-import RealTimeView from "@features/admin/dashboard/real-time/real-time-view";
-import DetailsView from "@features/admin/dashboard/details/details-view";
 import TraceabilityView from "@features/admin/traceability/traceability-view";
 import TraceabilityDetail from "@features/admin/traceability/traceability-detail";
-import ManpowerView from "@features/admin/master-data/manpower/manpower-view";
-import ManpowerDetails from "@features/admin/master-data/manpower/manpower-details";
-import ManpowerForm from "@features/admin/master-data/manpower/manpower-form";
-import MesinView from "@features/admin/master-data/mesin/mesin-view";
-import MesinDetails from "@features/admin/master-data/mesin/mesin-details";
-import MesinForm from "@features/admin/master-data/mesin/mesin-form";
+import MasterDataView from "@features/admin/master-data/masterdata-view"
+import MasterDataAddView from "@features/admin/master-data/masteradd-view"
+import MasterDataEditView from "@features/admin/master-data/masteredit-view"
 
 const Root = () => {
   return <Outlet />;
@@ -46,66 +40,22 @@ export default createBrowserRouter([
         ],
       },
       {
-        path: "dashboard",
-        element: <Root />,
-        children: [
-          {
-            path: "general",
-            element: <GeneralView />,
-          },
-          {
-            path: "details",
-            element: <DetailsView />,
-          },
-          {
-            path: "real-time",
-            element: <RealTimeView />,
-          },
-        ],
-      },
-      {
-        path: "master-data/:type/manpower",
+        path: "master-data",
         element: <Root />,
         children: [
           {
             path: "",
-            element: <ManpowerView />,
+            element: <MasterDataView />
           },
           {
-            path: "details",
-            element: <ManpowerDetails />,
+            path: "masteradd-view",
+            element: <MasterDataAddView />
           },
           {
-            path: "create",
-            element: <ManpowerForm />,
-          },
-          {
-            path: "edit",
-            element: <ManpowerForm />,
-          },
-        ],
-      },
-      {
-        path: "master-data/:type/mesin",
-        element: <Root />,
-        children: [
-          {
-            path: "",
-            element: <MesinView />,
-          },
-          {
-            path: "details",
-            element: <MesinDetails />,
-          },
-          {
-            path: "create",
-            element: <MesinForm />,
-          },
-          {
-            path: "edit",
-            element: <MesinForm />,
-          },
-        ],
+            path: "masteredit-view",
+            element: <MasterDataEditView />
+          }
+        ]
       },
     ],
   },
