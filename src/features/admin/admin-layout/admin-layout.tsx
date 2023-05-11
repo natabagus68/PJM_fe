@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
+import useAdmin from "./admin-layout-model";
 import my_logo from "../../../assets/my-logo.svg";
 import BurgerIcon from "@common/components/icons-new/BurgerIcon";
-import useAdmin from "./admin-layout-model";
 import LogoutIcon from "@common/components/icons-new/LogoutIcon";
 import { NavItem } from "@common/components";
 import LoadingIcon from "@common/components/icons-new/LoadingIcon";
@@ -23,18 +23,13 @@ export default function AdminLayout() {
           admin.isOpenSidebar ? "pl-[265px]" : "pl-[25px]"
         } fixed w-full h-[70px] bg-[#14988B] shadow-lg z-50 flex items-center justify-between pr-[25px] transition-all ease-in-out delay-100`}
       >
-        <div className="flex gap-6 items-center">
+        <div className="flex gap-6 items-center relative">
           <BurgerIcon
             className="cursor-pointer"
             onClick={() => admin.onOpenSideBar()}
           />
-          <button
-            className="px-[20px] gap-2 h-[46px] rounded-md bg-[#14988B] text-white flex items-center"
-            onClick={() => admin.onOpenTraceability()}
-          >
-            <SearchIcon />
-            <span>Traceability</span>
-          </button>
+          <SearchIcon className="absolute left-14 z-10" />
+          <input className="pl-10 py-[6px] font-thin rounded-md border-none focus:outline-none bg-[#128A7E]" placeholder="Search" />
         </div>
         <div className="relative">
           <div
@@ -88,7 +83,7 @@ export default function AdminLayout() {
                   onClick={() => admin.onLogout()}
                 >
                 <LogoutIcon color={"#F04438"} />
-              <span className="text-sm font-thin tracking-wider">Signout</span>
+              <span className="text-sm font-thin tracking-wider">Sign Out</span>
             </div>
           </div>
         </div>

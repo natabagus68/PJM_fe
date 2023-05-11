@@ -8,6 +8,14 @@ export default function useMasterData() {
   const [masterData, setMasterData] = useState([]);
   const [open, setOpen] = useState(false)
 
+  const handleDetail = (type): void => {
+    navigate("masterdetail-view", {
+      state: {
+        type: type
+      }
+    })
+  }
+
   const handleEdit = (type): void => {
     navigate("masteredit-view", {
       state: {
@@ -16,21 +24,22 @@ export default function useMasterData() {
     })
   }
 
-  const handleDelete = () => {
-    setOpen(true)
-  }
-
-  const handleSubmitAdd = (e): any => {
-    e.preventDefault()
-    setOpen(true)
-  }
-
   const addData = (type): void => {
     navigate("masteradd-view", {
       state: {
         type: type
       }
     })
+  }
+
+
+  const handleDelete = () => {
+    setOpen(true)
+  }
+
+  const handleFormSubmit = (e): any => {
+    e.preventDefault()
+    setOpen(true)
   }
 
   const pageBack = (): void => {
@@ -93,12 +102,13 @@ export default function useMasterData() {
   return {
     masterData,
     setMasterData,
-    handleEdit,
-    handleDelete,
     open,
     setOpen,
     addData,
     pageBack,
-    handleSubmitAdd
+    handleEdit,
+    handleDelete,
+    handleFormSubmit,
+    handleDetail,
   }
 }

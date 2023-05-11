@@ -3,6 +3,7 @@ import useMasterDataModel from "./masterdata-model";
 import ArrowBackIcon from "@common/components/icons-new/ArrowBackIcon"
 import SaveIcon from "@common/components/icons-new/SaveIcon"
 import ModalConfirm from "@common/components/modals/ModalConfirm"
+import ModalSuccess from "@common/components/modals/ModalSeccess"
 
 export default function MasterDataAddView() {
   const isMasterData = useMasterDataModel()
@@ -14,7 +15,7 @@ export default function MasterDataAddView() {
           <h1 className="text-2xl px-6 py-8 font-bold">Add Data</h1>
           <div className="flex gap-4">
             <button
-              className="border-2 px-4 py-2 mr-6 rounded bg-[#FFFFFF] border-[#14988B] text-[#14988B] flex items-center gap-2"
+              className="px-5 py-3 mr-6 rounded flex items-center gap-2 border-2 bg-[#FFFFFF] border-[#14988B] text-[#14988B]"
               onClick={() => isMasterData.pageBack()}
             >
               <ArrowBackIcon/>
@@ -22,24 +23,34 @@ export default function MasterDataAddView() {
             </button>
           </div>
         </div>
-        <form className="p-[2rem] bg-[#FFFFFF] rounded-md" onSubmit={(e) => isMasterData.handleSubmitAdd(e)}>
+        <form className="p-[2rem] bg-[#FFFFFF] rounded-md" onSubmit={(e) => isMasterData.handleFormSubmit(e)}>
           <h1 className="mb-2">Customer ID</h1>
-          <input className="w-full border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] bg-[#D0D3D9]" disabled />
+          <input
+            className="px-4 py-2 w-full border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] bg-[#D0D3D9]"
+            disabled
+          />
           <h1 className="mb-2">Customer Name</h1>
-          <input className="pl-2 w-full border mb-[12px] h-[40px] rounded-md border-[#D0D3D9]" required />
+          <input
+            className="px-4 py-2 w-full border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] focus:border-[#14988B] focus:border-2 focus:outline-none"
+            placeholder="Input Customer Name"
+            required />
           <h1 className="mb-2">Address</h1>
           <div className="relative">
-            <input className="border w-full pl-2 mb-[46px] h-[171px] rounded-md border-[#D0D3D9]" required />
-            <span className="absolute right-0 bottom-[40px]">92/200</span>
-            <h1 className="mb-2">Telp/Fax</h1>
+            <textarea
+              className="px-4 py-2 border w-full mb-[46px] h-[171px] rounded-md border-[#D0D3D9] resize-none focus:border-[#14988B] focus:border-2 focus:outline-none"
+              placeholder="Input Address Detail"
+              required
+            />
+            <span className="absolute right-0 bottom-[15px]">92/200</span>
           </div>
-          <input className="pl-2 w-full mb-[24px] border h-[40px] rounded-md border-[#D0D3D9]" required />
+          <h1 className="mb-2">Telp/Fax</h1>
+          <input className="px-4 py-2 w-full border rounded-md mb-[24px] h-[40px] border-[#D0D3D9] focus:border-[#14988B] focus:border-2 focus:outline-none" required />
           <button className="w-[249px] h-[46px] rounded-md bg-[#14988B] text-[#FFFFFF] flex items-center justify-center gap-2">
             <SaveIcon />
             <span>Save</span>
           </button>
         </form>
-        <ModalConfirm open={isMasterData.open} setOpen={isMasterData.setOpen} setOpenSuccess={isMasterData.open} cb={() => isMasterData.clear()} />
+        <ModalConfirm open={isMasterData.open} setOpen={isMasterData.setOpen} setOpenSuccess={isMasterData.open} />
       </div>
     </main>
 
