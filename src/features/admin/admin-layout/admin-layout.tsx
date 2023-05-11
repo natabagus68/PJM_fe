@@ -10,6 +10,7 @@ import { NavItem } from "@common/components";
 import LoadingIcon from "@common/components/icons-new/LoadingIcon";
 import SearchIcon from "@common/components/icons-new/SearchIcon";
 import MasterDataIcon from "@common/components/icons-new/MasterDataIcon";
+import ChecklistIcon from "@common/components/icons-new/ChecklistIcon";
 
 export default function AdminLayout() {
   const admin = useAdmin();
@@ -82,6 +83,13 @@ export default function AdminLayout() {
               <NavItem label="Real Time" to={"dashboard/real-time"} />
             </NavItem>
             <NavItem
+              label={`Approval`}
+              icon={
+                <ChecklistIcon className="w-[24px] h-[24px]" color="#5C5C5C" />
+              }
+              to={"approval"}
+            />
+            <NavItem
               label={`Master Data`}
               icon={<MasterDataIcon className="w-[24px] h-[24px]" />}
             >
@@ -101,3 +109,4 @@ export default function AdminLayout() {
     </main>
   );
 }
+

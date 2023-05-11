@@ -13,6 +13,7 @@ import ManpowerForm from "@features/admin/master-data/manpower/manpower-form";
 import MesinView from "@features/admin/master-data/mesin/mesin-view";
 import MesinDetails from "@features/admin/master-data/mesin/mesin-details";
 import MesinForm from "@features/admin/master-data/mesin/mesin-form";
+import ListView from "@features/admin/approval/list/list-view";
 
 const Root = () => {
   return <Outlet />;
@@ -42,6 +43,16 @@ export default createBrowserRouter([
           {
             path: "detail",
             element: <TraceabilityDetail />,
+          },
+        ],
+      },
+      {
+        path: "approval",
+        element: <Root />,
+        children: [
+          {
+            path: "",
+            element: <ListView />,
           },
         ],
       },
@@ -114,3 +125,4 @@ export default createBrowserRouter([
     element: <Error404 />,
   },
 ]);
+
