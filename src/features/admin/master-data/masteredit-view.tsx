@@ -7,7 +7,7 @@ import ModalConfirm from "@common/components/modals/ModalConfirm";
 export default function MasterDataEditView() {
   const isMasterData = useMasterDataModel()
   return (
-    <main className="flex flex-col gap-[28px] justify-between h-screen">
+    <main className="flex flex-col gap-[28px]">
       <Breadcrumbs items={["Master Data", "Edit Data"]} />
       <div className="rounded-md border">
         <div className="flex justify-between items-center border-b rounded-md bg-[#FFFFFF]">
@@ -24,16 +24,32 @@ export default function MasterDataEditView() {
         </div>
         <form className="p-[2rem] bg-[#FFFFFF] rounded-md" onSubmit={(e) => isMasterData.handleFormSubmit(e)}>
           <h1 className="mb-2">Customer ID</h1>
-          <input className="px-4 py-2 w-full border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] bg-[#D0D3D9]" disabled />
+          <input
+            className="px-4 py-2 w-full border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] bg-[#D0D3D9]"
+            value="IID66538135"
+            disabled
+          />
           <h1 className="mb-2">Customer Name</h1>
-          <input className="px-4 py-2 w-full border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] focus:border-[#14988B] focus:border-2 focus:outline-none" required />
+          <input
+            className="px-4 py-2 w-full border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] focus:border-[#14988B] focus:border-2 focus:outline-none"
+            value="PT. Ragdalion Revolusi"
+            required
+          />
           <h1 className="mb-2">Address</h1>
           <div className="relative">
-            <textarea className="px-4 py-2 border w-full mb-[46px] h-[171px] rounded-md border-[#D0D3D9] resize-none focus:border-[#14988B] focus:border-2 focus:outline-none" required />
-            <span className="absolute right-0 bottom-[15px]">92/200</span>
+            <textarea
+              className="px-4 py-2 border w-full mb-[46px] h-[171px] rounded-md border-[#D0D3D9] resize-none focus:border-[#14988B] focus:border-2 focus:outline-none"
+              value="Cikarang Central City Blok G20, Cikarang, Bekasi"
+              required
+            />
+            <span className="absolute right-0 bottom-[15px]">0/200</span>
           </div>
           <h1 className="mb-2">Telp/Fax</h1>
-          <input className="px-4 py-2 w-full border rounded-md mb-[24px] h-[40px] border-[#D0D3D9] focus:border-[#14988B] focus:border-2 focus:outline-none" required />
+          <input
+            className="px-4 py-2 w-full border rounded-md mb-[24px] h-[40px] border-[#D0D3D9] focus:border-[#14988B] focus:border-2 focus:outline-none"
+            value="0986375176"
+            required
+          />
           <button className="w-[249px] h-[46px] rounded-md bg-[#14988B] text-[#FFFFFF] flex items-center justify-center gap-2">
             <SaveIcon />
             <span>Save</span>

@@ -14,10 +14,10 @@ export default function MasterDataView() {
       <Breadcrumbs items={["Master Data"]} />
       <div className="rounded-md border">
         <div className="flex justify-between items-center border-b rounded-md bg-[#FFFFFF]">
-          <h1 className="text-2xl px-6 py-8 font-bold">Master Data</h1>
+          <h1 className="text-2xl px-6 py-8 font-[700]">Master Data</h1>
           <div className="flex gap-4 relative">
             <SearchIcon className="absolute top-4 left-4" color={"#B8B6B6"} />
-            <input className="pl-10 py-[6px] font-thin rounded-md border px-[14px] focus:border-2 focus:outline-none focus:border-[#14988B]" placeholder="Search" />
+            <input className="pl-10 py-[6px] font-[400] rounded-md border px-[14px] focus:border-2 focus:outline-none focus:border-[#14988B]" placeholder="Search" />
             <button
               className="px-5 py-3 rounded mr-6 bg-[#14988B] text-[#FFFFFF]"
               onClick={() => isMasterData.addData("")}
@@ -29,20 +29,20 @@ export default function MasterDataView() {
         <table className="w-full">
           <thead className="text-sm font-semibold border-b h-[64px] bg-[#FAFAFB] border-[#D0D3D9] text-[#514E4E]">
             <tr>
-              <th className="px-[32px] text-start font-semibold">Customer ID</th>
-              <th className="px-[32px] text-start font-semibold">Customer Name</th>
-              <th className="px-[32px] text-start font-semibold">Address</th>
-              <th className="px-[32px] text-start font-semibold">Telp/Fax</th>
-              <th className="px-[32px] text-start font-semibold">Action</th>
+              <th className="px-[32px] text-start font-[600]">Customer ID</th>
+              <th className="px-[16px] text-start font-[600]">Customer Name</th>
+              <th className="px-[16px] text-start font-[600]">Address</th>
+              <th className="px-[16px] text-start font-[600]">Telp/Fax</th>
+              <th className="px-[32px] text-start font-[600]">Action</th>
             </tr>
           </thead>
           <tbody>
             {isMasterData?.masterData.map((item) => (
-              <tr key={item?.customerId} className="border-b h-[64px] border-[#D0D3D9] bg-[#FFFFFF]">
+              <tr key={item?.customerId} className="border-b h-[64px] border-[#D0D3D9] bg-[#FFFFFF] font-[400] text-[16px]">
                 <td className="px-[32px]">{item?.customerId}</td>
-                <td className="px-[32px]">{item?.customerName}</td>
-                <td className="px-[32px]">{item?.customerAddress}</td>
-                <td className="px-[32px]">{item?.customerTelp}</td>
+                <td className="px-[16px]">{item?.customerName}</td>
+                <td className="px-[16px]">{item?.customerAddress}</td>
+                <td className="px-[16px]">{item?.customerTelp}</td>
                 <td className="px-[32px] flex gap-4 my-4">
                   <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#1BBDD4]"
                     onClick={() => isMasterData.handleDetail("")}>
@@ -53,7 +53,7 @@ export default function MasterDataView() {
                     <EditIcon width="16px"/>
                   </div>
                   <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#F04438]"
-                    onClick={() => isMasterData.handleDelete()}>
+                    onClick={() => isMasterData.handleDelete("")}>
                     <TrashIcon width="16px"/>
                   </div>
                 </td>
@@ -74,14 +74,14 @@ export default function MasterDataView() {
           <div className="w-[40px] h-[40px] bg-[#FFFFFF] rounded flex items-center justify-center text-[#514E4E]">3</div>
           <div className="w-[40px] h-[40px] bg-[#FFFFFF] rounded flex items-center justify-center text-[#514E4E]">...</div>
           <div className="w-[40px] h-[40px] bg-[#FFFFFF] rounded flex items-center justify-center text-[#514E4E]">10</div>
-          <button className="px-4 h-[40px] text-[#FFFFFF] border gap-2 border-[#14988B] rounded flex items-center justify-center">
-            <span className="text-[#514E4E]">Next</span>
-            <ArrowUpIcon
-              className="w-[16px] h-[16px] rotate-90"
-              color="#14988B"
-            />
-          </button>
-        </div>
+            <button className="px-4 h-[40px] text-[#FFFFFF] border gap-2 border-[#14988B] rounded flex items-center justify-center">
+              <span className="text-[#514E4E]">Next</span>
+              <ArrowUpIcon
+                className="w-[16px] h-[16px] rotate-90"
+                color="#14988B"
+              />
+            </button>
+          </div>
         <ModalDelete open={isMasterData.open} setOpen={isMasterData.setOpen} setOpenConfirm={isMasterData.open}/>
       </div>
     </main>

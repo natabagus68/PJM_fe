@@ -8,7 +8,7 @@ import ModalSuccess from "@common/components/modals/ModalSeccess"
 export default function MasterDataAddView() {
   const isMasterData = useMasterDataModel()
   return (
-    <main className="flex flex-col gap-[28px] justify-between h-screen">
+    <main className="flex flex-col gap-[28px]">
       <Breadcrumbs items={["Master Data", "Add Data"]} />
       <div className="rounded-md border">
         <div className="flex justify-between items-center border-b rounded-md bg-[#FFFFFF]">
@@ -27,6 +27,7 @@ export default function MasterDataAddView() {
           <h1 className="mb-2">Customer ID</h1>
           <input
             className="px-4 py-2 w-full border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] bg-[#D0D3D9]"
+            placeholder="Customer ID"
             disabled
           />
           <h1 className="mb-2">Customer Name</h1>
@@ -41,10 +42,14 @@ export default function MasterDataAddView() {
               placeholder="Input Address Detail"
               required
             />
-            <span className="absolute right-0 bottom-[15px]">92/200</span>
+            <span className="absolute right-0 bottom-[15px]">0/200</span>
           </div>
           <h1 className="mb-2">Telp/Fax</h1>
-          <input className="px-4 py-2 w-full border rounded-md mb-[24px] h-[40px] border-[#D0D3D9] focus:border-[#14988B] focus:border-2 focus:outline-none" required />
+          <input
+            className="px-4 py-2 w-full border rounded-md mb-[24px] h-[40px] border-[#D0D3D9] focus:border-[#14988B] focus:border-2 focus:outline-none"
+            placeholder="Input Telp/Fax"
+            required
+          />
           <button className="w-[249px] h-[46px] rounded-md bg-[#14988B] text-[#FFFFFF] flex items-center justify-center gap-2">
             <SaveIcon />
             <span>Save</span>

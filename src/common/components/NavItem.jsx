@@ -20,7 +20,7 @@ export const NavItem = ({
           className={({ isActive }) =>
             `flex items-center cursor-pointer gap-3 h-[37px] rounded-md px-2 hover:text-[#20519F]
            ${
-             (isActive && to !== null) || active === true ? "text-[#20519F]" : ""
+             (isActive && to !== null) || active === true ? "text-[##514E4E]" : ""
            }`
           }
         >

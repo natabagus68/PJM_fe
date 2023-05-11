@@ -29,7 +29,7 @@ export default function AdminLayout() {
             onClick={() => admin.onOpenSideBar()}
           />
           <SearchIcon className="absolute left-14 z-10" />
-          <input className="pl-10 py-[6px] font-thin rounded-md border-none focus:outline-none bg-[#128A7E]" placeholder="Search" />
+          <input className="pl-10 py-[6px] font-thin rounded-md focus:outline-none focus:border-2 focus:border-[#FFFFFF] bg-[#128A7E]" placeholder="Search" />
         </div>
         <div className="relative">
           <div
@@ -37,14 +37,14 @@ export default function AdminLayout() {
             onClick={() => admin.onOpenAvatar()}
           >
             <UserAdminIcon />
-            <span className="text-white font-semibold">Admin</span>
+            <span className="text-[#FFFFFF] font-semibold">Admin</span>
           </div>
         </div>
       </header>
       <div
         className={`${
           admin.isOpenSidebar ? null : "-translate-x-[240px]"
-        } fixed w-[240px] h-full bg-white shadow-lg z-50 flex flex-col gap-[20px] transition-all ease-in-out delay-100`}
+        } fixed w-[240px] h-full bg-[#FFFFFF] shadow-lg z-50 flex flex-col gap-[20px] transition-all ease-in-out delay-100`}
       >
         <div className="w-full h-[70px] shadow-sm flex items-center justify-center">
           <img src={my_logo} alt="Logo Ragdalion" className="h-[50px]" />

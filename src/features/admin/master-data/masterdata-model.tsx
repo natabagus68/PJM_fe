@@ -32,7 +32,6 @@ export default function useMasterData() {
     })
   }
 
-
   const handleDelete = () => {
     setOpen(true)
   }

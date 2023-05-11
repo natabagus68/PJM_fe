@@ -2,11 +2,12 @@ import useMasterDataModel from "./masterdata-model"
 import { Breadcrumbs } from "@common/components";
 import ArrowBackIcon from "@common/components/icons-new/ArrowBackIcon";
 import EditIcon from "@common/components/icons-new/EditIcon";
+import { Navigate } from "react-router-dom";
 
 export default function MasterDataDetailView() {
   const isMasterData = useMasterDataModel()
   return (
-    <main className="flex flex-col gap-[28px] justify-between h-screen">
+    <main className="flex flex-col gap-[28px] justify-between">
       <Breadcrumbs items={["Master Data", "Details"]} />
       <div className="rounded-md border">
         <div className="flex justify-between items-center border-b rounded-md bg-[#FFFFFF]">
@@ -21,7 +22,7 @@ export default function MasterDataDetailView() {
               </button>
             <button
               className="px-5 py-3 rounded mr-6 bg-[#F79009] text-[#FFFFFF] flex items-center gap-2"
-              onClick={() => isMasterData.addData("")}>
+              onClick={() => alert("EDIT!")}>
               <EditIcon />
               <span>Edit</span>
             </button>
