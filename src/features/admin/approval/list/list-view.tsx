@@ -1,8 +1,9 @@
 import { Breadcrumbs } from "@common/components";
 import ArrowUpIcon from "@common/components/icons-new/ArrowUpIcon";
-import ChecklistIcon from "@common/components/icons-new/ChecklistIcon";
-import EyeShowIcon from "@common/components/icons-new/EyeShowIcon";
+import ConfirmIcon from "@common/components/icons-new/ConfirmIcon";
+import DocumentIcon from "@common/components/icons-new/DocumentIcon";
 import SearchIcon from "@common/components/icons-new/SearchIcon";
+import SortIcon from "@common/components/icons-new/SortIcon";
 import useList from "./list-model";
 
 const ListView = () => {
@@ -21,14 +22,14 @@ const ListView = () => {
             <div className="flex gap-4">
               <div className="w-[200px] relative">
                 <div className="absolute top-1/2 pl-4 pr-2 fill-slate-400 -translate-y-1/2  z-30">
-                  <SearchIcon className="w-4 h-4" color="#B8B6B6" />
+                  <SortIcon className="w-[18px] h-[18px]" color="#231F20" />
                 </div>
                 <select
                   onChange={approval?.handleSelectTermChange}
-                  className="h-[48px] w-full bg-white rounded-md pr-2 pl-10 border border-[#B8B6B6]"
+                  className="h-[48px] w-full bg-white text-[#231F20] rounded-md pr-2 pl-10 border border-[#B8B6B6]"
                 >
                   <option value="all">
-                    <span className="py-3">All Status</span>
+                    <div className="py-3 mb-3">All Status</div>
                   </option>
                   <option value="waiting">
                     <span className="py-3">Waiting</span>
@@ -92,7 +93,7 @@ const ListView = () => {
                     <td className="px-[32px]">
                       <div className="flex items-center gap-3">
                         <button className="flex items-center gap-2 h-[46px] px-[20px] bg-[#1BBDD4] rounded">
-                          <EyeShowIcon color="white" />
+                          <DocumentIcon />
                           <span className="text-white text-sm font-semibold ">
                             Review
                           </span>
@@ -102,7 +103,7 @@ const ListView = () => {
                             className="flex items-center gap-2 border-[1px] border-[#4D74B2] h-[46px] px-[20px] bg-white rounded"
                             onClick={() => approval?.handleConfirm(item)}
                           >
-                            <ChecklistIcon color="#4D74B2" />
+                            <ConfirmIcon color="#4D74B2" />
                             <span className="text-[#4D74B2] text-sm font-semibold">
                               Confirm
                             </span>
@@ -137,7 +138,7 @@ const ListView = () => {
                     <td className="px-[32px]">
                       <div className="flex items-center gap-3">
                         <button className="flex items-center gap-2 h-[46px] px-[20px] bg-[#1BBDD4] rounded">
-                          <EyeShowIcon color="white" />
+                          <DocumentIcon color="white" />
                           <span className="text-white text-sm font-semibold ">
                             Review
                           </span>
@@ -147,7 +148,7 @@ const ListView = () => {
                             className="flex items-center gap-2 border-[1px] border-[#4D74B2] h-[46px] px-[20px] bg-white rounded"
                             onClick={() => approval?.handleConfirm(item)}
                           >
-                            <ChecklistIcon color="#4D74B2" />
+                            <ConfirmIcon color="#4D74B2" />
                             <span className="text-[#4D74B2] text-sm font-semibold">
                               Confirm
                             </span>

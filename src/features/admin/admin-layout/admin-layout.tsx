@@ -10,7 +10,7 @@ import { NavItem } from "@common/components";
 import LoadingIcon from "@common/components/icons-new/LoadingIcon";
 import SearchIcon from "@common/components/icons-new/SearchIcon";
 import MasterDataIcon from "@common/components/icons-new/MasterDataIcon";
-import ChecklistIcon from "@common/components/icons-new/ChecklistIcon";
+import ApprovalIcon from "@common/components/icons-new/ApprovalIcon";
 
 export default function AdminLayout() {
   const admin = useAdmin();
@@ -85,7 +85,7 @@ export default function AdminLayout() {
             <NavItem
               label={`Approval`}
               icon={
-                <ChecklistIcon className="w-[24px] h-[24px]" color="#5C5C5C" />
+                <ApprovalIcon className="w-[24px] h-[24px]" color="#5C5C5C" />
               }
               to={"approval"}
             />
