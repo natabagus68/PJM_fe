@@ -64,16 +64,6 @@ export default createBrowserRouter([
           },
         ],
       },
-      // {
-      //   path: "approval",
-      //   element: <Root />,
-      //   children: [
-      //     {
-      //       path: "",
-      //       element: <ApprovalInspectionFormView />,
-      //     },
-      //   ],
-      // },
       {
         path: "approval",
         element: <Root />,
