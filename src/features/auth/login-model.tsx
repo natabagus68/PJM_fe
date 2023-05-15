@@ -20,7 +20,7 @@ export default function useLogin() {
         "web-admin",
         JSON.stringify({ token: "token-12345678" })
       );
-      navigate("../admin/dashboard");
+      navigate("../admin");
     } catch (error) {
       console.log(error);
     }

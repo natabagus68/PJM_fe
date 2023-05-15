@@ -25,6 +25,8 @@ export * from './WarningQuestionIcon';
 export * from './SuccessQuestionIcon';
 export * from './ToggleIcon';
 export * from './ProgressIcon'
-export * from './ReportIcon'
 export * from './CubeIcon'
 export * from './HomeIcon'
+export * from './ReportDocumentIcon'
+export * from './ApprovalIcon'
+export * from './UserInfoIcon'

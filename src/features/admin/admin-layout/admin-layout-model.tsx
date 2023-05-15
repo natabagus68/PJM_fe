@@ -3,41 +3,41 @@ import { useNavigate } from "react-router-dom";
 
 export default function useAdmin() {
   const navigate = useNavigate();
-  //navbar status
+  // navbar status
   const [isOpenNavbar, setIsOpenNavbar] = useState(false);
-  //sidebar status
+  // sidebar status
   const [isOpenSidebar, setIsOpenSidebar] = useState(true);
-  //avatar status
+  // avatar status
   const [isOpenAvatar, setIsOpenavatar] = useState(false);
   // loading state
   const [isLoading, setIsLoading] = useState(true);
 
-  //navbar status click
+  // navbar status click
   const onOpenNavbar = (): void => {
     setIsOpenNavbar(!!!isOpenNavbar);
   };
 
-  //click burger in header
+  // click burger in header
   const onOpenSideBar = (): void => {
     setIsOpenSidebar(!!!isOpenSidebar);
   };
 
-  //click avatar dropdown in header
+  // click avatar dropdown in header
   const onOpenAvatar = (): void => {
     setIsOpenavatar(!!!isOpenAvatar);
   };
 
-  //click traceability button
+  // click traceability button
   const onOpenTraceability = (): void => {
     navigate(`../admin/traceability`);
   }
 
-  //set navigate navbar
+  // set navigate navbar
   const setNavigate = (url: string): void => {
     navigate(url);
   };
 
-  //on logout
+  // on logout
   const onLogout = async(): Promise<void> => {
     try {
       await localStorage.removeItem("web-admin");
@@ -47,7 +47,7 @@ export default function useAdmin() {
     }
   };
 
-  //checking me
+  // checking me
   const onIsMe = async (): Promise<void> => {
     setIsLoading(true);
     const localStorageData = await JSON.parse(
@@ -57,7 +57,7 @@ export default function useAdmin() {
       setIsLoading(false);
       if (!localStorageData?.token) {
         navigate("../login");
-      } 
+      }
       // else {
       //   navigate(`../${window.location.pathname}`);
       // }

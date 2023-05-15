@@ -24,14 +24,14 @@ export default function ModalConfirm({
   return (
     <Modal open={open}>
       <div className="w-[430px] flex flex-col gap-8 items-center">
-        <div className="flex items-center justify-center w-[150px] h-[150px] bg-[#20519F] rounded-full border-[8px] border-[#E9EEF5]">
+        <div className="flex items-center justify-center w-[150px] h-[150px] bg-[#F79009] rounded-full border-[#E9EEF5]">
           <span className="text-[90px] font-bold text-white">!</span>
         </div>
         <div className="flex items-center flex-col">
-          <span className="text-[#2D2A2A] text-[24px] font-semibold">
-            Konfirmasi
+          <span className="text-[#2D2A2A] text-[24px] font-semibold mb-2">
+            Confirm the action
           </span>
-          <span>Apakah data yang dimasukkan sudah benar?</span>
+          <span>is the data you entered correct?</span>
         </div>
 
         <div className="flex w-full items-end gap-4">
@@ -42,10 +42,10 @@ export default function ModalConfirm({
               setIsLoading({ loading: false, exec: false });
             }}
           >
-            Batal
+            Cancel
           </button>
           {isLoading.loading ? (
-            <button className="flex items-center justify-center flex-1 gap-2 h-[46px] px-[20px] bg-[#20519F] rounded text-white text-sm font-semibold">
+            <button className="flex items-center justify-center flex-1 gap-2 h-[46px] px-[20px] bg-[#14988B] rounded text-white text-sm font-semibold">
               <LoadingIcon
                 color="white"
                 className="w-[24px] h-[24px] animate-spin"
@@ -53,7 +53,7 @@ export default function ModalConfirm({
             </button>
           ) : (
             <button
-              className="flex items-center justify-center flex-1 gap-2 h-[46px] px-[20px] bg-[#20519F] rounded text-white text-sm font-semibold"
+              className="flex items-center justify-center flex-1 gap-2 h-[46px] px-[20px] bg-[#14988B] rounded text-white text-sm font-semibold"
               onClick={() => {
                 setIsLoading({ loading: true, exec: true });
                 cb(setIsLoading);
@@ -64,7 +64,7 @@ export default function ModalConfirm({
                 // }, 100);
               }}
             >
-              <span>Ya, Konfirmasi</span>
+              <span>Yes, Confirm</span>
             </button>
           )}
         </div>

@@ -18,9 +18,9 @@ export const NavItem = ({
           to={to}
           onClick={() => setOpen(!!!open)}
           className={({ isActive }) =>
-            `flex items-center cursor-pointer gap-3 h-[37px] rounded-md px-2 hover:text-[#20519F]
+            `flex items-center cursor-pointer gap-3 h-[37px] rounded-md px-2 hover:text-[#14988B]
            ${
-             (isActive && to !== null) || active === true ? "text-[#20519F]" : ""
+             (isActive && to !== null) || active === true ? "text-[#514E4E]" : ""
            }`
           }
         >

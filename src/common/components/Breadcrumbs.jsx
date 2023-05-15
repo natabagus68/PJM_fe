@@ -14,15 +14,15 @@ export const Breadcrumbs = ({ items = [] }) => {
     }
   };
   return (
-    <div className="flex gap-3 text-gray-500 font-body items-center">
+    <div className="flex gap-3 text-[#B8B6B6] font-body items-center">
       <HomeIcon />
       {items.map((item, i, arr) => {
         return (
           <div key={i} className="flex gap-3 items-center">
-            <CaretIcon className="text-neutral-75" />
+            <CaretIcon className="text-[#B8B6B6]" />
             <div
               onClick={() => items[i] && i < arr.length - 1 && navigate(generateLink(i, arr))}
-              className={`font-semibold ${i == arr.length - 1? "text-[#20519F]":"text-gray-700"} ${items[i] && i < arr.length - 1 && "cursor-pointer"}`}
+              className={`font-semibold ${i == arr.length - 1? "font-[600] text-[#6F6C6C]":"font-[400] text-[#B8B6B6]"} ${items[i] && i < arr.length - 1 && "cursor-pointer"}`}
             >
               {item}
             </div>
