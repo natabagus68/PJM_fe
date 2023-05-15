@@ -7,6 +7,9 @@ import ArrowUpIcon from "@common/components/icons-new/ArrowUpIcon"
 import SearchIcon from "@common/components/icons-new/SearchIcon";
 import EyeShowIcon from "@common/components/icons-new/EyeShowIcon"
 
+
+
+
 export default function MasterDataView() {
   const masterdata = useMasterDataModel()
   return (
