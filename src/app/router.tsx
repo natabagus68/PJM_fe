@@ -8,7 +8,7 @@ import MasterDataView from "@features/admin/master-data/masterdata-view";
 import MasterDataAddView from "@features/admin/master-data/masteradd-view";
 import MasterDataEditView from "@features/admin/master-data/masteredit-view";
 import MasterDataDetailView from "@features/admin/master-data/masterdetail-view";
-import ApprovalInspectionFormView from "@features/admin/approval/inspectionform-view";
+import ApprovalInspectionFormView from "@features/admin/approval/approvalpreview-view";
 
 const Root = () => {
   return <Outlet />;
