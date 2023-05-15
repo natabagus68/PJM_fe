@@ -4,10 +4,11 @@ import LoginView from "@features/auth/login-view";
 import AdminLayout from "@features/admin/admin-layout/admin-layout";
 import TraceabilityView from "@features/admin/traceability/traceability-view";
 import TraceabilityDetail from "@features/admin/traceability/traceability-detail";
-import MasterDataView from "@features/admin/master-data/masterdata-view"
-import MasterDataAddView from "@features/admin/master-data/masteradd-view"
-import MasterDataEditView from "@features/admin/master-data/masteredit-view"
-import MasterDataDetailView from "@features/admin/master-data/masterdetail-view"
+import MasterDataView from "@features/admin/master-data/masterdata-view";
+import MasterDataAddView from "@features/admin/master-data/masteradd-view";
+import MasterDataEditView from "@features/admin/master-data/masteredit-view";
+import MasterDataDetailView from "@features/admin/master-data/masterdetail-view";
+import ApprovalInspectionFormView from "@features/admin/approval/inspectionform-view";
 
 const Root = () => {
   return <Outlet />;
@@ -59,10 +60,19 @@ export default createBrowserRouter([
           {
             path: "masterdetail-view",
             element: <MasterDataDetailView/>
-
-          }
+          },
         ]
       },
+      {
+        path: "approval",
+        element: <Root />,
+        children: [
+          {
+            path: "",
+            element: <ApprovalInspectionFormView />
+          },
+        ]
+      }
     ],
   },
   {

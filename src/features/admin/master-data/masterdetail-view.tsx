@@ -5,7 +5,7 @@ import EditIcon from "@common/components/icons-new/EditIcon";
 import { Navigate } from "react-router-dom";
 
 export default function MasterDataDetailView() {
-  const isMasterData = useMasterDataModel()
+  const masterdata = useMasterDataModel()
   return (
     <main className="flex flex-col gap-[28px] justify-between">
       <Breadcrumbs items={["Master Data", "Details"]} />
@@ -15,7 +15,7 @@ export default function MasterDataDetailView() {
             <div className="flex">
               <button
                 className="px-5 py-3 mr-6 rounded flex items-center gap-2 border-2 bg-[#FFFFFF] border-[#14988B] text-[#14988B]"
-                onClick={() => isMasterData.pageBack()}
+                onClick={() => masterdata.pageBack()}
               >
                 <ArrowBackIcon />
                 <span>Back</span>

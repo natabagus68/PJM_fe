@@ -1,4 +1,3 @@
-
 export default function Modal({ open = false, children }) {
   return (
     <dialog

@@ -5,7 +5,7 @@ import SaveIcon from "@common/components/icons-new/SaveIcon";
 import ModalConfirm from "@common/components/modals/ModalConfirm";
 
 export default function MasterDataEditView() {
-  const isMasterData = useMasterDataModel()
+  const masterdata = useMasterDataModel()
   return (
     <main className="flex flex-col gap-[28px]">
       <Breadcrumbs items={["Master Data", "Edit Data"]} />
@@ -15,14 +15,14 @@ export default function MasterDataEditView() {
           <div className="flex gap-4">
             <button
               className="px-5 py-3 mr-6 rounded flex items-center gap-2 border-2 bg-[#FFFFFF] border-[#14988B] text-[#14988B]"
-              onClick={() => isMasterData.pageBack()}
+              onClick={() => masterdata.pageBack()}
             >
               <ArrowBackIcon/>
               <span>Back</span>
             </button>
           </div>
         </div>
-        <form className="p-[2rem] bg-[#FFFFFF] rounded-md" onSubmit={(e) => isMasterData.handleFormSubmit(e)}>
+        <form className="p-[2rem] bg-[#FFFFFF] rounded-md" onSubmit={(e) => masterdata.handleFormSubmit(e)}>
           <h1 className="mb-2">Customer ID</h1>
           <input
             className="px-4 py-2 w-full border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] bg-[#D0D3D9]"
@@ -55,7 +55,7 @@ export default function MasterDataEditView() {
             <span>Save</span>
           </button>
         </form>
-        <ModalConfirm open={isMasterData.open} setOpen={isMasterData.setOpen} setOpenSuccess={isMasterData.open} />
+        <ModalConfirm open={masterdata.open} setOpen={masterdata.setOpen} setOpenSuccess={masterdata.open} />
       </div>
     </main>
   )
