@@ -9,6 +9,7 @@ import MasterDataAddView from "@features/admin/master-data/masteradd-view";
 import MasterDataEditView from "@features/admin/master-data/masteredit-view";
 import MasterDataDetailView from "@features/admin/master-data/masterdetail-view";
 import ApprovalInspectionFormView from "@features/admin/approval/inspectionform-view";
+import ListView from "@features/admin/approval/list/list-view";
 
 const Root = () => {
   return <Outlet />;
@@ -63,13 +64,23 @@ export default createBrowserRouter([
           },
         ],
       },
+      // {
+      //   path: "approval",
+      //   element: <Root />,
+      //   children: [
+      //     {
+      //       path: "",
+      //       element: <ApprovalInspectionFormView />,
+      //     },
+      //   ],
+      // },
       {
         path: "approval",
         element: <Root />,
         children: [
           {
             path: "",
-            element: <ApprovalInspectionFormView />,
+            element: <ListView />,
           },
         ],
       },
