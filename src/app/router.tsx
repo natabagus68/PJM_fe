@@ -47,21 +47,21 @@ export default createBrowserRouter([
         children: [
           {
             path: "",
-            element: <MasterDataView />
+            element: <MasterDataView />,
           },
           {
             path: "masteradd-view",
-            element: <MasterDataAddView />
+            element: <MasterDataAddView />,
           },
           {
             path: "masteredit-view",
-            element: <MasterDataEditView />
+            element: <MasterDataEditView />,
           },
           {
             path: "masterdetail-view",
-            element: <MasterDataDetailView/>
+            element: <MasterDataDetailView />,
           },
-        ]
+        ],
       },
       {
         path: "approval",
@@ -69,10 +69,10 @@ export default createBrowserRouter([
         children: [
           {
             path: "",
-            element: <ApprovalInspectionFormView />
+            element: <ApprovalInspectionFormView />,
           },
-        ]
-      }
+        ],
+      },
     ],
   },
   {
