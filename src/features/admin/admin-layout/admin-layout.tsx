@@ -60,6 +60,7 @@ export default function AdminLayout() {
                 to={"#"}
               />
               <NavItem
+                className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
                 label={`Approval`}
                 icon={
                   <ApprovalIcon className="w-[24px] h-[24px]" color="#5C5C5C" />

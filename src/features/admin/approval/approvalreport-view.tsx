@@ -1,15 +1,18 @@
 import { NavLink, Outlet } from "react-router-dom";
 import useInspection from "@features/admin/approval/inspectionform-model";
 import useShowDetailModel from "@features/admin/approval/showdetail-model";
+import useChooseInspectionModel from "@features/admin/approval/popup/chooseinspection-model"
 import { Breadcrumbs } from "@common/components";
 import ModalConfirm from "@common/components/modals/ModalConfirm";
 import ArrowBackIcon from "@common/components/icons-new/ArrowBackIcon";
 import ConfirmCheck from "@common/components/icons-new/ConfirmCheck";
 import ShowDetailModel from "@features/admin/approval/showdetail-view";
+import ChooseInspectionModal from "@features/admin/approval/popup/chooseinspection-view"
 
 export default function ApprovalReport() {
   const inspection = useInspection()
   const detail = useShowDetailModel()
+  const choose = useChooseInspectionModel()
   return (
     <div>
       <div className="mb-5">
@@ -61,7 +64,10 @@ export default function ApprovalReport() {
           </div>
           <ShowDetailModel open={detail.open} setOpen={detail.setOpen} onClose={detail.handleShowDetailClose} />
           <div className="w-[370px] px-4 py-7 bg-[#FFFFFF] rounded-lg border">
-            <div className="flex items-center justify-between font-[14px] py-[18px] px-[12px] border border-[#14988B] bg-[#FBFBFB] rounded-lg mb-4 cursor-pointer">
+            <div
+              className="flex items-center justify-between font-[14px] py-[18px] px-[12px] border border-[#14988B] bg-[#FBFBFB] rounded-lg mb-4 cursor-pointer"
+              onClick={() => choose.openChooseInspection()}
+            >
               <h1 className="text-[#0E6C63]">Choose Result Of Inspection</h1>
               <ArrowBackIcon className="rotate-180 mr-2" />
             </div>
@@ -136,6 +142,12 @@ export default function ApprovalReport() {
                 </button>
             </div>
           <ModalConfirm open={inspection.open} setOpen={inspection.setOpen} setOpenSuccess={inspection.open} />
+          <ChooseInspectionModal
+            open={choose.open}
+            setOpen={choose.setOpen}
+            onCancel={() => choose.closeChooseInspection()}
+            onSubmit={() => alert("Submit")}
+          />
         </div>
       </div>
     </div>
