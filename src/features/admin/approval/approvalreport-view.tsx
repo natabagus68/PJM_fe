@@ -1,13 +1,17 @@
-import useInspection from "@features/admin/approval/approvalpreview-model";
-import { Breadcrumbs } from '@common/components';
+import { NavLink, Outlet } from "react-router-dom";
+import useInspection from "@features/admin/approval/inspectionform-model";
+import useShowDetailModel from "@features/admin/approval/showdetail-model";
+import { Breadcrumbs } from "@common/components";
 import ModalConfirm from "@common/components/modals/ModalConfirm";
-import ArrowBackIcon from '@common/components/icons-new/ArrowBackIcon';
-import ConfirmCheck from '@common/components/icons-new/ConfirmCheck';
+import ArrowBackIcon from "@common/components/icons-new/ArrowBackIcon";
+import ConfirmCheck from "@common/components/icons-new/ConfirmCheck";
+import ShowDetailModel from "@features/admin/approval/showdetail-view";
 
-export default function ApprovalInspectionFormView() {
+export default function ApprovalReport() {
   const inspection = useInspection()
+  const detail = useShowDetailModel()
   return (
-    <>
+    <div>
       <div className="mb-5">
         <Breadcrumbs items={['Approval', 'Review']} />
       </div>
@@ -25,10 +29,8 @@ export default function ApprovalInspectionFormView() {
           </div>
         </div>
       </main>
-
       <div className="flex gap-3">
         <div className="flex gap-3 flex-col">
-
           <div className="w-[370px] px-4 py-7 mt-4 border rounded-lg bg-[#FFFFFF] font-[400] text-[#514E4E]">
             <div className="flex justify-between mb-4 items-center">
               <h1>Status</h1>
@@ -50,9 +52,14 @@ export default function ApprovalInspectionFormView() {
               <h1>Customer</h1>
               <span className="font-[700]">{inspection.data.detail?.customer}</span>
             </div>
-            <h1 className="text-center text-[#14988B] cursor-pointer font-[700] underline">Show Detail</h1>
+            <h1
+              className="text-center text-[#14988B] cursor-pointer font-[700] underline"
+              onClick={() => detail.handleShowDetailModal()}
+            >
+              Show Detail
+            </h1>
           </div>
-
+          <ShowDetailModel open={detail.open} setOpen={detail.setOpen} onClose={detail.handleShowDetailClose} />
           <div className="w-[370px] px-4 py-7 bg-[#FFFFFF] rounded-lg border">
             <div className="flex items-center justify-between font-[14px] py-[18px] px-[12px] border border-[#14988B] bg-[#FBFBFB] rounded-lg mb-4 cursor-pointer">
               <h1 className="text-[#0E6C63]">Choose Result Of Inspection</h1>
@@ -100,52 +107,24 @@ export default function ApprovalInspectionFormView() {
             </div>
           </div>
         </div>
-
         <div className="w-full mt-4 rounded-lg bg-[#FFFFFF] border">
-          <ul className="flex gap-5 justify-center mt-2">
+          <div className="grid grid-cols-5 mt-3 border-b mx-6">
             {inspection.menu.map(item => (
-              <li
-                key={item?.id}
-                className="font-[700] pb-2 mt-6 text-sm hover:pb-0 hover:border-b-2 hover:border-b-[#14988B] hover:text-[#14988B] text-[#6F6C6C] cursor-pointer"
+              <NavLink
+                className="flex justify-center text-sm pb-2 mt-6 hover:pb-0 hover:border-b-2 hover:border-b-[#14988B] hover:text-[#14988B] text-[#6F6C6C] cursor-pointer"
+                to={item?.to}
               >
-                {item.menu}
-              </li>
+                {item?.label}
+              </NavLink>
             ))}
-          </ul>
-          <hr className="w-[90%] mx-auto" />
-          <div className="px-4 mx-4 border mt-6 rounded-md">
+          </div>
+          <div className="border rounded-md mt-6 mx-6">
             <div className="grid grid-cols-5 text-center border-b">
               <h1 className="font-[700] p-2 col-span-2">Point Inspection</h1>
               <h1 className="border-l border-r font-[700] p-2 col-span-1">Ketetapan</h1>
               <h1 className="font-[700] p-2 col-span-2">Notes</h1>
             </div>
-            {inspection?.inspectform.map((item, index) => (
-            <div key={item?.id} className="text-sm border-b">
-                <div className="flex my-2">
-                  <span className="font-bold">{index+1}.</span>
-                  <h1 className="font-[600]">{item?.title}</h1>
-                </div>
-                {item?.information.map((item, num) => (
-                  <div key={item?.id} className="grid grid-cols-5 mb-2">
-                    <h1 className="ml-2 col-span-2">{num+1}. {item?.name}</h1>
-                    <span className={`
-                      ${item?.ketepatan === "Normal"
-                      ? "text-[#12B76A]"
-                      : item?.ketepatan === "Perlu Perhatian"
-                      ? "text-[#9E77ED]"
-                      : item?.ketepatan === "Perlu Perbaikan"
-                      ? "text-[#FFA52F]"
-                      : item?.ketepatan === "Perlu Adjust"
-                      ? "text-[#469FFF]"
-                      : "text-[#F04438]"} font-bold text-center`}
-                    >
-                      {item?.ketepatan}
-                    </span>
-                    <h1 className="ml-2 col-span-2">{item?.notes}</h1>
-                  </div>
-                ))}
-            </div>
-            ))}
+            <Outlet />
           </div>
             <div className="flex border-t mt-4 py-[16px] px-[32px] bg-[#FFFFFF] justify-end">
               <button
@@ -156,9 +135,9 @@ export default function ApprovalInspectionFormView() {
                 <span>Confirm</span>
                 </button>
             </div>
-            <ModalConfirm open={inspection.open} setOpen={inspection.setOpen} setOpenSuccess={inspection.open} />
+          <ModalConfirm open={inspection.open} setOpen={inspection.setOpen} setOpenSuccess={inspection.open} />
         </div>
       </div>
-    </>
+    </div>
   )
 }

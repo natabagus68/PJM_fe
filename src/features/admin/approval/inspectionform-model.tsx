@@ -549,11 +549,11 @@ export default function useInspection() {
     ]),
 
     setMenu([
-      { id:1, menu: "Inspection Form" },
-      { id:2, menu: "Machine Check" },
-      { id:3, menu: "Accuracy Check" },
-      { id:4, menu: "Check Load Tonnage" },
-      { id:5, menu: "Resume Check" },
+      { id:1, label: "Inspection Form", to: "inspectionform-view" },
+      { id:2, label: "Machine Check", to: "machinecheck-view" },
+      { id:3, label: "Accuracy Check", to: "accuracycheck-view" },
+      { id:4, label: "Check Load Tonnage", to: "checkloadtonnage-view" },
+      { id:5, label: "Resume Check", to: "resumecheck-view" },
     ])
   }, [])
 
@@ -574,6 +574,6 @@ export default function useInspection() {
     setOpen,
     setInspectForm,
     pageBack,
-    handleConfirmation
+    handleConfirmation,
   }
 }
