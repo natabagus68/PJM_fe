@@ -7,11 +7,8 @@ import ArrowUpIcon from "@common/components/icons-new/ArrowUpIcon"
 import SearchIcon from "@common/components/icons-new/SearchIcon";
 import EyeShowIcon from "@common/components/icons-new/EyeShowIcon"
 
-
-
-
 export default function MasterDataView() {
-  const masterdata = useMasterDataModel()
+  const master = useMasterDataModel()
   return (
     <main className="flex flex-col gap-[28px] justify-between">
       <Breadcrumbs items={["Master Data"]} />
@@ -23,7 +20,7 @@ export default function MasterDataView() {
             <input className="pl-10 py-[6px] font-[400] rounded-md border px-[14px] focus:border-2 focus:outline-none focus:border-[#14988B]" placeholder="Search" />
             <button
               className="px-5 py-3 rounded mr-6 bg-[#14988B] text-[#FFFFFF]"
-              onClick={() => masterdata.addData("")}
+              onClick={() => master.addData("")}
             >
             + Add Data
             </button>
@@ -40,23 +37,22 @@ export default function MasterDataView() {
             </tr>
           </thead>
           <tbody>
-            {masterdata?.masterData.map((item) => (
-              <tr key={item?.customerId} className="border-b h-[64px] border-[#D0D3D9] bg-[#FFFFFF] font-[400] text-[16px]">
+            {master?.data.map((item) => (
+              <tr key={item?.id} className="border-b h-[64px] border-[#D0D3D9] bg-[#FFFFFF] font-[400] text-[16px]">
                 <td className="px-[32px]">{item?.customerId}</td>
                 <td className="px-[16px]">{item?.customerName}</td>
                 <td className="px-[16px]">{item?.customerAddress}</td>
                 <td className="px-[16px]">{item?.customerTelp}</td>
                 <td className="px-[32px] flex gap-3 my-2 justify-center">
-                  <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#1BBDD4]"
-                    onClick={() => masterdata.handleDetail("")}>
+                  <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#1BBDD4]" >
                     <EyeShowIcon color={"#FFFFFF"} width="16px"/>
                   </div>
                   <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#F79009]"
-                    onClick={() => masterdata.handleEdit("")}>
+                    onClick={() => master.handleEdit()}>
                     <EditIcon width="16px"/>
                   </div>
                   <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#F04438]"
-                    onClick={() => masterdata.handleDelete("")}>
+                    onClick={() => master.handleDelete()}>
                     <TrashIcon width="16px"/>
                   </div>
                 </td>
@@ -85,7 +81,7 @@ export default function MasterDataView() {
               />
             </button>
           </div>
-        <ModalDelete open={masterdata.open} setOpen={masterdata.setOpen} setOpenConfirm={masterdata.open}/>
+        <ModalDelete open={master.open} setOpen={master.setOpen} setOpenConfirm={master.open}/>
       </div>
     </main>
   )

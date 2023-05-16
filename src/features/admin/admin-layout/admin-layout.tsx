@@ -79,11 +79,9 @@ export default function AdminLayout() {
                 to={"#"}
               />
             </div>
-            <div className="">
-              <div
-                  className="flex items-center gap-2 cursor-pointer pl-2 text-[#F04438]"
-                  onClick={() => admin.onLogout()}
-                >
+            <div>
+              <div className="flex items-center gap-2 cursor-pointer pl-2 text-[#F04438]"
+                  onClick={() => admin.onLogout()}>
                 <LogoutIcon color={"#F04438"} />
               <span className="text-sm font-thin tracking-wider">Sign Out</span>
             </div>
