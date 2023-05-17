@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Chart from "@common/components/Chart";
 import { Line } from "react-chartjs-2";
 
-export default function TonnageChart() {
+export const ChartLine = () => {
   const ctx = useRef();
   const chart = useRef();
 

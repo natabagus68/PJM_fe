@@ -3,7 +3,6 @@ import { Switch } from '@headlessui/react';
 
 export default function TonnageTable() {
   const tonnage = useCheckLoadTonnage()
-  console.log(tonnage.view, tonnage.data)
   return (
     <>
       {
