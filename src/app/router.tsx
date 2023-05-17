@@ -8,7 +8,9 @@ import MasterDataView from "@features/admin/master-data/masterdata-view";
 import MasterDataAddView from "@features/admin/master-data/masteradd-view";
 import MasterDataEditView from "@features/admin/master-data/masteredit-view";
 import MasterDataDetailView from "@features/admin/master-data/masterdetail-view";
-import ApprovalInspectionFormView from "@features/admin/approval/inspectionform-view";
+import ApprovalReport from "@features/admin/approval/approvalreport-view";
+import AccuracyCheck from "@features/admin/approval/accuracycheck-view";
+import ListView from "@features/admin/approval/list/list-view";
 import { element } from "prop-types";
 import { Report } from "@features/admin/report/report/report-view";
 import { ReportDetailMain } from "@features/admin/report/report-detail/report-detail-main/report-detail-main-view";
@@ -75,11 +77,27 @@ export default createBrowserRouter([
       },
       {
         path: "approval",
-        element: <Root />,
+        element: <ApprovalReport />,
         children: [
           {
-            path: "",
-            element: <ApprovalInspectionFormView />,
+            path: "inspectionform-view",
+            element: <InspectionForm />,
+          },
+          {
+            path: "machinecheck-view",
+            element: <MachineCheck />,
+          },
+          {
+            path: "accuracycheck-view",
+            element: <AccuracyCheck />,
+          },
+          {
+            path: "checkloadtonnage-view",
+            element: <CheckLoadTonnage />,
+          },
+          {
+            path: "resumecheck-view",
+            element: <ResumeCheck />,
           },
         ],
       },
