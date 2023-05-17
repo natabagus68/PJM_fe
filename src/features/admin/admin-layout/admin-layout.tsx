@@ -83,6 +83,12 @@ export default function AdminLayout() {
               icon={<UserInfoIcon />}
               to={"#"}
             />
+            {/* <NavItem
+              className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
+              label="User"
+              icon={<UserInfoIcon />}
+              to={"#"}
+            /> */}
           </div>
           <div className="">
             <div
