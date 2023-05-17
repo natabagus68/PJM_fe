@@ -12,9 +12,8 @@ import ApprovalReport from "@features/admin/approval/approvalreport-view";
 import InspectionForm from "@features/admin/approval/inspectionform-view";
 import MachineCheck from "@features/admin/approval/machinecheck-view";
 import AccuracyCheck from "@features/admin/approval/accuracycheck-view";
-import CheckLoadTonnage from "@features/admin/approval/checkloadtonnage-view";
-import ResumeCheck from "@features/admin/approval/resumecheck-view";
-import ListView from "@features/admin/approval/list/list-view";
+import TonnageView from "@features/admin/approval/checkloadtonnage/tonnage-view";
+import ResumeView from "@features/admin/approval/checkresume/resume-view";
 
 const Root = () => {
   return <Outlet />;
@@ -79,19 +78,19 @@ export default createBrowserRouter([
           },
           {
             path: "machinecheck-view",
-            element: <MachineCheck />
+            element: <MachineCheck />,
           },
           {
             path: "accuracycheck-view",
-            element: <AccuracyCheck />
+            element: <AccuracyCheck />,
           },
           {
-            path: "checkloadtonnage-view",
-            element: <CheckLoadTonnage />
+            path: "checkloadtonnage/tonnage-view",
+            element: <TonnageView />,
           },
           {
-            path: "resumecheck-view",
-            element: <ResumeCheck />
+            path: "checkresume/resume-view",
+            element: <ResumeView />
           },
         ],
       },

@@ -44,7 +44,10 @@ export default function MasterDataView() {
                 <td className="px-[16px]">{item?.customerAddress}</td>
                 <td className="px-[16px]">{item?.customerTelp}</td>
                 <td className="px-[32px] flex gap-3 my-2 justify-center">
-                  <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#1BBDD4]" >
+                  <div
+                    className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#1BBDD4]"
+                    onClick={() => master.handleDetail()}
+                  >
                     <EyeShowIcon color={"#FFFFFF"} width="16px"/>
                   </div>
                   <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#F79009]"
