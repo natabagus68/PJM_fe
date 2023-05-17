@@ -9,6 +9,16 @@ import MasterDataAddView from "@features/admin/master-data/masteradd-view";
 import MasterDataEditView from "@features/admin/master-data/masteredit-view";
 import MasterDataDetailView from "@features/admin/master-data/masterdetail-view";
 import ApprovalInspectionFormView from "@features/admin/approval/inspectionform-view";
+import { element } from "prop-types";
+import { Report } from "@features/admin/report/report/report-view";
+import { ReportDetailMain } from "@features/admin/report/report-detail/report-detail-main/report-detail-main-view";
+import { InspectionForm } from "@features/admin/report/report-detail/detail-pages/inspection-form/inspection-form-view";
+import { MachineCheck } from "@features/admin/report/report-detail/detail-pages/machine-check/machine-check-view";
+import { AcuracyCheck } from "@features/admin/report/report-detail/detail-pages/acuracy-check/acuracy-check-view";
+import { CheckLoadTonnage } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/check-load-tonnage-view";
+import { Table } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/table/table";
+import { ChartLine } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/chart/chart-line-view";
+import { ResumeCheck } from "@features/admin/report/report-detail/detail-pages/resume-check/resume-check-view";
 
 const Root = () => {
   return <Outlet />;
@@ -47,21 +57,21 @@ export default createBrowserRouter([
         children: [
           {
             path: "",
-            element: <MasterDataView />
+            element: <MasterDataView />,
           },
           {
             path: "masteradd-view",
-            element: <MasterDataAddView />
+            element: <MasterDataAddView />,
           },
           {
             path: "masteredit-view",
-            element: <MasterDataEditView />
+            element: <MasterDataEditView />,
           },
           {
             path: "masterdetail-view",
-            element: <MasterDataDetailView/>
+            element: <MasterDataDetailView />,
           },
-        ]
+        ],
       },
       {
         path: "approval",
@@ -69,10 +79,56 @@ export default createBrowserRouter([
         children: [
           {
             path: "",
-            element: <ApprovalInspectionFormView />
+            element: <ApprovalInspectionFormView />,
           },
-        ]
-      }
+        ],
+      },
+      {
+        path: "report",
+        element: <Root />,
+        children: [
+          {
+            path: "",
+            element: <Report />,
+          },
+          {
+            path: ":id/detail",
+            element: <ReportDetailMain />,
+            children: [
+              {
+                path: "",
+                element: <InspectionForm />,
+              },
+              {
+                path: "machine-check",
+                element: <MachineCheck />,
+              },
+              {
+                path: "acuracy-check",
+                element: <AcuracyCheck />,
+              },
+              {
+                path: "check-load-tonnage",
+                element: <CheckLoadTonnage />,
+                children: [
+                  {
+                    path: "table",
+                    element: <Table />,
+                  },
+                  {
+                    path: "chart",
+                    element: <ChartLine />,
+                  },
+                ],
+              },
+              {
+                path: "resume-check",
+                element: <ResumeCheck />,
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
   {
