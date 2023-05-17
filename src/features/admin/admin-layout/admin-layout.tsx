@@ -97,6 +97,7 @@ export default function AdminLayout() {
             >
               <LogoutIcon color={"#F04438"} />
               <span className="text-sm font-thin tracking-wider">Sign Out</span>
+              {/* <span className="text-sm font-thin tracking-wider">Sign Out</span> */}
             </div>
           </div>
         </div>
