@@ -9,12 +9,18 @@ import MasterDataAddView from "@features/admin/master-data/masteradd-view";
 import MasterDataEditView from "@features/admin/master-data/masteredit-view";
 import MasterDataDetailView from "@features/admin/master-data/masterdetail-view";
 import ApprovalReport from "@features/admin/approval/approvalreport-view";
-import InspectionForm from "@features/admin/approval/inspectionform-view";
-import MachineCheck from "@features/admin/approval/machinecheck-view";
 import AccuracyCheck from "@features/admin/approval/accuracycheck-view";
-import CheckLoadTonnage from "@features/admin/approval/checkloadtonnage-view";
-import ResumeCheck from "@features/admin/approval/resumecheck-view";
 import ListView from "@features/admin/approval/list/list-view";
+import { element } from "prop-types";
+import { Report } from "@features/admin/report/report/report-view";
+import { ReportDetailMain } from "@features/admin/report/report-detail/report-detail-main/report-detail-main-view";
+import { InspectionForm } from "@features/admin/report/report-detail/detail-pages/inspection-form/inspection-form-view";
+import { MachineCheck } from "@features/admin/report/report-detail/detail-pages/machine-check/machine-check-view";
+import { AcuracyCheck } from "@features/admin/report/report-detail/detail-pages/acuracy-check/acuracy-check-view";
+import { CheckLoadTonnage } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/check-load-tonnage-view";
+import { Table } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/table/table";
+import { ChartLine } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/chart/chart-line-view";
+import { ResumeCheck } from "@features/admin/report/report-detail/detail-pages/resume-check/resume-check-view";
 
 const Root = () => {
   return <Outlet />;
@@ -75,23 +81,69 @@ export default createBrowserRouter([
         children: [
           {
             path: "inspectionform-view",
-            element: <InspectionForm />
+            element: <InspectionForm />,
           },
           {
             path: "machinecheck-view",
-            element: <MachineCheck />
+            element: <MachineCheck />,
           },
           {
             path: "accuracycheck-view",
-            element: <AccuracyCheck />
+            element: <AccuracyCheck />,
           },
           {
             path: "checkloadtonnage-view",
-            element: <CheckLoadTonnage />
+            element: <CheckLoadTonnage />,
           },
           {
             path: "resumecheck-view",
-            element: <ResumeCheck />
+            element: <ResumeCheck />,
+          },
+        ],
+      },
+      {
+        path: "report",
+        element: <Root />,
+        children: [
+          {
+            path: "",
+            element: <Report />,
+          },
+          {
+            path: ":id/detail",
+            element: <ReportDetailMain />,
+            children: [
+              {
+                path: "",
+                element: <InspectionForm />,
+              },
+              {
+                path: "machine-check",
+                element: <MachineCheck />,
+              },
+              {
+                path: "acuracy-check",
+                element: <AcuracyCheck />,
+              },
+              {
+                path: "check-load-tonnage",
+                element: <CheckLoadTonnage />,
+                children: [
+                  {
+                    path: "table",
+                    element: <Table />,
+                  },
+                  {
+                    path: "chart",
+                    element: <ChartLine />,
+                  },
+                ],
+              },
+              {
+                path: "resume-check",
+                element: <ResumeCheck />,
+              },
+            ],
           },
         ],
       },

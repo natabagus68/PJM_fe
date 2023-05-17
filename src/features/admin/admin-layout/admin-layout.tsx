@@ -8,8 +8,11 @@ import LoadingIcon from "@common/components/icons-new/LoadingIcon";
 import SearchIcon from "@common/components/icons-new/SearchIcon";
 import MasterDataIcon from "@common/components/icons-new/MasterDataIcon";
 import UserAdminIcon from "@common/components/icons-new/UserAdminIcon";
-import { ReportDocumentIcon, UserInfoIcon } from "@common/components/icons";
-import ApprovalIcon from "@common/components/icons-new/ApprovalIcon";
+import {
+  ReportDocumentIcon,
+  ApprovalIcon,
+  UserInfoIcon,
+} from "@common/components/icons";
 
 export default function AdminLayout() {
   const admin = useAdmin();
@@ -30,7 +33,10 @@ export default function AdminLayout() {
             onClick={() => admin.onOpenSideBar()}
           />
           <SearchIcon className="absolute left-14 z-10" />
-          <input className="pl-10 py-[6px] font-thin rounded-md focus:outline-none focus:border-2 focus:border-[#FFFFFF] bg-[#128A7E]" placeholder="Search" />
+          <input
+            className="pl-10 py-[6px] font-thin rounded-md focus:outline-none focus:border-2 focus:border-[#FFFFFF] bg-[#128A7E]"
+            placeholder="Search"
+          />
         </div>
         <div className="relative">
           <div
@@ -52,38 +58,46 @@ export default function AdminLayout() {
         </div>
         <div className="flex flex-col px-4 gap-[12px]">
           <span className="font-semibold text-[#5C5C5C] pl-2">Menu</span>
-            <div className="flex flex-col h-[calc(100vh-24vh)]">
-              <NavItem
-                className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
-                label="Report Document"
-                icon={<ReportDocumentIcon />}
-                to={"#"}
-              />
-              <NavItem
-                label={`Approval`}
-                icon={
-                  <ApprovalIcon className="w-[24px] h-[24px]" color="#5C5C5C" />
-                }
-                to={"approval"}
-              />
-              <NavItem
-                className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
-                label="Master Data"
-                icon={<MasterDataIcon />}
-                to={"master-data"}
-              />
-              <NavItem
-                className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
-                label="User"
-                icon={<UserInfoIcon />}
-                to={"#"}
-              />
-            </div>
-            <div>
-              <div className="flex items-center gap-2 cursor-pointer pl-2 text-[#F04438]"
-                  onClick={() => admin.onLogout()}>
-                <LogoutIcon color={"#F04438"} />
+          <div className="flex flex-col h-[calc(100vh-24vh)]">
+            <NavItem
+              className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
+              label="Report Document"
+              icon={<ReportDocumentIcon />}
+              to={"report"}
+            />
+            <NavItem
+              className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
+              label="Approval"
+              icon={<ApprovalIcon />}
+              to={"Approval"}
+            />
+            <NavItem
+              className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
+              label="Master Data"
+              icon={<MasterDataIcon />}
+              to={"master-data"}
+            />
+            <NavItem
+              className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
+              label="User"
+              icon={<UserInfoIcon />}
+              to={"#"}
+            />
+            {/* <NavItem
+              className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
+              label="User"
+              icon={<UserInfoIcon />}
+              to={"#"}
+            /> */}
+          </div>
+          <div className="">
+            <div
+              className="flex items-center gap-2 cursor-pointer pl-2 text-[#F04438]"
+              onClick={() => admin.onLogout()}
+            >
+              <LogoutIcon color={"#F04438"} />
               <span className="text-sm font-thin tracking-wider">Sign Out</span>
+              {/* <span className="text-sm font-thin tracking-wider">Sign Out</span> */}
             </div>
           </div>
         </div>
