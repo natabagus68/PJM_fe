@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface Item {
   id: string;
@@ -10,9 +11,11 @@ interface Item {
 
 export default function useList() {
   const [dataApproval, setDataApproval] = useState<Item[]>([]);
-
   const [searchTerm, setSearchTerm] = useState("");
   const [selectTerm, setSelectTerm] = useState("all");
+
+  const navigate = useNavigate();
+  const { state } = useLocation();
 
   useEffect(() => {
     setDataApproval([
@@ -76,8 +79,15 @@ export default function useList() {
 
   function handleSelectTermChange(event: ChangeEvent<HTMLInputElement>): void {
     setSelectTerm(event.target.value);
-    console.log(selectTerm);
   }
+
+  const handleReview = (type): void => {
+    navigate("review", {
+      state: {
+        type: type,
+      },
+    });
+  };
 
   const filteredItems = dataApproval
     .filter(
@@ -100,9 +110,8 @@ export default function useList() {
     searchTerm,
     filteredItems,
     handleConfirm,
-    setDataApproval,
     handleSearchTermChange,
     handleSelectTermChange,
-    mapItems,
+    handleReview,
   };
 }
