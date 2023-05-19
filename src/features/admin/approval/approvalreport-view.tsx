@@ -1,15 +1,18 @@
 import { NavLink, Outlet } from "react-router-dom";
 import useInspection from "@features/admin/approval/inspectionform-model";
-import useShowDetailModel from "@features/admin/approval/showdetail-model";
+import useShowDetailModel from "@features/admin/approval/popup/showdetail-model";
+import useChooseInspectionModel from "@features/admin/approval/popup/chooseinspection-model"
 import { Breadcrumbs } from "@common/components";
 import ModalConfirm from "@common/components/modals/ModalConfirm";
 import ArrowBackIcon from "@common/components/icons-new/ArrowBackIcon";
 import ConfirmCheck from "@common/components/icons-new/ConfirmCheck";
-import ShowDetailModel from "@features/admin/approval/showdetail-view";
+import ShowDetailModel from "@features/admin/approval/popup/showdetail-view";
+import ChooseInspectionModal from "@features/admin/approval/popup/chooseinspection-view"
 
 export default function ApprovalReport() {
   const inspection = useInspection()
   const detail = useShowDetailModel()
+  const choose = useChooseInspectionModel()
   return (
     <div>
       <div className="mb-5">
@@ -61,7 +64,10 @@ export default function ApprovalReport() {
           </div>
           <ShowDetailModel open={detail.open} setOpen={detail.setOpen} onClose={detail.handleShowDetailClose} />
           <div className="w-[370px] px-4 py-7 bg-[#FFFFFF] rounded-lg border">
-            <div className="flex items-center justify-between font-[14px] py-[18px] px-[12px] border border-[#14988B] bg-[#FBFBFB] rounded-lg mb-4 cursor-pointer">
+            <div
+              className="flex items-center justify-between font-[14px] py-[18px] px-[12px] border border-[#14988B] bg-[#FBFBFB] rounded-lg mb-4 cursor-pointer"
+              onClick={() => choose.openChooseInspection()}
+            >
               <h1 className="text-[#0E6C63]">Choose Result Of Inspection</h1>
               <ArrowBackIcon className="rotate-180 mr-2" />
             </div>
@@ -111,7 +117,11 @@ export default function ApprovalReport() {
           <div className="grid grid-cols-5 mt-3 border-b mx-6">
             {inspection.menu.map(item => (
               <NavLink
-                className="flex justify-center text-sm pb-2 mt-6 hover:pb-0 hover:border-b-2 hover:border-b-[#14988B] hover:text-[#14988B] text-[#6F6C6C] cursor-pointer"
+                key={item?.id}
+                onClick={(e) => inspection.handleSetNav(e)}
+                className={`flex justify-center text-sm pb-2 mt-6 hover:pb-0 hover:border-b-2 hover:border-b-[#14988B] hover:text-[#14988B] text-[#6F6C6C] cursor-pointer
+                  ${inspection.nav ? "border-b-[#14988B]" : "text-[#6F6C6C]"}
+                `}
                 to={item?.to}
               >
                 {item?.label}
@@ -119,12 +129,7 @@ export default function ApprovalReport() {
             ))}
           </div>
           <div className="border rounded-md mt-6 mx-6">
-            <div className="grid grid-cols-5 text-center border-b">
-              <h1 className="font-[700] p-2 col-span-2">Point Inspection</h1>
-              <h1 className="border-l border-r font-[700] p-2 col-span-1">Ketetapan</h1>
-              <h1 className="font-[700] p-2 col-span-2">Notes</h1>
-            </div>
-            <Outlet />
+          <Outlet />
           </div>
             <div className="flex border-t mt-4 py-[16px] px-[32px] bg-[#FFFFFF] justify-end">
               <button
@@ -136,6 +141,12 @@ export default function ApprovalReport() {
                 </button>
             </div>
           <ModalConfirm open={inspection.open} setOpen={inspection.setOpen} setOpenSuccess={inspection.open} />
+          <ChooseInspectionModal
+            open={choose.open}
+            setOpen={choose.setOpen}
+            onCancel={() => choose.closeChooseInspection()}
+            onSubmit={() => alert("Submit")}
+          />
         </div>
       </div>
     </div>

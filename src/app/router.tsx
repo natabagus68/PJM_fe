@@ -1,26 +1,33 @@
 import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
+import { element } from "prop-types";
 import { Error404 } from "../common/components";
 import LoginView from "@features/auth/login-view";
 import AdminLayout from "@features/admin/admin-layout/admin-layout";
 import TraceabilityView from "@features/admin/traceability/traceability-view";
 import TraceabilityDetail from "@features/admin/traceability/traceability-detail";
-import MasterDataView from "@features/admin/master-data/masterdata-view";
-import MasterDataAddView from "@features/admin/master-data/masteradd-view";
-import MasterDataEditView from "@features/admin/master-data/masteredit-view";
-import MasterDataDetailView from "@features/admin/master-data/masterdetail-view";
-import ApprovalReport from "@features/admin/approval/approvalreport-view";
-import AccuracyCheck from "@features/admin/approval/accuracycheck-view";
-import ListView from "@features/admin/approval/list/list-view";
-import { element } from "prop-types";
+
 import { Report } from "@features/admin/report/report/report-view";
 import { ReportDetailMain } from "@features/admin/report/report-detail/report-detail-main/report-detail-main-view";
-import { InspectionForm } from "@features/admin/report/report-detail/detail-pages/inspection-form/inspection-form-view";
 import { MachineCheck } from "@features/admin/report/report-detail/detail-pages/machine-check/machine-check-view";
 import { AcuracyCheck } from "@features/admin/report/report-detail/detail-pages/acuracy-check/acuracy-check-view";
 import { CheckLoadTonnage } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/check-load-tonnage-view";
 import { Table } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/table/table";
 import { ChartLine } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/chart/chart-line-view";
 import { ResumeCheck } from "@features/admin/report/report-detail/detail-pages/resume-check/resume-check-view";
+
+import MasterDataView from "@features/admin/master-data/masterdata-view";
+import MasterDataAddView from "@features/admin/master-data/add/masteradd-view";
+import MasterDataEditView from "@features/admin/master-data/edit/masteredit-view";
+import MasterDataDetailView from "@features/admin/master-data/detail/masterdetail-view";
+import InspectionForm from "@features/admin/approval/inspectionform-view";
+import ApprovalReport from "@features/admin/approval/approvalreport-view";
+import AccuracyCheck from "@features/admin/approval/accuracycheck-view";
+import TonnageView from "@features/admin/approval/checkloadtonnage/tonnage-view";
+import ResumePreview from "@features/admin/approval/checkresume/resume-view";
+import UserView from "@features/admin/user/user-view";
+import UserAddView from "@features/admin/user/add/useradd-view";
+import UserEditView from "@features/admin/user/edit/useredit-view";
+import UserDetailView from "@features/admin/user/detail/userdetail-view";
 
 const Root = () => {
   return <Outlet />;
@@ -92,14 +99,18 @@ export default createBrowserRouter([
             element: <AccuracyCheck />,
           },
           {
-            path: "checkloadtonnage-view",
-            element: <CheckLoadTonnage />,
+            path: "checkloadtonnage/tonnage-view",
+            element: <TonnageView />,
           },
           {
-            path: "resumecheck-view",
-            element: <ResumeCheck />,
+            path: "checkresume/resume-view",
+            element: <ResumePreview />
           },
         ],
+      },
+      {
+        path: "user",
+        element: <UserView />
       },
       {
         path: "report",
@@ -146,6 +157,24 @@ export default createBrowserRouter([
             ],
           },
         ],
+      },
+      {
+        path: "user",
+        element: <Root />,
+        children: [
+          {
+            path: "useradd-view",
+            element: <UserAddView />
+          },
+          {
+            path: "useredit-view",
+            element: <UserEditView />
+          },
+          {
+            path: "userdetail-view",
+            element: <UserDetailView />
+          },
+        ]
       },
     ],
   },
