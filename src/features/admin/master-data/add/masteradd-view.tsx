@@ -1,9 +1,10 @@
 import { Breadcrumbs } from "@common/components";
-import useMasterDataModel from "./masterdata-model";
 import ArrowBackIcon from "@common/components/icons-new/ArrowBackIcon"
 import SaveIcon from "@common/components/icons-new/SaveIcon"
 import ModalConfirm from "@common/components/modals/ModalConfirm"
-import ModalSuccess from "@common/components/modals/ModalSeccess"
+import InputFile from "@common/components/input/InputFile";
+import ResetIcon from "@common/components/icons-new/ResetIcon";
+import useMasterDataModel from "@features/admin/master-data/masterdata-model";
 
 export default function MasterDataAddView() {
   const masterdata = useMasterDataModel()
@@ -50,14 +51,65 @@ export default function MasterDataAddView() {
             placeholder="Input Telp/Fax"
             required
           />
-          <button className="w-[249px] h-[46px] rounded-md bg-[#14988B] text-[#FFFFFF] flex items-center justify-center gap-2">
+          <div className="border-b pb-8">
+            <div className="mb-2">
+              <h1 className="my-3 font-[600]">1. Parallism</h1>
+              <InputFile
+                icon={<ResetIcon />}
+                label="Images 1"
+                name="parallel-image-1"
+                value={masterdata.setInput}
+              />
+            </div>
+            <div>
+              <InputFile
+                icon={<ResetIcon />}
+                label="Images 2"
+                name="parallel-image-1"
+              />
+            </div>
+          </div>
+          <div className="border-b pb-8">
+            <div className="mb-2">
+              <h1 className="my-3 font-[600]">2. GIB Clearance</h1>
+              <InputFile
+                icon={<ResetIcon />}
+                label="Images 1"
+                name="gib-image-2"
+              />
+            </div>
+            <div>
+              <InputFile
+                icon={<ResetIcon />}
+                label="Images 2"
+                name="gib-image-2"
+              />
+            </div>
+          </div>
+          <div className="border-b pb-8">
+            <div className="mb-2">
+              <h1 className="my-3 font-[600]">3. Perpendicularity</h1>
+              <InputFile
+                icon={<ResetIcon />}
+                label="Images 1"
+                name="prep-image-2"
+              />
+            </div>
+            <div>
+              <InputFile
+                icon={<ResetIcon />}
+                label="Images 2"
+                name="prep-image-2"
+              />
+            </div>
+          </div>
+          <button className="w-[249px] h-[46px] rounded-md bg-[#14988B] text-[#FFFFFF] flex items-center justify-center gap-2 mt-6">
             <SaveIcon />
             <span>Save</span>
           </button>
         </form>
-        <ModalConfirm open={masterdata.open} setOpen={masterdata.setOpen} setOpenSuccess={masterdata.open} />
-      </div>
-    </main>
-
+      <ModalConfirm open={masterdata.open} setOpen={masterdata.setOpen} setOpenSuccess={masterdata.open} />
+    </div>
+  </main>
   )
 }

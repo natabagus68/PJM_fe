@@ -564,7 +564,6 @@ export default function useInspection() {
   }
 
   const handleSetNav = (e) => {
-    console.log(e)
     setNav(true)
   }
 

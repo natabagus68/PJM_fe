@@ -60,35 +60,29 @@ export default function AdminLayout() {
           <span className="font-semibold text-[#5C5C5C] pl-2">Menu</span>
           <div className="flex flex-col h-[calc(100vh-24vh)]">
             <NavItem
+              icon={<ReportDocumentIcon />}
               className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
               label="Report Document"
-              icon={<ReportDocumentIcon />}
               to={"report"}
             />
             <NavItem
-              className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
-              label="Approval"
               icon={<ApprovalIcon />}
-              to={"Approval"}
+              className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
+              label="Approve E-sign"
+              to={"approval"}
             />
             <NavItem
+              icon={<MasterDataIcon />}
               className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
               label="Master Data"
-              icon={<MasterDataIcon />}
               to={"master-data"}
             />
             <NavItem
+              icon={<UserInfoIcon />}
               className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
               label="User"
-              icon={<UserInfoIcon />}
-              to={"#"}
+              to={"user"}
             />
-            {/* <NavItem
-              className="block font-light text-sm text-[#514E4E] hover:bg-[#E8F5F3]"
-              label="User"
-              icon={<UserInfoIcon />}
-              to={"#"}
-            /> */}
           </div>
           <div className="">
             <div
@@ -97,7 +91,6 @@ export default function AdminLayout() {
             >
               <LogoutIcon color={"#F04438"} />
               <span className="text-sm font-thin tracking-wider">Sign Out</span>
-              {/* <span className="text-sm font-thin tracking-wider">Sign Out</span> */}
             </div>
           </div>
         </div>

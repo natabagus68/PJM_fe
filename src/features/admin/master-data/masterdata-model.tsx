@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 export default function useMasterData() {
   const navigate = useNavigate();
   const { state } = useLocation();
-
   const [data, setData] = useState([]);
   const [open, setOpen] = useState(false)
 
