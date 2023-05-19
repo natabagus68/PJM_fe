@@ -30,6 +30,7 @@ export default function useInspection() {
   const [menu, setMenu] = useState<Menu>([])
   const [inspectform, setInspectForm] = useState([])
   const [open, setOpen] = useState(false)
+  const [nav, setNav] = useState(false)
 
   useEffect(() => {
     setData({
@@ -552,14 +553,18 @@ export default function useInspection() {
       { id:1, label: "Inspection Form", to: "inspectionform-view" },
       { id:2, label: "Machine Check", to: "machinecheck-view" },
       { id:3, label: "Accuracy Check", to: "accuracycheck-view" },
-      { id:4, label: "Check Load Tonnage", to: "checkloadtonnage-view" },
-      { id:5, label: "Resume Check", to: "resumecheck-view" },
+      { id:4, label: "Check Load Tonnage", to: "checkloadtonnage/tonnage-view" },
+      { id:5, label: "Resume Check", to: "checkresume/resume-view" },
     ])
   }, [])
 
   const handleConfirmation = (e) => {
     e.preventDefault()
     setOpen(true)
+  }
+
+  const handleSetNav = (e) => {
+    setNav(true)
   }
 
   const pageBack = (): void => {
@@ -571,9 +576,12 @@ export default function useInspection() {
     menu,
     open,
     inspectform,
+    nav,
+    setNav,
     setOpen,
     setInspectForm,
     pageBack,
     handleConfirmation,
+    handleSetNav
   }
 }

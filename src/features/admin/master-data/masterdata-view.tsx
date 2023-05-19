@@ -1,4 +1,3 @@
-import useMasterDataModel from "./masterdata-model"
 import { Breadcrumbs } from "@common/components";
 import EditIcon from "@common/components/icons-new/EditIcon";
 import ModalDelete from "@common/components/modals/ModalDelete";
@@ -6,6 +5,7 @@ import TrashIcon from "@common/components/icons-new/TrashIcon";
 import ArrowUpIcon from "@common/components/icons-new/ArrowUpIcon"
 import SearchIcon from "@common/components/icons-new/SearchIcon";
 import EyeShowIcon from "@common/components/icons-new/EyeShowIcon"
+import useMasterDataModel from "./masterdata-model"
 
 export default function MasterDataView() {
   const master = useMasterDataModel()
@@ -37,27 +37,32 @@ export default function MasterDataView() {
             </tr>
           </thead>
           <tbody>
-            {master?.data.map((item) => (
-              <tr key={item?.id} className="border-b h-[64px] border-[#D0D3D9] bg-[#FFFFFF] font-[400] text-[16px]">
-                <td className="px-[32px]">{item?.customerId}</td>
-                <td className="px-[16px]">{item?.customerName}</td>
-                <td className="px-[16px]">{item?.customerAddress}</td>
-                <td className="px-[16px]">{item?.customerTelp}</td>
-                <td className="px-[32px] flex gap-3 my-2 justify-center">
-                  <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#1BBDD4]" >
-                    <EyeShowIcon color={"#FFFFFF"} width="16px"/>
-                  </div>
-                  <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#F79009]"
-                    onClick={() => master.handleEdit()}>
-                    <EditIcon width="16px"/>
-                  </div>
-                  <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#F04438]"
-                    onClick={() => master.handleDelete()}>
-                    <TrashIcon width="16px"/>
-                  </div>
-                </td>
-              </tr>
-            ))}
+            {
+              master?.data.map((item) => (
+                <tr key={item?.id} className="border-b h-[64px] border-[#D0D3D9] bg-[#FFFFFF] font-[400] text-[16px]">
+                  <td className="px-[32px]">{item?.customerId}</td>
+                  <td className="px-[16px]">{item?.customerName}</td>
+                  <td className="px-[16px]">{item?.customerAddress}</td>
+                  <td className="px-[16px]">{item?.customerTelp}</td>
+                  <td className="px-[32px] flex gap-3 my-2 justify-center">
+                    <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#1BBDD4]"
+                      onClick={() => master.handleDetail()}
+                    >
+                      <EyeShowIcon color={"#FFFFFF"} width="16px"/>
+                    </div>
+                    <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#F79009]"
+                      onClick={() => master.handleEdit()}>
+                      <EditIcon width="16px"/>
+                    </div>
+                    <div className="p-2 rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[48px] h-[48px] bg-[#F04438]"
+                      onClick={() => master.handleDelete()}>
+                      <TrashIcon width="16px"/>
+                    </div>
+                  </td>
+                </tr>
+                )
+              )
+            }
           </tbody>
         </table>
         <div className="flex py-4 px-[32px] justify-end gap-4 bg-[#FFFFFF]">

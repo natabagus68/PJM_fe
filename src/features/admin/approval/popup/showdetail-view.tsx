@@ -1,4 +1,4 @@
-import useShowDetailModel from "@features/admin/approval/showdetail-model";
+import useShowDetailModel from "@features/admin/approval/popup/showdetail-model";
 import CloseIcon from "@common/components/icons-new/CloseIcon";
 import Modal from "@common/components/modals/Modal";
 
