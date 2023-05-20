@@ -60,10 +60,10 @@ const ListView = () => {
             <tr>
               <th className="px-[32px] text-start">Inspection ID</th>
               <th className="px-[32px] text-start">Inspection Date</th>
-              <th className="px-[32px] text-start">Customer</th>
-              <th className="px-[32px] text-start">Machine Name</th>
-              <th className="px-[32px] text-start">Status</th>
-              <th className="px-[32px] text-start">Action</th>
+              <th className="px-[16px] text-start">Customer</th>
+              <th className="px-[16px] text-start">Machine Name</th>
+              <th className="px-[16px] text-start">Status</th>
+              <th className="px-[16px] text-start">Action</th>
             </tr>
           </thead>
           <tbody className="text-base text-[#514E4E]">
@@ -75,14 +75,14 @@ const ListView = () => {
                   >
                     <td className="px-[32px]">{item.id}</td>
                     <td className="px-[32px]">{item.date}</td>
-                    <td className="px-[32px]">{item.customer}</td>
-                    <td className="px-[32px]">{item.machine}</td>
-                    <td className="px-[32px]">
+                    <td className="px-[16px]">{item.customer}</td>
+                    <td className="px-[16px]">{item.machine}</td>
+                    <td className="px-[16px]">
                       <div
                         className={` ${
                           item.status === "Confirmed"
-                            ? "bg-[#4D74B2]"
-                            : "bg-[#F9A63A]"
+                            ? "bg-[#10A560]"
+                            : "bg-[#F79009]"
                         }  w-[112px] px-4 py-1 rounded-full`}
                       >
                         <span className="text-white w-full inline-block text-center text-base font-normal">
@@ -90,7 +90,7 @@ const ListView = () => {
                         </span>
                       </div>
                     </td>
-                    <td className="px-[32px]">
+                    <td className="px-[16px]">
                       <div className="flex items-center gap-3">
                         <button className="flex items-center gap-2 h-[46px] px-[20px] bg-[#1BBDD4] rounded">
                           <DocumentIcon />
@@ -100,11 +100,11 @@ const ListView = () => {
                         </button>
                         {item.status === "Waiting" && (
                           <button
-                            className="flex items-center gap-2 border-[1px] border-[#4D74B2] h-[46px] px-[20px] bg-white rounded"
+                            className="flex items-center gap-2 border-[1px] border-[#14988B] h-[46px] px-[20px] bg-white rounded"
                             onClick={() => approval?.handleConfirm(item)}
                           >
-                            <ConfirmIcon color="#4D74B2" />
-                            <span className="text-[#4D74B2] text-sm font-semibold">
+                            <ConfirmIcon color="#14988B" />
+                            <span className="text-[#14988B] text-sm font-semibold">
                               Confirm
                             </span>
                           </button>
@@ -120,14 +120,14 @@ const ListView = () => {
                   >
                     <td className="px-[32px]">{item.id}</td>
                     <td className="px-[32px]">{item.date}</td>
-                    <td className="px-[32px]">{item.customer}</td>
-                    <td className="px-[32px]">{item.machine}</td>
-                    <td className="px-[32px]">
+                    <td className="px-[16px]">{item.customer}</td>
+                    <td className="px-[16px]">{item.machine}</td>
+                    <td className="px-[16px]">
                       <div
                         className={` ${
                           item.status === "Confirmed"
-                            ? "bg-[#4D74B2]"
-                            : "bg-[#F9A63A]"
+                            ? "bg-[#10A560]"
+                            : "bg-[#F79009]"
                         }  w-[112px] px-4 py-1 rounded-full`}
                       >
                         <span className="text-white w-full inline-block text-center text-base font-normal">
@@ -135,9 +135,12 @@ const ListView = () => {
                         </span>
                       </div>
                     </td>
-                    <td className="px-[32px]">
+                    <td className="px-[16px]">
                       <div className="flex items-center gap-3">
-                        <button className="flex items-center gap-2 h-[46px] px-[20px] bg-[#1BBDD4] rounded">
+                        <button
+                          className="flex items-center gap-2 h-[46px] px-[20px] bg-[#1BBDD4] rounded"
+                          onClick={() => approval?.handleReview()}
+                        >
                           <DocumentIcon color="white" />
                           <span className="text-white text-sm font-semibold ">
                             Review
@@ -145,11 +148,11 @@ const ListView = () => {
                         </button>
                         {item.status === "Waiting" && (
                           <button
-                            className="flex items-center gap-2 border-[1px] border-[#4D74B2] h-[46px] px-[20px] bg-white rounded"
+                            className="flex items-center gap-2 border-[1px] border-[#14988B] h-[46px] px-[20px] bg-white rounded"
                             onClick={() => approval?.handleConfirm(item)}
                           >
-                            <ConfirmIcon color="#4D74B2" />
-                            <span className="text-[#4D74B2] text-sm font-semibold">
+                            <ConfirmIcon color="#14988B" />
+                            <span className="text-[#14988B] text-sm font-semibold">
                               Confirm
                             </span>
                           </button>
@@ -169,14 +172,14 @@ const ListView = () => {
             />
             <span>Prev</span>
           </button>
-          <div className="w-[40px] h-[40px] bg-[#20519F] rounded flex items-center justify-center text-white">
+          <div className="w-[40px] h-[40px] bg-[#14988B] rounded flex items-center justify-center text-white">
             1
           </div>
-          <button className="px-4 h-[40px] text-[#20519F] border gap-2 border-[#20519F] rounded flex items-center justify-center">
+          <button className="px-4 h-[40px] text-[#14988B] border gap-2 border-[#14988B] rounded flex items-center justify-center">
             <span>Next</span>
             <ArrowUpIcon
               className="w-[16px] h-[16px] rotate-90"
-              color="#20519F"
+              color="#14988B"
             />
           </button>
         </div>
