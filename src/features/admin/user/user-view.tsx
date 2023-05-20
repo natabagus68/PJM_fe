@@ -6,6 +6,7 @@ import ModalDelete from "@common/components/modals/ModalDelete";
 import EditIcon from "@common/components/icons-new/EditIcon";
 import TrashIcon from "@common/components/icons-new/TrashIcon";
 import SearchIcon from  "@common/components/icons-new/SearchIcon";
+import CheckBox from "@common/components/toggle/CheckBox";
 import useUserModel from "@features/admin/user/user-model";
 
 export default function UserView() {
@@ -21,7 +22,7 @@ export default function UserView() {
             <input className="pl-10 py-[6px] font-[400] rounded-md border px-[14px] focus:border-2 focus:outline-none focus:border-[#14988B]" placeholder="Search" />
             <button
               className="px-5 py-3 rounded mr-6 bg-[#14988B] text-[#FFFFFF]"
-              onClick={() => user.handleAddData()}
+              onClick={() => user.handleAddData("")}
             >
             + Add Data
             </button>
@@ -43,61 +44,21 @@ export default function UserView() {
               <tr key={item?.id} className="border-b h-[64px] border-[#D0D3D9] bg-[#FFFFFF] font-[400] text-[16px]">
                 {
                   item?.active === true
-                  ? (
-                    <div className="px-10 h-[64px] flex justify-center items-center">
-                      <Switch
-                        checked={user.view}
-                        onChange={user.setView}
-                        onClick={() => user.handleViewChart()}
-                        className={`${user.view ? 'bg-[#B8B6B6]' : 'bg-[#12B569]'}
-                          relative inline-flex
-                          h-[20px] w-[32px]
-                          shrink-0 cursor-pointer rounded-full
-                          border-2 border-transparent
-                          transition-colors duration-200 ease-in-out
-                          focus:outline-none focus-visible:ring-2  focus-visible:ring-white
-                          focus-visible:ring-opacity-75`}
-                        >
-                        <span className="sr-only">Use setting</span>
-                        <span
-                          aria-hidden="true"
-                          className={`${user.view ? 'translate-x-0' : 'translate-x-3'}
-                            pointer-events-none inline-block
-                            h-[16px] w-[16px]
-                            transform rounded-full
-                            bg-[#FFFFFF] shadow-lg
-                            ring-0 transition duration-200 ease-in-out`}
-                        />
-                      </Switch>
-                    </div>
+                  ?
+                    (
+                      <CheckBox
+                        bgTrueColor={"bg-[#DDDDDD]"}
+                        bgFalseColor={"bg-[#14988B]"}
+                        handleActive={() => user.setActive(false)}
+                      />
                     )
-                  : (
-                    <div className="px-10 h-[64px] flex justify-center items-center">
-                      <Switch
-                        checked={user.view}
-                        onChange={user.setView}
-                        onClick={() => user.handleViewChart()}
-                        className={`${user.view ? 'bg-[#B8B6B6]' : 'bg-[#12B569]'}
-                          relative inline-flex
-                          h-[20px] w-[32px]
-                          shrink-0 cursor-pointer rounded-full
-                          border-2 border-transparent
-                          transition-colors duration-200 ease-in-out
-                          focus:outline-none focus-visible:ring-2  focus-visible:ring-white
-                          focus-visible:ring-opacity-75`}
-                        >
-                        <span className="sr-only">Use setting</span>
-                        <span
-                          aria-hidden="true"
-                          className={`${user.view ? 'translate-x-0' : 'translate-x-3'}
-                            pointer-events-none inline-block
-                            h-[16px] w-[16px]
-                            transform rounded-full
-                            bg-[#FFFFFF] shadow-lg
-                            ring-0 transition duration-200 ease-in-out`}
-                        />
-                      </Switch>
-                    </div>
+                  :
+                  (
+                    <CheckBox
+                      bgTrueColor={"bg-[#14988B]"}
+                      bgFalseColor={"bg-[#DDDDDD]"}
+                      handleActive={() => user.setActive(false)}
+                    />
                   )
                 }
                 <td className="px-8">{item?.name}</td>
@@ -105,16 +66,16 @@ export default function UserView() {
                 <td className="px-8">{item?.role}</td>
                 <td className="px-8 flex gap-3 my-2 justify-center">
                   <div className="rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[46px] h-[48px] bg-[#1BBDD4]"
-                    onClick={() => user.handleDetail()}
+                    onClick={() => user.handleDetail("")}
                   >
                     <EyeShowIcon color={"#FFFFFF"} width="16px"/>
                   </div>
                   <div className="rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[46px] h-[48px] bg-[#F79009]"
-                    onClick={() => user.handleEdit()}>
+                    onClick={() => user.handleEdit("")}>
                     <EditIcon width="16px"/>
                   </div>
                   <div className="rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[46px] h-[48px] bg-[#F04438]"
-                    onClick={() => user.handleDelete()}>
+                    onClick={() => user.handleDelete("")}>
                     <TrashIcon width="16px"/>
                   </div>
                 </td>
