@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import paralel1 from "../../../assets/paralel-1.png";
-import paralel2 from "../../../assets/paralel-2.png";
-import gib1 from "../../../assets/gib-1.png";
-import gib2 from "../../../assets/gib-2.png";
-import prepen1 from "../../../assets/prepen-1.png";
-import prepen2 from "../../../assets/prepen-2.png";
-import rumus from "../../../assets/calculate.png";
+import paralel1 from "../../../../assets/paralel-1.png";
+import paralel2 from "../../../../assets/paralel-2.png";
+import gib1 from "../../../../assets/gib-1.png";
+import gib2 from "../../../../assets/gib-2.png";
+import prepen1 from "../../../../assets/prepen-1.png";
+import prepen2 from "../../../../assets/prepen-2.png";
+import rumus from "../../../../assets/calculate.png";
 
 interface Item {
   parallel: {

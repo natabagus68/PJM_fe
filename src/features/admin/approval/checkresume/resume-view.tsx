@@ -16,7 +16,7 @@ export default function ResumeView() {
             Lihat
           </h1>
       </div>
-     <img className="w-[200px] h-[200px]" src={Robot} alt="robot"/>
+     <img className="min-w-[200px] min-h-[200px]" src={Robot} alt="robot"/>
     </div>
     <div className="flex flex-col gap-6">
       <h1>Tanggal Check</h1>

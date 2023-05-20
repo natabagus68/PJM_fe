@@ -46,7 +46,7 @@ export default function UserAddView(){
           </div>
           <div className="mb-3">
             <h1 className="mb-2">Role</h1>
-            <select name="user-access" className="w-[90%] p-3 bg-[#FFFFFF] rounded-md border text-[#dddddd]">
+            <select name="user-access" className="w-[90%] px-3 py-2 bg-[#FFFFFF] rounded-md border text-[#dddddd]">
               <option disabled selected value> -- select role -- </option>
               <option value="superadmin">SuperAdmin</option>
               <option value="admin">Dave</option>
@@ -54,19 +54,22 @@ export default function UserAddView(){
             </select>
           </div>
           <div className="mb-3">
-            <h1 className="mb-2">Profile Picture</h1>
-            <div className="w-[90%] flex items-center justify-center gap-3 ">
-              <div className="w-full">
-                <InputFile bgColor={"#B9BDC7"} ftColor={"#514E4E"} />
-              </div>
-            </div>
+            <h1>Profile Picture</h1>
+            <InputFile
+              htmlFor="fileimg"
+              width={"125px"}
+              label={"Choose"}
+              bgColor={"#B9BDC7"}
+              ftColor={"#514E4E"}
+              value={"no file choosen"}
+            />
           </div>
           <button className="w-[249px] h-[46px] rounded-md bg-[#14988B] text-[#FFFFFF] flex items-center justify-center gap-2 mt-6">
             <SaveIcon />
             <span>Save</span>
           </button>
         </form>
-        <ModalConfirm open={user.open} setOpen={user.setOpen} setOpenConfirm={user.open}/>
+        <ModalConfirm open={user.open} setOpen={user.setOpen} setOpenConfirm={user.open} cb={(e) => e.preventDefault()}/>
       </div>
     </main>
   )

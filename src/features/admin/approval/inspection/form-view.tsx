@@ -1,4 +1,4 @@
-import useInspection from "@features/admin/approval/inspectionform-model";
+import useInspection from "@features/admin/approval/inspection/form-model";
 
 export default function InspectionForm() {
   const inspection = useInspection()
