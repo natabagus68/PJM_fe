@@ -35,6 +35,8 @@ export default function LoginView() {
               <input
                 type="text"
                 name="email"
+                value={login.form.email}
+                onChange={login.handleForm}
                 placeholder="enter email address"
                 className=" bg-transparent w-full h-full outline-none"
               />
@@ -44,6 +46,8 @@ export default function LoginView() {
               <input
                 type={`${login.isPasswordShow ? "text" : "password"}`}
                 name="password"
+                value={login.form.password}
+                onChange={login.handleForm}
                 placeholder="enter your password"
                 className=" bg-transparent w-full h-full outline-none"
               />

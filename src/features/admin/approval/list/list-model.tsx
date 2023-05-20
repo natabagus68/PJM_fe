@@ -1,117 +1,59 @@
+import { AprovalApiRepository } from "@data/api/aproval-api-repository";
+import { Aproval, AprovalStatus } from "@domain/models/aproval";
+import { TableParams } from "@domain/models/table-params";
+import { AprovalRepository } from "@domain/repositories/aproval-repository";
+import { object } from "prop-types";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-interface Item {
-  id: string;
-  date: string;
-  customer: string;
-  machine: string;
-  status: string;
-}
-
 export default function useList() {
-  const [dataApproval, setDataApproval] = useState<Item[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectTerm, setSelectTerm] = useState("all");
-
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const aprovalRepo: AprovalRepository = new AprovalApiRepository();
+  const [params, setParams] = useState<TableParams>({
+    q: "",
+    page: 1,
+    limit: 10,
+    status: "ALL_STATUS",
+  });
 
-  useEffect(() => {
-    setDataApproval([
-      {
-        id: "IID66538135",
-        date: "10/04/2023",
-        customer: "PT. Ragdalion Revolusi",
-        machine: "PRESS MACHINE",
-        status: "Confirmed",
-      },
-      {
-        id: "IID55069827",
-        date: "18/09/2022",
-        customer: "PT. Abjad",
-        machine: "PIPE & WIRE BENDING",
-        status: "Confirmed",
-      },
-      {
-        id: "IID01906912",
-        date: "07/05/2022",
-        customer: "PT. Nusa Bangunan",
-        machine: "STRAIGHTENERFEEDER",
-        status: "Waiting",
-      },
-      {
-        id: "IID43397744",
-        date: "28/10/2022",
-        customer: "PT. Sejahtera Abadi",
-        machine: "PIPE & WIRE BENDING",
-        status: "Waiting",
-      },
-      {
-        id: "IID52936567",
-        date: "15/08/2017",
-        customer: "PT. Sehati Maju",
-        machine: "STRAIGHTENERFEEDER",
-        status: "Confirmed",
-      },
-      {
-        id: "IID76031847",
-        date: "12/06/2020",
-        customer: "PT. Adakamu Adi",
-        machine: "STRAIGHTENERFEEDER",
-        status: "Waiting",
-      },
-    ]);
-  }, []);
+  const [status, setStatus] = useState([]);
 
-  function mapItems(callback: (item: Item, index: number) => Item) {
-    const newItems = dataApproval.map(callback);
-    setDataApproval(newItems);
-  }
+  const [data, setData] = useState<Aproval[]>([]);
 
-  function handleConfirm(item: Item) {
-    mapItems((i) => (i.id === item.id ? { ...i, status: "Confirmed" } : i));
-  }
+  const fetchData = () => {
+    aprovalRepo.get(params).then((result) => setData(result));
+  };
 
-  function handleSearchTermChange(event: ChangeEvent<HTMLInputElement>): void {
-    setSearchTerm(event.target.value);
-  }
+  const toReview = (id: string) => {
+    navigate(`${id}/detail`);
+  };
 
-  function handleSelectTermChange(event: ChangeEvent<HTMLInputElement>): void {
-    setSelectTerm(event.target.value);
-  }
+  const loopStatus = () => {
+    const temp = Object.values(AprovalStatus).map((e) => e);
+    setStatus(temp);
+  };
 
-  const handleReview = (type): void => {
-    navigate("review", {
-      state: {
-        type: type,
-      },
+  const handleSearch = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setParams((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
     });
   };
 
-  const filteredItems = dataApproval
-    .filter(
-      (item) =>
-        selectTerm === item.status.toLowerCase() ||
-        (selectTerm === "all" &&
-          `${item.machine} ${item.customer}`
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase()))
-    )
-    .filter((i) =>
-      `${i.machine} ${i.customer}`
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase())
-    );
+  useEffect(() => {
+    loopStatus();
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [params]);
 
   return {
-    dataApproval,
-    selectTerm,
-    searchTerm,
-    filteredItems,
-    handleConfirm,
-    handleSearchTermChange,
-    handleSelectTermChange,
-    handleReview,
+    data,
+    params,
+    status,
+    handleSearch,
+    toReview,
   };
 }
