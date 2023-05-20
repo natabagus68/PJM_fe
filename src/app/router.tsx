@@ -21,7 +21,8 @@ import MasterDataEditView from "@features/admin/master-data/edit/masteredit-view
 import MasterDataDetailView from "@features/admin/master-data/detail/masterdetail-view";
 import InspectionForm from "@features/admin/approval/inspection/form-view";
 import ApprovalReport from "@features/admin/approval/approvalreport-view";
-import AccuracyCheck from "@features/admin/approval/accuracycheck-view";
+import AccuracyCheckView from "@features/admin/approval/checkaccuracy/accuracy-view";
+import MachineCheckView from "@features/admin/approval/checkmachine/machine-view";
 import TonnageView from "@features/admin/approval/checkloadtonnage/tonnage-view";
 import ResumePreview from "@features/admin/approval/checkresume/resume-view";
 import UserView from "@features/admin/user/user-view";
@@ -91,12 +92,12 @@ export default createBrowserRouter([
             element: <InspectionForm />,
           },
           {
-            path: "machinecheck-view",
-            element: <MachineCheck />,
+            path: "checkmachine/machine-view",
+            element: <MachineCheckView />,
           },
           {
-            path: "accuracycheck-view",
-            element: <AccuracyCheck />,
+            path: "checkaccuracy/accuracy-view",
+            element: <AccuracyCheckView />,
           },
           {
             path: "checkloadtonnage/tonnage-view",

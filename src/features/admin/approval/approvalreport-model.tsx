@@ -60,8 +60,8 @@ export default function useApprovalModel() {
     })
     setMenu([
       { id:1, label: "Inspection Form", to: "inspection/form-view" },
-      { id:2, label: "Machine Check", to: "machinecheck-view" },
-      { id:3, label: "Accuracy Check", to: "accuracycheck-view" },
+      { id:2, label: "Machine Check", to: "checkmachine/machine-view" },
+      { id:3, label: "Accuracy Check", to: "checkaccuracy/accuracy-view" },
       { id:4, label: "Check Load Tonnage", to: "checkloadtonnage/tonnage-view" },
       { id:5, label: "Resume Check", to: "checkresume/resume-view" },
     ])

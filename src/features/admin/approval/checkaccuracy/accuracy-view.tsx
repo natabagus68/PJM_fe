@@ -1,4 +1,4 @@
-import useAccuracy from "./accuracycheck-model";
+import useAccuracy from "@features/admin/approval/checkaccuracy/accuracy-model";
 
 export default function AccuracyCheck() {
   const accuracy = useAccuracy();
