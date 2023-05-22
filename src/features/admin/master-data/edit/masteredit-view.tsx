@@ -55,52 +55,88 @@ export default function MasterDataEditView() {
           <div className="border-b pb-8">
             <div className="mb-2">
               <h1 className="my-3 font-[600]">1. Parallism</h1>
+              <h1 className="font-[400] text-sm">Images 1</h1>
               <InputFile
-                width={"full"}
-                icon={<ResetIcon />}
-                label="Images 1"
-                name="parallel-image-1"
-              />
+                isReset={true}
+                label="Choose"
+                htmlFor="parallel-1"
+                value={"image_default.jpg"}
+                bgColor={"#14988B"}
+                ftColor={"#FFFFFF"}
+              >
+                <ResetIcon />
+              </InputFile>
             </div>
             <div>
+              <h1 className="font-[400] text-sm">Images 2</h1>
               <InputFile
-                icon={<ResetIcon />}
-                label="Images 2"
-                name="parallel-image-1"
-              />
+                isReset={true}
+                label="Choose"
+                htmlFor="parallel-2"
+                value={"image_default.jpg"}
+                bgColor={"#14988B"}
+                ftColor={"#FFFFFF"}
+              >
+                <ResetIcon />
+              </InputFile>
             </div>
           </div>
           <div className="border-b pb-8">
             <div className="mb-2">
               <h1 className="my-3 font-[600]">2. GIB Clearance</h1>
+              <h1 className="font-[400] text-sm">Images 1</h1>
               <InputFile
-                icon={<ResetIcon />}
-                name="gib-image-2"
-              />
+                isReset={true}
+                label="Choose"
+                htmlFor="Gib-1"
+                value={"image_default.jpg"}
+                bgColor={"#14988B"}
+                ftColor={"#FFFFFF"}
+              >
+                <ResetIcon />
+              </InputFile>
             </div>
             <div>
+              <h1 className="font-[400] text-sm">Images 2</h1>
               <InputFile
-                icon={<ResetIcon />}
-                label="Images 2"
-                name="gib-image-2"
-              />
+                isReset={true}
+                label="Choose"
+                htmlFor="Gib-2"
+                value={"image_default.jpg"}
+                bgColor={"#14988B"}
+                ftColor={"#FFFFFF"}
+              >
+                <ResetIcon />
+              </InputFile>
             </div>
           </div>
           <div className="border-b pb-8">
             <div className="mb-2">
               <h1 className="my-3 font-[600]">3. Perpendicularity</h1>
+              <h1 className="font-[400] text-sm">Images 1</h1>
               <InputFile
-                icon={<ResetIcon />}
-                label="Images 1"
-                name="prep-image-2"
-              />
+                isReset={true}
+                label="Choose"
+                name="prep-1"
+                value={"image_default.jpg"}
+                bgColor={"#14988B"}
+                ftColor={"#FFFFFF"}
+              >
+                <ResetIcon />
+              </InputFile>
             </div>
             <div>
+              <h1 className="font-[400] text-sm">Images 2</h1>
               <InputFile
-                icon={<ResetIcon />}
-                label="Images 2"
-                name="prep-image-2"
-              />
+                isReset={true}
+                label="Choose"
+                name="prep-2"
+                value={"image_default.jpg"}
+                bgColor={"#14988B"}
+                ftColor={"#FFFFFF"}
+              >
+                <ResetIcon />
+              </InputFile>
             </div>
           </div>
           <button className="w-[249px] h-[46px] rounded-md bg-[#14988B] text-[#FFFFFF] flex items-center justify-center gap-2 mt-6">
@@ -108,7 +144,7 @@ export default function MasterDataEditView() {
             <span>Save</span>
           </button>
         </form>
-      <ModalConfirm open={masterdata.open} setOpen={masterdata.setOpen} setOpenSuccess={masterdata.open} />
+      <ModalConfirm open={masterdata.open} setOpen={masterdata.setOpen} setOpenSuccess={masterdata.open} cb={() => console.log('hi')} />
     </div>
   </main>
   )

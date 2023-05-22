@@ -9,7 +9,7 @@ export default function UserDetailView() {
   return (
     <main className="flex flex-col gap-[28px] justify-between">
       <Breadcrumbs items={["User", "User Detail"]} />
-      <div className="rounded-md border">
+      <div className="rounded-md border min-h-[600px] bg-[#FFFFFF]">
         <div className="flex justify-between items-center border-b rounded-tl rounded-tr bg-[#FFFFFF]">
           <h1 className="text-2xl px-6 py-8 font-[700]">User Details</h1>
           <div className="flex relative">

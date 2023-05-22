@@ -51,23 +51,26 @@ export default function UserEditView() {
             <h1 className="mb-2">Role</h1>
             <Input className="w-[90%]" value={"Inspector"}/>
           </div>
-          <div className="mb-3">
-            <h1 className="mb-2">Profile Picture</h1>
-            <div className="w-[90%] flex items-center justify-center gap-3 ">
-              <div className="w-full">
-                <InputFile bgColor={"#B9BDC7"} ftColor={"#514E4E"} onClick={(e) => user.handlePrev(e)} />
+          <div className="mb-3 relative">
+            <h1>Profile Picture</h1>
+            <InputFile
+              value={"Image.jpg"}
+              width={"125px"}
+              label="View Image"
+              bgColor={"#14988B"}
+              ftColor={"#FFFFFF"}
+              onClick={(e) => user.handlePrev(e)}
+            />
+            <div className="flex items-center justify-center absolute right-3 top-9">
+              <div className="w-[34px] h-[34px] mr-3 bg-[#F79009] flex justify-center items-center rounded-md cursor-pointer"
+                onClick={() => alert("Edit")}
+              >
+                <EditIcon />
               </div>
-              <div className="flex gap-2 w-[10%] justify-center items-center mt-2">
-                <div className="w-[34px] h-[34px] bg-[#F79009] flex justify-center items-center rounded-md cursor-pointer"
-                  onClick={() => alert("Edit")}
-                >
-                  <EditIcon />
-                </div>
-                <div className="w-[34px] h-[34px] bg-[#F04438] flex justify-center items-center rounded-md cursor-pointer"
-                  onClick={() => alert("Delete")}
-                >
-                  <TrashIcon />
-                </div>
+              <div className="w-[34px] h-[34px] bg-[#F04438] flex justify-center items-center rounded-md cursor-pointer"
+                onClick={() => alert("Delete")}
+              >
+                <TrashIcon />
               </div>
             </div>
           </div>
@@ -76,7 +79,7 @@ export default function UserEditView() {
             <span>Save</span>
           </button>
         </form>
-        <ModalConfirm open={user.open} setOpen={user.setOpen} setOpenConfirm={user.open}/>
+        <ModalConfirm open={user.open} setOpen={user.setOpen} setOpenSuccess={user.open} cb={() => alert("x")}/>
         <PreviewImage open={user.prev} setOpen={user.setPrev} setClose={() => user.handleClose()} />
       </div>
     </main>

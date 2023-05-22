@@ -4,11 +4,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 export default function useUserModel() {
   const navigate = useNavigate();
   const { state } = useLocation();
-  const [data, setData] = useState([])
+  const [data, setData] = useState<User>([])
   const [open, setOpen] = useState(false)
-  const [view, setView] = useState(true)
   const [pass, setPass] = useState(false)
   const [prev, setPrev] = useState(false)
+  const [active, setActive] = useState(false)
+
+  const fetchData = () => {
+    axios.get()
+  }
 
   useEffect(() => {
     setData([
@@ -22,10 +26,6 @@ export default function useUserModel() {
       { id: 8, active: false, name: "Argono Anggriawan", email: "tranKamy.nute@gmail.com", role: "Inspector" },
     ])
   }, [])
-
-  const handleViewChart = () => {
-    setView(!!!view)
-  }
 
   const handleAddData = (type): void => {
     navigate("useradd-view", {
@@ -84,15 +84,14 @@ export default function useUserModel() {
     setData,
     open,
     setOpen,
-    view,
-    setView,
+    active,
+    setActive,
     pass,
     setPass,
     handleAddData,
     handleDetail,
     handleEdit,
     handleDelete,
-    handleViewChart,
     pageBack,
     handleFormSubmit,
     handlePass,

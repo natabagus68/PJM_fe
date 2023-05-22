@@ -19,9 +19,10 @@ import MasterDataView from "@features/admin/master-data/masterdata-view";
 import MasterDataAddView from "@features/admin/master-data/add/masteradd-view";
 import MasterDataEditView from "@features/admin/master-data/edit/masteredit-view";
 import MasterDataDetailView from "@features/admin/master-data/detail/masterdetail-view";
-import InspectionForm from "@features/admin/approval/inspectionform-view";
+import InspectionForm from "@features/admin/approval/inspection/form-view";
 import ApprovalReport from "@features/admin/approval/approvalreport-view";
-import AccuracyCheck from "@features/admin/approval/accuracycheck-view";
+import AccuracyCheckView from "@features/admin/approval/checkaccuracy/accuracy-view";
+import MachineCheckView from "@features/admin/approval/checkmachine/machine-view";
 import TonnageView from "@features/admin/approval/checkloadtonnage/tonnage-view";
 import ResumePreview from "@features/admin/approval/checkresume/resume-view";
 import UserView from "@features/admin/user/user-view";
@@ -29,6 +30,7 @@ import UserAddView from "@features/admin/user/add/useradd-view";
 import UserEditView from "@features/admin/user/edit/useredit-view";
 import UserDetailView from "@features/admin/user/detail/userdetail-view";
 import ListView from "@features/admin/approval/list/list-view";
+import AccuracyCheck from "@features/admin/approval/checkaccuracy/accuracy-view";
 
 const Root = () => {
   return <Outlet />;

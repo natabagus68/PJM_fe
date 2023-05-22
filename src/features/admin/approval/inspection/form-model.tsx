@@ -26,8 +26,8 @@ interface Review {
 export default function useInspection() {
   const navigate = useNavigate();
 
-  const [data, setData] = useState<Review>({});
-  const [menu, setMenu] = useState<Menu>([]);
+  const [data, setData] = useState({});
+  const [menu, setMenu] = useState([]);
   const [inspectform, setInspectForm] = useState([]);
   const [open, setOpen] = useState(false);
   const [nav, setNav] = useState(false);
@@ -577,10 +577,10 @@ export default function useInspection() {
   return {
     data,
     menu,
-    open,
     inspectform,
     nav,
     setNav,
+    open,
     setOpen,
     setInspectForm,
     pageBack,

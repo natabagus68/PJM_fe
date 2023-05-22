@@ -9,6 +9,7 @@ export interface IAproval {
   machineName: string;
   inspector: string;
   status: string;
+  confirmation?: string;
 }
 
 export enum AprovalStatus {
@@ -30,6 +31,7 @@ export class Aproval extends Entity<IAproval> {
       machineName: this.machineName,
       inspector: this.inspector,
       status: this.status,
+      confirmation: this.confirmation,
     };
   }
 
@@ -50,6 +52,9 @@ export class Aproval extends Entity<IAproval> {
   }
   get status(): string {
     return this._props.status;
+  }
+  get confirmation(): string {
+    return this._props.confirmation;
   }
 }
 

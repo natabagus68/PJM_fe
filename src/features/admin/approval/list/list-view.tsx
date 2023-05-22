@@ -16,7 +16,7 @@ const ListView = () => {
         <div className="w-full flex items-center justify-between py-[18px] px-[32px] border-b border-[#D0D3D9]">
           <div className="flex w-full justify-between items-center">
             <span className="text-2xl text-[#514E4E] font-bold ">
-              Report Document
+              Approve E-Sign
             </span>
 
             <div className="flex gap-4">
