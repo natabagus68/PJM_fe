@@ -7,7 +7,7 @@ import SortIcon from "@common/components/icons-new/SortIcon";
 import useList from "./list-model";
 
 const ListView = () => {
-  const approval = useList();
+  const model = useList();
 
   return (
     <main className="flex flex-col gap-[28px] justify-between">
@@ -16,7 +16,7 @@ const ListView = () => {
         <div className="w-full flex items-center justify-between py-[18px] px-[32px] border-b border-[#D0D3D9]">
           <div className="flex w-full justify-between items-center">
             <span className="text-2xl text-[#514E4E] font-bold ">
-              Report Document
+              Approve E-Sign
             </span>
 
             <div className="flex gap-4">
@@ -25,18 +25,17 @@ const ListView = () => {
                   <SortIcon className="w-[18px] h-[18px]" color="#231F20" />
                 </div>
                 <select
-                  onChange={approval?.handleSelectTermChange}
+                  name="status"
+                  value={model.params.status}
+                  onChange={model.handleSearch}
                   className="h-[48px] w-full bg-white text-[#231F20] rounded-md pr-2 pl-10 border border-[#B8B6B6]"
                 >
-                  <option value="all">
-                    <div className="py-3 mb-3">All Status</div>
+                  <option selected disabled>
+                    Pilih Status
                   </option>
-                  <option value="waiting">
-                    <span className="py-3">Waiting</span>
-                  </option>
-                  <option value="confirmed">
-                    <span className="py-3">Confirmed</span>
-                  </option>
+                  {model.status.map((e) => {
+                    return <option value={e}>{e}</option>;
+                  })}
                 </select>
               </div>
               <div className=" h-fit relative">
@@ -45,9 +44,10 @@ const ListView = () => {
                 </div>
                 <input
                   type="text"
-                  value={approval?.searchTerm}
-                  onChange={approval?.handleSearchTermChange}
-                  className="h-[48px] border border-[#B8B6B6] rounded-md pl-10 py-3 bg-white"
+                  name="q"
+                  value={model.params.q}
+                  onChange={model.handleSearch}
+                  className="h-[48px] border border-[#B8B6B6] rounded-md pl-10 py-3 bg-white outline-none"
                   placeholder="Search"
                 />
               </div>
@@ -67,100 +67,53 @@ const ListView = () => {
             </tr>
           </thead>
           <tbody className="text-base text-[#514E4E]">
-            {approval?.searchTerm !== "" || approval?.selectTerm !== "all"
-              ? approval?.filteredItems.map((item) => (
-                  <tr
-                    key={item.id}
-                    className="border-b border-[#D0D3D9] h-[64px]"
-                  >
-                    <td className="px-[32px]">{item.id}</td>
-                    <td className="px-[32px]">{item.date}</td>
-                    <td className="px-[16px]">{item.customer}</td>
-                    <td className="px-[16px]">{item.machine}</td>
-                    <td className="px-[16px]">
-                      <div
-                        className={` ${
-                          item.status === "Confirmed"
-                            ? "bg-[#10A560]"
-                            : "bg-[#F79009]"
-                        }  w-[112px] px-4 py-1 rounded-full`}
+            {model.data.map((item) => {
+              return (
+                <tr
+                  key={item.id}
+                  className="border-b border-[#D0D3D9] h-[64px]"
+                >
+                  <td className="px-[32px]">{item.inspectionID}</td>
+                  <td className="px-[32px]">{item.inspectionDate}</td>
+                  <td className="px-[16px]">{item.customer}</td>
+                  <td className="px-[16px]">{item.machineName}</td>
+                  <td className="px-[16px]">
+                    <div
+                      className={` ${
+                        item.status === "Confirmed"
+                          ? "bg-[#10A560]"
+                          : "bg-[#F79009]"
+                      }  w-[112px] px-4 py-1 rounded-full`}
+                    >
+                      <span className="text-white w-full inline-block text-center text-base font-normal">
+                        {item.status}
+                      </span>
+                    </div>
+                  </td>
+                  <td className="px-[16px]">
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => model.toReview(item.id)}
+                        className="flex items-center gap-2 h-[46px] px-[20px] bg-[#1BBDD4] rounded"
                       >
-                        <span className="text-white w-full inline-block text-center text-base font-normal">
-                          {item.status}
+                        <DocumentIcon />
+                        <span className="text-white text-sm font-semibold ">
+                          Review
                         </span>
-                      </div>
-                    </td>
-                    <td className="px-[16px]">
-                      <div className="flex items-center gap-3">
-                        <button className="flex items-center gap-2 h-[46px] px-[20px] bg-[#1BBDD4] rounded">
-                          <DocumentIcon />
-                          <span className="text-white text-sm font-semibold ">
-                            Review
+                      </button>
+                      {item.status === "Waiting" && (
+                        <button className="flex items-center gap-2 border-[1px] border-[#14988B] h-[46px] px-[20px] bg-white rounded">
+                          <ConfirmIcon color="#14988B" />
+                          <span className="text-[#14988B] text-sm font-semibold">
+                            Confirm
                           </span>
                         </button>
-                        {item.status === "Waiting" && (
-                          <button
-                            className="flex items-center gap-2 border-[1px] border-[#14988B] h-[46px] px-[20px] bg-white rounded"
-                            onClick={() => approval?.handleConfirm(item)}
-                          >
-                            <ConfirmIcon color="#14988B" />
-                            <span className="text-[#14988B] text-sm font-semibold">
-                              Confirm
-                            </span>
-                          </button>
-                        )}
-                      </div>
-                    </td>
-                  </tr>
-                ))
-              : approval?.dataApproval.map((item) => (
-                  <tr
-                    key={item.id}
-                    className="border-b border-[#D0D3D9] h-[64px]"
-                  >
-                    <td className="px-[32px]">{item.id}</td>
-                    <td className="px-[32px]">{item.date}</td>
-                    <td className="px-[16px]">{item.customer}</td>
-                    <td className="px-[16px]">{item.machine}</td>
-                    <td className="px-[16px]">
-                      <div
-                        className={` ${
-                          item.status === "Confirmed"
-                            ? "bg-[#10A560]"
-                            : "bg-[#F79009]"
-                        }  w-[112px] px-4 py-1 rounded-full`}
-                      >
-                        <span className="text-white w-full inline-block text-center text-base font-normal">
-                          {item.status}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="px-[16px]">
-                      <div className="flex items-center gap-3">
-                        <button
-                          className="flex items-center gap-2 h-[46px] px-[20px] bg-[#1BBDD4] rounded"
-                          onClick={() => approval?.handleReview()}
-                        >
-                          <DocumentIcon color="white" />
-                          <span className="text-white text-sm font-semibold ">
-                            Review
-                          </span>
-                        </button>
-                        {item.status === "Waiting" && (
-                          <button
-                            className="flex items-center gap-2 border-[1px] border-[#14988B] h-[46px] px-[20px] bg-white rounded"
-                            onClick={() => approval?.handleConfirm(item)}
-                          >
-                            <ConfirmIcon color="#14988B" />
-                            <span className="text-[#14988B] text-sm font-semibold">
-                              Confirm
-                            </span>
-                          </button>
-                        )}
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
 

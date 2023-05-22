@@ -8,7 +8,7 @@ interface Review {
     inspectionDate: string;
     confirmationDate: string;
     customer: string;
-  }
+  };
   result: {
     machineType: string;
     serialNo: string;
@@ -20,17 +20,17 @@ interface Review {
     slideAdjustment: string;
     dimensiAreaBloster: string;
     dimensiAreaSlide: string;
-  }
+  };
 }
 
 export default function useInspection() {
   const navigate = useNavigate();
 
-  const [data, setData] = useState<Review>({})
-  const [menu, setMenu] = useState([])
-  const [inspectform, setInspectForm] = useState([])
-  const [open, setOpen] = useState(false)
-  const [nav, setNav] = useState(false)
+  const [data, setData] = useState({});
+  const [menu, setMenu] = useState([]);
+  const [inspectform, setInspectForm] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [nav, setNav] = useState(false);
 
   useEffect(() => {
     setData({
@@ -39,7 +39,7 @@ export default function useInspection() {
         inspectionId: "IID66538135",
         inspectionDate: "10/04/2023 | 13:21",
         confirmationDate: "-",
-        customer: "PT. Ragdalion Revolusi"
+        customer: "PT. Ragdalion Revolusi",
       },
       result: {
         machineType: "Injection",
@@ -51,9 +51,9 @@ export default function useInspection() {
         dieHeight: "700mm",
         slideAdjustment: "100mm",
         dimensiAreaBloster: "2450 x 1250 mm",
-        dimensiAreaSlide: "2600 x 1300 mm"
-      }
-    })
+        dimensiAreaSlide: "2600 x 1300 mm",
+      },
+    });
     setInspectForm([
       {
         id: 1,
@@ -83,7 +83,7 @@ export default function useInspection() {
             ketepatan: "Perlu Perhatian",
             notes: "Baut berkarat, sehingga menyulitkan ketika membuka mesin",
           },
-        ]
+        ],
       },
       {
         id: 2,
@@ -113,7 +113,7 @@ export default function useInspection() {
             ketepatan: "Perlu Perbaikan",
             notes: "Backslash = 1234 mm, r = 567, s = 890 mm",
           },
-        ]
+        ],
       },
       {
         id: 3,
@@ -137,7 +137,7 @@ export default function useInspection() {
             ketepatan: "Normal",
             notes: "",
           },
-        ]
+        ],
       },
       {
         id: 4,
@@ -167,7 +167,7 @@ export default function useInspection() {
             ketepatan: "Normal",
             notes: "",
           },
-        ]
+        ],
       },
       {
         id: 5,
@@ -197,7 +197,7 @@ export default function useInspection() {
             ketepatan: "Normal",
             notes: "",
           },
-        ]
+        ],
       },
       {
         id: 6,
@@ -215,7 +215,7 @@ export default function useInspection() {
             ketepatan: "Normal",
             notes: "",
           },
-        ]
+        ],
       },
       {
         id: 7,
@@ -251,7 +251,7 @@ export default function useInspection() {
             ketepatan: "Normal",
             notes: "",
           },
-        ]
+        ],
       },
       {
         id: 8,
@@ -291,9 +291,9 @@ export default function useInspection() {
             id: 6,
             name: "Fungsi Limit Switch untuk posisi atas dan bawah",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
-        ]
+        ],
       },
       {
         id: 9,
@@ -333,27 +333,27 @@ export default function useInspection() {
             id: 6,
             name: "Pipe Fitting & Piping",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 7,
             name: "Pipa angin",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 8,
             name: "Air Filter",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 9,
             name: "Silencer",
             ketepatan: "Normal",
-            notes: ""
-          }
-        ]
+            notes: "",
+          },
+        ],
       },
       {
         id: 10,
@@ -393,75 +393,75 @@ export default function useInspection() {
             id: 6,
             name: "Fungsi hubungan cam roller",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 7,
             name: "Kondisi tampilan Electric Motor",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 8,
             name: "Mengecheck ketika beroperasi",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 9,
             name: "Kondisi tampilan LSA / Proximity",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 10,
             name: "Contactor / Relay",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 11,
             name: "PLC / Inverter",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 12,
             name: "NFB",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 13,
             name: "Thermal Overload Relay",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 14,
             name: "Terminal Box",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 15,
             name: "Control Box",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 16,
             name: "Parts terpasang",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
           {
             id: 17,
             name: "Rubber mounting parts",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
-        ]
+        ],
       },
       {
         id: 11,
@@ -501,9 +501,9 @@ export default function useInspection() {
             id: 6,
             name: "Jarak aman Panel ke mesin",
             ketepatan: "Normal",
-            notes: ""
+            notes: "",
           },
-        ]
+        ],
       },
       {
         id: 12,
@@ -527,7 +527,7 @@ export default function useInspection() {
             ketepatan: "Perlu Adjust",
             notes: "Jarak antar sensor kurang jauh",
           },
-        ]
+        ],
       },
       {
         id: 13,
@@ -545,31 +545,34 @@ export default function useInspection() {
             ketepatan: "Normal",
             notes: "Respon Masih Cepat",
           },
-        ]
-      }
+        ],
+      },
     ]),
-
-    setMenu([
-      { id:1, label: "Inspection Form", to: "inspectionform-view" },
-      { id:2, label: "Machine Check", to: "machinecheck-view" },
-      { id:3, label: "Accuracy Check", to: "accuracycheck-view" },
-      { id:4, label: "Check Load Tonnage", to: "checkloadtonnage/tonnage-view" },
-      { id:5, label: "Resume Check", to: "checkresume/resume-view" },
-    ])
-  }, [])
+      setMenu([
+        { id: 1, label: "Inspection Form", to: "" },
+        { id: 2, label: "Machine Check", to: "machinecheck-view" },
+        { id: 3, label: "Accuracy Check", to: "accuracycheck-view" },
+        {
+          id: 4,
+          label: "Check Load Tonnage",
+          to: "checkloadtonnage/tonnage-view",
+        },
+        { id: 5, label: "Resume Check", to: "checkresume/resume-view" },
+      ]);
+  }, []);
 
   const handleConfirmation = (e) => {
-    e.preventDefault()
-    setOpen(true)
-  }
+    e.preventDefault();
+    setOpen(true);
+  };
 
   const handleSetNav = (e) => {
-    setNav(true)
-  }
+    setNav(true);
+  };
 
   const pageBack = (): void => {
-    navigate("../")
-  }
+    navigate("../");
+  };
 
   return {
     data,
@@ -582,6 +585,6 @@ export default function useInspection() {
     setInspectForm,
     pageBack,
     handleConfirmation,
-    handleSetNav
-  }
+    handleSetNav,
+  };
 }

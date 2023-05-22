@@ -29,6 +29,8 @@ import UserView from "@features/admin/user/user-view";
 import UserAddView from "@features/admin/user/add/useradd-view";
 import UserEditView from "@features/admin/user/edit/useredit-view";
 import UserDetailView from "@features/admin/user/detail/userdetail-view";
+import ListView from "@features/admin/approval/list/list-view";
+import AccuracyCheck from "@features/admin/approval/checkaccuracy/accuracy-view";
 
 const Root = () => {
   return <Outlet />;
@@ -85,33 +87,43 @@ export default createBrowserRouter([
       },
       {
         path: "approval",
-        element: <ApprovalReport />,
+        element: <Root />,
         children: [
           {
-            path: "inspection/form-view",
-            element: <InspectionForm />,
+            path: "",
+            element: <ListView />,
           },
           {
-            path: "checkmachine/machine-view",
-            element: <MachineCheckView />,
-          },
-          {
-            path: "checkaccuracy/accuracy-view",
-            element: <AccuracyCheckView />,
-          },
-          {
-            path: "checkloadtonnage/tonnage-view",
-            element: <TonnageView />,
-          },
-          {
-            path: "checkresume/resume-view",
-            element: <ResumePreview />
+            path: ":id/detail",
+            element: <ApprovalReport />,
+            children: [
+              {
+                path: "",
+                element: <InspectionForm />,
+              },
+              {
+                path: "machinecheck-view",
+                element: <MachineCheck />,
+              },
+              {
+                path: "accuracycheck-view",
+                element: <AccuracyCheck />,
+              },
+              {
+                path: "checkloadtonnage/tonnage-view",
+                element: <TonnageView />,
+              },
+              {
+                path: "checkresume/resume-view",
+                element: <ResumePreview />,
+              },
+            ],
           },
         ],
       },
       {
         path: "user",
-        element: <UserView />
+        element: <UserView />,
       },
       {
         path: "report",
@@ -165,17 +177,17 @@ export default createBrowserRouter([
         children: [
           {
             path: "useradd-view",
-            element: <UserAddView />
+            element: <UserAddView />,
           },
           {
             path: "useredit-view",
-            element: <UserEditView />
+            element: <UserEditView />,
           },
           {
             path: "userdetail-view",
-            element: <UserDetailView />
+            element: <UserDetailView />,
           },
-        ]
+        ],
       },
     ],
   },
