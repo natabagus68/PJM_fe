@@ -2,8 +2,10 @@ import { Breadcrumbs } from "@common/components";
 import { ButtonDetail } from "@common/components/buttons/detail";
 import SearchIcon from "@common/components/icons-new/SearchIcon";
 import Pagination from "@common/components/pagination/Pagination";
+import { useReport } from "./report-view-model";
 
 export const Report = () => {
+  const model = useReport();
   return (
     <>
       <div>
@@ -32,6 +34,8 @@ export const Report = () => {
               <input
                 type="text"
                 placeholder="Search"
+                value={model.params.q}
+                onChange={model.handleSearch}
                 className="border border-gray-300 bg-white outline-none rounded-md py-2.5 px-9 "
               />
             </div>
@@ -57,60 +61,68 @@ export const Report = () => {
         <section>
           <table className="w-full">
             <thead>
-              <th className="text-start py-3 px-5 bg-neutral-50 text-natural-300 font-semibold border-b border-gray-300 ">
-                Inspection ID
-              </th>
-              <th className="text-start py-3 px-5 bg-neutral-50 text-natural-300 font-semibold border-b border-gray-300 ">
-                Inspection Date
-              </th>
-              <th className="text-start py-3 px-5 bg-neutral-50 text-natural-300 font-semibold border-b border-gray-300 ">
-                Inspection Date
-              </th>
-              <th className="text-start py-3 px-5 bg-neutral-50 text-natural-300 font-semibold border-b border-gray-300 ">
-                Machine Name
-              </th>
-              <th className="text-start py-3 px-5 bg-neutral-50 text-natural-300 font-semibold border-b border-gray-300 ">
-                Machine Name
-              </th>
-              <th className="text-start py-3 px-5 bg-neutral-50 text-natural-300 font-semibold border-b border-gray-300 ">
-                Action
-              </th>
+              <tr>
+                <th className="text-start py-3 px-5 bg-neutral-50 text-natural-300 font-semibold border-b border-gray-300 ">
+                  Inspection ID
+                </th>
+                <th className="text-start py-3 px-5 bg-neutral-50 text-natural-300 font-semibold border-b border-gray-300 ">
+                  Inspection Date
+                </th>
+                <th className="text-start py-3 px-5 bg-neutral-50 text-natural-300 font-semibold border-b border-gray-300 ">
+                  Customer
+                </th>
+                <th className="text-start py-3 px-5 bg-neutral-50 text-natural-300 font-semibold border-b border-gray-300 ">
+                  Machine Name
+                </th>
+                <th className="text-start py-3 px-5 bg-neutral-50 text-natural-300 font-semibold border-b border-gray-300 ">
+                  Inspector
+                </th>
+                <th className="text-start py-3 px-5 bg-neutral-50 text-natural-300 font-semibold border-b border-gray-300 ">
+                  Action
+                </th>
+              </tr>
             </thead>
             <tbody>
-              <td className="text-start py-3 px-5  text-natural-300  border-b border-gray-300 ">
-                Inspection ID
-              </td>
-              <td className="text-start py-3 px-5  text-natural-300  border-b border-gray-300 ">
-                Inspection Date
-              </td>
-              <td className="text-start py-3 px-5  text-natural-300  border-b border-gray-300 ">
-                Inspection Date
-              </td>
-              <td className="text-start py-3 px-5  text-natural-300  border-b border-gray-300 ">
-                Machine Name
-              </td>
-              <td className="text-start py-3 px-5  text-natural-300  border-b border-gray-300 ">
-                Machine Name
-              </td>
-              <td className="text-start py-3 px-5  text-natural-300 cursor-pointer border-b border-gray-300 flex items-center gap-10">
-                <ButtonDetail />
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-5 h-5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
-                    />
-                  </svg>
-                </div>
-              </td>
+              {model.data?.map((item) => {
+                return (
+                  <tr>
+                    <td className="text-start py-3 px-5  text-natural-300  border-b border-gray-300 ">
+                      {item.inspectionID}
+                    </td>
+                    <td className="text-start py-3 px-5  text-natural-300  border-b border-gray-300 ">
+                      {item.inspectionDate}
+                    </td>
+                    <td className="text-start py-3 px-5  text-natural-300  border-b border-gray-300 ">
+                      {item.customer}
+                    </td>
+                    <td className="text-start py-3 px-5  text-natural-300  border-b border-gray-300 ">
+                      {item.machineName}
+                    </td>
+                    <td className="text-start py-3 px-5  text-natural-300  border-b border-gray-300 ">
+                      {item.inspector}
+                    </td>
+                    <td className="text-start py-3 px-5  text-natural-300 cursor-pointer border-b border-gray-300 flex items-center gap-10">
+                      <ButtonDetail />
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-5 h-5"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                          />
+                        </svg>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </section>

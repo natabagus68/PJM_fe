@@ -1,3 +1,4 @@
+import { Authentication } from "@data/api/authentication";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -30,7 +31,7 @@ export default function useAdmin() {
   // click traceability button
   const onOpenTraceability = (): void => {
     navigate(`../admin/traceability`);
-  }
+  };
 
   // set navigate navbar
   const setNavigate = (url: string): void => {
@@ -38,7 +39,7 @@ export default function useAdmin() {
   };
 
   // on logout
-  const onLogout = async(): Promise<void> => {
+  const onLogout = async (): Promise<void> => {
     try {
       await localStorage.removeItem("web-admin");
       window.location.reload();
@@ -50,18 +51,18 @@ export default function useAdmin() {
   // checking me
   const onIsMe = async (): Promise<void> => {
     setIsLoading(true);
-    const localStorageData = await JSON.parse(
-      localStorage.getItem("web-admin")
-    );
-    setTimeout(() => {
+    try {
+      const result = await Authentication.me();
+
+      setTimeout(() => {
+        navigate(`../${window.location.pathname}`, { replace: true });
+        setIsLoading(false);
+      }, 3000);
+    } catch (error) {
       setIsLoading(false);
-      if (!localStorageData?.token) {
-        navigate("../login");
-      }
-      // else {
-      //   navigate(`../${window.location.pathname}`);
-      // }
-    }, 500);
+
+      navigate("../login", { replace: true });
+    }
   };
 
   useEffect(() => {
@@ -78,6 +79,6 @@ export default function useAdmin() {
     setNavigate,
     onOpenAvatar,
     onLogout,
-    onOpenTraceability
+    onOpenTraceability,
   };
 }
