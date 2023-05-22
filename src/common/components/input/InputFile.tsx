@@ -1,13 +1,14 @@
 export default function InputFile({
-  label   = "",
-  htmlFor = "",
-  value   = "",
-  bgColor = "",
-  ftColor = "",
-  width   = "",
-  isReset = false,
-  children,
-  handleReset = null,
+  label        = "",
+  htmlFor      = "",
+  defaultValue = "",
+  bgColor      = "",
+  ftColor      = "",
+  width        = "",
+  isReset      = false,
+  btnName      = "",
+  btnIcon      = null,
+  btnHandle    = null,
   ...props
 }) {
   return (
@@ -17,7 +18,7 @@ export default function InputFile({
           htmlFor={htmlFor}
           className={`
           w-[${width}] my-3 px-3 py-2
-          bg-[${bgColor}] text-[${ftColor}]
+          ${bgColor} ${ftColor}
           flex justify-center
           rounded-tl rounded-bl
           font-[400] text-sm
@@ -27,9 +28,10 @@ export default function InputFile({
           {label}
         </label>
         <input
+          defaultValue={defaultValue}
           type="text"
           className="border inline px-3 py-[5px] w-[78%] rounded-tr rounded-br mr-2 text-[#B8B6B6]"
-          value={value}
+          onClick={() => alert("you clicked me!")}
           disabled
         />
         <input
@@ -41,10 +43,12 @@ export default function InputFile({
           isReset ? (
             <button
               className="bg-[#F79009] rounded-md flex items-center p-2 gap-1 text-sm"
-              onClick={handleReset}
+              onClick={btnHandle}
             >
-              {children}
-              <span className="text-[#FFFFFF]">Reset</span>
+              <div className="text-[#FFFFFF] flex items-center gap-1">
+                <span>{btnIcon}</span>
+                <span>{btnName}</span>
+              </div>
             </button>
           ) : (
             null

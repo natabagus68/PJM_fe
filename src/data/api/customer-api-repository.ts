@@ -6,52 +6,56 @@ import { Customer } from "@domain/models/customer";
 
 export class CustomerApiRepository implements CustomerRepository {
     async get(param: TableParam): Promise<PaginatedData<Customer>> {
-        const { data } = await api.get(`customer`, { params: param });
-        return PaginatedData.create<Customer>({
-            data: (data?.data || []).map((item) =>
-                Customer.create({
-                    id: item.id,
-                    name: item.name,
-                })
-            ),
-            page: data.page,
-            limit: data.limit,
-            lastPage: data.totalPage,
-        });
+      const { data } = await api.get(`customer`, { params: param });
+      return PaginatedData.create<Customer>({
+        data: (data?.data || []).map((item) =>
+          Customer.create({
+            id: item.id,
+            name: item.name,
+          })
+        ),
+        page: data.page,
+        limit: data.limit,
+        lastPage: data.totalPage,
+      });
     }
     async show(id: string): Promise<Customer> {
-        const {
-            data: { data = {} },
-        } = await api.get(`customer/${id}`);
-        return Customer.create({
-            id: data.id,
-            name: data.name,
-        });
+      const {
+          data: { data = {} },
+      } = await api.get(`customer/${id}`);
+      return Customer.create({
+          id: data.id,
+          name: data.name,
+      });
     }
     async store(param: Customer): Promise<Customer> {
-        const {
-            data: { data = {} },
-        } = await api.post(`customer`, {
-            name: param.name,
-        });
-        return Customer.create({
-            id: data.id,
-            name: data.name,
-        });
+      const {
+          data: { data = {} },
+      } = await api.post(`customer`, {
+          name: param.name,
+      });
+      return Customer.create({
+          id: data.id,
+          name: data.name,
+      });
     }
     async update(param: Customer): Promise<Customer> {
-        const {
-            data: { data = {} },
-        } = await api.put(`customer/${param.id}`, {
-            name: param.name,
-        });
-        return Customer.create({
-            id: data.id,
-            name: data.name,
-        });
+      const {
+          data: { data = {} },
+      } = await api.put(`customer/${param.id}`, {
+          name: param.name,
+      });
+      return Customer.create({
+          id: data.id,
+          name: data.name,
+      });
     }
     async destroy(id: string): Promise<boolean> {
-        await api.delete(`customer/${id}`);
-        return true;
+      await api.delete(`customer/${id}`);
+      return true;
+    }
+    async getAllData(): Promise<Customer[]> {
+      const { data } = await api.get("admin/customer?page=1&limit=10&search")
+      console.log(data)
     }
 }

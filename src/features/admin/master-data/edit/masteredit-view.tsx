@@ -63,6 +63,7 @@ export default function MasterDataEditView() {
                 value={"image_default.jpg"}
                 bgColor={"#14988B"}
                 ftColor={"#FFFFFF"}
+                btnName="Reset"
               >
                 <ResetIcon />
               </InputFile>
@@ -76,6 +77,7 @@ export default function MasterDataEditView() {
                 value={"image_default.jpg"}
                 bgColor={"#14988B"}
                 ftColor={"#FFFFFF"}
+                btnName="Reset"
               >
                 <ResetIcon />
               </InputFile>
@@ -92,6 +94,7 @@ export default function MasterDataEditView() {
                 value={"image_default.jpg"}
                 bgColor={"#14988B"}
                 ftColor={"#FFFFFF"}
+                btnName="Reset"
               >
                 <ResetIcon />
               </InputFile>
@@ -105,6 +108,7 @@ export default function MasterDataEditView() {
                 value={"image_default.jpg"}
                 bgColor={"#14988B"}
                 ftColor={"#FFFFFF"}
+                btnName="Reset"
               >
                 <ResetIcon />
               </InputFile>
@@ -121,6 +125,7 @@ export default function MasterDataEditView() {
                 value={"image_default.jpg"}
                 bgColor={"#14988B"}
                 ftColor={"#FFFFFF"}
+                btnName="Reset"
               >
                 <ResetIcon />
               </InputFile>
@@ -134,6 +139,7 @@ export default function MasterDataEditView() {
                 value={"image_default.jpg"}
                 bgColor={"#14988B"}
                 ftColor={"#FFFFFF"}
+                btnName="Reset"
               >
                 <ResetIcon />
               </InputFile>

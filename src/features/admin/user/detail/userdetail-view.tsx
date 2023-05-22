@@ -1,11 +1,11 @@
 import { Breadcrumbs } from "@common/components/Breadcrumbs";
-import useUserModal from "@features/admin/user/user-model";
 import ArrowBackIcon from "@common/components/icons-new/ArrowBackIcon";
 import EditIcon from "@common/components/icons-new/EditIcon";
-import PofileImage from "../../../../assets/profileniguser.jpg";
+import LoadingIcon from "@common/components/icons-new/LoadingIcon";
+import useDetailModel from "./userdetail-model";
 
 export default function UserDetailView() {
-  const user = useUserModal()
+  const user = useDetailModel()
   return (
     <main className="flex flex-col gap-[28px] justify-between">
       <Breadcrumbs items={["User", "User Detail"]} />
@@ -29,33 +29,53 @@ export default function UserDetailView() {
             </button>
           </div>
         </div>
-
-        <div className="px-8 py-6 flex">
-          <div className="w-[50%]">
-            <h1 className="text-[24px] mb-6">General Information</h1>
-            <div className="grid grid-cols-2 bg-[#D0D3D9] p-3">
-              <h1>Name</h1>
-              <span>Afif Chandra</span>
+        {
+          !user.loading ? (
+            <div className="h-[500px] flex items-center justify-center">
+              <LoadingIcon
+                color="black"
+                className="w-[24px] h-[24px] animate-spin"
+              />
             </div>
-            <div className="grid grid-cols-2 p-3">
-              <h1>Email</h1>
-              <span>contoh@gmail.com</span>
-            </div>
-            <div className="grid grid-cols-2 bg-[#D0D3D9] p-3">
-              <h1>Role</h1>
-              <span>Inspector</span>
-            </div>
-            <div className="grid grid-cols-2 p-3">
-              <h1>Status</h1>
-              <span className="text-[#14988B]">Active</span>
-            </div>
-          </div>
-          <div className="w-[50%] flex flex-col items-center">
-            <h1 className="text-[24px] mb-6">Profile Picture</h1>
-            <img className="rounded-full w-[200px] h-[200px]" src={PofileImage} alt="user-profile"/>
-          </div>
-        </div>
-
+          ) : (
+            <>
+              <div className="px-8 py-6 flex">
+                <div className="w-[50%]">
+                  <h1 className="text-[24px] mb-6">General Information</h1>
+                  <div className="grid grid-cols-2 bg-[#D0D3D9] p-3">
+                    <h1>Name</h1>
+                    <span>{user.detail.name}</span>
+                  </div>
+                  <div className="grid grid-cols-2 p-3">
+                    <h1>Email</h1>
+                    <span>{user.detail.email}</span>
+                  </div>
+                  <div className="grid grid-cols-2 bg-[#D0D3D9] p-3">
+                    <h1>Role</h1>
+                    <span>{user.detail.role}</span>
+                  </div>
+                  <div className="grid grid-cols-2 p-3">
+                    <h1>Status</h1>
+                    <span className="text-[#14988B]">{user.detail.isActive ? "Active" : "Inactive"}</span>
+                  </div>
+                </div>
+                {
+                  !!user.detail.photo ? (
+                    <div className="w-[50%] flex flex-col items-center gap-4">
+                      <h1 className="text-[24px]">Profile Picture</h1>
+                      <div className="rounded-full w-[200px] h-[200px] border-8 bg-gray-500 border-gray-900"></div>
+                    </div>
+                  ) : (
+                    <div className="w-[50%] flex flex-col items-center gap-4">
+                      <h1 className="text-[24px]">Photo  profile</h1>
+                      <img className="rounded-full" src={`${user.detail.photo}`} alt="profile-image" width={200} />
+                    </div>
+                  )
+                }
+              </div>
+            </>
+          )
+        }
       </div>
     </main>
   )

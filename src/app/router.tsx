@@ -110,10 +110,6 @@ export default createBrowserRouter([
         ],
       },
       {
-        path: "user",
-        element: <UserView />
-      },
-      {
         path: "report",
         element: <Root />,
         children: [
@@ -164,15 +160,19 @@ export default createBrowserRouter([
         element: <Root />,
         children: [
           {
-            path: "useradd-view",
+            path: "",
+            element: <UserView />
+          },
+          {
+            path: "add/useradd-view",
             element: <UserAddView />
           },
           {
-            path: "useredit-view",
+            path: "edit/:id/useredit-view",
             element: <UserEditView />
           },
           {
-            path: "userdetail-view",
+            path: "detail/:id/userdetail-view",
             element: <UserDetailView />
           },
         ]

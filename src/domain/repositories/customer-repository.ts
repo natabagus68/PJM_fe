@@ -8,4 +8,5 @@ export interface CustomerRepository {
     store(data: Customer): Promise<Customer>;
     update(data: Customer): Promise<Customer>;
     destroy(id: Customer["id"]): Promise<boolean>;
+    getAllData(): Promise<Customer[]>;
 }

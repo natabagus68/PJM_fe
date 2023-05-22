@@ -23,8 +23,8 @@ export class UserApiRepository implements UserRepository {
         name: data.data?.user?.name,
         email: data.data?.user?.email,
         password: data.data?.user?.password,
-        role_id: data.data?.user?.role_id,
-        is_active: data.data?.user?.is_active,
+        role: data.data?.user?.role_id,
+        isActive: data.data?.user?.is_active,
         photo: data.data?.user?.photo,
         email_verified_at: data.data?.user?.email_verified_at,
         fcm_token: data.data?.user?.fcm_token,
@@ -62,8 +62,8 @@ export class UserApiRepository implements UserRepository {
         name: data.data?.user?.name,
         email: data.data?.user?.email,
         password: data.data?.user?.password,
-        role_id: data.data?.user?.role_id,
-        is_active: data.data?.user?.is_active,
+        role: data.data?.user?.role_id,
+        isActive: data.data?.user?.is_active,
         photo: data.data?.user?.photo,
         email_verified_at: data.data?.user?.email_verified_at,
         fcm_token: data.data?.user?.fcm_token,
@@ -95,9 +95,6 @@ export class UserApiRepository implements UserRepository {
   async logout(): Promise<void> {
     await this._api.delete('hmi/auth/logout')
   }
-  get(param?: getParam): Promise<User[]> {
-    throw new Error("Method not implemented.");
-  }
   create(props: User): Promise<User> {
     throw new Error("Method not implemented.");
   }
@@ -106,5 +103,35 @@ export class UserApiRepository implements UserRepository {
   }
   delete(id: string): Promise<boolean> {
     throw new Error("Method not implemented.");
+  }
+  async getAllData(param?: getParam): Promise<User[]> {
+    const { data } = await api.get("admin/user?page=1&limit=10&search")
+    return data?.data?.data?.map((item: any) => {
+      return User.create({
+        id: item.id,
+        name: item.fullname,
+        email: item.email,
+        isActive: item.isActive,
+        role: item.role,
+        password: "",
+        photo: item.photo,
+        email_verified_at: item.email_verified_at,
+        fcm_token:  item.fcm_token,
+        created_at: item.created_at,
+        updated_at: item.updated_at,
+        deleted_at: item.deleted_at,
+      })
+    })
+  }
+  async getUserById(id: string): Promise<User> {
+    const { data } = await api.get(`admin/user/${id}`);
+    return User.create({
+      id: data.data.id,
+      name: data.data.fullname,
+      email: data.data.email,
+      photo: data.data.avatarPath,
+      isActive: data.data.isActive,
+      role: data.data.role,
+    })
   }
 }

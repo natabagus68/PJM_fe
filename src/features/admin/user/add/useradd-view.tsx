@@ -3,10 +3,7 @@ import { Input } from "@common/components/input/Input";
 import ArrowBackIcon from "@common/components/icons-new/ArrowBackIcon";
 import InputFile from "@common/components/input/InputFile";
 import SaveIcon from "@common/components/icons-new/SaveIcon";
-import TrashIcon from "@common/components/icons-new/TrashIcon";
-import EyeShowIcon from "@common/components/icons-new/EyeShowIcon";
 import EyeHideIcon from "@common/components/icons-new/EyeHideIcon";
-import ModalConfirm from "@common/components/modals/ModalConfirm";
 import useUserModel from "@features/admin/user/user-model";
 
 export default function UserAddView(){
@@ -27,7 +24,7 @@ export default function UserAddView(){
             </button>
           </div>
         </div>
-        <form className="px-8 py-6" onSubmit={(e) => user.handleFormSubmit(e)}>
+        <form className="px-8 py-6 bg-[#FFFFFF]" onSubmit={() => alert("submit")}>
           <div className="mb-3">
             <h1 className="mb-2">Manpower Name</h1>
             <Input className="w-[90%]"/>
@@ -41,27 +38,33 @@ export default function UserAddView(){
             <Input className="w-[90%]" type="password"/>
             <EyeHideIcon
               className="absolute right-[11%] top-[60%] cursor-pointer" color={"#DDDDDD"}
-              onClick={() => user.handlePass()}
+              onClick={() => alert("show password")}
             />
           </div>
           <div className="mb-3">
             <h1 className="mb-2">Role</h1>
-            <select name="user-access" className="w-[90%] px-3 py-2 bg-[#FFFFFF] rounded-md border text-[#dddddd]">
-              <option disabled selected value> -- select role -- </option>
-              <option value="superadmin">SuperAdmin</option>
-              <option value="admin">Dave</option>
-              <option value="inspector">Pumpernickel</option>
-            </select>
+            <select defaultValue={'DEFAULT'} className={`w-[90%] px-3 py-2 bg-[#FFFFFF] rounded-md border text-[#dddddd]`}>
+                <option value="DEFAULT" disabled>-- Choose Options --</option>
+                <option value="1">Super Admin</option>
+                <option value="2">Admin</option>
+                <option value="3">Inspector</option>
+              </select>
           </div>
           <div className="mb-3">
             <h1>Profile Picture</h1>
             <InputFile
+              isReset={true}
+              width="125px"
+              label="Choose"
               htmlFor="fileimg"
-              width={"125px"}
-              label={"Choose"}
-              bgColor={"#B9BDC7"}
-              ftColor={"#514E4E"}
-              value={"no file choosen"}
+              value="no file choosen"
+              bgColor="bg-[#B9BDC7]"
+              ftColor="bg-[#FFFFFF]"
+              btnName="Reset"
+              btnHandle={(e: any) => {
+                e.preventDefault()
+                alert("Reset")
+              }}
             />
           </div>
           <button className="w-[249px] h-[46px] rounded-md bg-[#14988B] text-[#FFFFFF] flex items-center justify-center gap-2 mt-6">
@@ -69,7 +72,6 @@ export default function UserAddView(){
             <span>Save</span>
           </button>
         </form>
-        <ModalConfirm open={user.open} setOpen={user.setOpen} setOpenConfirm={user.open} cb={(e) => e.preventDefault()}/>
       </div>
     </main>
   )

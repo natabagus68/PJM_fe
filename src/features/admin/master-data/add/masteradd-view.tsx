@@ -1,13 +1,13 @@
 import { Breadcrumbs } from "@common/components";
 import ArrowBackIcon from "@common/components/icons-new/ArrowBackIcon"
 import SaveIcon from "@common/components/icons-new/SaveIcon"
-import ModalConfirm from "@common/components/modals/ModalConfirm"
 import InputFile from "@common/components/input/InputFile";
 import ResetIcon from "@common/components/icons-new/ResetIcon";
 import useMasterDataModel from "@features/admin/master-data/masterdata-model";
 
 export default function MasterDataAddView() {
   const masterdata = useMasterDataModel()
+
   return (
     <main className="flex flex-col gap-[28px]">
       <Breadcrumbs items={["Master Data", "Add Data"]} />
@@ -24,7 +24,7 @@ export default function MasterDataAddView() {
             </button>
           </div>
         </div>
-        <form className="p-[2rem] bg-[#FFFFFF] rounded-md" onSubmit={(e) => masterdata.handleFormSubmit(e)}>
+        <form className="p-[2rem] bg-[#FFFFFF] rounded-md" onSubmit={(e) => e.preventDefault()}>
           <h1 className="mb-2">Customer ID</h1>
           <input
             className="px-4 py-2 w-full border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] bg-[#D0D3D9]"
@@ -56,28 +56,30 @@ export default function MasterDataAddView() {
               <h1 className="my-3 font-[600]">1. Parallism</h1>
               <h1 className="font-[400] text-sm">Images 1</h1>
               <InputFile
-                isReset={true}
                 label="Choose"
                 htmlFor="parallel-1"
-                value={"image_default.jpg"}
-                bgColor={"#14988B"}
-                ftColor={"#FFFFFF"}
-              >
-                <ResetIcon />
-              </InputFile>
+                defaultValue="image_default.jpg"
+                bgColor="bg-[#B9BDC7]"
+                ftColor="bg-[#FFFFFF]"
+                isReset={true}
+                btnName="Reset"
+                btnIcon={<ResetIcon />}
+                btnHandle={() => alert("paralel-1")}
+              />
             </div>
             <div>
               <h1 className="font-[400] text-sm">Images 2</h1>
               <InputFile
-                isReset={true}
                 label="Choose"
                 htmlFor="parallel-2"
-                value={"image_default.jpg"}
-                bgColor={"#14988B"}
-                ftColor={"#FFFFFF"}
-              >
-                <ResetIcon />
-              </InputFile>
+                defaultValue="image_default.jpg"
+                bgColor="bg-[#14988B]"
+                ftColor="bg-[#FFFFFF]"
+                isReset={true}
+                btnName="Reset"
+                btnIcon={<ResetIcon />}
+                btnHandle={() => alert("paralel-2")}
+              />
             </div>
           </div>
           <div className="border-b pb-8">
@@ -85,28 +87,30 @@ export default function MasterDataAddView() {
               <h1 className="my-3 font-[600]">2. GIB Clearance</h1>
               <h1 className="font-[400] text-sm">Images 1</h1>
               <InputFile
-                isReset={true}
                 label="Choose"
                 htmlFor="Gib-1"
-                value={"image_default.jpg"}
-                bgColor={"#14988B"}
-                ftColor={"#FFFFFF"}
-              >
-                <ResetIcon />
-              </InputFile>
+                defaultValue="image_default.jpg"
+                bgColor="bg-[#14988B]"
+                ftColor="bg-[#FFFFFF]"
+                isReset={true}
+                btnName="Reset"
+                btnIcon={<ResetIcon />}
+                btnHandle={() => alert("Gib-1")}
+              />
             </div>
             <div>
               <h1 className="font-[400] text-sm">Images 2</h1>
               <InputFile
-                isReset={true}
                 label="Choose"
                 htmlFor="Gib-2"
-                value={"image_default.jpg"}
-                bgColor={"#14988B"}
-                ftColor={"#FFFFFF"}
-              >
-                <ResetIcon />
-              </InputFile>
+                defaultValue="image_default.jpg"
+                bgColor="bg-[#14988B]"
+                ftColor="bg-[#FFFFFF]"
+                isReset={true}
+                btnName="Reset"
+                btnIcon={<ResetIcon />}
+                btnHandle={() => alert("Gib-2")}
+              />
             </div>
           </div>
           <div className="border-b pb-8">
@@ -114,28 +118,30 @@ export default function MasterDataAddView() {
               <h1 className="my-3 font-[600]">3. Perpendicularity</h1>
               <h1 className="font-[400] text-sm">Images 1</h1>
               <InputFile
-                isReset={true}
                 label="Choose"
                 name="prep-1"
-                value={"image_default.jpg"}
-                bgColor={"#14988B"}
-                ftColor={"#FFFFFF"}
-              >
-                <ResetIcon />
-              </InputFile>
+                defaultValue="image_default.jpg"
+                bgColor="bg-[#14988B]"
+                ftColor="bg-[#FFFFFF]"
+                isReset={true}
+                btnName="Reset"
+                btnIcon={<ResetIcon />}
+                btnHandle={() => alert("prep-1")}
+              />
             </div>
             <div>
               <h1 className="font-[400] text-sm">Images 2</h1>
               <InputFile
-                isReset={true}
                 label="Choose"
                 name="prep-2"
-                value={"image_default.jpg"}
-                bgColor={"#14988B"}
-                ftColor={"#FFFFFF"}
-              >
-                <ResetIcon />
-              </InputFile>
+                defaultValue="image_default.jpg"
+                bgColor="bg-[#14988B]"
+                ftColor="bg-[#FFFFFF]"
+                isReset={true}
+                btnName="Reset"
+                btnIcon={<ResetIcon />}
+                btnHandle={() => alert("prep-2")}
+              />
             </div>
           </div>
           <button className="w-[249px] h-[46px] rounded-md bg-[#14988B] text-[#FFFFFF] flex items-center justify-center gap-2 mt-6">
@@ -143,8 +149,7 @@ export default function MasterDataAddView() {
             <span>Save</span>
           </button>
         </form>
-      <ModalConfirm open={masterdata.open} setOpen={masterdata.setOpen} setOpenSuccess={masterdata.open} cb={() => console.log('hi')} />
-    </div>
-  </main>
+      </div>
+    </main>
   )
 }

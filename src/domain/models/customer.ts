@@ -1,34 +1,39 @@
-import { uid } from "uid";
-export interface ICustomer {
-    id?: string;
-    name: string;
-    checked?: boolean;
+import { Entity } from "./_entity";
+
+export interface ICustomerProps {
+  id?: string | undefined;
+  name: string | undefined;
+  address?: string | undefined;
+  phone?: string | undefined;
+  checked?: boolean | undefined;
 }
-export class Customer {
-    id: string;
-    name: string;
-    checked: boolean;
-    constructor(props: ICustomer) {
-        this.id = props.id || uid();
-        this.name = props.name;
-        this.checked = !!props.checked;
-    }
-    static create(props: ICustomer): Customer {
-        return new Customer(props);
-    }
-    check(): Customer {
-        this.checked = true;
-        return this;
-    }
-    uncheck(): Customer {
-        this.checked = false;
-        return this;
-    }
-    unmarshall(): ICustomer {
-        return {
-            id: this.id,
-            name: this.name,
-            checked: !!this.checked,
-        };
-    }
+
+export class Customer extends Entity<ICustomerProps> {
+  unmarshall() {
+    return {
+      id: this.id,
+      name: this.name,
+      address: this.address,
+      phone: this.address,
+      checked: this.checked
+    };
+  };
+  static create(props: ICustomerProps): Customer {
+    return new Customer(props);
+  }
+  get id(): string | undefined {
+    return this._props.id;
+  }
+  get name(): string | undefined {
+    return this._props.name;
+  }
+  get address(): string | undefined {
+    return this._props.address;
+  }
+  get phone(): string | undefined {
+    return this._props.phone;
+  }
+  get checked(): boolean | undefined {
+    return this._props.checked;
+  };
 }

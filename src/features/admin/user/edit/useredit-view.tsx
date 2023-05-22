@@ -1,19 +1,17 @@
-import { Switch } from '@headlessui/react';
 import { Breadcrumbs } from "@common/components/Breadcrumbs";
 import { Input } from "@common/components/input";
-import ModalConfirm from "@common/components/modals/ModalConfirm";
 import ArrowBackIcon from "@common/components/icons-new/ArrowBackIcon";
 import InputFile from "@common/components/input/InputFile";
 import SaveIcon from "@common/components/icons-new/SaveIcon";
 import EditIcon from "@common/components/icons-new/EditIcon";
 import TrashIcon from "@common/components/icons-new/TrashIcon";
+import PreviewImage from "@features/admin/user/popup/previewimage-view";
 import EyeShowIcon from "@common/components/icons-new/EyeShowIcon";
 import EyeHideIcon from "@common/components/icons-new/EyeHideIcon";
-import PreviewImage from "@features/admin/user/popup/previewimage-view";
-import useUserModel from "@features/admin/user/user-model";
+import useUserEditModal from "./useredit-modal";
 
 export default function UserEditView() {
-  const user = useUserModel()
+  const user = useUserEditModal()
   return (
     <main className="flex flex-col gap-[28px] justify-between">
       <Breadcrumbs items={["User", "Edit User"]} />
@@ -30,39 +28,40 @@ export default function UserEditView() {
             </button>
           </div>
         </div>
-        <form className="px-8 py-6" onSubmit={(e) => user.handleFormSubmit(e)}>
+        <form className="px-8 py-6 bg-[#FFFFFF]" onSubmit={(e:any) => e.preventDefault()}>
           <div className="mb-3">
             <h1 className="mb-2">Manpower Name</h1>
-            <Input className="w-[90%]" value={"Budi Budianto"}/>
+            <Input className="w-[90%]" defaultValue={user.edit.name}/>
           </div>
           <div className="mb-3">
             <h1 className="mb-2">Email</h1>
-            <Input className="w-[90%]" value={"dskhsdf@gmail.com"}/>
+            <Input className="w-[90%]" defaultValue={user.edit.email}/>
           </div>
           <div className="mb-3">
             <h1 className="mb-2">Password</h1>
-            <Input className="w-[90%]" type="password" value={"123123123123"}/>
+            <Input className="w-[90%]" type="text" defaultValue={""}/>
             <EyeHideIcon
-              className="absolute right-[13%] top-[60%] cursor-pointer" color={"#DDDDDD"}
-              onClick={() => user.handlePass()}
+              className="absolute right-[13%] top-[59.5%] cursor-pointer" color={"#DDDDDD"}
+              onClick={() => alert("see password")}
             />
           </div>
           <div className="mb-3">
             <h1 className="mb-2">Role</h1>
-            <Input className="w-[90%]" value={"Inspector"}/>
+            <Input className="w-[90%]" defaultValue={user.edit.role}/>
           </div>
           <div className="mb-3 relative">
             <h1>Profile Picture</h1>
             <InputFile
-              value={"Image.jpg"}
-              width={"125px"}
+              defaultValue={user.edit.photo}
+              htmlFor="preview-img"
+              width="125px"
               label="View Image"
-              bgColor={"#14988B"}
-              ftColor={"#FFFFFF"}
-              onClick={(e) => user.handlePrev(e)}
+              bgColor="bg-[#14988B]"
+              ftColor="bg-[#FFFFFF]"
+              onClick={(e: any) => e.preventDefault()}
             />
-            <div className="flex items-center justify-center absolute right-3 top-9">
-              <div className="w-[34px] h-[34px] mr-3 bg-[#F79009] flex justify-center items-center rounded-md cursor-pointer"
+            <div className="flex absolute right-14 top-9">
+              <div className="w-[34px] h-[34px] mr-2 bg-[#F79009] flex justify-center items-center rounded-md cursor-pointer"
                 onClick={() => alert("Edit")}
               >
                 <EditIcon />
@@ -79,8 +78,6 @@ export default function UserEditView() {
             <span>Save</span>
           </button>
         </form>
-        <ModalConfirm open={user.open} setOpen={user.setOpen} setOpenSuccess={user.open} cb={() => alert("x")}/>
-        <PreviewImage open={user.prev} setOpen={user.setPrev} setClose={() => user.handleClose()} />
       </div>
     </main>
   )
