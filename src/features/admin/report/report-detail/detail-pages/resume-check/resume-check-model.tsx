@@ -1,19 +1,14 @@
-import { config } from "@common/utils";
+import { useState, useEffect } from "react";
+import ReportContex from "../../report-detail-main/report-useContex";
+import { useContext } from "react";
 import { AprovalReport } from "@domain/models/aproval-report";
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Aproval } from "@domain/models/aproval";
 import { AprovalResult } from "@domain/models/aproval-result";
 import { MachineCheck } from "@domain/models/machine-check";
 import { ResumeCheck } from "@domain/models/resume-check";
-import { AprovalRepository } from "@domain/repositories/aproval-repository";
 import { Accuracy } from "@domain/models/Accuracy";
-import { AprovalApiRepository } from "@data/api/aproval-api-repository";
-export const useReportDetail = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [nav, setNav] = useState(1);
-  const aprovalRepo: AprovalRepository = new AprovalApiRepository();
+import { Aproval } from "@domain/models/aproval";
+export default function useResumeCheck() {
+  const result = useContext(ReportContex);
   const [data, setData] = useState<AprovalReport>(
     AprovalReport.create({
       id: "",
@@ -121,19 +116,26 @@ export const useReportDetail = () => {
     })
   );
 
-  useEffect(() => {
-    aprovalRepo.getReport(id).then((result) => {
-      setData(result);
-    });
-  }, []);
-  const navHandle = (val: number, nav: string) => {
-    setNav(val);
-    navigate(`${config.pathPrefix}admin/report/${id}/detail/${nav}`);
+  const [open, setOpen] = useState(false);
+
+  const handlePreview = () => {
+    setOpen(true);
   };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    setData(result);
+  }, [result]);
+
   return {
     data,
-    nav,
-    navHandle,
+    open,
+    setOpen,
+    handlePreview,
+    handleClose,
   };
-};
+}
 

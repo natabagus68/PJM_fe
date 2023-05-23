@@ -102,7 +102,9 @@ export const Report = () => {
                       {item.inspector}
                     </td>
                     <td className="text-start py-3 px-5  text-natural-300 cursor-pointer border-b border-gray-300 flex items-center gap-10">
-                      <ButtonDetail />
+                      <div onClick={() => model.toDetail(item.id)}>
+                        <ButtonDetail />
+                      </div>
                       <div>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

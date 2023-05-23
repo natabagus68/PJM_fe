@@ -8,8 +8,8 @@ import TraceabilityDetail from "@features/admin/traceability/traceability-detail
 
 import { Report } from "@features/admin/report/report/report-view";
 import { ReportDetailMain } from "@features/admin/report/report-detail/report-detail-main/report-detail-main-view";
-import { MachineCheck } from "@features/admin/report/report-detail/detail-pages/machine-check/machine-check-view";
-import { AcuracyCheck } from "@features/admin/report/report-detail/detail-pages/acuracy-check/acuracy-check-view";
+import MachineCheck from "@features/admin/report/report-detail/detail-pages/machine-check/machine-check-view";
+import { AccuracyCheckReport } from "@features/admin/report/report-detail/detail-pages/acuracy-check/acuracy-check-view";
 import { CheckLoadTonnage } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/check-load-tonnage-view";
 import { Table } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/table/table";
 import { ChartLine } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/chart/chart-line-view";
@@ -146,7 +146,7 @@ export default createBrowserRouter([
               },
               {
                 path: "acuracy-check",
-                element: <AcuracyCheck />,
+                element: <AccuracyCheckReport />,
               },
               {
                 path: "check-load-tonnage",

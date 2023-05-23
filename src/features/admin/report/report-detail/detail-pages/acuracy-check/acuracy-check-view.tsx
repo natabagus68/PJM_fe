@@ -1,375 +1,715 @@
-export const AcuracyCheck = () => {
+import { config } from "@common/utils";
+import useAccuracy from "./accuracy-check-model";
+
+export const AccuracyCheckReport = () => {
+  const accuracy = useAccuracy();
   return (
     <>
-      <div className="w-full rounded-xl border border-gray-300 pb-3 max-h-screen overflow-y-scroll">
-        {/* header */}
-        <div className="flex w-full">
-          <div className="w-full py-2 text-center font-semibold border-b border-gray-300">
-            Point Inspection
-          </div>
-          <div className="w-full py-2 text-center font-semibold border-b border-gray-300">
-            Ketetapan
-          </div>
-          <div className="w-full py-2 text-center font-semibold border-b border-gray-300">
-            Notes
-          </div>
+      <div className="grid grid-cols-10 text-center border-b">
+        <h1 className="font-[700] p-2 col-span-4">Point Inspection</h1>
+        <h1 className="border-l border-r font-[700] p-2 col-span-3">
+          Ketetapan
+        </h1>
+        <h1 className="font-[700] p-2 col-span-3">Notes</h1>
+      </div>
+      <div className="border-b px-4 py-1">
+        <div className="flex gap-x-1 text-[#313030] font-semibold mb-1">
+          <span>1.</span>
+          <h2>Parallelism</h2>
         </div>
-        {/* body */}
-        {/* table 1 */}
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5 ">
-            <h1 className="font-semibold">1.Parallelism</h1>
-            <p className="text-neutral-400">
+        <div className="grid text-[#514E4E] grid-cols-10 gap-x-5">
+          <div className="col-span-4">
+            <h3 className=" ml-3">
               Parallelism between slide and bolster Slide adjustment middle
-            </p>
+            </h3>
           </div>
-          <div className="w-full py-2 flex flex-col items-end  pt-5">
-            <div className="flex gap-3 w-1/2">
-              Unit <span className="font-semibold">1500</span> mm
-            </div>
-            <div className="flex gap-3 mr-16">
-              Balancer Air Pressure <span className="font-semibold">1000</span>{" "}
-              kgf
-            </div>
-          </div>
-          <div className="w-full py-2 text-center font-semibold">Notes</div>
-        </div>
-
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5 ">
-            <h1 className="font-semibold"></h1>
-            <img src="" alt="" />
-          </div>
-          <div className="w-full py-2 flex flex-col items-end  pt-5">
-            <div className="text-start gap-3 w-full pl-20">
-              <p className="text-neutral-400">Adjustment Value</p>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">A</p>{" "}
-              <span className="font-semibold">-0,22</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">B</p>{" "}
-              <span className="font-semibold">-0,30</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">C</p>{" "}
-              <span className="font-semibold">0</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">D</p>{" "}
-              <span className="font-semibold">0</span>
+          <div className="col-span-3">
+            <div className="flex w-full mb-3">
+              <div className="w-2/3 text-end">
+                <h3 className=" text-[#6F6C6C]">Unit</h3>
+              </div>
+              <div className="w-1/3 text-end pl-5">
+                <h3 className="text-[#393737]">
+                  {accuracy.data.accuracyCheck.unit}
+                  <span className="text-[#6F6C6C] ml-1">mm</span>
+                </h3>
+              </div>
             </div>
           </div>
-          <div className="w-full py-2 text-center font-semibold">
-            <img src="" alt="" className="w-full m-auto" />
+          <div className="col-span-3 col-start-5">
+            <div className="flex w-full mb-3">
+              <div className="w-2/3 text-end">
+                <h3 className=" text-[#6F6C6C]">Balancer Air Pressure</h3>
+              </div>
+              <div className="w-1/3 text-end">
+                <h3 className="text-[#393737] pl-5">
+                  {accuracy.data.accuracyCheck.balancerAirPsr}
+                  <span className="text-[#6F6C6C] ml-1">kgf</span>
+                </h3>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5 ">
-            <h1 className="font-semibold"></h1>
-            <img src="" alt="" />
-          </div>
-          <div className="w-full py-2 flex flex-col items-end  pt-5">
-            <div className="text-start gap-3 w-full pl-20">
-              <p className="text-neutral-400">Adjustment Value</p>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">A</p>{" "}
-              <span className="font-semibold">-0,22</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">B</p>{" "}
-              <span className="font-semibold">-0,30</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">C</p>{" "}
-              <span className="font-semibold">0</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">D</p>{" "}
-              <span className="font-semibold">0</span>
+      <div className="border-b px-4 py-2 grid text-[#514E4E] grid-cols-10 gap-x-5">
+        <div className="col-span-4">
+          <img
+            src={
+              accuracy.data.customer?.parallelism1Path
+                ? `${config.assetsUrl}${accuracy.data.customer?.parallelism1Path}`
+                : ""
+            }
+            alt="diagram-paralel-1"
+            className="w-full h-auto"
+          />
+        </div>
+        <div className="col-span-3">
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className=" text-[#6F6C6C]">Adjustment Value</h3>
             </div>
           </div>
-          <div className="w-full py-2 text-center font-semibold">
-            <img src="" alt="" className="w-full m-auto" />
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">A</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.prlAdj_0A}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">B</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.prlAdj_0B}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">C</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.prlAdj_0C}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">D</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.prlAdj_0D}
+              </h3>
+            </div>
           </div>
         </div>
-
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5 "></div>
-          <div className="w-full py-2 flex flex-col items-end  pt-5">
-            <div className="flex  gap-3  mr-16 ">
-              <p className="text-teal-500 font-bold">Actual Valve</p>{" "}
-              <span className="font-semibold">-0,30</span>
-            </div>
-            <div className="flex  gap-3  mr-16 ">
-              <p className="text-teal-500 font-bold">Allowance</p>{" "}
-              <span className="font-semibold">-0</span>
-            </div>
-            <div className="flex  gap-3  mr-16 ">
-              <p className="text-teal-500 font-bold">Judgement</p>{" "}
-              <span className="font-semibold">OK</span>
-            </div>
-          </div>
-          <div className="w-full py-2 text-center font-semibold">
-            <img src="" alt="" className="w-full m-auto" />
+        <div className="col-span-3">
+          <div className="w-full px-5">
+            <img
+              src={accuracy?.rumus}
+              className="w-full"
+              alt="calculate-paralel"
+            />
           </div>
         </div>
-
-        {/* table 2 */}
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5 ">
-            <h1 className="font-semibold">2.GIB Clearance</h1>
-            <p className="text-neutral-400">
+      </div>
+      <div className="border-b px-4 py-2 grid text-[#514E4E] grid-cols-10 gap-x-5">
+        <div className="col-span-4">
+          <img
+            src={
+              accuracy.data.customer?.parallelism2Path
+                ? `${config.assetsUrl}${accuracy.data.customer?.parallelism2Path}`
+                : ""
+            }
+            alt="diagram-paralel-2"
+            className="w-full h-auto"
+          />
+        </div>
+        <div className="col-span-3">
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className=" text-[#6F6C6C]">Adjustment Value</h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">A</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.prlAdj_0A}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">B</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.prlAdj_0B}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">C</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.prlAdj_0C}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">D</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.prlAdj_0D}
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div className="col-span-3">
+          <div className="w-full px-5">
+            <img
+              src={accuracy?.rumus}
+              className="w-full"
+              alt="calculate-paralel"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="border-b px-4 py-1 grid grid-cols-10">
+        <div className="col-span-3 col-start-5">
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">Actual Velve</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy?.data?.accuracyCheck.prlActVlv}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">Allowance</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy?.data?.accuracyCheck.prlAllowance}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">Judgement</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3
+                className={`${
+                  accuracy?.data?.accuracyCheck.ttlClrJudgement === "OK"
+                    ? "text-[#12B76A]"
+                    : "text-[#F04438]"
+                }  font-bold`}
+              >
+                {accuracy?.data?.accuracyCheck.ttlClrJudgement}
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/*  */}
+      <div className="border-b px-4 py-1">
+        <div className="flex gap-x-1 text-[#313030] font-semibold mb-1">
+          <span>2.</span>
+          <h2>GIB Clearance</h2>
+        </div>
+        <div className="grid text-[#514E4E] grid-cols-10 gap-x-5">
+          <div className="col-span-4">
+            <h3 className=" ml-3">
               Clearance between the gib & slide liner Dimension of ( ) shows
-              upper gib clearance{" "}
-            </p>
-          </div>
-          <div className="w-full py-2 flex flex-col items-end  pt-5">
-            <div className="flex gap-3 w-1/2">
-              Unit <span className="font-semibold">1500</span> mm
-            </div>
-            <div className="flex gap-3 mr-16">
-              Balancer Air Pressure <span className="font-semibold">1000</span>{" "}
-              kgf
-            </div>
-          </div>
-          <div className="w-full py-2 text-center font-semibold">Notes</div>
-        </div>
-
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5 ">
-            <h1 className="font-semibold"></h1>
-            <img src="" alt="" />
-          </div>
-          <div className="w-full py-2 flex flex-col items-end  pt-5">
-            <div className="text-start gap-3 w-full pl-20">
-              <p className="text-neutral-400">Adjustment Value</p>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">A</p>{" "}
-              <span className="font-semibold">-0,22</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">B</p>{" "}
-              <span className="font-semibold">-0,30</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">C</p>{" "}
-              <span className="font-semibold">0</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">D</p>{" "}
-              <span className="font-semibold">0</span>
-            </div>
-          </div>
-          <div className="w-full py-2 text-center font-semibold">
-            <img src="" alt="" className="w-full m-auto" />
+              upper gib clearance
+            </h3>
           </div>
         </div>
+      </div>
 
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5 ">
-            <h1 className="font-semibold"></h1>
-            <img src="" alt="" />
-          </div>
-          <div className="w-full py-2 flex flex-col items-end  pt-5">
-            <div className="text-start gap-3 w-full pl-20">
-              <p className="text-neutral-400">Adjustment Value</p>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">A</p>{" "}
-              <span className="font-semibold">-0,22</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">B</p>{" "}
-              <span className="font-semibold">-0,30</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">C</p>{" "}
-              <span className="font-semibold">0</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">D</p>{" "}
-              <span className="font-semibold">0</span>
+      <div className="border-b px-4 py-2 grid text-[#514E4E] grid-cols-10 gap-x-5">
+        <div className="col-span-4">
+          <img
+            src={
+              accuracy.data.customer?.gibClearance1Path
+                ? `${config.assetsUrl}${accuracy.data.customer?.gibClearance1Path}`
+                : ""
+            }
+            alt="diagram-paralel-1"
+            className="w-full h-auto"
+          />
+        </div>
+        <div className="col-span-3">
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className=" text-[#6F6C6C]">Adjustment Value</h3>
             </div>
           </div>
-          <div className="w-full py-2 text-center font-semibold">
-            <img src="" alt="" className="w-full m-auto" />
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">A</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.gibAdj_0A}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">B</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.gibAdj_0B}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">C</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.gibAdj_0C}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">D</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.gibAdj_0D}
+              </h3>
+            </div>
           </div>
         </div>
-
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5 "></div>
-          <div className="w-full py-2 flex flex-col items-end  pt-5">
-            <div className="flex  gap-3  mr-16 ">
-              <p className="text-teal-500 font-bold">Actual Valve</p>{" "}
-              <span className="font-semibold">-0,30</span>
-            </div>
-            <div className="flex  gap-3  mr-16 ">
-              <p className="text-teal-500 font-bold">Allowance</p>{" "}
-              <span className="font-semibold">-0</span>
-            </div>
-            <div className="flex  gap-3  mr-16 ">
-              <p className="text-teal-500 font-bold">Judgement</p>{" "}
-              <span className="font-semibold">OK</span>
-            </div>
-          </div>
-          <div className="w-full py-2 text-center font-semibold">
-            <img src="" alt="" className="w-full m-auto" />
+        <div className="col-span-3">
+          <div className="w-full px-5">
+            <img
+              src={accuracy?.rumus}
+              className="w-full"
+              alt="calculate-paralel"
+            />
           </div>
         </div>
+      </div>
 
-        {/* table 3 */}
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5 ">
-            <h1 className="font-semibold">3.Perpendicularity</h1>
-            <p className="text-neutral-400">
+      <div className="border-b px-4 py-2 grid text-[#514E4E] grid-cols-10 gap-x-5">
+        <div className="col-span-4">
+          <img
+            src={
+              accuracy.data.customer?.gibClearance2Path
+                ? `${config.assetsUrl}${accuracy.data.customer?.gibClearance2Path}`
+                : ""
+            }
+            alt="diagram-paralel-1"
+            className="w-full h-auto"
+          />
+        </div>
+        <div className="col-span-3">
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className=" text-[#6F6C6C]">Adjustment Value</h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">A</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.gibAdj_180A}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">B</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.gibAdj_180B}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">C</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.gibAdj_180C}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">D</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.gibAdj_180D}
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div className="col-span-3">
+          <div className="w-full px-5">
+            <img
+              src={accuracy?.rumus}
+              className="w-full"
+              alt="calculate-paralel"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="border-b px-4 py-1 grid grid-cols-10">
+        <div className="col-span-3 col-start-5">
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">Actual Velve</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy?.data?.accuracyCheck.gibActVlv}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">Allowance</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy?.data?.accuracyCheck.gibAllowance}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">Judgement</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3
+                className={`${
+                  accuracy?.data?.accuracyCheck.gibJudgement === "OK"
+                    ? "text-[#12B76A]"
+                    : "text-[#F04438]"
+                }  font-bold`}
+              >
+                {accuracy?.data?.accuracyCheck.gibJudgement}
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="border-b px-4 py-1">
+        <div className="flex gap-x-1 text-[#313030] font-semibold mb-1">
+          <span>3.</span>
+          <h2>Perpendicularity</h2>
+        </div>
+        <div className="grid text-[#514E4E] grid-cols-10 gap-x-5">
+          <div className="col-span-4">
+            <h3 className=" ml-3">
               Perpendicularity of vericul movement of slide to the bolster upper
-              face slide adjustment middle{" "}
-            </p>
+              face slide adjustment middle
+            </h3>
           </div>
-          <div className="w-full py-2 flex flex-col items-end  pt-5">
-            <div className="flex gap-3 w-1/2">
-              Unit <span className="font-semibold">1500</span> mm
-            </div>
-            <div className="flex gap-3 mr-16">
-              Balancer Air Pressure <span className="font-semibold">1000</span>{" "}
-              kgf
+          <div className="col-span-3">
+            <div className="flex w-full mb-3">
+              <div className="w-2/3 text-end">
+                <h3 className=" text-[#6F6C6C]">Slide Stroke (L3) </h3>
+              </div>
+              <div className="w-1/3 text-end pl-5">
+                <h3 className="text-[#393737]">
+                  <span className="text-[#6F6C6C] ml-1">
+                    {accuracy.data.accuracyCheck.ppdcltSlideStroke} {" mm"}
+                  </span>
+                </h3>
+              </div>
             </div>
           </div>
-          <div className="w-full py-2 text-center font-semibold">Notes</div>
         </div>
+      </div>
 
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5 ">
-            <h1 className="font-semibold"></h1>
-            <img src="" alt="" />
-          </div>
-          <div className="w-full py-2 flex flex-col items-end  pt-5">
-            <div className="text-start gap-3 w-full pl-20">
-              <p className="text-neutral-400">Adjustment Value</p>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">A</p>{" "}
-              <span className="font-semibold">-0,22</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">B</p>{" "}
-              <span className="font-semibold">-0,30</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">C</p>{" "}
-              <span className="font-semibold">0</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">D</p>{" "}
-              <span className="font-semibold">0</span>
+      <div className="border-b px-4 py-2 grid text-[#514E4E] grid-cols-10 gap-x-5">
+        <div className="col-span-4 flex justify-center">
+          <img
+            src={
+              accuracy.data.customer?.perpendicularity1Path
+                ? `${config.assetsUrl}${accuracy.data.customer?.perpendicularity1Path}`
+                : ""
+            }
+            className=" object-contain w-[238px] h-auto"
+          />
+        </div>
+        <div className="col-span-3">
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className=" text-[#6F6C6C]">Adjustment Value</h3>
             </div>
           </div>
-          <div className="w-full py-2 text-center font-semibold">
-            <img src="" alt="" className="w-full m-auto" />
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">A</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.ppdcltAdjFrA}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">B</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.ppdcltAdjFrB}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">C</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.ppdcltAdjFrC}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">D</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.ppdcltAdjFrD}
+              </h3>
+            </div>
           </div>
         </div>
+        <div className="col-span-3">
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">Actual Velve</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.ttlClrActValve}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">Allowance</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.ttlClrAllowance}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">Judgement</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3
+                className={`${
+                  accuracy.data.accuracyCheck.ttlClrJudgement === "OK"
+                    ? "text-[#12B76A]"
+                    : "text-[#F04438]"
+                }  font-bold`}
+              >
+                {accuracy.data.accuracyCheck.ttlClrJudgement}
+              </h3>
+            </div>
+          </div>
 
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5 ">
-            <h1 className="font-semibold"></h1>
-            <img src="" alt="" />
-          </div>
-          <div className="w-full py-2 flex flex-col items-end  pt-5">
-            <div className="text-start gap-3 w-full pl-20">
-              <p className="text-neutral-400">Adjustment Value</p>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">A</p>{" "}
-              <span className="font-semibold">-0,22</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">B</p>{" "}
-              <span className="font-semibold">-0,30</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">C</p>{" "}
-              <span className="font-semibold">0</span>
-            </div>
-            <div className="flex  gap-3  mr-16">
-              <p className="text-teal-500 font-bold">D</p>{" "}
-              <span className="font-semibold">0</span>
-            </div>
-          </div>
-          <div className="w-full py-2 text-center font-semibold">
-            <img src="" alt="" className="w-full m-auto" />
+          <div className="w-full px-5">
+            <img
+              src={accuracy?.rumus}
+              className="w-full"
+              alt="calculate-paralel"
+            />
           </div>
         </div>
+      </div>
+      <div className="border-b px-4 py-2 grid text-[#514E4E] grid-cols-10 gap-x-5">
+        <div className="col-span-4 flex justify-center">
+          <img
+            src={
+              accuracy.data.customer?.perpendicularity1Path
+                ? `${config.assetsUrl}${accuracy.data.customer?.parallelism2Path}`
+                : ""
+            }
+            className=" object-contain w-[238px] h-auto"
+          />
+        </div>
+        <div className="col-span-3">
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className=" text-[#6F6C6C]">Adjustment Value</h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">A</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.ppdcltAdjFrA}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">B</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.ppdcltAdjFrB}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">C</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.ppdcltAdjFrC}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">D</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.ppdcltAdjFrD}
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div className="col-span-3">
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">Actual Velve</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.ttlClrActValve}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">Allowance</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737] font-medium">
+                {accuracy.data.accuracyCheck.ttlClrAllowance}
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full mb-3">
+            <div className="w-2/3 text-end">
+              <h3 className="text-[#14988B] font-bold">Judgement</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3
+                className={`${
+                  accuracy.data.accuracyCheck.ttlClrJudgement === "OK"
+                    ? "text-[#12B76A]"
+                    : "text-[#F04438]"
+                }  font-bold`}
+              >
+                {accuracy.data.accuracyCheck.ttlClrJudgement}
+              </h3>
+            </div>
+          </div>
 
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5 "></div>
-          <div className="w-full py-2 flex flex-col items-end  pt-5">
-            <div className="flex  gap-3  mr-16 ">
-              <p className="text-teal-500 font-bold">Actual Valve</p>{" "}
-              <span className="font-semibold">-0,30</span>
-            </div>
-            <div className="flex  gap-3  mr-16 ">
-              <p className="text-teal-500 font-bold">Allowance</p>{" "}
-              <span className="font-semibold">-0</span>
-            </div>
-            <div className="flex  gap-3  mr-16 ">
-              <p className="text-teal-500 font-bold">Judgement</p>{" "}
-              <span className="font-semibold">OK</span>
-            </div>
-          </div>
-          <div className="w-full py-2 text-center font-semibold">
-            <img src="" alt="" className="w-full m-auto" />
+          <div className="w-full px-5">
+            <img
+              src={accuracy?.rumus}
+              className="w-full"
+              alt="calculate-paralel"
+            />
           </div>
         </div>
-        {/* table 4 */}
-        <div className="flex w-full">
-          <div className="w-full py-2 text-start pl-5 ">
-            <h1 className="font-semibold">4.Total Clearance</h1>
+      </div>
+      <div className="px-4 py-1">
+        <div className=" grid grid-cols-10 gap-x-5 ">
+          <div className="flex col-span-4 gap-x-1 text-[#313030] font-semibold mb-1">
+            <span>4.</span>
+            <h2>Total Clearance</h2>
           </div>
-          <div className="w-full py-2 flex flex-col items-end  pt-5"></div>
-          <div className="w-full py-2 text-center font-semibold">Notes</div>
+          <div className="col-span-3 col-start-8 px-5">
+            <img
+              src={accuracy?.rumus}
+              alt="calculate-total"
+              className="w-full"
+            />
+          </div>
         </div>
-
-        <div className="flex w-full border-b border-gray-300 pb-4">
-          <table className="w-[90%] m-auto mt-5">
-            <thead>
-              <tr>
-                <th className="py-2 px-4 bg-teal-50 text-teal-500 font-semi-bold border border-gray-300 ">
-                  Actual Value (L)
-                </th>
-                <th className="py-2 px-4 bg-teal-50 text-teal-500 font-semi-bold border border-gray-300">
-                  Actual Valve
-                </th>
-                <th className="py-2 px-4 bg-teal-50 text-teal-500 font-semi-bold border border-gray-300">
-                  Allowance
-                </th>
-                <th className="py-2 px-4 bg-teal-50 text-teal-500 font-semi-bold border border-gray-300">
-                  Judgement
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="py-2 px-4 text-center border border-gray-300 ">
-                  Actual Value (L)
-                </td>
-                <td className="py-2 px-4 text-center border border-gray-300">
-                  Actual Valve
-                </td>
-                <td className="py-2 px-4 text-center border border-gray-300">
-                  Allowance
-                </td>
-                <td className="py-2 px-4 text-center border border-gray-300">
-                  Judgement
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <table className="w-full table-fixed my-2 ">
+          <thead className="bg-[#E8F5F3] border h-[40px] text-[#0B544C] font-semibold">
+            <tr>
+              <th className="border-r">Actual Value (L)</th>
+              <th className="border-r">Actual Valve</th>
+              <th className="border-r">Allowance</th>
+              <th>Judgment</th>
+            </tr>
+          </thead>
+          <tbody className="text-[#514E4E] text-center h-[40px] border">
+            <tr>
+              <td className="border-r">
+                {accuracy.data.accuracyCheck.ttlClrActValue}
+              </td>
+              <td className="border-r font-semibold">
+                {accuracy.data.accuracyCheck.ttlClrActValve}
+              </td>
+              <td className="border-r">
+                {accuracy.data.accuracyCheck.ttlClrAllowance}
+              </td>
+              <td
+                className={`font-bold ${
+                  accuracy.data.accuracyCheck.ttlClrJudgement === "OK"
+                    ? "text-[#12B76A]"
+                    : "text-[#F04438]"
+                }`}
+              >
+                {accuracy.data.accuracyCheck.ttlClrJudgement}
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </>
   );
