@@ -1,22 +1,129 @@
 import { useState, useEffect } from "react";
-
+import aprovalContext from "../aprovalContex";
+import { useContext } from "react";
+import { AprovalReport } from "@domain/models/aproval-report";
+import { Accuracy } from "@domain/models/Accuracy";
+import { Aproval } from "@domain/models/aproval";
+import { AprovalResult } from "@domain/models/aproval-result";
+import { MachineCheck } from "@domain/models/machine-check";
+import { ResumeCheck } from "@domain/models/resume-check";
 export default function useCheckLoadTonnage() {
-  const [data, setData] = useState([])
-  const [view, setView] = useState(true)
+  const result = useContext(aprovalContext);
+  const [data, setData] = useState<AprovalReport>(
+    AprovalReport.create({
+      id: "",
+      aproval: Aproval.create({
+        inspectionID: "",
+        inspectionDate: "",
+        customer: "",
+        status: "",
+        confirmation: "",
+        inspector: "",
+        machineName: "",
+      }),
+      aprovalResult: AprovalResult.create({
+        machineType: "",
+        serial: "",
+        MFGDate: "",
+        capasity: "",
+        st: "",
+        stPerminutes: "",
+        dHeightt: "",
+        adjustment: "",
+        bloasterX: "",
+        bloasterY: "",
+        areaSlideX: "",
+        areaSlideY: "",
+      }),
+      inspectionForm: [],
+      machineCheck: MachineCheck.create({
+        id: "",
+        slideDiam: 0,
+        slideBergerak: 0,
+        noMainMotor: 0,
+        running: "",
+        clearence: "",
+        actual: "",
+        result: "",
+        adjustUp: "",
+        adjustDown: "",
+        tmb: "",
+        point: "",
+        test1: "",
+        test2: "",
+        test3: "",
+        test4: "",
+        test5: "",
+        test6: "",
+        test7: "",
+        test8: "",
+        test9: "",
+        test10: "",
+      }),
+      accuracyCheck: Accuracy.create({
+        id: "",
+        generalDataId: "",
+        unit: 0,
+        balancerAirPsr: 0,
+        prlAdj_0A: 0,
+        prlAdj_0B: 0,
+        prlAdj_0C: 0,
+        prlAdj_0D: 0,
+        prlAdj_180A: 0,
+        prlAdj_180B: 0,
+        prlAdj_180C: 0,
+        prlAdj_180D: 0,
+        prlActVlv: 0,
+        prlAllowance: 0,
+        prlJudgement: "",
+        gibAdj_0A: 0,
+        gibAdj_0B: 0,
+        gibAdj_0C: 0,
+        gibAdj_0D: 0,
+        gibAdj_180A: 0,
+        gibAdj_180B: 0,
+        gibAdj_180C: 0,
+        gibAdj_180D: 0,
+        gibActVlv: 0,
+        gibAllowance: 0,
+        gibJudgement: "",
+        ppdcltSlideStroke: 0,
+        ppdcltAdjLrA: 0,
+        ppdcltAdjLrB: 0,
+        ppdcltAdjLrC: 0,
+        ppdcltAdjLrD: 0,
+        ppdcltAdjFrA: 0,
+        ppdcltAdjFrB: 0,
+        ppdcltAdjFrC: 0,
+        ppdcltAdjFrD: 0,
+        ppdcltLrActValue: 0,
+        ppdcltLrAllowance: 0,
+        ppdcltLrJudgement: "",
+        ppdcltFrActValue: 0,
+        ppdcltFrAllowance: 0,
+        ppdcltFrJudgement: "",
+        ttlClrActValue: 0,
+        ttlClrActValve: 0,
+        ttlClrAllowance: 0,
+        ttlClrJudgement: "",
+      }),
+      loadTonnage: [],
+      resume: ResumeCheck.create({
+        id: "",
+        notes: "",
+        recommendation: "",
+      }),
+    })
+  );
 
   useEffect(() => {
-    setData([
-      { id:1, lf_a: 101, lr_a: 90, rf_a: 80, rr_a: 100, total_a: 390, lf_b: 92, lr_b: 82, rf_b: 94, rr_b: 92, total_b: 360, die: 1212.998 },
-      { id:2, lf_a: 101, lr_a: 90, rf_a: 80, rr_a: 100, total_a: 390, lf_b: 92, lr_b: 82, rf_b: 94, rr_b: 92, total_b: 360, die: 1212.998 },
-      { id:3, lf_a: 101, lr_a: 90, rf_a: 80, rr_a: 100, total_a: 390, lf_b: 92, lr_b: 82, rf_b: 94, rr_b: 92, total_b: 360, die: 1212.998 },
-      { id:4, lf_a: 101, lr_a: 90, rf_a: 80, rr_a: 100, total_a: 390, lf_b: 92, lr_b: 82, rf_b: 94, rr_b: 92, total_b: 360, die: 1212.998 },
-      { id:5, lf_a: 101, lr_a: 90, rf_a: 80, rr_a: 100, total_a: 390, lf_b: 92, lr_b: 82, rf_b: 94, rr_b: 92, total_b: 360, die: 1212.998 },
-    ])
-  }, [])
+    setData(result);
+  }, [result]);
+  const [view, setView] = useState(true);
 
   const handleViewChart = () => {
-    setView(!!!view)
-  }
+    setView(!!!view);
+  };
 
   return {
     data,
@@ -24,5 +131,5 @@ export default function useCheckLoadTonnage() {
     view,
     setView,
     handleViewChart,
-  }
+  };
 }

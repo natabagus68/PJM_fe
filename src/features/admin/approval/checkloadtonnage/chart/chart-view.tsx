@@ -2,27 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import Chart from "@common/components/Chart";
 import { Line } from "react-chartjs-2";
 
-export default function TonnageChart() {
+export default function TonnageChart({ data = null }) {
   const ctx = useRef();
   const chart = useRef();
-
-  const data = {
-    labels: ["Red", "Orange", "Blue"],
-    // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
-    datasets: [
-      {
-        label: "Popularity of colours",
-        data: [55, 23, 96],
-        // you can set indiviual colors for each bar
-        backgroundColor: [
-          "rgba(255, 255, 255, 0.6)",
-          "rgba(255, 255, 255, 0.6)",
-          "rgba(255, 255, 255, 0.6)",
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
 
   return (
     <>
@@ -32,17 +14,15 @@ export default function TonnageChart() {
         <Line
           datasetIdKey="id"
           data={{
-            labels: ["Jun", "Jul", "Aug", "Sep"],
+            labels: data?.loadTonnage?.map((e, i) => i + 1),
             datasets: [
               {
-                id: 1,
-                label: "",
-                data: [5, 6, 7, 2],
+                label: "TOTAL Actual Load",
+                data: data?.loadTonnage?.map((e, i) => e.totalActLoad),
               },
               {
-                id: 2,
-                label: "",
-                data: [3, 2, 2, 5],
+                label: "TOTAL Actual Monitor Load",
+                data: data?.loadTonnage?.map((e, i) => e.totalLoadMonitor),
               },
             ],
           }}
@@ -59,17 +39,15 @@ export default function TonnageChart() {
         <Line
           datasetIdKey="id"
           data={{
-            labels: ["Jun", "Jul", "Aug", "Sep"],
+            labels: data?.loadTonnage?.map((e, i) => i + 1),
             datasets: [
               {
-                id: 1,
-                label: "",
-                data: [5, 6, 7, 2],
+                label: "LF Actual",
+                data: data?.loadTonnage?.map((e, i) => e.lfActLoad),
               },
               {
-                id: 2,
-                label: "",
-                data: [3, 2, 2, 5],
+                label: "LF Monitor Load",
+                data: data?.loadTonnage?.map((e, i) => e.lfLoadMonitor),
               },
             ],
           }}
@@ -86,17 +64,15 @@ export default function TonnageChart() {
         <Line
           datasetIdKey="id"
           data={{
-            labels: ["Jun", "Jul", "Aug", "Sep"],
+            labels: data?.loadTonnage?.map((e, i) => i + 1),
             datasets: [
               {
-                id: 1,
-                label: "",
-                data: [5, 6, 7, 2],
+                label: "LR Actual Load",
+                data: data?.loadTonnage?.map((e, i) => e.lrActLoad),
               },
               {
-                id: 2,
-                label: "",
-                data: [3, 2, 2, 5],
+                label: "LR Monitor Load",
+                data: data?.loadTonnage?.map((e, i) => e.lrLoadMonitor),
               },
             ],
           }}
@@ -113,17 +89,15 @@ export default function TonnageChart() {
         <Line
           datasetIdKey="id"
           data={{
-            labels: ["Jun", "Jul", "Aug", "Sep"],
+            labels: data?.loadTonnage?.map((e, i) => i + 1),
             datasets: [
               {
-                id: 1,
-                label: "",
-                data: [5, 6, 7, 2],
+                label: "RF Actual",
+                data: data?.loadTonnage?.map((e, i) => e.rfActLoad),
               },
               {
-                id: 2,
-                label: "",
-                data: [3, 2, 2, 5],
+                label: "RF Monitor Load",
+                data: data?.loadTonnage?.map((e, i) => e.rfLoadMonitor),
               },
             ],
           }}
@@ -140,17 +114,15 @@ export default function TonnageChart() {
         <Line
           datasetIdKey="id"
           data={{
-            labels: ["Jun", "Jul", "Aug", "Sep"],
+            labels: data?.loadTonnage?.map((e, i) => i + 1),
             datasets: [
               {
-                id: 1,
-                label: "",
-                data: [5, 6, 7, 2],
+                label: "RR Actual",
+                data: data?.loadTonnage?.map((e, i) => e.rrActLoad),
               },
               {
-                id: 2,
-                label: "",
-                data: [3, 2, 2, 5],
+                label: "RR Monitor Load",
+                data: data?.loadTonnage?.map((e, i) => e.rrLoadMonitor),
               },
             ],
           }}
@@ -163,4 +135,4 @@ export default function TonnageChart() {
       </div>
     </>
   );
-};
+}

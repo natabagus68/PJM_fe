@@ -1,4 +1,7 @@
+import { useMachineCheck } from "./machine-model";
+
 export default function MachineCheck() {
+  const model = useMachineCheck();
   return (
     <>
       <div className="grid grid-cols-10 text-center border-b">
@@ -22,7 +25,7 @@ export default function MachineCheck() {
             </div>
             <div className="w-1/3 text-end pl-5">
               <h3 className="text-[#393737]">
-                10.1
+                {model.data.machineCheck.slideDiam}
                 <span className="text-[#6F6C6C] ml-1">A</span>
               </h3>
             </div>
@@ -40,7 +43,7 @@ export default function MachineCheck() {
           <div className="flex justify-end w-full">
             <div className="w-1/3  text-end pl-5">
               <h3 className="text-[#393737]">
-                35.8
+                {model.data.machineCheck.slideBergerak}
                 <span className="text-[#6F6C6C] ml-1">A</span>
               </h3>
             </div>
@@ -58,7 +61,7 @@ export default function MachineCheck() {
           <div className="flex justify-end w-full">
             <div className="w-1/3  text-end pl-5">
               <h3 className="text-[#393737]">
-                410
+                {model.data.machineCheck.noMainMotor}
                 <span className="text-[#6F6C6C] ml-1">sec</span>
               </h3>
             </div>
@@ -76,7 +79,8 @@ export default function MachineCheck() {
           <div className="flex justify-end w-full">
             <div className="w-1/3 text-end pl-5">
               <h3 className="text-[#393737]">
-                -<span className="text-[#6F6C6C] ml-1">times</span>
+                {model.data.machineCheck.running}-
+                <span className="text-[#6F6C6C] ml-1">times</span>
               </h3>
             </div>
           </div>
@@ -96,7 +100,8 @@ export default function MachineCheck() {
             </div>
             <div className="w-1/3 text-end pl-5">
               <h3 className="text-[#393737]">
-                -<span className="text-[#6F6C6C] ml-1">mm</span>
+                {model.data.machineCheck.clearence}-
+                <span className="text-[#6F6C6C] ml-1">mm</span>
               </h3>
             </div>
           </div>
@@ -106,7 +111,8 @@ export default function MachineCheck() {
             </div>
             <div className="w-1/3 text-end pl-5">
               <h3 className="text-[#393737]">
-                -<span className="text-[#6F6C6C] ml-1">mm</span>
+                {model.data.machineCheck.point}-
+                <span className="text-[#6F6C6C] ml-1">mm</span>
               </h3>
             </div>
           </div>
@@ -126,7 +132,9 @@ export default function MachineCheck() {
                 <td className="border-r">0,2+3√P/10/100</td>
                 <td className="border-r font-semibold">0</td>
                 <td className="border-r">1,2</td>
-                <td className="font-medium">123</td>
+                <td className="font-medium">
+                  {model.data.machineCheck.actual}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -138,7 +146,7 @@ export default function MachineCheck() {
             </div>
             <div className="border-r h-full flex items-center justify-center w-1/2">
               <h2 className="text-[#FFA52F] font-medium leading-4 text-base">
-                R = Perlu Perbaikan
+                {model.data.machineCheck.result}
               </h2>
             </div>
           </div>
@@ -213,10 +221,11 @@ export default function MachineCheck() {
                   1
                 </div>
                 <input
-                  className="w-full py-2 px-1"
+                  className="w-full py-2 px-5"
                   type="text"
                   name=""
                   id=""
+                  value={model.data.machineCheck.test1}
                   placeholder="00:00,00"
                 />
               </div>
@@ -225,10 +234,11 @@ export default function MachineCheck() {
                   2
                 </div>
                 <input
-                  className="w-full py-2 px-1"
+                  className="w-full py-2 px-5"
                   type="text"
                   name=""
                   id=""
+                  value={model.data.machineCheck.test2}
                   placeholder="00:00,00"
                 />
               </div>
@@ -237,10 +247,11 @@ export default function MachineCheck() {
                   3
                 </div>
                 <input
-                  className="w-full py-2 px-1"
+                  className="w-full py-2 px-5"
                   type="text"
                   name=""
                   id=""
+                  value={model.data.machineCheck.test3}
                   placeholder="00:00,00"
                 />
               </div>
@@ -249,10 +260,11 @@ export default function MachineCheck() {
                   4
                 </div>
                 <input
-                  className="w-full py-2 px-1"
+                  className="w-full py-2 px-5"
                   type="text"
                   name=""
                   id=""
+                  value={model.data.machineCheck.test4}
                   placeholder="00:00,00"
                 />
               </div>
@@ -261,10 +273,11 @@ export default function MachineCheck() {
                   5
                 </div>
                 <input
-                  className="w-full py-2 px-1"
+                  className="w-full py-2 px-5"
                   type="text"
                   name=""
                   id=""
+                  value={model.data.machineCheck.test5}
                   placeholder="00:00,00"
                 />
               </div>
@@ -279,10 +292,11 @@ export default function MachineCheck() {
                   6
                 </div>
                 <input
-                  className="w-full py-2 px-1"
+                  className="w-full py-2 px-5"
                   type="text"
                   name=""
                   id=""
+                  value={model.data.machineCheck.test6}
                   placeholder="00:00,00"
                 />
               </div>
@@ -291,10 +305,11 @@ export default function MachineCheck() {
                   7
                 </div>
                 <input
-                  className="w-full py-2 px-1"
+                  className="w-full py-2 px-5"
                   type="text"
                   name=""
                   id=""
+                  value={model.data.machineCheck.test7}
                   placeholder="00:00,00"
                 />
               </div>
@@ -303,10 +318,11 @@ export default function MachineCheck() {
                   8
                 </div>
                 <input
-                  className="w-full py-2 px-1"
+                  className="w-full py-2 px-5"
                   type="text"
                   name=""
                   id=""
+                  value={model.data.machineCheck.test8}
                   placeholder="00:00,00"
                 />
               </div>
@@ -315,10 +331,11 @@ export default function MachineCheck() {
                   9
                 </div>
                 <input
-                  className="w-full py-2 px-1"
+                  className="w-full py-2 px-5"
                   type="text"
                   name=""
                   id=""
+                  value={model.data.machineCheck.test9}
                   placeholder="00:00,00"
                 />
               </div>
@@ -327,10 +344,11 @@ export default function MachineCheck() {
                   10
                 </div>
                 <input
-                  className="w-full py-2 px-1"
+                  className="w-full py-2 px-5"
                   type="text"
                   name=""
                   id=""
+                  value={model.data.machineCheck.test10}
                   placeholder="00:00,00"
                 />
               </div>

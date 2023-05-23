@@ -13,6 +13,7 @@ export class IMachineCheck {
   adjustUp: string;
   adjustDown: string;
   tmb: string;
+  point: string;
   test1: string;
   test2: string;
   test3: string;
@@ -42,6 +43,7 @@ export class MachineCheck extends Entity<IMachineCheck> {
       adjustUp: this.adjustUp,
       adjustDown: this.adjustDown,
       tmb: this.tmb,
+      point: this.point,
       test1: this.test1,
       test2: this.test2,
       test3: this.test3,
@@ -84,6 +86,9 @@ export class MachineCheck extends Entity<IMachineCheck> {
   }
   get tmb(): string {
     return this._props.tmb;
+  }
+  get point(): string {
+    return this._props.point;
   }
   get test1(): string {
     return this._props.test1;
