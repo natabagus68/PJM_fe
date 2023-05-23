@@ -121,6 +121,9 @@ export const useReportDetail = () => {
     })
   );
 
+  const toBack = () => {
+    navigate("../");
+  };
   useEffect(() => {
     aprovalRepo.getReport(id).then((result) => {
       setData(result);
@@ -134,6 +137,7 @@ export const useReportDetail = () => {
     data,
     nav,
     navHandle,
+    toBack,
   };
 };
 

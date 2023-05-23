@@ -13,7 +13,10 @@ export const ReportDetailMain = () => {
       <div className="w-full  py-6 px-4 border-b border border-gray-300 mt-12 bg-white rounded-xl flex justify-between">
         <h1 className="font-semibold text-3xl text-natural-300">Details</h1>
         <div className="flex gap-3 items-center">
-          <button className="bg-transparent border border-teal-500 flex gap-1 text-center items-center text-teal-500 py-3 px-5 rounded-md">
+          <button
+            onClick={model.toBack}
+            className="bg-transparent border border-teal-500 flex gap-1 text-center items-center text-teal-500 py-3 px-5 rounded-md"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
