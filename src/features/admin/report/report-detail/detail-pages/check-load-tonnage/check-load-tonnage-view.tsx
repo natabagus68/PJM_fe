@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useCheckLoadTonnage } from "./check-load-tonnage-view-model";
-
+import { useContext } from "react";
 export const CheckLoadTonnage = () => {
   const model = useCheckLoadTonnage();
 
@@ -40,6 +40,7 @@ export const CheckLoadTonnage = () => {
             Chart
           </p>
         </div>
+
         <Outlet />
       </div>
     </>

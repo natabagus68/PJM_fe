@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from "react";
-import aprovalContext from "../aprovalContex";
+import { useState, useEffect } from "react";
+import ReportContex from "../../report-detail-main/report-useContex";
+import { useContext } from "react";
 import { AprovalReport } from "@domain/models/aproval-report";
-import { Aproval } from "@domain/models/aproval";
 import { AprovalResult } from "@domain/models/aproval-result";
 import { MachineCheck } from "@domain/models/machine-check";
-import { Accuracy } from "@domain/models/Accuracy";
 import { ResumeCheck } from "@domain/models/resume-check";
-
-export const useMachineCheck = () => {
-  const result = useContext(aprovalContext);
+import { Accuracy } from "@domain/models/Accuracy";
+import { Aproval } from "@domain/models/aproval";
+export default function useResumeCheck() {
+  const result = useContext(ReportContex);
   const [data, setData] = useState<AprovalReport>(
     AprovalReport.create({
       id: "",
@@ -116,12 +116,26 @@ export const useMachineCheck = () => {
     })
   );
 
+  const [open, setOpen] = useState(false);
+
+  const handlePreview = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   useEffect(() => {
     setData(result);
   }, [result]);
 
   return {
     data,
+    open,
+    setOpen,
+    handlePreview,
+    handleClose,
   };
-};
+}
 

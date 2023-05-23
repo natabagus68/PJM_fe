@@ -1,169 +1,365 @@
-export const MachineCheck = () => {
+import { useMachineCheck } from "./machine-check-model";
+
+export default function MachineCheck() {
+  const model = useMachineCheck();
   return (
     <>
-      <div className="w-full rounded-xl border border-gray-300 pb-3">
-        {/* header */}
-        <div className="flex w-full">
-          <div className="w-full py-2 text-center font-semibold border-b border-gray-300">
-            Point Inspection
-          </div>
-          <div className="w-full py-2 text-center font-semibold border-b border-gray-300">
-            Ketetapan
-          </div>
-          <div className="w-full py-2 text-center font-semibold border-b border-gray-300">
-            Notes
+      <div className="grid grid-cols-10 text-center border-b">
+        <h1 className="font-[700] p-2 col-span-4">Point Inspection</h1>
+        <h1 className="border-l border-r font-[700] p-2 col-span-3">
+          Ketetapan
+        </h1>
+        <h1 className="font-[700] p-2 col-span-3">Notes</h1>
+      </div>
+      <div className=" text-[#514E4E] border-b px-2 grid grid-cols-10 py-1">
+        <div className="col-span-4">
+          <div className="flex gap-x-2">
+            <span>1.</span>
+            <h2>Ampere motor fly wheel berputar (slide diam)</h2>
           </div>
         </div>
-        {/* body */}
-
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5  ">
-            1.Ampere motor fly wheel berputar (slide diam)
+        <div className="col-span-3 px-4">
+          <div className="flex w-full">
+            <div className="w-2/3 text-end">
+              <h3 className=" text-[#6F6C6C]">Total</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737]">
+                {model.data.machineCheck.slideDiam}
+                <span className="text-[#6F6C6C] ml-1">A</span>
+              </h3>
+            </div>
           </div>
-          <div className="w-full py-2 text-start pl-5 flex justify-around ">
-            Total
-            <p className="text-end">
-              <span className="font-bold">10,1</span> A
-            </p>
-          </div>
-          <div className="w-full py-2 text-start pl-5  "></div>
         </div>
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5  ">
-            2.Ampere motor (slide bergerak)
+      </div>
+      <div className=" text-[#514E4E] border-b px-2 grid grid-cols-10 py-1">
+        <div className="col-span-4">
+          <div className="flex gap-x-2">
+            <span>2.</span>
+            <h2>Ampere motor (slide bergerak)</h2>
           </div>
-          <div className="w-full py-2 text-start pl-48 flex justify-around">
-            <p className="text-end">
-              <span className="font-bold">35,8</span> A{" "}
-            </p>
-          </div>
-          <div className="w-full py-2 text-start pl-5  "></div>
         </div>
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5  ">
-            3.Flywheel berputar (tanpa main motor)
+        <div className="col-span-3 px-4">
+          <div className="flex justify-end w-full">
+            <div className="w-1/3  text-end pl-5">
+              <h3 className="text-[#393737]">
+                {model.data.machineCheck.slideBergerak}
+                <span className="text-[#6F6C6C] ml-1">A</span>
+              </h3>
+            </div>
           </div>
-          <div className="w-full py-2 text-startt pl-48 flex justify-around ">
-            <p>
-              {" "}
-              <span className="font-bold">410</span> sec{" "}
-            </p>
-          </div>
-          <div className="w-full py-2 text-start pl-5  "></div>
         </div>
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5  ">
-            4.Siklus Slide free running
+      </div>
+      <div className=" text-[#514E4E] border-b px-2 grid grid-cols-10 py-1">
+        <div className="col-span-4">
+          <div className="flex gap-x-2">
+            <span>3.</span>
+            <h2>Flywheel berputar (tanpa main motor)</h2>
           </div>
-          <div className="w-full py-2 text-start  pl-48 flex justify-around">
-            <p>- times</p>
-          </div>
-          <div className="w-full py-2 text-start pl-5  "></div>
         </div>
-
-        <div className="flex w-full ">
-          <div className="w-full py-2 text-start pl-5 ">
-            5.Press total clearance
+        <div className="col-span-3 px-4">
+          <div className="flex justify-end w-full">
+            <div className="w-1/3  text-end pl-5">
+              <h3 className="text-[#393737]">
+                {model.data.machineCheck.noMainMotor}
+                <span className="text-[#6F6C6C] ml-1">sec</span>
+              </h3>
+            </div>
           </div>
-          <div className="w-full py-2 text-center flex justify-around">
-            - Total <p>- mm</p>{" "}
-          </div>
-          <div className="w-full py-2 text-center "></div>
         </div>
-        <div className="flex w-full ">
-          <div className="w-full py-2 text-center "></div>
-          <div className="w-full py-2 text-center flex justify-around">
-            - Total <p> - mm</p>{" "}
+      </div>
+      <div className=" text-[#514E4E] border-b px-2 grid grid-cols-10 py-1">
+        <div className="col-span-4">
+          <div className="flex gap-x-2">
+            <span>4.</span>
+            <h2>Siklus Slide free running</h2>
           </div>
-          <div className="w-full py-2 text-center "></div>
         </div>
-        <div className="flex w-full py-2 justify-center ">
-          <table className="w-[80%]">
-            <thead>
-              <th className="py-2 bg-gray-200 ">Standar</th>
-              <th className="py-2 bg-gray-200 ">P = Kapasitas Press</th>
-              <th className="py-2 bg-gray-200 ">Nilai Maksimum</th>
-              <th className="py-2 bg-gray-200 ">Actual</th>
+        <div className="col-span-3 px-4">
+          <div className="flex justify-end w-full">
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737]">
+                {model.data.machineCheck.running}-
+                <span className="text-[#6F6C6C] ml-1">times</span>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className=" text-[#514E4E] border-b px-2 grid grid-cols-10 py-1">
+        <div className="col-span-4">
+          <div className="flex gap-x-2">
+            <span>5.</span>
+            <h2>Press total clearance</h2>
+          </div>
+        </div>
+        <div className="col-span-3 px-4">
+          <div className="flex w-full">
+            <div className="w-2/3 text-end">
+              <h3 className=" text-[#6F6C6C]">Total</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737]">
+                {model.data.machineCheck.clearence}-
+                <span className="text-[#6F6C6C] ml-1">mm</span>
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full">
+            <div className="w-2/3 text-end">
+              <h3 className=" text-[#6F6C6C]">Point</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737]">
+                {model.data.machineCheck.point}-
+                <span className="text-[#6F6C6C] ml-1">mm</span>
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div className="col-span-10 mb-2">
+          <table className="w-full table-fixed my-2">
+            <thead className="bg-[#F5F5F5] border h-[40px] text-[#514E4E] font-semibold">
+              <tr>
+                <th className="border-r">Standar</th>
+                <th className="border-r">P = Kapasitas Press</th>
+                <th className="border-r">Nilai Maksimum</th>
+                <th className="">Actual</th>
+              </tr>
             </thead>
-            <tbody>
-              <td className="py-2 border border-gray-300 text-center ">
-                Standar
-              </td>
-              <td className="py-2 border border-gray-300 text-center ">
-                P = Kapasitas Press
-              </td>
-              <td className="py-2 border border-gray-300 text-center ">
-                Nilai Maksimum
-              </td>
-              <td className="py-2 border border-gray-300 text-center ">
-                Actual
-              </td>
+            <tbody className="text-[#514E4E] text-center h-[40px] border">
+              <tr>
+                <td className="border-r">0,2+3√P/10/100</td>
+                <td className="border-r font-semibold">0</td>
+                <td className="border-r">1,2</td>
+                <td className="font-medium">
+                  {model.data.machineCheck.actual}
+                </td>
+              </tr>
             </tbody>
           </table>
-        </div>
-        <div className="flex w-full py-2 justify-end pr-32 border-b border-gray-300">
-          <table>
-            <tr>
-              <td className="py-2 bg-gray-200  px-5">Hasil Ketetapan</td>
-              <td className="py-2 border border-gray-300 text-center px-5 text-yellow-400">
-                R = Perlu Perbaikan
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div className="flex w-full ">
-          <div className="w-full py-2 text-start pl-5  ">
-            6.Amphere Motor slide adjust
-          </div>
-          <div className="w-full py-2 text-start pl-5 flex justify-around ">
-            Up
-            <p className="text-end">
-              <span className="font-bold">77</span> A
-            </p>
-          </div>
-          <div className="w-full py-2 text-start pl-5  "></div>
-        </div>
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5  ">{""}</div>
-          <div className="w-full py-2 text-start pl-5 flex justify-around ">
-            Down
-            <p className="text-end">
-              <span className="font-bold">81</span> A
-            </p>
-          </div>
-          <div className="w-full py-2 text-start pl-5  "></div>
-        </div>
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-2 text-start pl-5  ">
-            7.Pararelism antara bolster dan slide pada titik TMB
-          </div>
-          <div className="w-full py-2 text-start pl-5 flex justify-center items-center ">
-            ok
-          </div>
-          <div className="w-full py-2 text-center pl-5">
-            <p>{"180°"}</p>
-            <p>{"(std= 0,03+0,08/500xL2)"}</p>
-            <p>{`L2 0 mm Standard 0,03 mm`}</p>
+          <div className="flex w-1/2 border ml-auto h-[40px] rounded">
+            <div className="border-r h-full flex items-center justify-center bg-[#F5F5F5] w-1/2">
+              <h2 className="text-[#514E4E] font-semibold leading-4 text-base">
+                Hasil Ketetapan
+              </h2>
+            </div>
+            <div className="border-r h-full flex items-center justify-center w-1/2">
+              <h2 className="text-[#FFA52F] font-medium leading-4 text-base">
+                {model.data.machineCheck.result}
+              </h2>
+            </div>
           </div>
         </div>
-        <div className="flex w-full border-b border-gray-300">
-          <div className="w-full py-12 text-start pl-5  ">
-            8.Pararelism antara bolster dan slide pada titik TMB
+      </div>
+      <div className=" text-[#514E4E] border-b px-2 grid grid-cols-10 py-1">
+        <div className="col-span-4">
+          <div className="flex gap-x-2">
+            <span>6.</span>
+            <h2>Amphere Motor slide adjust</h2>
           </div>
-
-          <div className="w-full py-12 text-center pl-5 flex flex-wrap ">
-            <div className="w-52 flex h-8 rounded-md border border-gray-300">
-              <div className="w-1/3 h-full rounded-l-md text-center text-neutral-600 border-r border-gray-300 bg-neutral-200">
-                1
+        </div>
+        <div className="col-span-3 px-4">
+          <div className="flex w-full">
+            <div className="w-2/3 text-end">
+              <h3 className=" text-[#6F6C6C]">Up</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737]">
+                7.7<span className="text-[#6F6C6C] ml-1">A</span>
+              </h3>
+            </div>
+          </div>
+          <div className="flex w-full">
+            <div className="w-2/3 text-end">
+              <h3 className=" text-[#6F6C6C]">Down</h3>
+            </div>
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#393737]">
+                8.1<span className="text-[#6F6C6C] ml-1">A</span>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className=" text-[#514E4E] border-b px-2 grid grid-cols-10 py-1">
+        <div className="col-span-4">
+          <div className="flex gap-x-2">
+            <span>7.</span>
+            <h2>Pararelism antara bolster dan slide pada titik TMB</h2>
+          </div>
+        </div>
+        <div className="col-span-3 px-4 flex items-center">
+          <div className="flex justify-end w-full">
+            <div className="w-1/3 text-end pl-5">
+              <h3 className="text-[#12B76A] text-center font-bold">OK</h3>
+            </div>
+          </div>
+        </div>
+        <div className="col-span-3 text-center">
+          <h3>180°</h3>
+          <h3>(std= 0,03+0,08/500xL2)</h3>
+          <h3>L2 0 mm Standard 0,03 mm</h3>
+        </div>
+      </div>
+      <div className=" text-[#514E4E] border-b px-2 grid grid-cols-10 py-1">
+        <div className="col-span-4">
+          <div className="flex gap-x-2">
+            <span>8.</span>
+            <h2>Pengukuran dengan Stopping Time</h2>
+          </div>
+        </div>
+        <div className="col-span-10">
+          <div className="flex w-1/2 ml-auto">
+            <div className="w-1/2 px-3">
+              <div className="flex w-full justify-between mb-2">
+                <h3>Tes</h3>
+                <h3>Stopping Time (mS)</h3>
               </div>
-              <div className="w-full h-full px-1 text-xl text-neutral-400">
-                0:00,00
+              <div className="flex w-full border mb-3 rounded">
+                <div className="min-w-[40px] flex justify-center items-center bg-[#F5F5F5] border-r">
+                  1
+                </div>
+                <input
+                  className="w-full py-2 px-5"
+                  type="text"
+                  name=""
+                  id=""
+                  value={model.data.machineCheck.test1}
+                  placeholder="00:00,00"
+                />
+              </div>
+              <div className="flex w-full border mb-3 rounded">
+                <div className="min-w-[40px] flex justify-center items-center bg-[#F5F5F5] border-r">
+                  2
+                </div>
+                <input
+                  className="w-full py-2 px-5"
+                  type="text"
+                  name=""
+                  id=""
+                  value={model.data.machineCheck.test2}
+                  placeholder="00:00,00"
+                />
+              </div>
+              <div className="flex w-full border mb-3 rounded">
+                <div className="min-w-[40px] flex justify-center items-center bg-[#F5F5F5] border-r">
+                  3
+                </div>
+                <input
+                  className="w-full py-2 px-5"
+                  type="text"
+                  name=""
+                  id=""
+                  value={model.data.machineCheck.test3}
+                  placeholder="00:00,00"
+                />
+              </div>
+              <div className="flex w-full border mb-3 rounded">
+                <div className="min-w-[40px] flex justify-center items-center bg-[#F5F5F5] border-r">
+                  4
+                </div>
+                <input
+                  className="w-full py-2 px-5"
+                  type="text"
+                  name=""
+                  id=""
+                  value={model.data.machineCheck.test4}
+                  placeholder="00:00,00"
+                />
+              </div>
+              <div className="flex w-full border mb-3 rounded">
+                <div className="min-w-[40px] flex justify-center items-center bg-[#F5F5F5] border-r">
+                  5
+                </div>
+                <input
+                  className="w-full py-2 px-5"
+                  type="text"
+                  name=""
+                  id=""
+                  value={model.data.machineCheck.test5}
+                  placeholder="00:00,00"
+                />
               </div>
             </div>
+            <div className="w-1/2 px-3">
+              <div className="flex w-full justify-between mb-2">
+                <h3>Tes</h3>
+                <h3>Stopping Time (mS)</h3>
+              </div>
+              <div className="flex w-full border mb-3 rounded">
+                <div className="min-w-[40px] flex justify-center items-center bg-[#F5F5F5] border-r">
+                  6
+                </div>
+                <input
+                  className="w-full py-2 px-5"
+                  type="text"
+                  name=""
+                  id=""
+                  value={model.data.machineCheck.test6}
+                  placeholder="00:00,00"
+                />
+              </div>
+              <div className="flex w-full border mb-3 rounded">
+                <div className="min-w-[40px] flex justify-center items-center bg-[#F5F5F5] border-r">
+                  7
+                </div>
+                <input
+                  className="w-full py-2 px-5"
+                  type="text"
+                  name=""
+                  id=""
+                  value={model.data.machineCheck.test7}
+                  placeholder="00:00,00"
+                />
+              </div>
+              <div className="flex w-full border mb-3 rounded">
+                <div className="min-w-[40px] flex justify-center items-center bg-[#F5F5F5] border-r">
+                  8
+                </div>
+                <input
+                  className="w-full py-2 px-5"
+                  type="text"
+                  name=""
+                  id=""
+                  value={model.data.machineCheck.test8}
+                  placeholder="00:00,00"
+                />
+              </div>
+              <div className="flex w-full border mb-3 rounded">
+                <div className="min-w-[40px] flex justify-center items-center bg-[#F5F5F5] border-r">
+                  9
+                </div>
+                <input
+                  className="w-full py-2 px-5"
+                  type="text"
+                  name=""
+                  id=""
+                  value={model.data.machineCheck.test9}
+                  placeholder="00:00,00"
+                />
+              </div>
+              <div className="flex w-full border mb-3 rounded">
+                <div className="min-w-[40px] flex justify-center items-center bg-[#F5F5F5] border-r">
+                  10
+                </div>
+                <input
+                  className="w-full py-2 px-5"
+                  type="text"
+                  name=""
+                  id=""
+                  value={model.data.machineCheck.test10}
+                  placeholder="00:00,00"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex w-1/2 ml-auto">
+            <h3 className=" px-3">Maksimum Stopping Time = 0 mS</h3>
           </div>
         </div>
       </div>
     </>
   );
-};
+}
 
