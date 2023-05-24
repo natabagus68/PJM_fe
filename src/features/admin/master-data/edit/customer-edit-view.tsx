@@ -67,10 +67,10 @@ export default function MasterDataEditView() {
                     <InputFile
                       isReset={true}
                       label="Choose"
-                      htmlFor="parallel-1"
+                      htmlFor="parallel1"
                       bgColor="bg-[#14988B]"
                       ftColor="text-[#FFFFFF]"
-                      name={"parallel1"}
+                      name="parallel1"
                       btnIcon={<ResetIcon />}
                       changeHandle={(e) => data.handleFile(e)}
                     />
@@ -80,10 +80,10 @@ export default function MasterDataEditView() {
                     <InputFile
                       isReset={true}
                       label="Choose"
-                      htmlFor="parallel-1"
+                      htmlFor="parallel2"
+                      name="parallel2"
                       bgColor="bg-[#14988B]"
                       ftColor="text-[#FFFFFF]"
-                      name={"parallel1"}
                       btnIcon={<ResetIcon />}
                       changeHandle={(e) => data.handleFile(e)}
                     />
@@ -96,7 +96,8 @@ export default function MasterDataEditView() {
                     <InputFile
                       isReset={true}
                       label="Choose"
-                      htmlFor="Gib-1"
+                      htmlFor="gib1"
+                      name="gib1"
                       defaultValue={data.customer.gib1}
                       bgColor="bg-[#14988B]"
                       ftColor="text-[#FFFFFF]"
@@ -108,7 +109,8 @@ export default function MasterDataEditView() {
                     <InputFile
                       isReset={true}
                       label="Choose"
-                      htmlFor="Gib-2"
+                      htmlFor="gib2"
+                      name="gib2"
                       defaultValue={data.customer.gib2}
                       bgColor="bg-[#14988B]"
                       ftColor="text-[#FFFFFF]"
@@ -122,9 +124,9 @@ export default function MasterDataEditView() {
                     <h1 className="font-[400] text-sm mb-2">Images 1</h1>
                     <InputFile
                       isReset={true}
-                      htmlFor={"prep1"}
-                      label="Choose"
+                      htmlFor="prep1"
                       name="prep1"
+                      label="Choose"
                       defaultValue={data.customer.prep1}
                       bgColor="bg-[#14988B]"
                       ftColor="text-[#FFFFFF]"
@@ -135,9 +137,9 @@ export default function MasterDataEditView() {
                     <h1 className="font-[400] text-sm mb-2">Images 2</h1>
                     <InputFile
                       isReset={true}
-                      htmlFor={"prep2"}
-                      label="Choose"
+                      htmlFor="prep2"
                       name="prep2"
+                      label="Choose"
                       defaultValue={data.customer.prep1}
                       bgColor="bg-[#14988B]"
                       ftColor="text-[#FFFFFF]"
