@@ -1,4 +1,3 @@
-import { Switch } from '@headlessui/react';
 import { Breadcrumbs } from "@common/components/Breadcrumbs";
 import { Toggle } from "@common/components/input/Toggle";
 import EyeShowIcon from "@common/components/icons-new/EyeShowIcon"
@@ -48,7 +47,7 @@ export default function UserView() {
                         <Toggle
                           id={item?.id}
                           name={item?.name}
-                          checked={item?.is_active ? false : false}
+                          checked={item?.isActive ? false : false}
                           activeText="Active"
                           inactiveText="Inactive"
                           cb={() => console.log(item?.name)}

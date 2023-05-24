@@ -4,7 +4,7 @@ import { CustomerApiRepository } from "@data/api/customer-api-repository";
 import { Customer } from "@domain/models/customer";
 
 export default function useCustomerEditModel() {
-  const { id } = useParams()
+  const { id } = useParams();
   const navigate = useNavigate();
   const data = new CustomerApiRepository();
   const [open, setOpen] = useState(false);
@@ -59,7 +59,6 @@ export default function useCustomerEditModel() {
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log(customer)
     const formData = new FormData();
     formData.append("customerName", customer.name);
     formData.append("address", customer.address);
@@ -70,7 +69,11 @@ export default function useCustomerEditModel() {
     formData.append("gibClearance2Path", customer.gib2);
     formData.append("perpendicularity1Path", customer.prep1);
     formData.append("perpendicularity2Path", customer.prep2);
-    data.update(customer).then((res) => navigate("../"));
+    setCustomer(customer);
+    console.log(customer);
+    setOpen(false);
+    navigate(-1);
+    // data.update(customer).then((res) => navigate("../"));
     setCustomer(
       Customer.create({
         id: "",
