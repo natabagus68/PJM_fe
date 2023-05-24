@@ -3,31 +3,27 @@ import { Entity } from "./_entity";
 export interface IUserProps {
   id: string;
   name: string;
-  email: string;
-  password: string;
-  role_id: string | null;
-  is_active: boolean;
-  photo: string | null;
-  email_verified_at: Date | null;
-  fcm_token: string | null;
-  created_at: string;
-  updated_at: string;
-  deleted_at: Date | null;
+  email?: string | undefined;
+  isActive?: boolean | undefined;
+  password?: string | undefined;
+  role?: string | undefined;
+  photo?: string | undefined;
+  email_verified_at?: Date | undefined;
+  fcm_token?: string | undefined;
+  created_at?: string | undefined;
+  updated_at?: string | undefined;
+  deleted_at?: Date | undefined;
 }
 
-export interface IUser {
-  unmarshall(): IUserProps;
-}
-
-export class User extends Entity<IUserProps> implements IUser {
-  unmarshall(): IUserProps {
+export class User extends Entity<IUserProps> {
+  unmarshall() {
     return {
       id: this.id,
       name: this.name,
       email: this.email,
       password: this.password,
-      role_id: this.role_id,
-      is_active: this.is_active,
+      role: this.role,
+      isActive: this.isActive,
       photo: this.photo,
       email_verified_at: this.email_verified_at,
       fcm_token: this.fcm_token,
@@ -45,34 +41,34 @@ export class User extends Entity<IUserProps> implements IUser {
   get name(): string {
     return this._props.name;
   }
-  get email(): string {
+  get email(): string | undefined {
     return this._props.email;
   }
-  get password(): string {
+  get password(): string | undefined {
     return this._props.password;
   }
-  get role_id(): string | null {
-    return this._props.role_id;
+  get role(): string | undefined {
+    return this._props.role;
   }
-  get is_active(): boolean {
-    return this._props.is_active;
+  get isActive(): boolean | undefined {
+    return this._props.isActive;
   }
-  get photo(): string | null {
+  get photo(): string | undefined {
     return this._props.photo;
   }
-  get email_verified_at(): Date | null {
+  get email_verified_at(): Date | undefined {
     return this._props.email_verified_at;
   }
-  get fcm_token(): string | null {
+  get fcm_token(): string | undefined {
     return this._props.fcm_token;
   }
-  get created_at(): string {
+  get created_at(): string | undefined {
     return this._props.created_at;
   }
-  get updated_at(): string {
+  get updated_at(): string | undefined {
     return this._props.updated_at;
   }
-  get deleted_at(): Date | null {
+  get deleted_at(): Date | undefined {
     return this._props.deleted_at;
   }
 }

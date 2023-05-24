@@ -15,10 +15,10 @@ import { Table } from "@features/admin/report/report-detail/detail-pages/check-l
 import { ChartLine } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/chart/chart-line-view";
 import { ResumeCheck } from "@features/admin/report/report-detail/detail-pages/resume-check/resume-check-view";
 
-import MasterDataView from "@features/admin/master-data/masterdata-view";
-import MasterDataAddView from "@features/admin/master-data/add/masteradd-view";
-import MasterDataEditView from "@features/admin/master-data/edit/masteredit-view";
-import MasterDataDetailView from "@features/admin/master-data/detail/masterdetail-view";
+import MasterDataView from "@features/admin/master-data/customer-view";
+import MasterDataAddView from "@features/admin/master-data/add/customer-add-view";
+import MasterDataEditView from "@features/admin/master-data/edit/customer-edit-view";
+import MasterDataDetailView from "@features/admin/master-data/detail/customer-detail-view";
 import InspectionForm from "@features/admin/approval/inspection/form-view";
 import ApprovalReport from "@features/admin/approval/approvalreport-view";
 import MachineCheckView from "@features/admin/approval/checkmachine/machine-view";
@@ -71,15 +71,15 @@ export default createBrowserRouter([
             element: <MasterDataView />,
           },
           {
-            path: "masteradd-view",
+            path: "add/customer-add-view",
             element: <MasterDataAddView />,
           },
           {
-            path: "masteredit-view",
+            path: "edit/:id/customer-edit-view",
             element: <MasterDataEditView />,
           },
           {
-            path: "masterdetail-view",
+            path: "detail/:id/customer-detail-view",
             element: <MasterDataDetailView />,
           },
         ],
@@ -119,10 +119,6 @@ export default createBrowserRouter([
             ],
           },
         ],
-      },
-      {
-        path: "user",
-        element: <UserView />,
       },
       {
         path: "report",
@@ -175,16 +171,20 @@ export default createBrowserRouter([
         element: <Root />,
         children: [
           {
-            path: "useradd-view",
-            element: <UserAddView />,
+            path: "",
+            element: <UserView />
           },
           {
-            path: "useredit-view",
-            element: <UserEditView />,
+            path: "add/useradd-view",
+            element: <UserAddView />
           },
           {
-            path: "userdetail-view",
-            element: <UserDetailView />,
+            path: "edit/:id/useredit-view",
+            element: <UserEditView />
+          },
+          {
+            path: "detail/:id/userdetail-view",
+            element: <UserDetailView />
           },
         ],
       },

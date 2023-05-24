@@ -4,7 +4,7 @@ const _id = `radio_toggle_${Math.ceil(Math.random() * 1000)}`;
 export const Toggle = ({
   checked: _checked = false,
   id = null,
-  children,
+  children = null,
   activeText = "",
   inactiveText = "",
   name = "",
