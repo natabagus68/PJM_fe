@@ -8,8 +8,8 @@ import TraceabilityDetail from "@features/admin/traceability/traceability-detail
 
 import { Report } from "@features/admin/report/report/report-view";
 import { ReportDetailMain } from "@features/admin/report/report-detail/report-detail-main/report-detail-main-view";
-import { MachineCheck } from "@features/admin/report/report-detail/detail-pages/machine-check/machine-check-view";
-import { AcuracyCheck } from "@features/admin/report/report-detail/detail-pages/acuracy-check/acuracy-check-view";
+import MachineCheck from "@features/admin/report/report-detail/detail-pages/machine-check/machine-check-view";
+import { AccuracyCheckReport } from "@features/admin/report/report-detail/detail-pages/acuracy-check/acuracy-check-view";
 import { CheckLoadTonnage } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/check-load-tonnage-view";
 import { Table } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/table/table";
 import { ChartLine } from "@features/admin/report/report-detail/detail-pages/check-load-tonnage/chart/chart-line-view";
@@ -21,7 +21,6 @@ import MasterDataEditView from "@features/admin/master-data/edit/customer-edit-v
 import MasterDataDetailView from "@features/admin/master-data/detail/customer-detail-view";
 import InspectionForm from "@features/admin/approval/inspection/form-view";
 import ApprovalReport from "@features/admin/approval/approvalreport-view";
-import AccuracyCheckView from "@features/admin/approval/checkaccuracy/accuracy-view";
 import MachineCheckView from "@features/admin/approval/checkmachine/machine-view";
 import TonnageView from "@features/admin/approval/checkloadtonnage/tonnage-view";
 import ResumePreview from "@features/admin/approval/checkresume/resume-view";
@@ -103,7 +102,7 @@ export default createBrowserRouter([
               },
               {
                 path: "machinecheck-view",
-                element: <MachineCheck />,
+                element: <MachineCheckView />,
               },
               {
                 path: "accuracycheck-view",
@@ -143,7 +142,7 @@ export default createBrowserRouter([
               },
               {
                 path: "acuracy-check",
-                element: <AcuracyCheck />,
+                element: <AccuracyCheckReport />,
               },
               {
                 path: "check-load-tonnage",

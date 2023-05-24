@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import aprovalContext from "../aprovalContex";
-import { AprovalReport } from "@domain/models/aproval-report";
+import { Accuracy } from "@domain/models/Accuracy";
 import { Aproval } from "@domain/models/aproval";
+import { AprovalReport } from "@domain/models/aproval-report";
 import { AprovalResult } from "@domain/models/aproval-result";
 import { MachineCheck } from "@domain/models/machine-check";
-import { Accuracy } from "@domain/models/Accuracy";
 import { ResumeCheck } from "@domain/models/resume-check";
-
-export const useMachineCheck = () => {
-  const result = useContext(aprovalContext);
+import { AprovalRepository } from "@domain/repositories/aproval-repository";
+import ReportContex from "../../report-detail-main/report-useContex";
+export const useInspectionForm = () => {
+  const result = useContext(ReportContex);
   const [data, setData] = useState<AprovalReport>(
     AprovalReport.create({
       id: "",

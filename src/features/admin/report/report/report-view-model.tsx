@@ -3,8 +3,10 @@ import { Report } from "@domain/models/report";
 import { TableParams } from "@domain/models/table-params";
 import { ReportRepository } from "@domain/repositories/repoty-repository";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const useReport = () => {
+  const navigate = useNavigate();
   const reportRepo: ReportRepository = new ReportApiRepository();
   const [params, setParams] = useState<TableParams>({
     q: "",
@@ -27,6 +29,10 @@ export const useReport = () => {
     });
   };
 
+  const toDetail = (id: string) => {
+    navigate(`${id}/detail`);
+  };
+
   useEffect(() => {
     fetchData();
   }, [params]);
@@ -35,6 +41,7 @@ export const useReport = () => {
     params,
     data,
     handleSearch,
+    toDetail
   };
 };
 

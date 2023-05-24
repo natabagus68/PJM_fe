@@ -1,7 +1,7 @@
 import { Breadcrumbs } from "@common/components";
 import { Outlet } from "react-router-dom";
 import { useReportDetail } from "./report-detail-main-model";
-
+import ReportContex from "./report-useContex";
 export const ReportDetailMain = () => {
   const model = useReportDetail();
   return (
@@ -13,7 +13,10 @@ export const ReportDetailMain = () => {
       <div className="w-full  py-6 px-4 border-b border border-gray-300 mt-12 bg-white rounded-xl flex justify-between">
         <h1 className="font-semibold text-3xl text-natural-300">Details</h1>
         <div className="flex gap-3 items-center">
-          <button className="bg-transparent border border-teal-500 flex gap-1 text-center items-center text-teal-500 py-3 px-5 rounded-md">
+          <button
+            onClick={model.toBack}
+            className="bg-transparent border border-teal-500 flex gap-1 text-center items-center text-teal-500 py-3 px-5 rounded-md"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -59,27 +62,29 @@ export const ReportDetailMain = () => {
           <div className="w-full border border-gray-300 rounded-xl items-center bg-white px-3 py-3">
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Inspection ID</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">{model.data.aproval.inspectionID}</p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Inspection Date</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">
+                {model.data.aproval.inspectionDate}
+              </p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Confirmation Date</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">{model.data.aproval.confirmation}</p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Inspector</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">{model.data.aproval.inspector}</p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Customer</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">{model.data.aproval.customer}</p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Person In Charge</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">{model.data.aproval.inspector}</p>
             </div>
             <div className="w-full text-center py-3">
               <h3 className="text-teal-500 font-semibold text-xl cursor-pointer hover:text-teal-600">
@@ -106,43 +111,61 @@ export const ReportDetailMain = () => {
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Machine Type</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">
+                {model.data.aprovalResult.machineType}
+              </p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Serial No.</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">{model.data.aprovalResult.serial}</p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>MFG Date</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">
+                {model.data.aprovalResult.MFGDate}
+              </p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Capacity</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">
+                {model.data.aprovalResult.capasity}
+              </p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Slide Stroke</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">{model.data.aprovalResult.st}</p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Stroke Per Minute</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">
+                {model.data.aprovalResult.stPerminutes}
+              </p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Die Height</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">
+                {model.data.aprovalResult.dHeightt}
+              </p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Slide Adjustment</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">
+                {model.data.aprovalResult.adjustment}
+              </p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Dimensi Area Bloster</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">
+                {model.data.aprovalResult.bloasterX} x{" "}
+                {model.data.aprovalResult.bloasterY} mm
+              </p>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">
               <p>Dimensi Area Slide</p>
-              <p className="font-semibold">IID66538135</p>
+              <p className="font-semibold">
+                {model.data.aprovalResult.areaSlideX} x{" "}
+                {model.data.aprovalResult.areaSlideY}
+              </p>
             </div>
             <div className="w-full text-center py-3">
               <h3 className="text-teal-500 font-semibold text-xl cursor-pointer hover:text-teal-600">
@@ -210,7 +233,9 @@ export const ReportDetailMain = () => {
                 </p>
               </div>
             </div>
-            <Outlet />
+            <ReportContex.Provider value={model.data}>
+              <Outlet />
+            </ReportContex.Provider>
           </div>
         </section>
       </main>

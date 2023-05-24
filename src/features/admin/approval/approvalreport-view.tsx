@@ -4,10 +4,10 @@ import { Breadcrumbs } from "@common/components";
 import ModalConfirm from "@common/components/modals/ModalConfirm";
 import ArrowBackIcon from "@common/components/icons-new/ArrowBackIcon";
 import ConfirmCheck from "@common/components/icons-new/ConfirmCheck";
-import ShowDetailModel from "@features/admin/approval/popup/showdetail-view";
-import ChooseInspectionModal from "@features/admin/approval/popup/chooseinspection-view";
+
 import useApprovalModel from "@features/admin/approval/approvalreport-model";
 import aprovalContext from "./aprovalContex";
+import ChooseInspectionModal from "./popup/choose-inspection/chooseinspection-view";
 
 export default function ApprovalReport() {
   const model = useApprovalModel();
@@ -35,33 +35,35 @@ export default function ApprovalReport() {
           <div className="w-[370px] px-4 py-7 mt-4 border rounded-lg bg-[#FFFFFF] font-[400] text-[#514E4E]">
             <div className="flex justify-between mb-4 items-center">
               <h1>Status</h1>
-              <span className="px-6 py-2 rounded-full text-[#FFFFFF] bg-[#F79009]">
-                {/* {inspection.data.detail?.status} */}
-              </span>
+              {!model.data.aproval.status ? (
+                <span className="px-6 py-2 rounded-full text-[#FFFFFF] bg-[#F79009]">
+                  Waiting
+                </span>
+              ) : (
+                <span className="px-6 py-2 rounded-full text-[#FFFFFF] bg-[#10A560]">
+                  Confirmed
+                </span>
+              )}
             </div>
             <div className="flex justify-between mb-4 items-center">
               <h1>Inspection ID</h1>
-              <span className="font-[700]">
-                {/* {inspection.data.detail?.inspectionId} */}
-              </span>
+              <span className="font-[700]">{model.data.aproval.inspector}</span>
             </div>
             <div className="flex justify-between mb-4 items-center">
               <h1>Inspection Date</h1>
               <span className="font-[700]">
-                {/* {inspection.data.detail?.inspectionDate} */}
+                {model.data.aproval.inspectionDate}
               </span>
             </div>
             <div className="flex justify-between mb-4 items-center">
               <h1>Confirmation Date</h1>
               <span className="font-[700]">
-                {/* {inspection.data.detail?.confirmationDate} */}
+                {model.data.aproval.inspectionDate}
               </span>
             </div>
             <div className="flex justify-between mb-4 items-center">
               <h1>Customer</h1>
-              <span className="font-[700]">
-                {/* {inspection.data.detail?.customer} */}
-              </span>
+              <span className="font-[700]">{model.data.aproval.customer}</span>
             </div>
             <h1
               className="text-center text-[#14988B] cursor-pointer font-[700] underline"
@@ -78,7 +80,9 @@ export default function ApprovalReport() {
           <div className="w-[370px] px-4 py-7 bg-[#FFFFFF] rounded-lg border">
             <div
               className="flex items-center justify-between font-[14px] py-[18px] px-[12px] border border-[#14988B] bg-[#FBFBFB] rounded-lg mb-4 cursor-pointer"
-              onClick={() => {}}
+              onClick={() => {
+                model.openChooseInspection();
+              }}
             >
               <h1 className="text-[#0E6C63]">Choose Result Of Inspection</h1>
               <ArrowBackIcon className="rotate-180 mr-2" />
@@ -86,61 +90,70 @@ export default function ApprovalReport() {
             <div className="flex justify-between mb-4 items-center font-[400]">
               <h1>Machine Type</h1>
               <span className="font-[700]">
-                {/* {inspection.data.result?.machineType} */}
+                {model.data.aprovalResult.machineType}
               </span>
             </div>
             <div className="flex justify-between mb-4 items-center font-[400]">
               <h1>Serial No</h1>
               <span className="font-[700]">
-                {/* {inspection.data.result?.serialNo} */}
+                {model.data.aprovalResult.serial}
               </span>
             </div>
             <div className="flex justify-between mb-4 items-center font-[400]">
               <h1>MFG Date</h1>
               <span className="font-[700]">
-                {/* {inspection.data.result?.mfgDate} */}
+                {model.data.aprovalResult.MFGDate}
               </span>
             </div>
             <div className="flex justify-between mb-4 items-center font-[400]">
               <h1>Capacity</h1>
-              <span className="font-[700]">
-                {/* {inspection.data.result?.capacity} */}
+              <span className="font-[700] flex gap-2">
+                {model.data.aprovalResult.capasity}
+                <p>ton</p>
               </span>
             </div>
             <div className="flex justify-between mb-4 items-center font-[400]">
               <h1>Slide Stroke</h1>
-              <span className="font-[700]">
-                {/* {inspection.data.result?.slideStroke} */}
+              <span className="font-[700] flex gap-2">
+                {model.data.aprovalResult.st} <p>mm</p>
               </span>
             </div>
             <div className="flex justify-between mb-4 items-center font-[400]">
               <h1>Stroke Per Minutes</h1>
-              <span className="font-[700]">
-                {/* {inspection.data.result?.strokePerMinutes} */}
+              <span className="font-[700] flex gap-2">
+                {model.data.aprovalResult.stPerminutes}
+                <p>spm</p>
               </span>
             </div>
             <div className="flex justify-between mb-4 items-center font-[400]">
               <h1>Die Height</h1>
-              <span className="font-[700]">
-                {/* {inspection.data.result?.dieHeight} */}
+              <span className="font-[700] flex gap-2 ">
+                {model.data.aprovalResult.dHeightt}
+                <p>mm</p>
               </span>
             </div>
             <div className="flex justify-between mb-4 items-center font-[400]">
               <h1>Slide Adjustment</h1>
-              <span className="font-[700]">
-                {/* {inspection.data.result?.slideAdjustment} */}
+              <span className="font-[700] flex gap-2">
+                {model.data.aprovalResult.adjustment}
+                <p>mm</p>
               </span>
             </div>
             <div className="flex justify-between mb-4 items-center font-[400]">
               <h1>Dimensti Area Bloaster</h1>
-              <span className="font-[700]">
-                {/* {inspection.data.result?.dimensiAreaBloster} */}
+              <span className="font-[700] flex gap-2">
+                {model.data.aprovalResult.bloasterX}
+                {" X "}
+                {model.data.aprovalResult.bloasterY}
+                <p>mm</p>
               </span>
             </div>
             <div className="flex justify-between mb-4 items-center font-[400]">
               <h1>Dimensti Area Slide</h1>
-              <span className="font-[700]">
-                {/* {inspection.data.result?.dimensiAreaSlide} */}
+              <span className="font-[700] flex gap-2">
+                {model.data.aprovalResult.areaSlideX} <p>X</p>
+                {model.data.aprovalResult.areaSlideY}
+                <p>mm</p>
               </span>
             </div>
           </div>
@@ -168,7 +181,7 @@ export default function ApprovalReport() {
           <div className="flex border-t mt-4 py-[16px] px-[32px] bg-[#FFFFFF] justify-end">
             <button
               className="py-[12px] px-[20px] rounded-md text-[#FFFFFF] bg-[#14988B] flex items-center gap-2"
-              onClick={(e) => {}}
+              onClick={model.onConfirm}
             >
               <ConfirmCheck />
               <span>Confirm</span>
@@ -179,12 +192,12 @@ export default function ApprovalReport() {
             setOpen={inspection.setOpen}
             setOpenSuccess={inspection.open}
           /> */}
-          {/* <ChooseInspectionModal
-            open={choose.open}
-            setOpen={choose.setOpen}
-            onCancel={() => choose.closeChooseInspection()}
+          <ChooseInspectionModal
+            open={model.open}
+            setOpen={model.setOpen}
+            onCancel={() => model.closeChooseInspection()}
             onSubmit={() => alert("Submit")}
-          /> */}
+          />
         </div>
       </div>
     </div>

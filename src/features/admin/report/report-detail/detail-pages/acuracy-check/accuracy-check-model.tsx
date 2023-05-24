@@ -1,14 +1,66 @@
 import { useContext, useEffect, useState } from "react";
-import aprovalContext from "../aprovalContex";
-import { AprovalReport } from "@domain/models/aproval-report";
+import ReportContex from "../../report-detail-main/report-useContex";
 import { Aproval } from "@domain/models/aproval";
 import { AprovalResult } from "@domain/models/aproval-result";
 import { MachineCheck } from "@domain/models/machine-check";
 import { Accuracy } from "@domain/models/Accuracy";
 import { ResumeCheck } from "@domain/models/resume-check";
+import rumus from "../../../../../../assets/calculate.png";
+import { AprovalReport } from "@domain/models/aproval-report";
 
-export const useMachineCheck = () => {
-  const result = useContext(aprovalContext);
+interface Item {
+  parallel: {
+    unit: number;
+    balancer: number;
+    diagram: Array<{
+      img_url: string;
+      a: number;
+      b: number;
+      c: number;
+      d: number;
+      calculate: boolean;
+    }>;
+    actual: number;
+    allowance: number;
+    judgement: string;
+  };
+  gib: {
+    diagram: Array<{
+      img_url: string;
+      a: number;
+      b: number;
+      c: number;
+      d: number;
+      calculate: boolean;
+    }>;
+    actual: number;
+    allowance: number;
+    judgement: string;
+  };
+  prependicularity: {
+    slideStroke: number;
+    diagram: Array<{
+      img_url: string;
+      a: number;
+      b: number;
+      c: number;
+      d: number;
+      calculate: boolean;
+      actual: number;
+      allowance: number;
+      judgement: string;
+    }>;
+  };
+  total: {
+    actualL: number;
+    actual: number;
+    allowance: number;
+    judgement: string;
+    calculate: boolean;
+  };
+}
+
+export default function useAccuracy() {
   const [data, setData] = useState<AprovalReport>(
     AprovalReport.create({
       id: "",
@@ -116,12 +168,14 @@ export const useMachineCheck = () => {
     })
   );
 
+  const result = useContext(ReportContex);
   useEffect(() => {
     setData(result);
   }, [result]);
 
   return {
     data,
+    rumus,
   };
-};
+}
 

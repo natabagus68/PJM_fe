@@ -1,3 +1,4 @@
+import moment from "moment";
 import { Entity } from "./_entity";
 
 export interface IAprovalResult {
@@ -45,7 +46,8 @@ export class AprovalResult extends Entity<IAprovalResult> {
     return this._props.serial;
   }
   get MFGDate(): string {
-    return this._props.MFGDate;
+    if (!this._props.MFGDate) return "";
+    else return moment(this._props.MFGDate).format("DD MMMM YYYY");
   }
   get capasity(): string {
     return this._props.capasity;

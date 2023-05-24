@@ -1,4 +1,7 @@
+import { useTableTonnage } from "./table-model";
+
 export const Table = () => {
+  const model = useTableTonnage();
   return (
     <>
       <table className="w-full">
@@ -63,23 +66,51 @@ export const Table = () => {
           </tr>
         </thead>
         <tbody className="max-h-50% overflow-y-scroll">
-          <tr>
-            <td className="py-4 px-4 border border-[#B8B6B6] text-center">1</td>
-            <td className="py-4 px-4 border border-[#B8B6B6] text-center">1</td>
-            <td className="py-4 px-4 border border-[#B8B6B6] text-center">1</td>
-            <td className="py-4 px-4 border border-[#B8B6B6] text-center">1</td>
-            <td className="py-4 px-4 border border-[#B8B6B6] text-center">1</td>
-            <td className="py-4 px-4 border border-[#B8B6B6] text-center">1</td>
-            <td className="py-4 px-4 border border-[#B8B6B6] text-center">1</td>
-            <td className="py-4 px-4 border border-[#B8B6B6] text-center">1</td>
-            <td className="py-4 px-4 border border-[#B8B6B6] text-center">1</td>
-            <td className="py-4 px-4 border border-[#B8B6B6] text-center">1</td>
-            <td className="py-4 px-4 border border-[#B8B6B6] text-center">1</td>
-            <td className="py-4 px-4 border border-[#B8B6B6] text-center">1</td>
-          </tr>
+          {model?.data?.loadTonnage?.map((item, index) => (
+            <tr key={item?.id}>
+              <td className="py-4 px-4 border border-[#B8B6B6] text-center">
+                {index + 1}
+              </td>
+              <td className="py-4 px-4 border border-[#B8B6B6] text-center">
+                {item?.lfActLoad}
+              </td>
+              <td className="py-4 px-4 border border-[#B8B6B6] text-center">
+                {item?.lrActLoad}
+              </td>
+              <td className="py-4 px-4 border border-[#B8B6B6] text-center">
+                {item?.rfActLoad}
+              </td>
+              <td className="py-4 px-4 border border-[#B8B6B6] text-center">
+                {item?.rrActLoad}
+              </td>
+              <td className="py-4 px-4 border border-[#B8B6B6] text-center">
+                {item?.totalActLoad}
+              </td>
+              <td className="py-4 px-4 border border-[#B8B6B6] text-center">
+                {item?.lfLoadMonitor}
+              </td>
+              <td className="py-4 px-4 border border-[#B8B6B6] text-center">
+                {item?.lrLoadMonitor}
+              </td>
+              <td className="py-4 px-4 border border-[#B8B6B6] text-center">
+                {item?.rfLoadMonitor}
+              </td>
+              <td className="py-4 px-4 border border-[#B8B6B6] text-center">
+                {item?.rrLoadMonitor}
+              </td>
+              <td className="py-4 px-4 border border-[#B8B6B6] text-center">
+                {item?.totalLoadMonitor}
+              </td>
+              <td className="py-4 px-4 border border-[#B8B6B6] text-center">
+                {item?.dieHeight}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </>
   );
 };
+
+<td>1</td>;
 

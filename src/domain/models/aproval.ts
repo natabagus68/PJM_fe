@@ -54,7 +54,8 @@ export class Aproval extends Entity<IAproval> {
     return this._props.status;
   }
   get confirmation(): string {
-    return this._props.confirmation;
+    if (!this._props.confirmation) return "";
+    else return moment(this._props.confirmation).format("L");
   }
 }
 
