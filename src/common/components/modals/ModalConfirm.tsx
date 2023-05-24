@@ -6,7 +6,8 @@ export default function ModalConfirm({
   open = false,
   setOpen,
   setOpenSuccess,
-  cb,
+  cb = null,
+  onConfirm = null
 }) {
   const [isLoading, setIsLoading] = useState({
     loading: false,
@@ -54,15 +55,7 @@ export default function ModalConfirm({
           ) : (
             <button
               className="flex items-center justify-center flex-1 gap-2 h-[46px] px-[20px] bg-[#14988B] rounded text-white text-sm font-semibold"
-              onClick={() => {
-                setIsLoading({ loading: true, exec: true });
-                cb(setIsLoading);
-                // setOpen(false);
-                // setTimeout(() => {
-                //   setOpenSuccess(true);
-                //   cb();
-                // }, 100);
-              }}
+              onClick={onConfirm}
             >
               <span>Yes, Confirm</span>
             </button>

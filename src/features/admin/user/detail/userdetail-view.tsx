@@ -2,10 +2,12 @@ import { Breadcrumbs } from "@common/components/Breadcrumbs";
 import ArrowBackIcon from "@common/components/icons-new/ArrowBackIcon";
 import EditIcon from "@common/components/icons-new/EditIcon";
 import LoadingIcon from "@common/components/icons-new/LoadingIcon";
+import { config } from "@common/utils"
 import useDetailModel from "./userdetail-model";
 
 export default function UserDetailView() {
   const user = useDetailModel()
+  console.log("userdetail-view", user.detail)
   return (
     <main className="flex flex-col gap-[28px] justify-between">
       <Breadcrumbs items={["User", "User Detail"]} />
@@ -22,7 +24,7 @@ export default function UserDetailView() {
             </button>
             <button
               className="px-5 py-3 rounded mr-6 border bg-[#F79009] text-[#FFFFFF] border-[#F79009] flex justify-center items-center gap-2"
-              onClick={() => alert("edit")}
+              onClick={() => alert("hello")}
             >
               <EditIcon />
               <span>Edit</span>
@@ -60,7 +62,7 @@ export default function UserDetailView() {
                   </div>
                 </div>
                 {
-                  !!user.detail.photo ? (
+                  !user.detail.photo ? (
                     <div className="w-[50%] flex flex-col items-center gap-4">
                       <h1 className="text-[24px]">Profile Picture</h1>
                       <div className="rounded-full w-[200px] h-[200px] border-8 bg-gray-500 border-gray-900"></div>
@@ -68,7 +70,7 @@ export default function UserDetailView() {
                   ) : (
                     <div className="w-[50%] flex flex-col items-center gap-4">
                       <h1 className="text-[24px]">Photo  profile</h1>
-                      <img className="rounded-full" src={`${user.detail.photo}`} alt="profile-image" width={200} />
+                      <img className="rounded-full w-[200px] bg-center" src={`${config.assetsUrl}${user.detail.photo}`} alt="profile-image" width={200} />
                     </div>
                   )
                 }

@@ -7,7 +7,6 @@ export default function useDetailModel() {
   const { id } = useParams();
   const navigate = useNavigate();
   const user = new UserApiRepository();
-
   const [loading, setLoading] = useState(false);
   const [detail, setDetail] = useState<User>(
     User.create({

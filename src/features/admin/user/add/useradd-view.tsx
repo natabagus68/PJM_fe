@@ -60,8 +60,7 @@ export default function UserAddView(){
               value="no file choosen"
               bgColor="bg-[#B9BDC7]"
               ftColor="bg-[#FFFFFF]"
-              btnName="Reset"
-              btnHandle={(e: any) => {
+              btnReset={(e: any) => {
                 e.preventDefault()
                 alert("Reset")
               }}

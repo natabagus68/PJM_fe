@@ -20,18 +20,13 @@ export default function UserView() {
           <div className="flex gap-4 relative">
             <SearchIcon className="absolute top-4 left-4" color={"#B8B6B6"} />
             <input className="pl-10 py-[6px] font-[400] rounded-md border px-[14px] focus:border-2 focus:outline-none focus:border-[#14988B]" placeholder="Search" />
-            <button
-              className="px-5 py-3 rounded mr-6 bg-[#14988B] text-[#FFFFFF]"
-              onClick={() => user.handleAddUser()}>+ Add Data</button>
+            <button className="px-5 py-3 rounded mr-6 bg-[#14988B] text-[#FFFFFF]" onClick={() => user.handleAddUser()}> + Add Data</button>
           </div>
         </div>
         {
           !user.loading ? (
             <div className="h-[500px] flex items-center justify-center">
-              <LoadingIcon
-                color="black"
-                className="w-[24px] h-[24px] animate-spin"
-              />
+              <LoadingIcon className="w-[24px] h-[24px] animate-spin" />
             </div>
           ) : (
             <>
@@ -61,10 +56,10 @@ export default function UserView() {
                       </td>
                       <td className="px-8">{item?.name}</td>
                       <td className="px-8">{item?.email}</td>
-                      <td className="px-8">{item?.role_id}</td>
+                      <td className="px-8">{item?.role}</td>
                       <td className="px-4 flex gap-3 my-2">
                         {
-                          item?.role_id === "SUPER_ADMIN"
+                          item?.role === "SUPER_ADMIN"
                           ? (
                             <>
                               <span className="rounded text-sm flex items-center gap-2 cursor-pointer justify-center w-[96px] h-[46px] bg-[#1BBDD4] text-[#FFFFFF]"
@@ -115,15 +110,15 @@ export default function UserView() {
                 <div className="w-[40px] h-[40px] bg-[#FFFFFF] rounded flex items-center justify-center text-[#514E4E]">3</div>
                 <div className="w-[40px] h-[40px] bg-[#FFFFFF] rounded flex items-center justify-center text-[#514E4E]">...</div>
                 <div className="w-[40px] h-[40px] bg-[#FFFFFF] rounded flex items-center justify-center text-[#514E4E]">10</div>
-                  <button className="px-4 h-[40px] text-[#FFFFFF] border gap-2 border-[#14988B] rounded flex items-center justify-center">
-                    <span className="text-[#514E4E]">Next</span>
-                    <ArrowUpIcon
-                      className="w-[16px] h-[16px] rotate-90"
-                      color="#14988B"
-                    />
-                  </button>
+                <button className="px-4 h-[40px] text-[#FFFFFF] border gap-2 border-[#14988B] rounded flex items-center justify-center">
+                  <span className="text-[#514E4E]">Next</span>
+                  <ArrowUpIcon
+                    className="w-[16px] h-[16px] rotate-90"
+                    color="#14988B"
+                  />
+                </button>
               </div>
-           </>
+            </>
           )
         }
       </div>

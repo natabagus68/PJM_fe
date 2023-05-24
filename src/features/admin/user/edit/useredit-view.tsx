@@ -31,23 +31,23 @@ export default function UserEditView() {
         <form className="px-8 py-6 bg-[#FFFFFF]" onSubmit={(e:any) => e.preventDefault()}>
           <div className="mb-3">
             <h1 className="mb-2">Manpower Name</h1>
-            <Input className="w-[90%]" defaultValue={user.edit.name}/>
+            <Input className="w-[90%] px-4 py-2 border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] focus:border-[#14988B] focus:border-2 focus:outline-none" defaultValue={user.edit.name}/>
           </div>
           <div className="mb-3">
             <h1 className="mb-2">Email</h1>
-            <Input className="w-[90%]" defaultValue={user.edit.email}/>
+            <Input className="w-[90%] px-4 py-2 border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] focus:border-[#14988B] focus:border-2 focus:outline-none" defaultValue={user.edit.email}/>
           </div>
           <div className="mb-3">
             <h1 className="mb-2">Password</h1>
-            <Input className="w-[90%]" type="text" defaultValue={""}/>
+            <Input className="w-[90%] px-4 py-2 border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] focus:border-[#14988B] focus:border-2 focus:outline-none" type="text" defaultValue={""}/>
             <EyeHideIcon
-              className="absolute right-[13%] top-[59.5%] cursor-pointer" color={"#DDDDDD"}
+              className="absolute right-[13%] top-[59%] cursor-pointer" color={"#DDDDDD"}
               onClick={() => alert("see password")}
             />
           </div>
           <div className="mb-3">
             <h1 className="mb-2">Role</h1>
-            <Input className="w-[90%]" defaultValue={user.edit.role}/>
+            <Input className="w-[90%] px-4 py-2 border mb-[12px] h-[40px] rounded-md border-[#D0D3D9] focus:border-[#14988B] focus:border-2 focus:outline-none" defaultValue={user.edit.role}/>
           </div>
           <div className="mb-3 relative">
             <h1>Profile Picture</h1>
@@ -57,10 +57,10 @@ export default function UserEditView() {
               width="125px"
               label="View Image"
               bgColor="bg-[#14988B]"
-              ftColor="bg-[#FFFFFF]"
+              ftColor="text-[#FFFFFF]"
               onClick={(e: any) => e.preventDefault()}
             />
-            <div className="flex absolute right-14 top-9">
+            <div className="flex absolute right-12 top-9">
               <div className="w-[34px] h-[34px] mr-2 bg-[#F79009] flex justify-center items-center rounded-md cursor-pointer"
                 onClick={() => alert("Edit")}
               >

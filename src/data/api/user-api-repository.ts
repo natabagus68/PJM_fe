@@ -93,7 +93,7 @@ export class UserApiRepository implements UserRepository {
     });
   }
   async logout(): Promise<void> {
-    await this._api.delete('hmi/auth/logout')
+    await this._api.delete("hmi/auth/logout");
   }
   create(props: User): Promise<User> {
     throw new Error("Method not implemented.");
@@ -105,7 +105,7 @@ export class UserApiRepository implements UserRepository {
     throw new Error("Method not implemented.");
   }
   async getAllData(param?: getParam): Promise<User[]> {
-    const { data } = await api.get("admin/user?page=1&limit=10&search")
+    const { data } = await api.get("admin/user?page=1&limit=10&search");
     return data?.data?.data?.map((item: any) => {
       return User.create({
         id: item.id,
@@ -116,12 +116,12 @@ export class UserApiRepository implements UserRepository {
         password: "",
         photo: item.photo,
         email_verified_at: item.email_verified_at,
-        fcm_token:  item.fcm_token,
+        fcm_token: item.fcm_token,
         created_at: item.created_at,
         updated_at: item.updated_at,
         deleted_at: item.deleted_at,
-      })
-    })
+      });
+    });
   }
   async getUserById(id: string): Promise<User> {
     const { data } = await api.get(`admin/user/${id}`);
@@ -130,8 +130,8 @@ export class UserApiRepository implements UserRepository {
       name: data.data.fullname,
       email: data.data.email,
       photo: data.data.avatarPath,
-      isActive: data.data.isActive,
       role: data.data.role,
-    })
+      isActive: data.data.isActive,
+    });
   }
 }

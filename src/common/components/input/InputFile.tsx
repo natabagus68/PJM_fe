@@ -1,19 +1,19 @@
 export default function InputFile({
+  isReset      = false,
   label        = "",
   htmlFor      = "",
   defaultValue = "",
   bgColor      = "",
   ftColor      = "",
   width        = "",
-  isReset      = false,
-  btnName      = "",
   btnIcon      = null,
-  btnHandle    = null,
+  btnReset     = null,
+  changeHandle = null,
   ...props
 }) {
   return (
     <>
-      <div className="flex items-center">
+      <div className="flex items-center relative gap-2">
         <label
           htmlFor={htmlFor}
           className={`
@@ -22,32 +22,29 @@ export default function InputFile({
           flex justify-center
           rounded-tl rounded-bl
           font-[400] text-sm
-          cursor-pointer`}
-          {...props}
+          cursor-pointer absolute`
+          }
         >
           {label}
         </label>
         <input
-          defaultValue={defaultValue}
-          type="text"
-          className="border inline px-3 py-[5px] w-[78%] rounded-tr rounded-br mr-2 text-[#B8B6B6]"
-          onClick={() => alert("you clicked me!")}
-          disabled
-        />
-        <input
           id={htmlFor}
+          onChange={changeHandle}
           type="file"
-          className="hidden"
+          className="file:hidden border border-gray-300 rounded-md w-full  py-[5px] px-20"
+          {...props}
         />
         {
           isReset ? (
             <button
+              type="button"
+              role="button"
               className="bg-[#F79009] rounded-md flex items-center p-2 gap-1 text-sm"
-              onClick={btnHandle}
+              onClick={btnReset}
             >
               <div className="text-[#FFFFFF] flex items-center gap-1">
                 <span>{btnIcon}</span>
-                <span>{btnName}</span>
+                <span>Reset</span>
               </div>
             </button>
           ) : (
