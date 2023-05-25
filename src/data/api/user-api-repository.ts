@@ -112,7 +112,6 @@ export class UserApiRepository implements UserRepository {
       isActive: data.data.isActive,
     });
   }
-
   async updateUser(id: string, data: User): Promise<boolean> {
     const resultData = {
       email: data.email,
@@ -131,4 +130,3 @@ export class UserApiRepository implements UserRepository {
     return true;
   }
 }
-

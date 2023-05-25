@@ -23,7 +23,7 @@ export default function MasterDataDetailView() {
               </button>
             <button
               className="px-5 py-3 rounded mr-6 bg-[#F79009] text-[#FFFFFF] flex items-center gap-2"
-              onClick={() => alert("EDIT!")}>
+              onClick={() => data.goToEditCustomer(data.id)}>
               <EditIcon />
               <span>Edit</span>
             </button>
@@ -69,23 +69,23 @@ export default function MasterDataDetailView() {
               </div>
             ) : (
               <>
-              <div className="border-b pb-9">
+              <div className="border-b pb-16">
                 <h1 className="mb-3 text-sm font-[700]">1. Parallelism</h1>
-                <div className="flex gap-14">
+                <div className="grid grid-cols-[256px_256px] h-[100px] gap-14">
                   <img src={`${config.assetsUrl}${data.customer.parallel1}`}/>
                   <img src={`${config.assetsUrl}${data.customer.parallel2}`}/>
                 </div>
               </div>
-              <div className="border-b py-9">
+              <div className="border-b pb-16">
                 <h1 className="mb-3 text-sm font-[700]">2. GIB Clearance</h1>
-                <div className="flex gap-14">
+                <div className="grid grid-cols-[256px_256px] h-[100px] gap-14">
                   <img src={`${config.assetsUrl}${data.customer.gib1}`}/>
                   <img src={`${config.assetsUrl}${data.customer.gib2}`}/>
                 </div>
               </div>
-              <div className="border-b py-9">
+              <div className="border-b pb-16">
                 <h1 className="mb-3 text-sm font-[700]">3. Perpendicularity</h1>
-                <div className="flex gap-14">
+                <div className="grid grid-cols-[256px_256px] h-[100px] gap-14">
                   <img src={`${config.assetsUrl}${data.customer.prep1}`}/>
                   <img src={`${config.assetsUrl}${data.customer.prep2}`}/>
                 </div>

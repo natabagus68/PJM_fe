@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CustomerApiRepository } from "@data/api/customer-api-repository";
 import { Customer } from "@domain/models/customer";
+import Swal from "sweetalert2";
 
 export default function useCustomerEditModel() {
   const { id } = useParams();
   const navigate = useNavigate();
   const data = new CustomerApiRepository();
+  const [upload, setUpload] = useState<boolean | null>()
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [customer, setCustomer] = useState<Customer>(
@@ -41,25 +43,30 @@ export default function useCustomerEditModel() {
     setCustomer((prev) => {
       return Customer.create({
         ...prev.unmarshall(),
-        [e.target.name]: e.target.value,
+        [e.target.name]: e.target.files[0]
       });
     });
   };
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    data.uploadFoto(e.target.files[0]).then((res) => {
+    setUpload(true);
+    data.uploadFoto(e.target.files[0])
+    .then((res) => {
+      setUpload(false);
       setCustomer((prev) => {
         return Customer.create({
           ...prev.unmarshall(),
           [e.target.name]: res,
         });
       });
-    });
+    })
+    .catch(error => console.log(error.message))
   };
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const formData = new FormData();
+    formData.append("customerId", customer.customerId);
     formData.append("customerName", customer.name);
     formData.append("address", customer.address);
     formData.append("phone", customer.phone);
@@ -69,29 +76,16 @@ export default function useCustomerEditModel() {
     formData.append("gibClearance2Path", customer.gib2);
     formData.append("perpendicularity1Path", customer.prep1);
     formData.append("perpendicularity2Path", customer.prep2);
-    setCustomer(customer);
-    console.log(customer);
+    data.update(customer)
+      .then(res => navigate("../"))
     setOpen(false);
-    navigate(-1);
-    // data.update(customer).then((res) => navigate("../"));
-    setCustomer(
-      Customer.create({
-        id: "",
-        name: "",
-        address: "",
-        phone: "",
-        parallel1: " ",
-        parallel2: " ",
-        gib1: " ",
-        gib2: " ",
-        prep1: " ",
-        prep2: " ",
-      })
-    );
   };
 
+  const handleReset = () => {
+  }
+
   const pageBack = () => {
-    navigate(-1);
+    navigate("../");
   };
 
   useEffect(() => {
@@ -99,6 +93,7 @@ export default function useCustomerEditModel() {
   }, []);
 
   return {
+    upload,
     open,
     setOpen,
     loading,
@@ -107,5 +102,6 @@ export default function useCustomerEditModel() {
     handleChange,
     handleFile,
     handleSubmit,
+    handleReset
   };
 }

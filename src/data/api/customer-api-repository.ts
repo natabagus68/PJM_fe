@@ -43,11 +43,8 @@ export class CustomerApiRepository implements CustomerRepository {
     });
   }
   async update(param: Customer): Promise<Customer> {
-    console.log(param)
-    const {
-        data: { data = {} },
-    } = await api.put(`admin/customer/${param.id}`, {
-        customerId: param.id || " ",
+    const { data: { data = {} }, } = await api.put(`admin/customer/${param.id}`, {
+        customerId: param.customerId || " ",
         customerName: param.name,
         address: param.address,
         phone: param.phone,
@@ -58,13 +55,21 @@ export class CustomerApiRepository implements CustomerRepository {
         perpendicularity1Path: param.prep1,
         perpendicularity2Path: param.prep2,
     });
+    return Customer.create({
+      parallel1: param.parallel1,
+      parallel2: param.parallel2,
+      gib1: param.gib1,
+      gib2: param.gib2,
+      prep1: param.prep1,
+      prep2: param.prep2
+    })
   }
   async destroy(id: string): Promise<boolean> {
     await api.delete(`admin/customer/${id}`);
     return true;
   }
   async getCustomerData(): Promise<Customer[]> {
-    const { data } = await api.get("admin/customer?page=1&limit=10&search");
+    const { data } = await api.get("admin/customer?page=1&limit=99&search");
     return data.data.data.map((item: any) => {
       return Customer.create({
         id: item.id,

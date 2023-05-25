@@ -1,13 +1,12 @@
 export default function InputFile({
-  isReset = false,
-  label = "",
-  htmlFor = "",
-  defaultValue = "",
-  bgColor = "",
-  ftColor = "",
-  width = "",
-  btnIcon = null,
-  btnReset = null,
+  isReset      = false,
+  label        = "",
+  htmlFor      = "",
+  bgColor      = "",
+  ftColor      = "",
+  width        = "",
+  btnIcon      = null,
+  btnReset     = null,
   changeHandle = null,
   ...props
 }) {

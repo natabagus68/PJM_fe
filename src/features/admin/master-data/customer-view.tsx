@@ -13,8 +13,8 @@ export default function MasterDataView() {
   return (
     <main className="flex flex-col gap-[28px] justify-between">
       <Breadcrumbs items={["Master Data"]} />
-      <div className="rounded-md border">
-        <div className="flex justify-between items-center border-b rounded-md bg-[#FFFFFF]">
+      <div className="rounded-md border bg-[#FFFFFF]">
+        <div className="flex justify-between items-center border-b rounded-md">
           <h1 className="text-2xl px-6 py-8 font-[700]">Master Data</h1>
           <div className="flex gap-4 relative">
             <SearchIcon className="absolute top-4 left-4" color={"#B8B6B6"} />
@@ -35,7 +35,7 @@ export default function MasterDataView() {
           ) : (
             <>
             <table className="w-full">
-              <thead className="text-sm font-semibold border-b h-[64px] bg-[#FAFAFB] border-[#D0D3D9] text-[#514E4E]">
+              <thead className="text-sm font-semibold border-b h-[64px] border-[#D0D3D9] text-[#514E4E]">
                 <tr>
                   <th className="px-[32px] text-start font-[600]">Customer ID</th>
                   <th className="px-[16px] text-start font-[600]">Customer Name</th>
@@ -47,7 +47,7 @@ export default function MasterDataView() {
               <tbody>
                 {
                   data?.customer.map((item) => (
-                    <tr key={item?.id} className="border-b h-[64px] border-[#D0D3D9] bg-[#FFFFFF] font-[400] text-[16px]">
+                    <tr key={item?.id} className="border-b h-[64px] border-[#D0D3D9] font-[400] text-[16px]">
                       <td className="px-[32px]">{item?.customerId}</td>
                       <td className="px-[16px]">{item?.name}</td>
                       <td className="px-[16px]">{item?.address}</td>
