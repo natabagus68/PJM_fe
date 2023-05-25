@@ -2,7 +2,6 @@ export default function InputFile({
   isReset      = false,
   label        = "",
   htmlFor      = "",
-  defaultValue = "",
   bgColor      = "",
   ftColor      = "",
   width        = "",

@@ -36,6 +36,10 @@ export default function useCustomerDetailModel() {
     }
   }
 
+  const goToEditCustomer = (id: string) => {
+    navigate(`../edit/${id}/customer-edit-view`);
+  };
+
   const pageBack = () => {
     navigate("../")
   }
@@ -45,8 +49,10 @@ export default function useCustomerDetailModel() {
   }, [])
 
   return {
+    id,
     loading,
     customer,
     pageBack,
+    goToEditCustomer
   }
 }
