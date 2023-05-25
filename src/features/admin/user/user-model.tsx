@@ -23,6 +23,16 @@ export default function useUserModel() {
     }
   };
 
+  const updateIsactive = async (id: string) => {
+    const data = users.find((item) => item.id == id);
+    const result = User.create({
+      ...data.unmarshall(),
+      isActive: !data.unmarshall().isActive ? 1 : 0,
+    });
+
+    console.log(result);
+    await user.updateUser(id, result);
+  };
   const handleAddUser = (): void => {
     navigate("add/useradd-view");
   };
@@ -32,8 +42,8 @@ export default function useUserModel() {
   };
 
   const handleEdit = (id: string): void => {
-    navigate(`edit/${id}/useredit-view`)
-  }
+    navigate(`edit/${id}/useredit-view`);
+  };
 
   const pageBack = (): void => {
     navigate("../");
@@ -52,6 +62,7 @@ export default function useUserModel() {
     pageBack,
     handleAddUser,
     handleDetail,
-    handleEdit
+    handleEdit,
+    updateIsactive,
   };
 }

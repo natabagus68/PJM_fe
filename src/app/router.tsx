@@ -30,6 +30,7 @@ import UserEditView from "@features/admin/user/edit/useredit-view";
 import UserDetailView from "@features/admin/user/detail/userdetail-view";
 import ListView from "@features/admin/approval/list/list-view";
 import AccuracyCheck from "@features/admin/approval/checkaccuracy/accuracy-view";
+import { InspectionForm as InspectionFormReport } from "@features/admin/report/report-detail/detail-pages/inspection-form/inspection-form-view";
 
 const Root = () => {
   return <Outlet />;
@@ -134,7 +135,7 @@ export default createBrowserRouter([
             children: [
               {
                 path: "",
-                element: <InspectionForm />,
+                element: <InspectionFormReport />,
               },
               {
                 path: "machine-check",
@@ -172,19 +173,19 @@ export default createBrowserRouter([
         children: [
           {
             path: "",
-            element: <UserView />
+            element: <UserView />,
           },
           {
             path: "add/useradd-view",
-            element: <UserAddView />
+            element: <UserAddView />,
           },
           {
             path: "edit/:id/useredit-view",
-            element: <UserEditView />
+            element: <UserAddView />,
           },
           {
             path: "detail/:id/userdetail-view",
-            element: <UserDetailView />
+            element: <UserDetailView />,
           },
         ],
       },

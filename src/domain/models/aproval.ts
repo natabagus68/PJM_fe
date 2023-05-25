@@ -39,7 +39,9 @@ export class Aproval extends Entity<IAproval> {
     return this._props.inspectionID;
   }
   get inspectionDate(): string {
-    return moment(this._props.inspectionDate).format("L");
+    const result = moment(this._props.inspectionDate).format("L");
+    if (result === "Invalid date") return "";
+    else return result;
   }
   get customer(): string {
     return this._props.customer;
@@ -54,8 +56,9 @@ export class Aproval extends Entity<IAproval> {
     return this._props.status;
   }
   get confirmation(): string {
-    if (!this._props.confirmation) return "";
-    else return moment(this._props.confirmation).format("L");
+    const result = moment(this._props.confirmation).format("L");
+    if (result == "Invalid date") return "";
+    else return result;
   }
 }
 

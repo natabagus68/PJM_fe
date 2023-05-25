@@ -15,6 +15,7 @@ export class ReportApiRepository implements ReportRepository {
 
     return data.data.data.map((item) => {
       return Report.create({
+        id: item.id,
         inspectionID: item.inspectionId,
         inspectionDate: item.inspectionDate,
         customer: item.customerName,

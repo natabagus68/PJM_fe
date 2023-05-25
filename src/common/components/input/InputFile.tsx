@@ -21,8 +21,7 @@ export default function InputFile({
           flex justify-center
           rounded-tl rounded-bl
           font-[400] text-sm
-          cursor-pointer absolute`
-          }
+          cursor-pointer absolute text-white `}
         >
           {label}
         </label>
@@ -33,24 +32,20 @@ export default function InputFile({
           className="file:hidden border border-gray-300 rounded-md w-full  py-[5px] px-20"
           {...props}
         />
-        {
-          isReset ? (
-            <button
-              type="button"
-              role="button"
-              className="bg-[#F79009] rounded-md flex items-center p-2 gap-1 text-sm"
-              onClick={btnReset}
-            >
-              <div className="text-[#FFFFFF] flex items-center gap-1">
-                <span>{btnIcon}</span>
-                <span>Reset</span>
-              </div>
-            </button>
-          ) : (
-            null
-          )
-        }
+        {isReset ? (
+          <button
+            type="button"
+            role="button"
+            className="bg-[#F79009] rounded-md flex items-center p-2 gap-1 text-sm"
+            onClick={btnReset}
+          >
+            <div className="text-[#FFFFFF] flex items-center gap-1">
+              <span>{btnIcon}</span>
+              <span>Reset</span>
+            </div>
+          </button>
+        ) : null}
       </div>
     </>
-  )
+  );
 }

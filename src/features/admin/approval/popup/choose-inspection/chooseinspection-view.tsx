@@ -28,15 +28,7 @@ export default function ChooseInspectionModal({
                   onChange={choose.onChange}
                 />
                 <div
-                  className={`w-[40px] h-[40px] text-[#FFFFFF] flex items-center justify-center rounded-full font-[700] ${
-                    item?.choose === "A"
-                      ? "bg-[#0D824B]"
-                      : item?.grade === "B"
-                      ? "bg-[#7054A8]"
-                      : item?.grade === "C"
-                      ? "bg-[#E18308]"
-                      : "bg-[#AA3028]"
-                  }`}
+                  className={`w-[40px] h-[40px] text-[#FFFFFF] flex items-center justify-center rounded-full font-[700] bg-[${item?.grade}]`}
                 >
                   {item?.choose}
                 </div>
@@ -52,7 +44,12 @@ export default function ChooseInspectionModal({
               </button>
               <button
                 className="w-[202px] h-[46px] rounded bg-[#14988B] text-[#FFFFFF] px-5 py-3"
-                onClick={(e) => choose.submit(e, () => setOpen(false))}
+                onClick={(e) =>
+                  choose.submit(e, () => {
+                    setOpen(false);
+                    onSubmit && onSubmit();
+                  })
+                }
               >
                 Submit
               </button>

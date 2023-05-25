@@ -11,7 +11,7 @@ export const Toggle = ({
   cb,
   ...props
 }) => {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(0);
   id = id || _id;
   useEffect(() => {
     setChecked(_checked);
@@ -41,3 +41,4 @@ export const Toggle = ({
     </>
   );
 };
+

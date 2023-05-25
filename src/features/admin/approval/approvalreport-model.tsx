@@ -3,6 +3,7 @@ import { Accuracy } from "@domain/models/Accuracy";
 import { Aproval } from "@domain/models/aproval";
 import { AprovalReport } from "@domain/models/aproval-report";
 import { AprovalResult } from "@domain/models/aproval-result";
+import { InspectionResult } from "@domain/models/inspection-result";
 import { MachineCheck } from "@domain/models/machine-check";
 import { ResumeCheck } from "@domain/models/resume-check";
 import { AprovalRepository } from "@domain/repositories/aproval-repository";
@@ -128,6 +129,12 @@ export default function useApprovalModel() {
         notes: "",
         recommendation: "",
       }),
+      inspection: InspectionResult.create({
+        id: "",
+        color: "",
+        desc: "",
+        opt: "",
+      }),
     })
   );
   useEffect(() => {
@@ -166,7 +173,6 @@ export default function useApprovalModel() {
 
   const fetchData = () => {
     aprovalRepo.getReport(id).then((result) => {
-      console.log(result);
       setData(result);
     });
   };
@@ -180,6 +186,7 @@ export default function useApprovalModel() {
       showConfirmButton: false,
       timer: 1500,
     });
+    fetchData();
   };
 
   useEffect(() => {
@@ -200,5 +207,6 @@ export default function useApprovalModel() {
     closeChooseInspection,
     openChooseInspection,
     onConfirm,
+    fetchData,
   };
 }
