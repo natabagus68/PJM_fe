@@ -96,17 +96,17 @@ export const ReportDetailMain = () => {
           <div className="w-full border border-gray-300 rounded-xl items-center bg-white px-3 py-4">
             <div className="flex gap-4 items-center mb-4 px-2">
               {/* circle icon */}
-              <div className="w-12 h-12 rounded-full bg-teal-600 relative">
+              <div
+                className={`w-12 h-12 rounded-full bg-[${model.data.inspection?.color}] relative`}
+              >
                 <h1 className="font-bold text-white text-3xl absolute top-1.5 left-3.5">
-                  B
+                  {model.data.inspection?.opt}
                 </h1>
               </div>
 
               {/* text */}
               <div className="w-[60%]">
-                <p className="text-teal-500">
-                  Mesin masih bisa digunakan, parts rusak harus segera ganti
-                </p>
+                <p className="text-teal-500">{model.data.inspection?.desc}</p>
               </div>
             </div>
             <div className="w-full py-3 px-2 flex justify-between">

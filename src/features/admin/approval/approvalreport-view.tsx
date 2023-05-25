@@ -78,15 +78,34 @@ export default function ApprovalReport() {
             onClose={detail.handleShowDetailClose}
           /> */}
           <div className="w-[370px] px-4 py-7 bg-[#FFFFFF] rounded-lg border">
-            <div
-              className="flex items-center justify-between font-[14px] py-[18px] px-[12px] border border-[#14988B] bg-[#FBFBFB] rounded-lg mb-4 cursor-pointer"
-              onClick={() => {
-                model.openChooseInspection();
-              }}
-            >
-              <h1 className="text-[#0E6C63]">Choose Result Of Inspection</h1>
-              <ArrowBackIcon className="rotate-180 mr-2" />
-            </div>
+            {model.data.inspection?.opt ? (
+              <div className="flex gap-4 items-center mb-4 px-2">
+                {/* circle icon */}
+                <div
+                  className={`w-12 h-12 rounded-full bg-[${model.data.inspection.color}] relative`}
+                >
+                  <h1 className="font-bold text-white text-3xl absolute top-1.5 left-3.5">
+                    {model.data.inspection.opt}
+                  </h1>
+                </div>
+
+                {/* text */}
+                <div className="w-[60%]">
+                  <p className="text-teal-500">{model.data.inspection.desc}</p>
+                </div>
+              </div>
+            ) : (
+              <div
+                className="flex items-center justify-between font-[14px] py-[18px] px-[12px] border border-[#14988B] bg-[#FBFBFB] rounded-lg mb-4 cursor-pointer"
+                onClick={() => {
+                  model.openChooseInspection();
+                }}
+              >
+                <h1 className="text-[#0E6C63]">Choose Result Of Inspection</h1>
+                <ArrowBackIcon className="rotate-180 mr-2" />
+              </div>
+            )}
+
             <div className="flex justify-between mb-4 items-center font-[400]">
               <h1>Machine Type</h1>
               <span className="font-[700]">
@@ -196,7 +215,7 @@ export default function ApprovalReport() {
             open={model.open}
             setOpen={model.setOpen}
             onCancel={() => model.closeChooseInspection()}
-            onSubmit={() => alert("Submit")}
+            onSubmit={() => model.fetchData()}
           />
         </div>
       </div>

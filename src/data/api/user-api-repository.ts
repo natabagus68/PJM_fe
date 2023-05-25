@@ -32,25 +32,6 @@ export class UserApiRepository implements UserRepository {
         updated_at: data.data?.user?.updated_at,
         deleted_at: data.data?.user?.deleted_at,
       },
-      lineShift: {
-        id: data.data?.lineShift?.id,
-        line_id: data.data?.lineShift?.line_id,
-        shift: data.data?.lineShift?.shift,
-        start_day: data.data?.lineShift?.start_day,
-        end_day: data.data?.lineShift?.end_day,
-        start_time: data.data?.lineShift?.start_time,
-        end_time: data.data?.lineShift?.end_time,
-        break_start: data.data?.lineShift?.break_start,
-        break_end: data.data?.lineShift?.break_end,
-        allocated_time: data.data?.lineShift?.allocated_time,
-        createdAt: data.data?.lineShift?.createdAt,
-        updatedAt: data.data?.lineShift?.updatedAt,
-        deletedAt: data.data?.lineShift?.deletedAt,
-        line: {
-          id: data.data?.lineShift?.line.id,
-          no: data.data?.lineShift?.line.no,
-        },
-      },
     });
   }
   async check(): Promise<Auth> {
@@ -71,32 +52,29 @@ export class UserApiRepository implements UserRepository {
         updated_at: data.data?.user?.updated_at,
         deleted_at: data.data?.user?.deleted_at,
       },
-      lineShift: {
-        id: data.data?.lineShift?.id,
-        line_id: data.data?.lineShift?.line_id,
-        shift: data.data?.lineShift?.shift,
-        start_day: data.data?.lineShift?.start_day,
-        end_day: data.data?.lineShift?.end_day,
-        start_time: data.data?.lineShift?.start_time,
-        end_time: data.data?.lineShift?.end_time,
-        break_start: data.data?.lineShift?.break_start,
-        break_end: data.data?.lineShift?.break_end,
-        allocated_time: data.data?.lineShift?.allocated_time,
-        createdAt: data.data?.lineShift?.createdAt,
-        updatedAt: data.data?.lineShift?.updatedAt,
-        deletedAt: data.data?.lineShift?.deletedAt,
-        line: {
-          id: data.data?.lineShift?.line.id,
-          no: data.data?.lineShift?.line.no,
-        },
-      },
     });
   }
   async logout(): Promise<void> {
     await this._api.delete("hmi/auth/logout");
   }
-  create(props: User): Promise<User> {
-    throw new Error("Method not implemented.");
+  async create(props: User): Promise<User> {
+    const formData = new FormData();
+    formData.append("fullname", props.name);
+    formData.append("email", props.email);
+    formData.append("password", props.password);
+    formData.append("role", props.role);
+    formData.append("avatarPath", props.photo);
+    formData.append("isActive", "1");
+    const { data } = await api.post(`admin/user`, formData);
+
+    return User.create({
+      id: data.data.id,
+      name: data.data.fullname,
+      email: data.data.email,
+      photo: data.data.avatarPath,
+      role: data.data.role,
+      isActive: data.data.isActive,
+    });
   }
   update(id: string, data: User): Promise<User> {
     throw new Error("Method not implemented.");
@@ -134,4 +112,23 @@ export class UserApiRepository implements UserRepository {
       isActive: data.data.isActive,
     });
   }
+
+  async updateUser(id: string, data: User): Promise<boolean> {
+    const resultData = {
+      email: data.email,
+      fullname: data.name,
+      isActive: data.isActive.toString(),
+      password: data.password,
+      role: data.role || "Inspector",
+      avatarPath: data.photo,
+    };
+
+    if (!data.password) {
+      delete resultData.password;
+    }
+    await api.put(`admin/user/${id}`, resultData);
+
+    return true;
+  }
 }
+

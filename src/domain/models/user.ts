@@ -1,13 +1,13 @@
 import { Entity } from "./_entity";
 
 export interface IUserProps {
-  id: string;
+  id?: string;
   name: string;
   email?: string | undefined;
-  isActive?: boolean | undefined;
+  isActive?: boolean | undefined | number;
   password?: string | undefined;
   role?: string | undefined;
-  photo?: string | undefined;
+  photo?: File | null | string;
   email_verified_at?: Date | undefined;
   fcm_token?: string | undefined;
   created_at?: string | undefined;
@@ -35,9 +35,7 @@ export class User extends Entity<IUserProps> {
   static create(props: IUserProps): User {
     return new User(props);
   }
-  get id(): string {
-    return this._props.id;
-  }
+
   get name(): string {
     return this._props.name;
   }
@@ -50,10 +48,10 @@ export class User extends Entity<IUserProps> {
   get role(): string | undefined {
     return this._props.role;
   }
-  get isActive(): boolean | undefined {
+  get isActive(): boolean | undefined | number {
     return this._props.isActive;
   }
-  get photo(): string | undefined {
+  get photo(): File | undefined | string {
     return this._props.photo;
   }
   get email_verified_at(): Date | undefined {
@@ -72,3 +70,4 @@ export class User extends Entity<IUserProps> {
     return this._props.deleted_at;
   }
 }
+

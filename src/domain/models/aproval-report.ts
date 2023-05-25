@@ -4,6 +4,7 @@ import { IAproval } from "./aproval";
 import { IAprovalResult } from "./aproval-result";
 import { CustomerReport } from "./customer-report";
 import { IInspectionForm } from "./inspection";
+import { IInspectionResult } from "./inspection-result";
 import { LoadTonnage } from "./load-tonnage";
 import { Machine } from "./machine";
 import { IMachineCheck } from "./machine-check";
@@ -19,6 +20,7 @@ export interface IAProvalReport {
   accuracyCheck: IAccuracy;
   loadTonnage: LoadTonnage[];
   resume: ResumeCheck;
+  inspection?: IInspectionResult;
 }
 
 export class AprovalReport extends Entity<IAProvalReport> {
@@ -30,6 +32,7 @@ export class AprovalReport extends Entity<IAProvalReport> {
       id: this.id,
       aproval: this.aproval,
       aprovalResult: this.aprovalResult,
+      inspection: this.inspection,
     };
   }
   get customer(): CustomerReport | undefined {
@@ -55,6 +58,10 @@ export class AprovalReport extends Entity<IAProvalReport> {
   }
   get resume(): ResumeCheck {
     return this._props.resume;
+  }
+
+  get inspection(): IInspectionResult {
+    return this._props.inspection;
   }
 }
 
