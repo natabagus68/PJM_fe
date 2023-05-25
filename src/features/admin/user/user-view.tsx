@@ -58,10 +58,10 @@ export default function UserView() {
                       <Toggle
                         id={item?.id}
                         name={item?.name}
-                        checked={item?.isActive}
+                        checked={item?.is_active ? false : false}
                         activeText="Active"
                         inactiveText="Inactive"
-                        cb={() => user.updateIsactive(item.id)}
+                        cb={() => console.log(item?.name)}
                       />
                     </td>
                     <td className="px-8">{item?.name}</td>

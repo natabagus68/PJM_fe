@@ -46,6 +46,7 @@ export default function useCustomerModel() {
 
   const onDelete = () => {
     const selectedCustomer = customer.find((item) => item.checked);
+    console.log(selectedCustomer)
     data.destroy(selectedCustomer.id).then(() => {
       setCustomer((prev) => {
         return [...prev].filter((item) => {
