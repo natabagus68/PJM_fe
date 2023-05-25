@@ -117,6 +117,7 @@ export const useInspectionForm = () => {
   );
 
   useEffect(() => {
+    console.log("inspectio form =>", result);
     setData(result);
   }, [result]);
 

@@ -2,7 +2,6 @@ import useInspection from "@features/admin/approval/inspection/form-model";
 
 export default function InspectionForm() {
   const inspection = useInspection();
-  console.log(inspection.data);
   return (
     <>
       <div className="grid grid-cols-5 text-center border-b">
