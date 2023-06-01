@@ -3,14 +3,14 @@ import { Chart as ChartJS, registerables } from "chart.js";
 
 ChartJS.register(...registerables);
 
-export const Chartbar = () => {
+export const Chartbar = ({colors}) => {
   const data = {
     labels: [1, 2, 3, 4],
     datasets: [
       {
         label: "data",
         data: [2, 3, 1, 4],
-        backgroundColor: "rgba(245, 159, 0, 1)",
+        backgroundColor: colors,
         borderColor: "rgba(255, 255, 255, 1)",
       },
     ],

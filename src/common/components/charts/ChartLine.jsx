@@ -3,7 +3,7 @@ import { Chart as ChartJS, registerables } from "chart.js";
 
 ChartJS.register(...registerables);
 
-export const ChartLine = ({ datas, labels, height, maxValue = 300 }) => {
+export const ChartLine = ({ datas, height, width, maxValue = 300 }) => {
   const setup = [
     {
       color: "#FC9D68",
@@ -16,21 +16,37 @@ export const ChartLine = ({ datas, labels, height, maxValue = 300 }) => {
   ];
 
   const data = {
-    labels: labels,
-    datasets: datas?.map((item, i) => {
-      return {
-        label: setup[i]?.lable,
-        data: item,
-        datasetStrokeWidth: 3,
-        pointDotStrokeWidth: 4,
-        backgroundColor: setup[i]?.color,
-        borderColor: setup[i]?.color,
-        tension: 0.0,
-        pointRadius: 4,
-        pointBackgroundColor: "#FFF",
-        borderWidth: 2.5,
-      };
+    labels: datas?.map((item, i) => {
+      return i
     }),
+    // datasets: datas?.map((item, i) => {
+    //   return {
+    //     label: setup[i]?.lable,
+    //     data: item,
+    //     datasetStrokeWidth: 3,
+    //     pointDotStrokeWidth: 4,
+    //     backgroundColor: setup[i]?.color,
+    //     borderColor: setup[i]?.color,
+    //     tension: 0.0,
+    //     pointRadius: 4,
+    //     pointBackgroundColor: "#FFF",
+    //     borderWidth: 2.5,
+    //   };
+    // }),
+    datasets: [
+      {
+        label: '',
+        data: datas,
+        borderColor: 'rgba(116, 184, 22, 1)',
+        backgroundColor: 'rgba(116, 184, 22, 1)',
+        pointBackgroundColor: "#FFF",
+        datasetStrokeWidth: 100,
+        pointDotStrokeWidth: 100,
+        tension: 0.0,
+        pointRadius: 6,
+        borderWidth: 4.5,
+      },
+    ]
   };
   const options = {
     responsive: true,
@@ -55,7 +71,7 @@ export const ChartLine = ({ datas, labels, height, maxValue = 300 }) => {
 
   return (
     <>
-      <Line data={data} options={options} height={height} />
+      <Line data={data} options={options} height={height} width={width} />
     </>
   );
 };
