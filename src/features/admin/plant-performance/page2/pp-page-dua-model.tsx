@@ -5,7 +5,7 @@ export default function usePlantTwoModel() {
     const navigate = useNavigate()
     useEffect(() =>{
         const intervalId = setInterval(() => {
-            navigate('/plant-performance-one')
+            navigate('../plant-performance-one')
           }, 30*1000);
           return () => {
             clearInterval(intervalId);
