@@ -13,6 +13,7 @@ import CallerMenu from "@features/admin/caller/menu/CallerMenu";
 import MaintenanceCalling from "@features/admin/caller/maintenance-calling/MaintenanceCallingTable";
 import { Children } from "react";
 import MaintenanceHandling from "@features/admin/called/maintance-handling/MaintenanceMaintanceTable";
+import { ParentCompany } from "@features/admin/company-performance/parent/parent";
 // import AdminLayout from "@features/admin/admin-layout/admin-layout";
 
 const Root = () => {
@@ -21,56 +22,59 @@ const Root = () => {
 
 export default createBrowserRouter([
   {
-    path : "login",
+    path: "login",
     // element : <Navigate to={`../andon/company-performance-one`} />
-    element : <LoginView/>
+    element: <LoginView />,
   },
   {
-    path : 'caller',
-    element : <MenuLayout/>,
-    children : [
+    path: "caller",
+    element: <MenuLayout />,
+    children: [
       {
-        path : "menu",
-        element : <Root/>,
-        children : [
+        path: "menu",
+        element: <Root />,
+        children: [
           {
-            path : "",
-            element : <CallerMenu/>
+            path: "",
+            element: <CallerMenu />,
           },
           {
-            path : "maintenance-calling",
-            element : <MaintenanceCalling/>
+            path: "maintenance-calling",
+            element: <MaintenanceCalling />,
           },
-        ]
+        ],
       },
-      
-    ]
+    ],
   },
   {
-    path : 'called',
-    element : <MenuLayout/>,
-    children : [
+    path: "called",
+    element: <MenuLayout />,
+    children: [
       {
-
-        path : "maintenance-handling",
-        element : <MaintenanceHandling/>
-
+        path: "maintenance-handling",
+        element: <MaintenanceHandling />,
       },
-      
-    ]
+    ],
   },
   {
     path: "andon",
     element: <LayoutCompany />,
     children: [
       {
-        path: "company-performance-one",
-        element: <CompanynPerformanceOne />,
+        path: "",
+        element: <ParentCompany />,
+        children: [
+          {
+            path: "company-performance-one",
+            element: <CompanynPerformanceOne />,
+          },
+          {
+            path: "company-performance-two",
+            element: <CompanynPerformanceTwo />,
+          },
+        ],
       },
-      {
-        path: "company-performance-two",
-        element: <CompanynPerformanceTwo />,
-      },
+
       {
         path: "plant-performance-one",
         element: <PlantPerformanceOne />,
