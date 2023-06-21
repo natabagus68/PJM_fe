@@ -2,8 +2,8 @@
 PWD=/c/Users/RAGDALION-2021/pjm/pjm-oee-monitoring-fe-ts
 PWD_BE=/c/Users/RAGDALION-2021/pjm/pjm-oee-monitoring-be-ts
 echo "Pull from Repository "
-sudo git checkout main
-sudo git pull origin main || (sudo git stash && sudo git pull origin main)
+git checkout main
+git pull origin main || (git stash && git pull origin main)
 echo "Deploying..."
 echo "Check Node.JS"
 node --version || "echo \"Error: Node JS Not Found\" && exit"
