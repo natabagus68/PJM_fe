@@ -65,7 +65,7 @@ export const CompanynPerformanceTwo = () => {
           <div className="flex-1 border-2 border-white flex items-center justify-center  text-center   box-border ">
             <div>
               <h1 className="text-white font-bold text-8xl">
-                {model.data.totalQuantity}
+                {model.data.totalProcess}
               </h1>
               <h1 className="text-white font-bold text-4xl">Machine</h1>
             </div>
