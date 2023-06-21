@@ -1,15 +1,18 @@
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, registerables } from "chart.js";
+import moment from "moment";
 
 ChartJS.register(...registerables);
 
-export const Chartbar = ({colors}) => {
-  const data = {
-    labels: [1, 2, 3, 4],
+export const Chartbar = ({ colors, data }) => {
+  const datas = {
+    labels: data.map((item) => {
+      return moment(item.name).format("LT");
+    }),
     datasets: [
       {
         label: "data",
-        data: [2, 3, 1, 4],
+        data: data.map((item) => item.value),
         backgroundColor: colors,
         borderColor: "rgba(255, 255, 255, 1)",
       },
@@ -39,8 +42,7 @@ export const Chartbar = ({colors}) => {
   ChartJS.defaults.color = "rgba(255, 255, 255, 1)";
   return (
     <>
-      <Bar data={data} options={options} />
+      <Bar data={datas} options={options} />
     </>
   );
 };
-
