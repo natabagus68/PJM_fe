@@ -2,7 +2,7 @@ import { Chartbar } from "@common/components/charts/ChartBar";
 import usePlantOneModel from "./pp-page-satu-model";
 
 export const PlantPerformanceOne = () => {
-    const plantOne = usePlantOneModel()
+  const plantOne = usePlantOneModel();
   return (
     <>
       <div>
@@ -17,7 +17,7 @@ export const PlantPerformanceOne = () => {
           </div>
         </div>
         <div className="flex w-full">
-          <div className="border-2 border-white w-1/2 text-center  py-8  box-border ">
+          <div className="border-2 border-white w-1/2 text-center  py-12  box-border ">
             <div>
               <h1 className="text-[#74B816] font-bold text-8xl">78</h1>
               <h1 className="text-white font-bold text-4xl">%</h1>
@@ -25,7 +25,7 @@ export const PlantPerformanceOne = () => {
           </div>
           <div className="border-2 border-white w-full text-center py-8  box-border">
             <div className="w-[90%] m-auto">
-              <Chartbar colors={'rgba(34, 155, 216, 1)'}/>
+              <Chartbar colors={"rgba(34, 155, 216, 1)"} />
             </div>
           </div>
         </div>

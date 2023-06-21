@@ -42,7 +42,7 @@ export const Chartbar = ({ colors, data }) => {
   ChartJS.defaults.color = "rgba(255, 255, 255, 1)";
   return (
     <>
-      <Bar data={datas} options={options} />
+      <Bar data={datas} options={options} height={`100vh`} width={`100vh`} />
     </>
   );
 };
