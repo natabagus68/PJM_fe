@@ -28,20 +28,20 @@ export class CompanyPerformance {
   }
   public unmarshall(): ICompanyPerformance {
     return {
-      availability: Number(this.availability).toFixed(1),
-      performance: Number(this.performance).toFixed(1),
-      quality: Number(this.quality).toFixed(1),
-      oeeRealtime: Number(this.oeeRealtime).toFixed(1),
-      achievement: Number(this.achievement).toFixed(1),
-      notGood: Number(this.notGood).toFixed(1),
-      target: Number(this.target).toFixed(1),
-      totalQuantity: Number(this.totalQuantity).toFixed(1),
+      availability: Number(this.availability),
+      performance: Number(this.performance),
+      quality: Number(this.quality),
+      oeeRealtime: Number(this.oeeRealtime),
+      achievement: Number(this.achievement),
+      notGood: Number(this.notGood),
+      target: Number(this.target),
+      totalQuantity: Number(this.totalQuantity),
       avgRuntime: this.avgRuntime,
       avgDowntime: this.avgDowntime,
-      oeeLastMonth: Number(this.oeeLastMonth).toFixed(1),
-      totalProcess: Number(this.totalProcess).toFixed(1),
-      running: Number(this.running).toFixed(1),
-      stop: Number(this.stop).toFixed(1),
+      oeeLastMonth: Number(this.oeeLastMonth),
+      totalProcess: Number(this.totalProcess),
+      running: Number(this.running),
+      stop: Number(this.stop),
       hourlyPerformances: this.hourlyPerformances.map((item) =>
         item.unmarshall()
       ),
