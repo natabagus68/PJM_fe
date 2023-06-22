@@ -19,14 +19,14 @@ export const CompanynPerformanceTwo = () => {
         <div className="flex w-full">
           <div className="border-2 border-white w-1/2 text-center  py-32   ">
             <div>
-              <h1 className="text-white font-bold text-8xl">
+              <h1 className="text-[#74B816] font-bold text-9xl">
                 {model.data.oeeRealtime}
               </h1>
               <h1 className="text-white font-bold text-4xl">%</h1>
             </div>
           </div>
-          <div className="border-2 border-white w-full text-center py-32 ">
-            <div className="w-[90%] m-auto">
+          <div className="border-2 border-white w-full text-center p-2 ">
+            <div className="w-full h-full m-auto">
               <Chartbar
                 colors={"rgba(245, 159, 0, 1)"}
                 data={model.data.hourlyPerformances}
@@ -56,7 +56,7 @@ export const CompanynPerformanceTwo = () => {
         <div className="flex w-full flex-1">
           <div className="flex-1 border-2 border-white flex items-center justify-center  text-center   box-border ">
             <div>
-              <h1 className="text-red-500 font-bold text-8xl">
+              <h1 className="text-red-500 font-bold text-9xl">
                 {model.data.oeeLastMonth}
               </h1>
               <h1 className="text-white font-bold text-4xl">%</h1>
@@ -64,7 +64,7 @@ export const CompanynPerformanceTwo = () => {
           </div>
           <div className="flex-1 border-2 border-white flex items-center justify-center  text-center   box-border ">
             <div>
-              <h1 className="text-white font-bold text-8xl">
+              <h1 className="text-white font-bold text-9xl">
                 {model.data.totalProcess}
               </h1>
               <h1 className="text-white font-bold text-4xl">Machine</h1>
@@ -72,7 +72,7 @@ export const CompanynPerformanceTwo = () => {
           </div>
           <div className="flex-1 border-2 border-white flex items-center justify-center  text-center box-border">
             <div>
-              <h1 className="text-white font-bold text-8xl">
+              <h1 className="text-white font-bold text-9xl">
                 {model.data.running}
               </h1>
               <h1 className="text-white font-bold text-4xl">%</h1>
@@ -80,7 +80,7 @@ export const CompanynPerformanceTwo = () => {
           </div>
           <div className="flex-1 border-2 border-white flex items-center justify-center  text-center box-border">
             <div>
-              <h1 className="text-white font-bold text-8xl">
+              <h1 className="text-white font-bold text-9xl">
                 {model.data.stop}
               </h1>
               <h1 className="text-white font-bold text-4xl">%</h1>

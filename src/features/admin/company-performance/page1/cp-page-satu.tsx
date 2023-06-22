@@ -96,7 +96,7 @@ export const CompanynPerformanceOne = () => {
           <div className="border-2 border-white bg-neutral-500  w-1/2 text-center py-2">
             <h1 className="text-[#F59F00] font-bold text-4xl">OEE Real-Time</h1>
           </div>
-          <div className="border-2 border-white bg-neutral-500  w-full text-center py-5">
+          <div className="border-2 border-white bg-neutral-500  w-full text-center py-2">
             <h1 className="text-[#F59F00] font-bold text-4xl">
               Hourly Performance
             </h1>
@@ -105,14 +105,14 @@ export const CompanynPerformanceOne = () => {
         <div className="flex w-full">
           <div className="border-2 border-white w-1/2 text-center  py-12 h-80 flex dlwx-col items-center justify-center box-border ">
             <div>
-              <h1 className="text-white font-bold text-9xl">
+              <h1 className="text-[#F59F00] font-bold text-9xl ">
                 {model.data.oeeRealtime}
               </h1>
               <h1 className="text-white font-bold text-4xl">%</h1>
             </div>
           </div>
-          <div className="border-2 border-white w-full text-center py-12 h-80 flex dlwx-col items-center justify-center box-border">
-            <div className="w-[90%] m-auto">
+          <div className="border-2 border-white w-full text-center p-2 h-80 flex dlwx-col items-center justify-center box-border">
+            <div className="w-full h-full m-auto">
               {model.data.hourlyPerformances && (
                 <Chartbar
                   colors={"rgba(245, 159, 0, 1)"}
@@ -137,7 +137,7 @@ export const CompanynPerformanceOne = () => {
           </div>
         </div>
         <div className="flex w-full">
-          <div className="border-2 border-white w-full text-center  py-8  box-border ">
+          <div className="border-2 border-white w-full text-center  py-5  box-border ">
             <div>
               <h1 className="text-white font-bold text-9xl">
                 {model.data.achievement}
@@ -145,7 +145,7 @@ export const CompanynPerformanceOne = () => {
               <h1 className="text-white font-bold text-5xl">%</h1>
             </div>
           </div>
-          <div className="border-2 border-white w-full text-center  py-8  box-border ">
+          <div className="border-2 border-white w-full text-center  py-5  box-border ">
             <div>
               <h1 className="text-white font-bold text-9xl">
                 {model.data.target}
@@ -153,7 +153,7 @@ export const CompanynPerformanceOne = () => {
               <h1 className="text-white font-bold text-5xl">pcs</h1>
             </div>
           </div>
-          <div className="border-2 border-white w-full text-center py-8  box-border">
+          <div className="border-2 border-white w-full text-center py-5  box-border">
             <h1 className="text-[#74B816] font-bold text-9xl">
               {model.data.avgRuntime}
             </h1>
@@ -164,19 +164,19 @@ export const CompanynPerformanceOne = () => {
       <div className="w-full h-full flex flex-col">
         <div className="flex w-full">
           <div className="border-2 border-white bg-neutral-500  w-full text-center py-2">
-            <h1 className="text-[#F59F00] font-bold text-5xl">Not Good</h1>
+            <h1 className="text-[#F59F00] font-bold text-4xl">Not Good</h1>
           </div>
           <div className="border-2 border-white bg-neutral-500  w-full text-center py-2">
-            <h1 className="text-[#F59F00] font-bold text-5xl">
+            <h1 className="text-[#F59F00] font-bold text-4xl">
               Total Quantity
             </h1>
           </div>
           <div className="border-2 border-white bg-neutral-500  w-full text-center py-2">
-            <h1 className="text-[#F59F00] font-bold text-5xl">AVG Downtime</h1>
+            <h1 className="text-[#F59F00] font-bold text-4xl">AVG Downtime</h1>
           </div>
         </div>
         <div className="flex w-full flex-1">
-          <div className="border-2 border-white w-full items-center text-center  py-8  box-border ">
+          <div className="border-2 border-white w-full items-center text-center  py-5  box-border ">
             <div>
               <h1 className="text-[#DA3E33] font-bold text-9xl">
                 {model.data.notGood}
@@ -184,7 +184,7 @@ export const CompanynPerformanceOne = () => {
               <h1 className="text-[#DA3E33] font-bold text-5xl">pcs</h1>
             </div>
           </div>
-          <div className="border-2 border-white w-full items-center text-center  py-8  box-border ">
+          <div className="border-2 border-white w-full items-center text-center  py-5  box-border ">
             <div>
               <h1 className="text-white font-bold text-9xl">
                 {model.data.totalQuantity}
@@ -192,7 +192,7 @@ export const CompanynPerformanceOne = () => {
               <h1 className="text-white font-bold text-5xl">pcs</h1>
             </div>
           </div>
-          <div className="border-2 border-white w-full items-center text-center py-8  box-border">
+          <div className="border-2 border-white w-full items-center text-center py-5  box-border">
             <h1 className="text-[#DA3E33] font-bold text-9xl">
               {model.data.avgDowntime}
             </h1>

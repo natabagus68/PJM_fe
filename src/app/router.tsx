@@ -22,6 +22,10 @@ const Root = () => {
 
 export default createBrowserRouter([
   {
+    path : "",
+    element: <Navigate to={`andon/company-performance-one`} />  
+  },
+  {
     path: "login",
     // element : <Navigate to={`../andon/company-performance-one`} />
     element: <LoginView />,
@@ -74,7 +78,6 @@ export default createBrowserRouter([
           },
         ],
       },
-
       {
         path: "plant-performance-one",
         element: <PlantPerformanceOne />,

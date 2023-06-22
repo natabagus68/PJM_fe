@@ -19,12 +19,12 @@ export const LinePerformance = () => {
         <div className="flex w-full">
           <div className="border-2 border-white w-1/3 text-center  py-8  box-border ">
             <div>
-              <h1 className="text-[#74B816] font-bold text-8xl">78</h1>
+              <h1 className="text-[#74B816] font-bold text-9xl">78</h1>
               <h1 className="text-white font-bold text-4xl">%</h1>
             </div>
           </div>
-          <div className="border-2 border-white w-full text-center py-8  box-border">
-            <div className="w-[90%] m-auto">
+          <div className="border-2 border-white w-full text-center py--2 box-border">
+            <div className="w-full h-full m-auto">
               <ChartLine datas={[88,52,23,67,46,84,13,47]} height={200} width={200}/>
             </div>
           </div>
@@ -51,25 +51,25 @@ export const LinePerformance = () => {
         <div className="flex w-full flex-1">
           <div className="flex-1 border-2 border-white flex items-center justify-center  text-center   box-border ">
             <div>
-              <h1 className="text-white font-bold text-8xl">28.6</h1>
+              <h1 className="text-white font-bold text-9xl">28.6</h1>
               <h1 className="text-white font-bold text-4xl">Second</h1>
             </div>
           </div>
           <div className="flex-1 border-2 border-white flex items-center justify-center  text-center   box-border ">
             <div>
-              <h1 className="text-white font-bold text-8xl">78800</h1>
+              <h1 className="text-white font-bold text-9xl">78800</h1>
               <h1 className="text-white font-bold text-4xl">Pcs</h1>
             </div>
           </div>
           <div className="flex-1 border-2 border-white flex items-center justify-center  text-center box-border">
             <div>
-              <h1 className="text-white font-bold text-8xl">2.996</h1>
+              <h1 className="text-white font-bold text-9xl">2.996</h1>
               <h1 className="text-white font-bold text-4xl">%</h1>
             </div>
           </div>
           <div className="flex-1 border-2 border-white flex items-center justify-center  text-center box-border">
             <div>
-            <h1 className="text-[#74B816] font-bold text-7xl">00:50:00</h1>
+            <h1 className="text-[#74B816] font-bold text-9xl">00:50:00</h1>
             </div>
           </div>
         </div>
@@ -94,25 +94,25 @@ export const LinePerformance = () => {
         <div className="flex w-full flex-1">
           <div className="flex-1 border-2 border-white flex items-center justify-center  text-center   box-border ">
             <div>
-              <h1 className="text-white font-bold text-8xl">25.7</h1>
+              <h1 className="text-white font-bold text-9xl">25.7</h1>
               <h1 className="text-white font-bold text-4xl">Second</h1>
             </div>
           </div>
           <div className="flex-1 border-2 border-white flex items-center justify-center  text-center   box-border ">
             <div>
-              <h1 className="text-white font-bold text-8xl">7800</h1>
+              <h1 className="text-white font-bold text-9xl">7800</h1>
               <h1 className="text-white font-bold text-4xl">Pcs</h1>
             </div>
           </div>
           <div className="flex-1 border-2 border-white flex items-center justify-center  text-center box-border">
             <div>
-              <h1 className="text-[#DA3E33] font-bold text-8xl">3</h1>
+              <h1 className="text-[#DA3E33] font-bold text-9xl">3</h1>
               <h1 className="text-[#DA3E33] font-bold text-4xl">Pcs</h1>
             </div>
           </div>
           <div className="flex-1 border-2 border-white flex items-center justify-center  text-center box-border">
             <div>
-                <h1 className="text-[#DA3E33] font-bold text-7xl">00:50:00</h1>
+                <h1 className="text-[#DA3E33] font-bold text-9xl">00:50:00</h1>
             </div>
           </div>
         </div>
