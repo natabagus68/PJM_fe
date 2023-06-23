@@ -1,9 +1,9 @@
 #! /usr/bin/bash
-PWD=/home/ubuntu/apps/nig-frontend
-PWD_BE=/home/ubuntu/apps/nig-backend
+PWD=/c/Users/RAGDALION-2021/pjm/pjm-oee-monitoring-fe-ts
+PWD_BE=/c/Users/RAGDALION-2021/pjm/pjm-oee-monitoring-be-ts
 echo "Pull from Repository "
-sudo git checkout development
-sudo git pull origin development || (sudo git stash && sudo git pull origin development)
+git checkout main
+git pull origin main || (git stash && git pull origin main)
 echo "Deploying..."
 echo "Check Node.JS"
 node --version || "echo \"Error: Node JS Not Found\" && exit"
