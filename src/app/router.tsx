@@ -1,19 +1,20 @@
 import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 import { element } from "prop-types";
 import { Error404 } from "../common/components";
-import { LayoutCompany } from "@features/admin/andon-layout/layout-company";
+import { LayoutCompany } from "@features/admin/andon-layout-company/layout-company";
 import { CompanynPerformanceOne } from "@features/admin/company-performance/page1/cp-page-satu";
 import { CompanynPerformanceTwo } from "@features/admin/company-performance/page2/cp-page-dua";
 import { PlantPerformanceOne } from "@features/admin/plant-performance/page1/pp-page-satu";
 import { PlantPerformanceTwo } from "@features/admin/plant-performance/page2/pp-page-dua";
-import { LinePerformance } from "@features/admin/line-performance/line-performance";
+import { SubProcessPerformance } from "@features/admin/sub-process-performance/sub-process-performance";
 import LoginView from "@features/auth/login-view";
 import MenuLayout from "@features/admin/calling-layout/menu-layout";
 import CallerMenu from "@features/admin/caller/menu/CallerMenu";
 import MaintenanceCalling from "@features/admin/caller/maintenance-calling/MaintenanceCallingTable";
-import { Children } from "react";
+
 import MaintenanceHandling from "@features/admin/called/maintance-handling/MaintenanceMaintanceTable";
-import { ParentCompany } from "@features/admin/company-performance/parent/parent";
+import { LayoutProcess } from "@features/admin/andon-layout-process/layout-process";
+import { LayoutSubProcess } from "@features/admin/andon-layout-sub-process/layout-sub-process";
 // import AdminLayout from "@features/admin/admin-layout/admin-layout";
 
 const Root = () => {
@@ -58,34 +59,47 @@ export default createBrowserRouter([
   },
   {
     path: "andon",
-    element: <LayoutCompany />,
+    element: <Root />,
     children: [
       {
-        path: "",
-        element: <ParentCompany />,
+        path: "company-performance",
+        element: <LayoutCompany />,
         children: [
           {
-            path: "company-performance-one",
+            path: "one",
             element: <CompanynPerformanceOne />,
           },
           {
-            path: "company-performance-two",
+            path: "two",
             element: <CompanynPerformanceTwo />,
           },
         ],
       },
 
       {
-        path: "plant-performance-one",
-        element: <PlantPerformanceOne />,
+        path: "process-performance",
+        element: <LayoutProcess />,
+        children: [
+          {
+            path: ":processName/one",
+            element: <PlantPerformanceOne />,
+          },
+          {
+            path: ":processName/two",
+            element: <PlantPerformanceTwo />,
+          },
+        ],
       },
+
       {
-        path: "plant-performance-two",
-        element: <PlantPerformanceTwo />,
-      },
-      {
-        path: "line-performance",
-        element: <LinePerformance />,
+        path: "sub-process-performance",
+        element: <LayoutSubProcess />,
+        children: [
+          {
+            path: ":processName",
+            element: <SubProcessPerformance />,
+          },
+        ],
       },
     ],
   },

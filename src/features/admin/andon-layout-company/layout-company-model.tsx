@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { AndonListener } from "@data/socket/andon-socket-listener";
+import { useLocation, useParams } from "react-router-dom";
+import { AndonCompanyPerformanceListener } from "@data/socket/andoncompany-performance-socket-listener";
 import { CompanyPerformance } from "@domain/models/company";
+import { Socket } from "@data/socket/_socket";
 
 export default function uselayout() {
-  const socketAndon = new AndonListener();
+  const { processName } = useParams();
+  const socketAndon = new AndonCompanyPerformanceListener(Socket.getInstance());
   const [data, setData] = useState<CompanyPerformance>(
     CompanyPerformance.create({
       availability: Number(0).toFixed(1),
@@ -56,17 +58,20 @@ export default function uselayout() {
 
   const getTitleHeader = () => {
     if (location.pathname.includes("plant-performance")) {
-      return "Plant Performance";
+      return "Process Performance";
     } else if (location.pathname.includes("company-performance")) {
       return "Company Performance";
     } else if (location.pathname.includes("line-performance")) {
-      return "Line Performance";
+      return "Sub Process Performance";
     }
   };
   useEffect(() => {
-    socketAndon.onAndonListener((data: CompanyPerformance) => {
-      setData(data);
-    });
+    socketAndon.onAndonListener(
+      "andon-company-performance",
+      (data: CompanyPerformance) => {
+        setData(data);
+      }
+    );
   }, []);
   return {
     getDateTime,

@@ -44,7 +44,9 @@ export const CompanynPerformanceTwo = () => {
             </h1>
           </div>
           <div className="border-2 border-white bg-neutral-500  w-full text-center py-2">
-            <h1 className="text-[#F59F00] font-bold text-4xl">Total IoT</h1>
+            <h1 className="text-[#F59F00] font-bold text-4xl">
+              Total Proccess
+            </h1>
           </div>
           <div className="border-2 border-white bg-neutral-500  w-full text-center py-2">
             <h1 className="text-[#F59F00] font-bold text-4xl">Running</h1>

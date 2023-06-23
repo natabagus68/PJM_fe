@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
 import LogoPjm from "../../../assets/logo-pjm.png";
-import uselayout from "./layout-company-model";
 import ChartSemiCircle from "@common/components/charts/ChartSemiCircle";
 import ChartDonut from "@common/components/charts/ChartDonut";
-export const LayoutCompany = () => {
-  const layout = uselayout();
+import { useLayoutProcess } from "./layout-process-model";
+import { ProcessContex } from "./prcess-contex";
+export const LayoutProcess = () => {
+  const layout = useLayoutProcess();
   return (
     <>
       <div className="flex h-screen w-screen bg-[#212121] border-4 border-white">
@@ -36,7 +37,7 @@ export const LayoutCompany = () => {
           <div className="w-full h-32 border-b-2 border-white flex">
             <div className="border-r-2 border-white h-full text-center py-3 flex justify-center items-center w-full">
               <h1 className="text-white font-bold text-7xl">
-                {layout.getTitleHeader()}
+                Process Performance
               </h1>
             </div>
             <div className="border-r-2 border-white h-full text-center py-3 flex justify-center items-center w-96">
@@ -47,7 +48,9 @@ export const LayoutCompany = () => {
           </div>
 
           <div className="w-full flex-1 flex flex-col">
-            <Outlet />
+            <ProcessContex.Provider value={layout.data}>
+              <Outlet />
+            </ProcessContex.Provider>
           </div>
         </div>
       </div>

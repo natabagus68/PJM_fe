@@ -1,9 +1,10 @@
 import { CompanyPerformance } from "@domain/models/company";
-import { server } from "./_socket";
+import { Socket } from "./_socket";
 import { HourlyPerformance } from "@domain/models/perfomance-company";
-export class AndonListener {
-  onAndonListener(callback: any) {
-    server.on("andon-company-performance", (data) => {
+export class AndonCompanyPerformanceListener {
+  constructor(private server: Socket) {}
+  onAndonListener(event: string, callback: any) {
+    this.server.io.on(event, (data) => {
       callback(
         CompanyPerformance.create({
           availability: Number(data.availability),

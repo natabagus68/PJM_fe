@@ -17,7 +17,7 @@ export const ChartLine = ({ datas, height, width, maxValue = 300 }) => {
 
   const data = {
     labels: datas?.map((item, i) => {
-      return i
+      return item.name;
     }),
     // datasets: datas?.map((item, i) => {
     //   return {
@@ -35,10 +35,10 @@ export const ChartLine = ({ datas, height, width, maxValue = 300 }) => {
     // }),
     datasets: [
       {
-        label: '',
-        data: datas,
-        borderColor: 'rgba(116, 184, 22, 1)',
-        backgroundColor: 'rgba(116, 184, 22, 1)',
+        label: "",
+        data: datas.map((item) => item.value),
+        borderColor: "rgba(116, 184, 22, 1)",
+        backgroundColor: "rgba(116, 184, 22, 1)",
         pointBackgroundColor: "#FFF",
         datasetStrokeWidth: 100,
         pointDotStrokeWidth: 100,
@@ -46,7 +46,7 @@ export const ChartLine = ({ datas, height, width, maxValue = 300 }) => {
         pointRadius: 6,
         borderWidth: 4.5,
       },
-    ]
+    ],
   };
   const options = {
     responsive: true,
@@ -64,7 +64,7 @@ export const ChartLine = ({ datas, height, width, maxValue = 300 }) => {
     },
     plugins: {
       legend: {
-        display: false
+        display: false,
       },
     },
   };

@@ -2,7 +2,7 @@ import { Chartbar } from "@common/components/charts/ChartBar";
 import usePlantOneModel from "./pp-page-satu-model";
 
 export const PlantPerformanceOne = () => {
-  const plantOne = usePlantOneModel();
+  const model = usePlantOneModel();
   return (
     <>
       <div>
@@ -17,15 +17,20 @@ export const PlantPerformanceOne = () => {
           </div>
         </div>
         <div className="flex w-full">
-          <div className="border-2 border-white w-1/2 text-center  py-12  box-border ">
+          <div className="border-2 border-white w-1/2 text-center   py-32  box-border ">
             <div>
-              <h1 className="text-[#74B816] font-bold text-8xl">78</h1>
+              <h1 className="text-[#74B816] font-bold text-8xl">
+                {model.data.oeeRealtime || 0}
+              </h1>
               <h1 className="text-white font-bold text-4xl">%</h1>
             </div>
           </div>
-          <div className="border-2 border-white w-full text-center py-8  box-border">
+          <div className="border-2 border-white w-full text-center py-32  box-border">
             <div className="w-[90%] m-auto">
-              <Chartbar colors={"rgba(34, 155, 216, 1)"} />
+              <Chartbar
+                colors={"rgba(34, 155, 216, 1)"}
+                data={model.data.hourlyPerformances}
+              />
             </div>
           </div>
         </div>
@@ -46,18 +51,24 @@ export const PlantPerformanceOne = () => {
         <div className="flex w-full">
           <div className="border-2 border-white w-full text-center  py-8  box-border ">
             <div>
-              <h1 className="text-white font-bold text-8xl">7008</h1>
+              <h1 className="text-white font-bold text-8xl">
+                {model.data.achievement || 0}
+              </h1>
               <h1 className="text-white font-bold text-4xl">%</h1>
             </div>
           </div>
           <div className="border-2 border-white w-full text-center  py-8  box-border ">
             <div>
-              <h1 className="text-white font-bold text-8xl">7800</h1>
+              <h1 className="text-white font-bold text-8xl">
+                {model.data.target || 0}
+              </h1>
               <h1 className="text-white font-bold text-4xl">pcs</h1>
             </div>
           </div>
           <div className="border-2 border-white w-full text-center py-8  box-border">
-            <h1 className="text-[#74B816] font-bold text-8xl">00:50:00</h1>
+            <h1 className="text-[#74B816] font-bold text-8xl">
+              {model.data.avgRuntime || 0}
+            </h1>
           </div>
         </div>
       </div>
@@ -79,18 +90,24 @@ export const PlantPerformanceOne = () => {
         <div className="flex w-full flex-1">
           <div className="border-2 border-white w-full items-center text-center  py-8  box-border ">
             <div>
-              <h1 className="text-[#DA3E33] font-bold text-8xl">4</h1>
+              <h1 className="text-[#DA3E33] font-bold text-8xl">
+                {model.data.notGood || 0}
+              </h1>
               <h1 className="text-[#DA3E33] font-bold text-4xl">pcs</h1>
             </div>
           </div>
           <div className="border-2 border-white w-full items-center text-center  py-8  box-border ">
             <div>
-              <h1 className="text-white font-bold text-8xl">7800</h1>
+              <h1 className="text-white font-bold text-8xl">
+                {model.data.totalQuantity || 0}
+              </h1>
               <h1 className="text-white font-bold text-4xl">pcs</h1>
             </div>
           </div>
           <div className="border-2 border-white w-full items-center text-center py-8  box-border">
-            <h1 className="text-[#DA3E33] font-bold text-8xl">00:50:00</h1>
+            <h1 className="text-[#DA3E33] font-bold text-8xl">
+              {model.data.avgDowntime || 0}
+            </h1>
           </div>
         </div>
       </div>
