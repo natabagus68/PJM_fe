@@ -66,10 +66,10 @@ export const useLayoutProcess = () => {
   };
 
   useEffect(() => {
-    Socket.getInstance().io.on("connection", () => {
-      Socket.getInstance().io.emit("andon-process-performance", processName);
-      listenerProcess();
-    });
+    // Socket.getInstance().io.on("connection", () => {
+    Socket.getInstance().io.emit("andon-process-performance", processName);
+    listenerProcess();
+    // });
   }, []);
 
   return {

@@ -56,7 +56,7 @@ export const useLayoutSubProcess = () => {
 
   const subProcessListener = () => {
     subProcessRepo.subProcessPerformanceListener(
-      "andon-process-performance",
+      "andon-sub-process-performance",
       (data: SubProcessPerformance) => {
         console.log("get data", data);
         setData(data);
@@ -66,7 +66,10 @@ export const useLayoutSubProcess = () => {
 
   useEffect(() => {
     Socket.getInstance().io.on("connect", () => {
-      Socket.getInstance().io.emit("andon-process-performance", processName);
+      Socket.getInstance().io.emit(
+        "andon-sub-process-performance",
+        processName
+      );
       subProcessListener();
     });
   }, []);
