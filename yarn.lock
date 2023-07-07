@@ -2736,10 +2736,10 @@ react-router@6.4.3:
   dependencies:
     "@remix-run/router" "1.0.3"
 
-react-tailwindcss-datepicker@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.npmjs.org/react-tailwindcss-datepicker/-/react-tailwindcss-datepicker-1.5.1.tgz"
-  integrity sha512-IbNw3Lu2dwkRYOlYr3ffOwEbLiVz+QufaYbwiy0ToeLmx7ZUt0CPh3HfwVQGNS1/o4D/+8Rl4WHNsLd+wVb5Mg==
+react-tailwindcss-datepicker@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/react-tailwindcss-datepicker/-/react-tailwindcss-datepicker-1.6.3.tgz#99411fc0bdd5a3dd028f6e4d65270f479eca7723"
+  integrity sha512-W7oq+kb+nBTvOwa3EOBXlcuTEyRT5G3AKfRESvTapWgdOlE26mqDGH8j6aLghA1Ez6+JsuSGSQYgC1L2XJ5hhg==
 
 react-tailwindcss-select@^1.8.5:
   version "1.8.5"

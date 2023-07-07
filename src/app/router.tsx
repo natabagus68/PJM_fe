@@ -17,6 +17,9 @@ import { LayoutProcess } from "@features/admin/andon-layout-process/layout-proce
 import { LayoutSubProcess } from "@features/admin/andon-layout-sub-process/layout-sub-process";
 import { AuthWebAdmin } from "@features/auth-web-admin/login-auth-web-admin";
 import { AdminLayout } from "@features/web-admin/admin-layout/admin-layout-view";
+import { Log } from "@features/web-admin/log-page/log-view";
+import { MasterData } from "@features/web-admin/master-data/master-data-view";
+import { MasterDataForm } from "@features/web-admin/master-data/form/master-data-form-view";
 // import AdminLayout from "@features/admin/admin-layout/admin-layout";
 
 const Root = () => {
@@ -116,6 +119,32 @@ export default createBrowserRouter([
   {
     path: "admin",
     element: <AdminLayout />,
+    children: [
+      {
+        path: "log",
+        element: <Root />,
+        children: [
+          {
+            path: "",
+            element: <Log />,
+          },
+        ],
+      },
+      {
+        path: "master-data",
+        element: <Root />,
+        children: [
+          {
+            path: "",
+            element: <MasterData />,
+          },
+          {
+            path: "form",
+            element: <MasterDataForm />,
+          },
+        ],
+      },
+    ],
   },
   {
     path: "*",

@@ -41,10 +41,10 @@ export const AdminLayout = () => {
       <div
         className={`fixed h-screen w-[18%] bg-white ${
           model.sideShow ? "translate-[999px]" : "-translate-x-[999px]"
-        } duration-300`}
+        } duration-300 shadow-lg`}
       >
         {/* head logo */}
-        <div className="h-[70px] flex items-center justify-center shadow-lg">
+        <div className="h-[70px] flex items-center justify-center shadow-md">
           <img src={PJMLogo} alt="logo pjm" width={135} height={50} />
         </div>
         {/* content */}
@@ -60,10 +60,12 @@ export const AdminLayout = () => {
               label="Log"
               icon={<FileIcon size={24} />}
               className={"mt-3"}
+              to={"/admin/log"}
             />
             <NavItem
               label="Master Data"
               icon={<CheckSquareIcon size={24} />}
+              to={"/admin/master-data"}
               className={"mt-3"}
             />
             <NavItem
@@ -79,7 +81,7 @@ export const AdminLayout = () => {
       <main
         className={`${
           model.sideShow ? "w-[82%]" : "w-full"
-        } h-screen p-9   mt-10 duration-300 flex flex-col items-center justify-center float-right`}
+        } h-screen p-9   mt-14 duration-300 flex flex-col   float-right`}
       >
         <Outlet />
       </main>
