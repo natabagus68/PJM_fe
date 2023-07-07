@@ -20,6 +20,8 @@ import { AdminLayout } from "@features/web-admin/admin-layout/admin-layout-view"
 import { Log } from "@features/web-admin/log-page/log-view";
 import { MasterData } from "@features/web-admin/master-data/master-data-view";
 import { MasterDataForm } from "@features/web-admin/master-data/form/master-data-form-view";
+import { User } from "@features/web-admin/user/user-view";
+import { UserForm } from "@features/web-admin/user/form/user-form-view";
 // import AdminLayout from "@features/admin/admin-layout/admin-layout";
 
 const Root = () => {
@@ -141,6 +143,20 @@ export default createBrowserRouter([
           {
             path: "form",
             element: <MasterDataForm />,
+          },
+        ],
+      },
+      {
+        path: "user",
+        element: <Root />,
+        children: [
+          {
+            path: "",
+            element: <User />,
+          },
+          {
+            path: "form",
+            element: <UserForm />,
           },
         ],
       },

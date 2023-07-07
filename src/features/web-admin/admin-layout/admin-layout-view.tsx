@@ -72,6 +72,7 @@ export const AdminLayout = () => {
               label="User"
               icon={<UserIcon size={24} />}
               className={"mt-3"}
+              to={"/admin/user"}
             />
           </div>
         </div>
