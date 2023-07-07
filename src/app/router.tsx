@@ -15,6 +15,7 @@ import MaintenanceCalling from "@features/admin/caller/maintenance-calling/Maint
 import MaintenanceHandling from "@features/admin/called/maintance-handling/MaintenanceMaintanceTable";
 import { LayoutProcess } from "@features/admin/andon-layout-process/layout-process";
 import { LayoutSubProcess } from "@features/admin/andon-layout-sub-process/layout-sub-process";
+import { AuthWebAdmin } from "@features/auth-web-admin/login-auth-web-admin";
 // import AdminLayout from "@features/admin/admin-layout/admin-layout";
 
 const Root = () => {
@@ -23,8 +24,8 @@ const Root = () => {
 
 export default createBrowserRouter([
   {
-    path : "",
-    element: <Navigate to={`andon/company-performance-one`} />  
+    path: "",
+    element: <Navigate to={`andon/company-performance-one`} />,
   },
   {
     path: "login",
@@ -105,6 +106,11 @@ export default createBrowserRouter([
         ],
       },
     ],
+  },
+
+  {
+    path: "login-web-admin",
+    element: <AuthWebAdmin />,
   },
   {
     path: "*",
