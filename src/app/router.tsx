@@ -16,6 +16,7 @@ import MaintenanceHandling from "@features/admin/called/maintance-handling/Maint
 import { LayoutProcess } from "@features/admin/andon-layout-process/layout-process";
 import { LayoutSubProcess } from "@features/admin/andon-layout-sub-process/layout-sub-process";
 import { AuthWebAdmin } from "@features/auth-web-admin/login-auth-web-admin";
+import { AdminLayout } from "@features/web-admin/admin-layout/admin-layout-view";
 // import AdminLayout from "@features/admin/admin-layout/admin-layout";
 
 const Root = () => {
@@ -111,6 +112,10 @@ export default createBrowserRouter([
   {
     path: "login-web-admin",
     element: <AuthWebAdmin />,
+  },
+  {
+    path: "admin",
+    element: <AdminLayout />,
   },
   {
     path: "*",
