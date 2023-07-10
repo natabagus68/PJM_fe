@@ -52,9 +52,9 @@ export const AdminLayout = () => {
           <h1 className="text-[#404446] text-[14px] font-bold">Menu</h1>
           <div className="mt-4">
             <NavItem label="Dashboard" icon={<DashboardIcon />}>
-              <NavItem label="Company" />
-              <NavItem label="Plant" />
-              <NavItem label="Line" />
+              <NavItem label="Company" to={"/admin/dashboard"} />
+              <NavItem label="Plant" to={"/admin/dashboard/plant"} />
+              <NavItem label="Line" to={"/admin/dashboard/line"} />
             </NavItem>
             <NavItem
               label="Log"
@@ -82,7 +82,7 @@ export const AdminLayout = () => {
       <main
         className={`${
           model.sideShow ? "w-[82%]" : "w-full"
-        } h-screen p-9   mt-14 duration-300 flex flex-col   float-right`}
+        } h-screen p-9   mt-14 duration-300 flex flex-col   float-right overflow-y-scroll pb-32`}
       >
         <Outlet />
       </main>

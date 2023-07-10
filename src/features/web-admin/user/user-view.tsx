@@ -113,7 +113,10 @@ export const User = () => {
                   </td>
                   <td className="w-0">
                     <div className="flex gap-[12px] h-[66px]  bg-white  items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <button className="w-[46px] h-[46px] bg-[#20519F] rounded-[4px] flex items-center justify-center">
+                      <button
+                        onClick={() => model.toDetail("1")}
+                        className="w-[46px] h-[46px] bg-[#20519F] rounded-[4px] flex items-center justify-center"
+                      >
                         <EyeIcon className="w-4 h-4 text-white" />
                       </button>
                       <button className="w-[46px] h-[46px] bg-[#F79009] rounded-[4px] flex items-center justify-center">

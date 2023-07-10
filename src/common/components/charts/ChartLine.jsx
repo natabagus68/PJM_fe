@@ -1,50 +1,28 @@
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, registerables } from "chart.js";
+import { useEffect } from "react";
 
 ChartJS.register(...registerables);
 
-export const ChartLine = ({ datas, height, width, maxValue = 300 }) => {
-  const setup = [
-    {
-      color: "#FC9D68",
-      lable: "Total",
-    },
-    {
-      color: "#2BBA23",
-      lable: "Actual",
-    },
-  ];
-
+export const ChartLine = ({ datas, maxValue = 300 }) => {
   const data = {
     labels: datas?.map((item, i) => {
       return item.name;
     }),
-    // datasets: datas?.map((item, i) => {
-    //   return {
-    //     label: setup[i]?.lable,
-    //     data: item,
-    //     datasetStrokeWidth: 3,
-    //     pointDotStrokeWidth: 4,
-    //     backgroundColor: setup[i]?.color,
-    //     borderColor: setup[i]?.color,
-    //     tension: 0.0,
-    //     pointRadius: 4,
-    //     pointBackgroundColor: "#FFF",
-    //     borderWidth: 2.5,
-    //   };
-    // }),
+
     datasets: [
       {
         label: "",
         data: datas.map((item) => item.value),
-        borderColor: "rgba(116, 184, 22, 1)",
-        backgroundColor: "rgba(116, 184, 22, 1)",
+        borderColor: "rgba(73, 202, 221, 1)",
+        backgroundColor: "rgba(73, 202, 221, 0.2)",
         pointBackgroundColor: "#FFF",
         datasetStrokeWidth: 100,
         pointDotStrokeWidth: 100,
         tension: 0.0,
         pointRadius: 6,
         borderWidth: 4.5,
+        fill: true,
       },
     ],
   };
@@ -71,7 +49,7 @@ export const ChartLine = ({ datas, height, width, maxValue = 300 }) => {
 
   return (
     <>
-      <Line data={data} options={options} height={height} width={width} />
+      <Line data={data} options={options} width={`100%`} height={"100%"} />
     </>
   );
 };

@@ -6,8 +6,11 @@ export const useUserModel = () => {
   const toform = () => {
     navigate(`${config.pathPrefix}admin/user/form`);
   };
-
+  const toDetail = (id: string) => {
+    navigate(`${config.pathPrefix}admin/user/${id}/detail`);
+  };
   return {
     toform,
+    toDetail,
   };
 };

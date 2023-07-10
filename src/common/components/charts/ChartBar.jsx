@@ -7,7 +7,7 @@ ChartJS.register(...registerables);
 export const Chartbar = ({ colors, data }) => {
   const datas = {
     labels: data.map((item) => {
-      return moment(item.name).format("LT");
+      return item.name;
     }),
     datasets: [
       {
@@ -18,31 +18,30 @@ export const Chartbar = ({ colors, data }) => {
       },
     ],
   };
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    animation: {
-      duration: 0,
-    },
     scales: {
-      x: {
-        grid: {
-          display: false,
-        },
+      y: {
+        beginAtZero: true,
       },
-      // y: {min: 0, max: Number(maxValue) * 1.2, stepSize: 0}
     },
     plugins: {
       legend: {
         display: false,
       },
+      title: {
+        display: true,
+        text: "Working Time (Hour)",
+        position: "left",
+        color: "rgba(81, 78, 78, 1)",
+      },
     },
   };
-
-  ChartJS.defaults.color = "rgba(255, 255, 255, 1)";
   return (
     <>
-      <Bar data={datas} options={options} height={`100vh`} width={`100vh`} />
+      <Bar data={datas} options={options} width={`100%`} height={"100%"} />
     </>
   );
 };

@@ -22,6 +22,10 @@ import { MasterData } from "@features/web-admin/master-data/master-data-view";
 import { MasterDataForm } from "@features/web-admin/master-data/form/master-data-form-view";
 import { User } from "@features/web-admin/user/user-view";
 import { UserForm } from "@features/web-admin/user/form/user-form-view";
+import { UserDetail } from "@features/web-admin/user/detail/user-detail-view";
+import { DashboardCompany } from "@features/web-admin/dasboard/company/company-view";
+import { DashboardPlant } from "@features/web-admin/dasboard/plant/plant-view";
+import { DashboardLine } from "@features/web-admin/dasboard/line/line-view";
 // import AdminLayout from "@features/admin/admin-layout/admin-layout";
 
 const Root = () => {
@@ -123,6 +127,25 @@ export default createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
+        path: "dashboard",
+        element: <Root />,
+        children: [
+          {
+            path: "",
+            element: <DashboardCompany />,
+          },
+          {
+            path: "plant",
+            element: <DashboardPlant />,
+          },
+          {
+            path: "line",
+            element: <DashboardLine />,
+          },
+        ],
+      },
+
+      {
         path: "log",
         element: <Root />,
         children: [
@@ -157,6 +180,10 @@ export default createBrowserRouter([
           {
             path: "form",
             element: <UserForm />,
+          },
+          {
+            path: ":id/detail",
+            element: <UserDetail />,
           },
         ],
       },
