@@ -117,7 +117,7 @@ export default createBrowserRouter([
       },
     ],
   },
-
+  // admin
   {
     path: "login-web-admin",
     element: <AuthWebAdmin />,
@@ -179,6 +179,10 @@ export default createBrowserRouter([
           },
           {
             path: "form",
+            element: <UserForm />,
+          },
+          {
+            path: ":id/form",
             element: <UserForm />,
           },
           {

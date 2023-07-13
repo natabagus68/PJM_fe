@@ -1,8 +1,9 @@
 import HeroLogin from "../../assets/logo-login.png";
 import PJMLogo from "../..//assets/logo-pjm.png";
-import { EyeIcon, KeyRound, UserIcon } from "lucide-react";
+import { EyeIcon, KeyRound, MailWarningIcon, UserIcon } from "lucide-react";
 import { useLoginWebAdmin } from "./login-web-admin-model";
 import EyeHideIcon from "@common/components/icons-new/EyeHideIcon";
+import WarningIcon from "@common/components/icons-new/WarningIcon";
 export const AuthWebAdmin = () => {
   const model = useLoginWebAdmin();
   return (
@@ -22,7 +23,7 @@ export const AuthWebAdmin = () => {
               <p className="text-[#514E4E] text-[16px] font-[400]">
                 Please sign in with registered account!
               </p>
-              <form className="mt-4">
+              <form className="mt-4" onSubmit={model.handleSubmit}>
                 <div className="relative">
                   <UserIcon
                     size={20}
@@ -31,8 +32,14 @@ export const AuthWebAdmin = () => {
                   />
                   <input
                     type="email"
+                    name="email"
+                    value={model.form.email}
+                    onChange={model.handleForm}
+                    onClick={model.removeError}
                     placeholder="enter email address"
-                    className="w-full h-[49px] border border-neutral-300 rounded-md outline-none px-10"
+                    className={`w-full h-[49px] border border-neutral-300 text-[#514E4E] rounded-md outline-none px-10 ${
+                      model.error && "border border-red-500 bg-red-100"
+                    }`}
                   />
                 </div>
                 <div className="relative mt-6">
@@ -43,8 +50,14 @@ export const AuthWebAdmin = () => {
                   />
                   <input
                     type={model.eye ? "text" : "password"}
+                    name="password"
+                    value={model.form.password}
+                    onChange={model.handleForm}
+                    onClick={model.removeError}
                     placeholder="enter email address"
-                    className="w-full h-[49px] border border-neutral-300 rounded-md outline-none px-10"
+                    className={`w-full h-[49px] border border-neutral-300 text-[#514E4E] rounded-md outline-none px-10 ${
+                      model.error && "border border-red-500 bg-red-100"
+                    }`}
                   />
 
                   <EyeIcon
@@ -64,7 +77,22 @@ export const AuthWebAdmin = () => {
                     onClick={model.handleEye}
                   />
                 </div>
-                <button className="w-full py-3 text-white bg-[#20519F] rounded-md mt-10">
+                {model.error && (
+                  <>
+                    <div className="mt-4 flex items-center gap-2">
+                      <WarningIcon size={24} color="#F04438" />
+                      <p className="text-[14px] font-[400] text-red-500">
+                        {model.error}
+                      </p>
+                    </div>
+                  </>
+                )}
+                <button
+                  type="submit"
+                  className={`w-full py-3 text-white bg-[#20519F] rounded-md ${
+                    model.error ? "mt-4" : "mt-10"
+                  } `}
+                >
                   Sign in
                 </button>
               </form>

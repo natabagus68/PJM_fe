@@ -2,8 +2,10 @@ import { Breadcrumbs } from "@common/components";
 import { Box } from "@common/components/Box";
 import { Filter } from "@common/components/Filter";
 import PaginationNew from "@common/components/pagination/PaginationNew";
-import { PlusIcon } from "lucide-react";
+import { Loader, PlusIcon } from "lucide-react";
 import { useMasterData } from "./master-data-view-model";
+import LoadingIcon from "@common/components/icons-new/LoadingIcon";
+import { Spinner } from "@material-tailwind/react";
 export const MasterData = () => {
   const model = useMasterData();
   return (
@@ -20,30 +22,24 @@ export const MasterData = () => {
                 Management area data.
               </p>
             </div>
-
-            <button
-              onClick={model.toForm}
-              className="py-3 px-5 bg-[#20519F] text-white rounded-md flex items-center gap-2 justify-center"
-            >
-              <PlusIcon size={16} color="white" />
-              Add Data
-            </button>
           </div>
 
           <div className="flex flex-col gap-4 mt-4">
-            <Filter>
+            <Filter form={model.filter} handleChange={model.handleFilter}>
               <div className="flex items-center gap-2 relative">
                 <h1 className="text-[#313030] text-[14px] font-[600]">
                   Short by
                 </h1>
                 <select
-                  name=""
+                  name="sortby"
+                  value={model.filter.sortby}
+                  onChange={model.handleFilter}
                   className="py-3 pr-4 pl-5 border bg-white rounded-md text-[#667085]"
                 >
-                  <option value="">Name (A-Z)</option>
-                  <option value="">Name (Z-A)</option>
-                  <option value="">Last Update</option>
-                  <option value="">First Update</option>
+                  <option value="asc">Name (A-Z)</option>
+                  <option value="dsc">Name (Z-A)</option>
+                  <option value="line">Last Update</option>
+                  <option value="machine">First Update</option>
                 </select>
               </div>
             </Filter>
@@ -53,74 +49,53 @@ export const MasterData = () => {
                 <tr>
                   <th>
                     <div className="h-[52px]  flex items-center p-2 border-y border-[#D0D3D9] bg-[#FAFAFB]">
-                      <p className="font-[600] text-[#667085]">Location</p>
+                      <p className="font-[600] text-[#667085]">Line</p>
                     </div>
                   </th>
                   <th>
                     <div className="h-[52px]  flex items-center p-2 border-y border-[#D0D3D9] bg-[#FAFAFB]">
-                      <p className="font-[600] text-[#667085]">
-                        Remark Problem
-                      </p>
-                    </div>
-                  </th>
-                  <th>
-                    <div className="h-[52px]  flex items-center p-2 border-y border-[#D0D3D9] bg-[#FAFAFB]">
-                      <p className="font-[600] text-[#667085]">Time Handling</p>
-                    </div>
-                  </th>
-                  <th>
-                    <div className="h-[52px]  flex items-center p-2 border-y border-[#D0D3D9] bg-[#FAFAFB]">
-                      <p className="font-[600] text-[#667085]">Handling</p>
-                    </div>
-                  </th>
-                  <th>
-                    <div className="h-[52px]  flex items-center p-2 border-y border-[#D0D3D9] bg-[#FAFAFB]">
-                      <p className="font-[600] text-[#667085]">Timestamps</p>
+                      <p className="font-[600] text-[#667085]">Plant</p>
                     </div>
                   </th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <p className="font-[400] text-[16px] text-[#514E4E]">
-                        Line 1
-                      </p>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <p className="font-[400] text-[16px] text-[#514E4E]">
-                        Problem A
-                      </p>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <p className="font-[400] text-[16px] text-[#514E4E]">
-                        17:12:11
-                      </p>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <p className="font-[400] text-[16px] text-[#514E4E]">
-                        Handling A
-                      </p>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="h-[66px] bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <p className="font-[400] text-[16px] text-[#514E4E]">
-                        Senin, 12 Nov 2023 12:20
-                      </p>
-                    </div>
-                  </td>
-                </tr>
+                {!model.loading &&
+                  model.data.data.map((item) => {
+                    return (
+                      <tr key={item.id}>
+                        <td>
+                          <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
+                            <p className="font-[400] text-[16px] text-[#514E4E]">
+                              {item.id}
+                            </p>
+                          </div>
+                        </td>
+                        <td className="">
+                          <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
+                            <p className="font-[400] text-[16px] text-[#514E4E]">
+                              {item.plant}
+                            </p>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
-            <PaginationNew />
+            {model.loading && (
+              <div className="flex justify-center w-full ">
+                <Spinner />
+              </div>
+            )}
+            <PaginationNew
+              form={model.filter}
+              handleChange={model.handlePageination}
+              page={model.filter.paginate.page}
+              rows={model.data.rows}
+              lastPage={model.data.lastPage}
+              handleLimit={model.handleLimit}
+            />
           </div>
         </Box>
       </div>

@@ -1,6 +1,6 @@
 import { SearchIcon } from "lucide-react";
 
-export const Filter = ({ children, handleChange = null }) => {
+export const Filter = ({ children, handleChange = null, form }) => {
   return (
     <>
       <div className="w-full p-3 flex items-center justify-between bg-[#F0F1F3] rounded-md">
@@ -11,7 +11,8 @@ export const Filter = ({ children, handleChange = null }) => {
           <input
             type="text"
             name="q"
-            placeholder="Search location..."
+            value={form.q}
+            placeholder="Search..."
             onChange={handleChange}
             className="w-full h-full outline-none py-2 px-9  rounded-md"
           />

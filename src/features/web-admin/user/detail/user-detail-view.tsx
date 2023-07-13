@@ -4,6 +4,7 @@ import EditIcon from "@common/components/icons-new/EditIcon";
 import { ArrowLeft } from "lucide-react";
 import ProfileDumi from "../../../../assets/profile-full.png";
 import { useUserDetail } from "./user-detail-view-model";
+import { config } from "@common/utils";
 export const UserDetail = () => {
   const model = useUserDetail();
   return (
@@ -27,7 +28,10 @@ export const UserDetail = () => {
               <ArrowLeft size={16} color="#667085" />
               Back
             </button>
-            <button className="py-3 px-5 bg-[#F79009] text-white rounded-md flex items-center gap-2 justify-center">
+            <button
+              onClick={model.toEdit}
+              className="py-3 px-5 bg-[#F79009] text-white rounded-md flex items-center gap-2 justify-center"
+            >
               <EditIcon size={16} color="white" />
               Edit
             </button>
@@ -40,7 +44,12 @@ export const UserDetail = () => {
           </h1>
           <div className="flex items-center gap-4">
             {/* image profile */}
-            <div className="w-[120px] h-[120px] mt-3 rounded-full bg-[url(https://images.unsplash.com/photo-1688607932382-f01b0987c897?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80)] bg-center bg-cover"></div>
+            <div
+              className={`w-[120px] h-[120px] mt-3 rounded-full bg-center bg-cover`}
+              style={{
+                backgroundImage: `url(${config.assetsUrl + model.data.avatar})`,
+              }}
+            ></div>
             <h1 className="font-[600] text-[#20519F] font-sans text-[14px] cursor-pointer">
               See Photo
             </h1>
@@ -55,13 +64,13 @@ export const UserDetail = () => {
             <div>
               <h3 className="text-[#989FAD] text-[14px] font-[600]">Name</h3>
               <h3 className="text-[#514E4E] text-[14px] font-[600]">
-                Afif Chandra
+                {model.data.fullname}
               </h3>
             </div>
             <div>
               <h3 className="text-[#989FAD] text-[14px] font-[600]">Role</h3>
               <h3 className="text-[#514E4E] text-[14px] font-[600]">
-                Maintenance
+                {model.data.role}
               </h3>
             </div>
           </div>
@@ -69,12 +78,18 @@ export const UserDetail = () => {
             <div>
               <h3 className="text-[#989FAD] text-[14px] font-[600]">Email</h3>
               <h3 className="text-[#514E4E] text-[14px] font-[600]">
-                contoh@mail.com
+                {model.data.email}
               </h3>
             </div>
             <div>
               <h3 className="text-[#989FAD] text-[14px] font-[600]">Status</h3>
-              <h3 className="text-[#12B569] text-[14px] font-[600]">Active</h3>
+              <h3
+                className={`${
+                  model.data.isActive ? "text-[#12B569]" : "text-red-500"
+                } text-[14px] font-[600]`}
+              >
+                {model.data.isActive ? "active" : "inactive"}
+              </h3>
             </div>
           </div>
         </div>

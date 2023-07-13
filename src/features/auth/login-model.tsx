@@ -1,3 +1,4 @@
+import { User } from "@domain/models/caller/user";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,13 +7,21 @@ export default function useLogin() {
   //input password
   const [isPasswordShow, setIsPasswordShow] = useState(false);
 
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
 
   //input password
-  const onPasswordShow = () : void => {
+  const onPasswordShow = (): void => {
     setIsPasswordShow(!isPasswordShow);
   };
 
+  const [form, setForm] = useState<User>(
+    User.create({
+      email: "",
+      password: "",
+      lineId: "",
+      shift: "",
+    })
+  );
 
   //button login
   const onSubmitLogin = async (e): Promise<void> => {
@@ -23,10 +32,10 @@ export default function useLogin() {
         "web-admin",
         JSON.stringify({ token: "token-12345678" })
       );
-      setError(false)
+      setError(false);
       navigate("../caller/menu");
     } catch (error) {
-      setError(true)
+      setError(true);
       console.log(error);
     }
   };
@@ -34,6 +43,6 @@ export default function useLogin() {
     isPasswordShow,
     onPasswordShow,
     onSubmitLogin,
-    error
+    error,
   };
 }

@@ -3,14 +3,23 @@ import { Box } from "@common/components/Box";
 import { Filter } from "@common/components/Filter";
 import EditIcon from "@common/components/icons-new/EditIcon";
 import PaginationNew from "@common/components/pagination/PaginationNew";
-import { Switch } from "@material-tailwind/react";
+import { Spinner, Switch } from "@material-tailwind/react";
 import { EyeIcon, PlusIcon, RepeatIcon, TrashIcon } from "lucide-react";
 import { useUserModel } from "./user-view-model";
+import { ModalChangePassword } from "@common/components/modals/ModalChangePassword";
 
 export const User = () => {
   const model = useUserModel();
   return (
     <>
+      <ModalChangePassword
+        open={model.open}
+        handler={model.handlerPasswordModal}
+        form={model.changePassword}
+        submit={model.handleSubmit}
+        error={model.errorPw}
+        handleForm={model.HandlechangePassword}
+      />
       <Breadcrumbs items={["User"]} />
       <div className="mt-4">
         <Box>
@@ -31,23 +40,39 @@ export const User = () => {
             </button>
           </div>
           <div className="flex flex-col gap-4 mt-4">
-            <Filter>
+            <Filter form={model.filter} handleChange={model.handleFilter}>
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <h1 className="text-[14px] font-[600] text-[#313030]">
                     Role
                   </h1>
-                  <select name="" className="py-3 px-5 bg-white rounded-md ">
-                    <option value="">All</option>
-                    <option value="1">All11111</option>
+                  <select
+                    name="role"
+                    value={model.filter.role}
+                    onChange={model.handleFilter}
+                    className="py-3 px-5 bg-white rounded-md "
+                  >
+                    <option value="superadmin">Superadmin</option>
+                    <option value="maintenance">Maintenance</option>
+                    <option value="quality">Quality</option>
+                    <option value="leader">Leader</option>
+                    <option value="operator">Operator</option>
                   </select>
                 </div>
                 <div className="flex items-center gap-2">
                   <h1 className="text-[14px] font-[600] text-[#313030]">
                     Sort by
                   </h1>
-                  <select name="" className="py-3 px-5 bg-white rounded-md ">
-                    <option value="">Ascending</option>
+                  <select
+                    name="shortby"
+                    value={model.filter.shortby}
+                    onChange={model.handleFilter}
+                    className="py-3 px-5 bg-white rounded-md "
+                  >
+                    <option value="fullname-asc">Name (A-Z) fullname</option>
+                    <option value="updated_at-asc">Name (A-Z) updated</option>
+                    <option value="fullname-dsc">Name (Z-A) fullname</option>
+                    <option value="updated_at_dsc">Name (Z-A) updated</option>
                   </select>
                 </div>
               </div>
@@ -84,56 +109,78 @@ export const User = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <div className="h-[66px]  bg-white py-4 px-2 border-b border-[#D0D3D9]">
-                      <Switch label={"Inactive"} />
-                    </div>
-                  </td>
-                  <td>
-                    <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <p className="font-[400] text-[16px] text-[#514E4E]">
-                        Line 1
-                      </p>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <p className="font-[400] text-[16px] text-[#514E4E]">
-                        Line 1
-                      </p>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <p className="font-[400] text-[16px] text-[#514E4E]">
-                        Problem A
-                      </p>
-                    </div>
-                  </td>
-                  <td className="w-0">
-                    <div className="flex gap-[12px] h-[66px]  bg-white  items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <button
-                        onClick={() => model.toDetail("1")}
-                        className="w-[46px] h-[46px] bg-[#20519F] rounded-[4px] flex items-center justify-center"
-                      >
-                        <EyeIcon className="w-4 h-4 text-white" />
-                      </button>
-                      <button className="w-[46px] h-[46px] bg-[#F79009] rounded-[4px] flex items-center justify-center">
-                        <EditIcon className="w-4 h-4 text-white" />
-                      </button>
-                      <button className="w-[46px] h-[46px] bg-[#12B569] rounded-[4px] flex items-center justify-center">
-                        <RepeatIcon className="w-4 h-4 text-white" />
-                      </button>
-                      <button className="w-[46px] h-[46px] bg-[#F04438] rounded-[4px] flex items-center justify-center">
-                        <TrashIcon className="w-4 h-4 text-white" />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
+                {!model.loading &&
+                  model.data.data.map((item) => (
+                    <tr key={item.id}>
+                      <td>
+                        <div className="h-[66px]  bg-white py-4 px-2 border-b border-[#D0D3D9]">
+                          <Switch
+                            label={item.isActive ? "active" : "Inactive"}
+                            checked={item.isActive}
+                            onClick={() => model.handleToggle(item.id)}
+                            id={item.id}
+                          />
+                        </div>
+                      </td>
+                      <td>
+                        <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
+                          <p className="font-[400] text-[16px] text-[#514E4E]">
+                            {item.fullname}
+                          </p>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
+                          <p className="font-[400] text-[16px] text-[#514E4E]">
+                            {item.email}
+                          </p>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
+                          <p className="font-[400] text-[16px] text-[#514E4E]">
+                            {item.role}
+                          </p>
+                        </div>
+                      </td>
+                      <td className="w-0">
+                        <div className="flex gap-[12px] h-[66px]  bg-white  items-center py-4 px-2 border-b border-[#D0D3D9]">
+                          <button
+                            onClick={() => model.toDetail(item.id)}
+                            className="w-[46px] h-[46px] bg-[#20519F] rounded-[4px] flex items-center justify-center"
+                          >
+                            <EyeIcon className="w-4 h-4 text-white" />
+                          </button>
+                          <button
+                            onClick={() => model.toEdit(item.id)}
+                            className="w-[46px] h-[46px] bg-[#F79009] rounded-[4px] flex items-center justify-center"
+                          >
+                            <EditIcon className="w-4 h-4 text-white" />
+                          </button>
+                          <button
+                            onClick={() => model.chooseUserForChangePW(item.id)}
+                            className="w-[46px] h-[46px] bg-[#12B569] rounded-[4px] flex items-center justify-center"
+                          >
+                            <RepeatIcon className="w-4 h-4 text-white" />
+                          </button>
+                          <button
+                            onClick={() => model.handleDelete(item.id)}
+                            className="w-[46px] h-[46px] bg-[#F04438] rounded-[4px] flex items-center justify-center"
+                          >
+                            <TrashIcon className="w-4 h-4 text-white" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
-            <PaginationNew />
+            {model.loading && (
+              <div className="flex items-center justify-center">
+                <Spinner />
+              </div>
+            )}
+            {/* <PaginationNew /> */}
           </div>
         </Box>
       </div>

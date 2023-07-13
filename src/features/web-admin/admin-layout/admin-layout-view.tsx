@@ -18,7 +18,7 @@ export const AdminLayout = () => {
       <div
         className={`${
           model.sideShow ? "w-[82%]" : "w-full"
-        } h-[70px] duration-300 py-[21px] px-[36px] flex items-center justify-between bg-[#20519F] fixed right-0`}
+        } z-50 h-[70px] duration-300 py-[21px] px-[36px] flex items-center justify-between bg-[#20519F] fixed right-0`}
       >
         <AlignJustifyIcon
           size={18}

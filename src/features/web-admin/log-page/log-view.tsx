@@ -29,13 +29,13 @@ export const Log = () => {
           </div>
 
           <div className="flex flex-col gap-4 mt-4">
-            <Filter>
+            <Filter handleChange={model.handleFilter} form={model.filter}>
               <div className="flex items-center gap-2 relative">
                 <h1 className="text-[#313030] text-[14px] font-[600]">Date</h1>
 
                 <Datepicker
-                  value={null}
-                  onChange={null}
+                  value={model.filter}
+                  onChange={model.handleDatepicker}
                   containerClassName={
                     "w-[217px] h-[35px] border border-[#D0D3D9] rounded-md"
                   }
@@ -80,46 +80,59 @@ export const Log = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <p className="font-[400] text-[16px] text-[#514E4E]">
-                        Line 1
-                      </p>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <p className="font-[400] text-[16px] text-[#514E4E]">
-                        Problem A
-                      </p>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <p className="font-[400] text-[16px] text-[#514E4E]">
-                        17:12:11
-                      </p>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <p className="font-[400] text-[16px] text-[#514E4E]">
-                        Handling A
-                      </p>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="h-[66px] bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
-                      <p className="font-[400] text-[16px] text-[#514E4E]">
-                        Senin, 12 Nov 2023 12:20
-                      </p>
-                    </div>
-                  </td>
-                </tr>
+                {model.data.data.map((item) => {
+                  return (
+                    <>
+                      <tr key={item.id}>
+                        <td>
+                          <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
+                            <p className="font-[400] text-[16px] text-[#514E4E]">
+                              {item.location}
+                            </p>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
+                            <p className="font-[400] text-[16px] text-[#514E4E]">
+                              {item.remarkProblem}
+                            </p>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
+                            <p className="font-[400] text-[16px] text-[#514E4E]">
+                              {item.timeHandling}
+                            </p>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
+                            <p className="font-[400] text-[16px] text-[#514E4E]">
+                              {item.handling}
+                            </p>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="h-[66px] bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
+                            <p className="font-[400] text-[16px] text-[#514E4E]">
+                              {item.timeStamps}
+                            </p>
+                          </div>
+                        </td>
+                      </tr>
+                    </>
+                  );
+                })}
               </tbody>
             </table>
-            <PaginationNew />
+            <PaginationNew
+              form={model.filter}
+              handleChange={model.pageHandle}
+              page={model.filter.paginate.page}
+              rows={model.data.rows}
+              lastPage={model.data.lastPage}
+              handleLimit={model.handleLimit}
+            />
           </div>
         </Box>
       </div>

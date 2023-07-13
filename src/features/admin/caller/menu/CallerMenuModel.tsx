@@ -1,22 +1,19 @@
-
-
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { config } from "@common/utils";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function useCallerMenuModel() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [modalConfirm, setModalConfirm] = useState(false)
+  const [modalConfirm, setModalConfirm] = useState(false);
 
   const handleSave = (e: React.FocusEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    
+    e.preventDefault();
 
+    navigate("maintenance-calling");
+  };
 
-    navigate('maintenance-calling')
-  }
-
-  const onLogout = async(): Promise<void> => {
+  const onLogout = async (): Promise<void> => {
     try {
       await localStorage.removeItem("web-admin");
       window.location.reload();
@@ -25,10 +22,15 @@ export default function useCallerMenuModel() {
     }
   };
 
+  const toMintenaceCalling = () => {
+    navigate(`${config.pathPrefix}caller/menu/maintenance-calling`);
+  };
+
   return {
     modalConfirm,
     setModalConfirm,
     handleSave,
-    onLogout
-  }
+    onLogout,
+    toMintenaceCalling,
+  };
 }
