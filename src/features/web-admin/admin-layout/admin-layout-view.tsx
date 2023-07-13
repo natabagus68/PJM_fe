@@ -2,6 +2,7 @@ import {
   AlignJustifyIcon,
   CheckSquareIcon,
   FileIcon,
+  LogOutIcon,
   UserIcon,
 } from "lucide-react";
 import Profile from "../../../assets/profile.png";
@@ -48,33 +49,44 @@ export const AdminLayout = () => {
           <img src={PJMLogo} alt="logo pjm" width={135} height={50} />
         </div>
         {/* content */}
-        <div className="px-[16px] flex flex-col gap-4 mt-8">
-          <h1 className="text-[#404446] text-[14px] font-bold">Menu</h1>
-          <div className="mt-4">
-            <NavItem label="Dashboard" icon={<DashboardIcon />}>
-              <NavItem label="Company" to={"/admin/dashboard"} />
-              <NavItem label="Plant" to={"/admin/dashboard/plant"} />
-              <NavItem label="Line" to={"/admin/dashboard/line"} />
-            </NavItem>
-            <NavItem
-              label="Log"
-              icon={<FileIcon size={24} />}
-              className={"mt-3"}
-              to={"/admin/log"}
-            />
-            <NavItem
-              label="Master Data"
-              icon={<CheckSquareIcon size={24} />}
-              to={"/admin/master-data"}
-              className={"mt-3"}
-            />
-            <NavItem
-              label="User"
-              icon={<UserIcon size={24} />}
-              className={"mt-3"}
-              to={"/admin/user"}
-            />
+        <div className="px-[16px] flex flex-col  h-[85%] justify-between  mt-8">
+          <div className="flex flex-col gap-4">
+            <h1 className="text-[#404446] text-[14px] font-bold">Menu</h1>
+            <div className="mt-4">
+              <NavItem label="Dashboard" icon={<DashboardIcon />}>
+                <NavItem label="Company" to={"/admin/dashboard"} />
+                <NavItem label="Plant" to={"/admin/dashboard/plant"} />
+                <NavItem label="Line" to={"/admin/dashboard/line"} />
+              </NavItem>
+              <NavItem
+                label="Log"
+                icon={<FileIcon size={24} />}
+                className={"mt-3"}
+                to={"/admin/log"}
+              />
+              <NavItem
+                label="Master Data"
+                icon={<CheckSquareIcon size={24} />}
+                to={"/admin/master-data"}
+                className={"mt-3"}
+              />
+              <NavItem
+                label="User"
+                icon={<UserIcon size={24} />}
+                className={"mt-3"}
+                to={"/admin/user"}
+              />
+            </div>
           </div>
+
+          <button
+            type="button"
+            onClick={model.logout}
+            className="flex items-center gap-2 text-blue-500 active:scale-95 duration-200 cursor-pointer"
+          >
+            <LogOutIcon size={24} />
+            <p className="text-[14px] font-[400]">Sign Out</p>
+          </button>
         </div>
       </div>
 

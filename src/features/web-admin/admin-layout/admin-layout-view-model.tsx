@@ -1,3 +1,4 @@
+import { config } from "@common/utils";
 import { UserApiRepository } from "@data/api/web-admin/user-api-repository";
 import { IUserAdminRepository } from "@domain/repositories/web-admin/user-repository";
 import { useEffect, useState } from "react";
@@ -19,7 +20,11 @@ export const useAdminLayout = () => {
       navigate("/login-web-admin");
     }
   };
-  const logout = () => {};
+  const logout = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    localStorage.clear();
+    navigate(`/login-web-admin`);
+  };
 
   useEffect(() => {
     isMe();
