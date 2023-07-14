@@ -27,12 +27,16 @@ export default function useProductionPlanTable() {
     });
     setOpen(true);
   };
-  const handleClose = () => {
-    setRemark({
-      id: "",
-      remark: "",
+  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setRemark((prev) => {
+      return {
+        ...prev,
+        id: "",
+        remark: "",
+      };
     });
-    setOpen(true);
+    setOpen(false);
   };
 
   const handleChangeREmark = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,7 +52,7 @@ export default function useProductionPlanTable() {
     e.preventDefault();
     remarkRepo.update(remark.id, remark.remark).then((result) => {
       setData((prev) => {
-        const newData = data.map((item) => {
+        const newData = prev.map((item) => {
           if (item.id === remark.id) {
             return MaintenaceCalling.create({
               ...item.unmarshall(),

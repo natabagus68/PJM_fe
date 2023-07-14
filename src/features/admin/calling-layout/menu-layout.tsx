@@ -26,7 +26,10 @@ export default function MenuLayout() {
           </div>
         ) : admin?.title === "Maintenance Handling" ? (
           <div className=" w-[400px] p-2" onClick={() => {}}>
-            <button className="w-full h-full  border-4 border-red-500 text-red-500 text-4xl font-bold">
+            <button
+              onClick={admin.logout}
+              className="w-full h-full  border-4 border-red-500 text-red-500 text-4xl font-bold"
+            >
               Logout
             </button>
           </div>

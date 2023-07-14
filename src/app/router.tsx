@@ -26,6 +26,7 @@ import { UserDetail } from "@features/web-admin/user/detail/user-detail-view";
 import { DashboardCompany } from "@features/web-admin/dasboard/company/company-view";
 import { DashboardPlant } from "@features/web-admin/dasboard/plant/plant-view";
 import { DashboardLine } from "@features/web-admin/dasboard/line/line-view";
+import LoginCalled from "@features/auth-called/auth-called";
 // import AdminLayout from "@features/admin/admin-layout/admin-layout";
 
 const Root = () => {
@@ -61,6 +62,10 @@ export default createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path: "login-called",
+    element: <LoginCalled />,
   },
   {
     path: "called",
