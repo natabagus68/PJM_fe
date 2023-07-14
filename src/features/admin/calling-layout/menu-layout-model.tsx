@@ -1,73 +1,88 @@
+import { UserApiRepository } from "@data/api/caller/user-api-repository";
+import { Auth } from "@domain/models/caller/auth";
+import { User } from "@domain/models/caller/user";
+import { IUserRepository } from "@domain/repositories/caller/user-repository";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function useAdmin() {
+  const userRepo: IUserRepository = new UserApiRepository();
   const navigate = useNavigate();
-  const location = useLocation()
-  // loading state
-  const [isLoading, setIsLoading] = useState(true);
+  const [title, setTitle] = useState("");
+  const [onMenu, setOnMenu] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [me, setMe] = useState<Auth>(
+    Auth.create({
+      token: "",
+      user: User.create({
+        email: "",
+        role: "",
+        fullName: "",
+        lineId: "",
+      }),
+    })
+  );
 
-  const [title, setTitle] = useState('')
-
+  const LocationMe = () => {
+    const currnetUrl = window.location.href;
+    const temp = currnetUrl.split("/");
+    const lastTemp = temp[temp.length - 1].split("-");
+    let str = "";
+    lastTemp.forEach((item) => {
+      item.split("").forEach((el, i) => {
+        if (i === 0) {
+          str += el.toUpperCase();
+        } else str += el;
+      });
+      str += " ";
+    });
+    if (str !== "Menu") setTitle(str.trim());
+    else {
+      setTitle(me.user.lineId);
+    }
+  };
 
   //set navigate navbar
   const setNavigate = (url: string): void => {
     navigate(url);
   };
 
-  //on logout
-  const onLogout = async(): Promise<void> => {
-    try {
-      await localStorage.removeItem("web-admin");
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
+  const logout = () => {
+    localStorage.clear();
+    navigate("/login");
   };
 
-  //checking me
   const onIsMe = async (): Promise<void> => {
-    setIsLoading(true);
-    const localStorageData = await JSON.parse(
-      localStorage.getItem("web-admin")
-    );
-    setTimeout(() => {
-      setIsLoading(false);
-      if (!localStorageData?.token) {
-        navigate("../login");
-      } 
-      // else {
-      //   navigate(`../${window.location.pathname}`);
-      // }
-    }, 500);
-  };
-
-  const getTitle = () => {
-    if (location.pathname.includes('menu')) {
-      if(location.pathname.includes('maintenance-calling')){
-        return setTitle('Maintenance Calling')
-      }
-      return setTitle('Machine 01')
-    }else if(location.pathname.includes('maintenance-handling')){
-      return setTitle('Maintenance Handling')
+    try {
+      const me = await userRepo.me();
+      setMe((prev) => {
+        return Auth.create({
+          ...prev.unmarshall(),
+          ...me.unmarshall(),
+        });
+      });
+    } catch (error) {
+      navigate("/login");
     }
-  }
-
+  };
   useEffect(() => {
     onIsMe();
   }, []);
-
   useEffect(() => {
-    getTitle()
-  },[location])
-
-  
+    const title = setInterval(() => {
+      LocationMe();
+    }, 1000);
+    return () => {
+      clearInterval(title);
+    };
+  }, []);
 
   return {
     isLoading,
     setNavigate,
-    onLogout,
+    navigate,
+    logout,
+    me,
     title,
-    navigate
   };
 }

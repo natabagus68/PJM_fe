@@ -29,6 +29,7 @@ export class UserApiRepository implements IUserRepository {
         email: data.data.user.email,
         role: data.data.user.role,
         fullName: data.data.user.fullname,
+        lineId: data.data.area.line,
       }),
     });
   }

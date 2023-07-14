@@ -35,7 +35,7 @@ const Root = () => {
 export default createBrowserRouter([
   {
     path: "",
-    element: <Navigate to={`andon/company-performance-one`} />,
+    element: <Navigate to={`andon/company-performance/one`} />,
   },
   {
     path: "login",
@@ -55,7 +55,7 @@ export default createBrowserRouter([
             element: <CallerMenu />,
           },
           {
-            path: "maintenance-calling",
+            path: "history-calling",
             element: <MaintenanceCalling />,
           },
         ],

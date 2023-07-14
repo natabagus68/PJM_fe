@@ -11,7 +11,7 @@ export const Chartbar = ({ colors, data }) => {
     }),
     datasets: [
       {
-        label: "data",
+        label: data.map((item) => item.name),
         data: data.map((item) => item.value),
         backgroundColor: colors,
         borderColor: "rgba(255, 255, 255, 1)",

@@ -8,7 +8,7 @@ import BackIcon from "@common/components/icons-new/BackIcon";
 
 export default function MenuLayout() {
   const admin = useAdmin();
-  const date = useDateTime()
+  const date = useDateTime();
   return admin.isLoading ? (
     <main className="w-screen h-screen flex bg-gray-200 items-center justify-center">
       <LoadingIcon className="animate-spin w-[80px] h-[80px]" />
@@ -17,41 +17,50 @@ export default function MenuLayout() {
     <main className="w-screen h-screen overflow-hidden bg-[#212121] border-2 border-white flex flex-col">
       <div className="flex flex-row justify-around">
         {/* <div className={`${ admin?.title !== 'menu' ? 'bg-transparent' : "bg-[#F6F6F6]"}flex justify-center items-center  w-[400px] border-2 overflow-hidden`}> */}
-          {
-            admin?.title === "Maintenance Calling" ?(
-              <div className="flex justify-center items-center bg-transparent w-[400px] border-2">
-                <BackIcon className="cursor-pointer" onClick={()=> admin.navigate(-1)}/>
-              </div>
-            )
-              : admin?.title === "Maintenance Handling" ? (
-                <div className=" w-[400px] p-2" onClick={()=>{}}>
-                  <button className="w-full h-full  border-4 border-red-500 text-red-500 text-4xl font-bold" onClick={admin.onLogout}>Logout</button>
-                </div>
-              ) : (
-                <div className="flex justify-center items-center bg-[#F6F6F6] w-[400px] border-2 overflow-hidden">
-                  <img src={my_logo} alt="My Logo" className="h-[100px] w-fit scale-150" />   
-                </div>
-              )
-          }
+        {admin?.title === "History Calling" ? (
+          <div className="flex justify-center items-center bg-transparent w-[400px] border-2">
+            <BackIcon
+              className="cursor-pointer"
+              onClick={() => admin.navigate(-1)}
+            />
+          </div>
+        ) : admin?.title === "Maintenance Handling" ? (
+          <div className=" w-[400px] p-2" onClick={() => {}}>
+            <button className="w-full h-full  border-4 border-red-500 text-red-500 text-4xl font-bold">
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div className="flex justify-center items-center bg-[#F6F6F6] w-[400px] border-2 overflow-hidden">
+            <img
+              src={my_logo}
+              alt="My Logo"
+              className="h-[100px] w-fit scale-150"
+            />
+          </div>
+        )}
         {/* </div> */}
         <div className="flex justify-center items-center border-2 w-[100%] py-5 px-10">
           {/* <div className="w-10 h-10 border-4 border-white bg-green-500 rounded-full mr-20"></div> */}
-          <span className={`text-white font-[700] text-5xl text-center`}>{admin.title}</span>
+          <span className={`text-white font-[700] text-5xl text-center`}>
+            {admin.title}
+          </span>
         </div>
         <div className="flex flex-col w-[40%]">
-          
           <div className="flex justify-center items-center border-2 border-white py-2">
-            <span className="text-white text-3xl font-semibold">DATE : {date.getDateTime('date')}</span>
+            <span className="text-white text-3xl font-semibold">
+              DATE : {date.getDateTime("date")}
+            </span>
           </div>
           <div className="flex justify-center items-center border-2 border-white py-2">
-            <span className="text-white text-3xl font-semibold">TIME : {date.getDateTime("time")}</span>
+            <span className="text-white text-3xl font-semibold">
+              TIME : {date.getDateTime("time")}
+            </span>
           </div>
-          
         </div>
       </div>
       <Outlet />
     </main>
-
 
     // <main className="relative">
     //   <header
