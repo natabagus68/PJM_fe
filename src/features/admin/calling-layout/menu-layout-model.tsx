@@ -61,6 +61,12 @@ export default function useAdmin() {
           ...me.unmarshall(),
         });
       });
+
+      if (me.unmarshall().user.role !== "operator") {
+        navigate("/caller/maintenance-handling");
+      } else {
+        navigate("/caller/menu");
+      }
     } catch (error) {
       navigate("/login");
     }

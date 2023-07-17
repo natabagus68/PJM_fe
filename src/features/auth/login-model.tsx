@@ -63,7 +63,9 @@ export default function useLogin() {
       const auth = await userRepo.login(form);
       await localStorage.setItem("token", auth.unmarshall().token);
       setLoading(false);
-      navigate(`/caller/menu`);
+      auth.unmarshall().user.role !== "operator"
+        ? navigate(`/caller/maintenance-handling`)
+        : navigate(`/caller/menu`);
     } catch (error) {
       setError(true);
     }
@@ -71,7 +73,9 @@ export default function useLogin() {
   const isMe = async () => {
     try {
       const authMe = await userRepo.me();
-      navigate(`/caller/menu`);
+      authMe.unmarshall().user.role !== "operator"
+        ? navigate(`/caller/maintenance-handling`)
+        : navigate(`/caller/menu`);
     } catch (error) {}
   };
 

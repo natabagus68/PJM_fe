@@ -61,16 +61,6 @@ export default createBrowserRouter([
           },
         ],
       },
-    ],
-  },
-  {
-    path: "login-called",
-    element: <LoginCalled />,
-  },
-  {
-    path: "called",
-    element: <MenuLayout />,
-    children: [
       {
         path: "maintenance-handling",
         element: <MaintenanceHandling />,

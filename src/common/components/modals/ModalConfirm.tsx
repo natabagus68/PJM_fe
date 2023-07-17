@@ -52,7 +52,7 @@ export default function ModalConfirm({
               type="text"
               className="p-3 w-full border"
               placeholder="Input remark"
-              value={remark.remark}
+              value={remark}
               onChange={handlerChange}
             />
           </div>

@@ -21,21 +21,16 @@ export default function useProductionPlanTable() {
   });
   const [open, setOpen] = useState(false);
   const handleOpen = (id: string) => {
-    setRemark({
-      id,
-      remark: "",
-    });
+    const find = data.find((item) => item.id == id);
+    const obj = { id: "", remark: "" };
+    obj.id = id;
+    obj.remark = find.remark;
+    setRemark(obj);
     setOpen(true);
   };
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setRemark((prev) => {
-      return {
-        ...prev,
-        id: "",
-        remark: "",
-      };
-    });
+    setRemark({ id: "", remark: "" });
     setOpen(false);
   };
 

@@ -14,7 +14,7 @@ export default function CallerMenu() {
         onCancel={caller.onCancelRemark}
         time={date.getDateTime("time")}
         handlerChange={caller.handleChangeRemark}
-        remark={caller.remark}
+        remark={caller.remark.remark}
       />
       <div className="flex justify-center items-center h-full">
         <div className="flex flex-col gap-10">
