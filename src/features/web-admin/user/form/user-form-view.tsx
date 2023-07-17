@@ -130,7 +130,12 @@ export const UserForm = () => {
                   ) : null}
                 </div>
               </div>
-              <button className="text-white py-3 px-5 rounded-md bg-[#20519F] flex gap-2 items-center w-[249px] justify-center mt-8">
+              <button
+                disabled={model.disable}
+                className={`text-white py-3 px-5 rounded-md ${
+                  model.disable ? "bg-gray-300" : "bg-[#20519F]"
+                } flex gap-2 items-center w-[249px] justify-center mt-8`}
+              >
                 <SaveIcon color="white" size={16} /> Save
               </button>
             </form>

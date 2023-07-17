@@ -67,7 +67,7 @@ export const MasterData = () => {
                         <td>
                           <div className="h-[66px]  bg-white flex items-center py-4 px-2 border-b border-[#D0D3D9]">
                             <p className="font-[400] text-[16px] text-[#514E4E]">
-                              {item.id}
+                              {item.line}
                             </p>
                           </div>
                         </td>

@@ -8,9 +8,10 @@ import { SyntheticEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const useUserModel = () => {
+  const [id, setId] = useState("");
   const userRepo: IUserAdminRepository = new UserApiRepository();
   const navigate = useNavigate();
-
+  const [modalDelete, setModalDelete] = useState(false);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState<FilterUser>(
@@ -143,17 +144,28 @@ export const useUserModel = () => {
   };
 
   const handleDelete = (id: string) => {
-    const newUsers = data.data.filter((item) => item.id !== id);
-    userRepo.delete(id).then(() => {
+    setId(id);
+    setModalDelete(true);
+  };
+  const handleCancelDelte = () => {
+    setId("");
+    setModalDelete(false);
+  };
+
+  const confirmDelete = async () => {
+    try {
+      const find = data.data.find((item) => item.id === id);
+      await userRepo.delete(find.id);
       setData((prev) => {
         return RowsData.create({
           ...prev.unmarshall(),
-          data: newUsers,
+          data: prev.data.filter((item) => item.id !== id),
         });
       });
-    });
+      setId("");
+      setModalDelete(false);
+    } catch (error) {}
   };
-
   useEffect(() => {
     fetchUserData();
   }, [
@@ -176,9 +188,12 @@ export const useUserModel = () => {
     loading,
     errorPw,
     changePassword,
+    modalDelete,
     HandlechangePassword,
     chooseUserForChangePW,
     handleSubmit,
     handleDelete,
+    handleCancelDelte,
+    confirmDelete,
   };
 };

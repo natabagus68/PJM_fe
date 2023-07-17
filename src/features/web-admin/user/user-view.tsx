@@ -7,11 +7,17 @@ import { Spinner, Switch } from "@material-tailwind/react";
 import { EyeIcon, PlusIcon, RepeatIcon, TrashIcon } from "lucide-react";
 import { useUserModel } from "./user-view-model";
 import { ModalChangePassword } from "@common/components/modals/ModalChangePassword";
+import ModalDelete from "@common/components/modals/ModalDelete";
 
 export const User = () => {
   const model = useUserModel();
   return (
     <>
+      <ModalDelete
+        open={model.modalDelete}
+        onCancel={model.handleCancelDelte}
+        confirm={model.confirmDelete}
+      />
       <ModalChangePassword
         open={model.open}
         handler={model.handlerPasswordModal}

@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export const useUserForm = () => {
   const { id } = useParams();
+  const [disable, setDisable] = useState(false);
   const [open, SetOpen] = useState(false);
   const userRepo: IUserAdminRepository = new UserApiRepository();
   const [loading, setLoading] = useState(false);
@@ -71,6 +72,7 @@ export const useUserForm = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
+    setDisable(true);
     const form = new FormData();
     form.append("email", data.email);
     form.append("fullname", data.fullname);
@@ -80,11 +82,13 @@ export const useUserForm = () => {
     if (id) {
       userRepo.update(form, id).then(() => {
         navigate(`${config.pathPrefix}admin/user`);
+        setDisable(false);
       });
     } else {
       form.append("password", "password");
       userRepo.create(form).then(() => {
         navigate(`${config.pathPrefix}admin/user`);
+        setDisable(false);
       });
     }
   };
@@ -100,6 +104,7 @@ export const useUserForm = () => {
     open,
     data,
     loading,
+    disable,
     imgFile,
     back,
     handleForm,
