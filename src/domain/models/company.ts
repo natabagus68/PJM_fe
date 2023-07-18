@@ -48,50 +48,52 @@ export class CompanyPerformance {
     };
   }
   get availability(): number | string {
-    return this._props.availability;
+    return this._props.availability || 0;
   }
   get performance(): number | string {
-    return this._props.performance;
+    return this._props.performance || 0;
   }
   get quality(): number | string {
-    return this._props.quality;
+    return this._props.quality || 0;
   }
   get oeeRealtime(): number | string {
-    return this._props.oeeRealtime;
+    return this._props.oeeRealtime || 0;
   }
   get achievement(): number | string {
-    return this._props.achievement;
+    return this._props.achievement || 0;
   }
   get notGood(): number | string {
-    return this._props.notGood;
+    return this._props.notGood || 0;
   }
   get target(): number | string {
-    return this._props.target;
+    return this._props.target || 0;
   }
   get totalQuantity(): number | string {
-    return this._props.totalQuantity;
+    return this._props.totalQuantity || 0;
   }
   get avgRuntime(): string {
-    return this._props.avgRuntime;
+    return this._props.avgRuntime || "-";
   }
   get avgDowntime(): string {
-    return this._props.avgDowntime;
+    return this._props.avgDowntime || "-";
   }
   get oeeLastMonth(): number | string {
-    return this._props.oeeLastMonth;
+    return this._props.oeeLastMonth || 0;
   }
   get totalProcess(): number | string {
-    return this._props.totalProcess;
+    return this._props.totalProcess || 0;
   }
   get running(): number | string {
-    return this._props.running;
+    return this._props.running || 0;
   }
   get stop(): number | string {
-    return this._props.stop;
+    return this._props.stop || 0;
   }
   get hourlyPerformances(): HourlyPerformance[] {
-    return this._props.hourlyPerformances.map((item) =>
-      HourlyPerformance.create(item)
+    return (
+      this._props.hourlyPerformances.map((item) =>
+        HourlyPerformance.create(item)
+      ) || []
     );
   }
 }

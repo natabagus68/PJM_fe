@@ -48,7 +48,7 @@ export const LayoutProcess = () => {
           </div>
 
           <div className="w-full flex-1 flex flex-col">
-            <ProcessContex.Provider value={layout.data}>
+            <ProcessContex.Provider value={layout}>
               <Outlet />
             </ProcessContex.Provider>
           </div>

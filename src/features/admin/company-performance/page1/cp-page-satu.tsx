@@ -30,7 +30,7 @@ export const CompanynPerformanceOne = () => {
               {model.data.hourlyPerformances && (
                 <Chartbar
                   colors={"rgba(245, 159, 0, 1)"}
-                  data={model.data.hourlyPerformances}
+                  data={model?.data?.hourlyPerformances}
                 />
               )}
             </div>

@@ -5,16 +5,19 @@ import { useNavigate } from "react-router-dom";
 
 export default function usePlantOneModel() {
   const navigate = useNavigate();
-  const data: ProcessPerformance = useContext(ProcessContex);
-  // useEffect(() =>{
-  //     const intervalId = setInterval(() => {
-  //         navigate('../plant-performance-two')
-  //       }, 30*1000);
-  //       return () => {
-  //         clearInterval(intervalId);
-  //       };
-  // },[])
-
+  const { data, setLocation } = useContext(ProcessContex);
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     navigate("../plant-performance-two");
+  //   }, 30 * 1000);
+  //   return () => {
+  //     setLocation("two");
+  //     clearInterval(intervalId);
+  //   };
+  // }, []);
+  useEffect(() => {
+    setLocation("one");
+  }, []);
   return {
     data,
   };

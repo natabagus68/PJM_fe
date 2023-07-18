@@ -3,25 +3,32 @@ import { Socket } from "./_socket";
 import { HourlyPerformance } from "@domain/models/perfomance-company";
 export class AndonCompanyPerformanceListener {
   constructor(private server: Socket) {}
-  onAndonListener(event: string, callback: any) {
+  onAndonListener(event: string, callback: any, param?: string) {
     this.server.io.on(event, (data) => {
+      console.log(data.current);
+      let response = null;
+      if (param === "one") {
+        response = data.current;
+      } else {
+        response = data.thisMonth;
+      }
       callback(
         CompanyPerformance.create({
-          availability: Number(data.availability),
-          performance: Number(data.performance),
-          quality: Number(data.quality),
-          oeeRealtime: Number(data.oeeRealtime),
-          achievement: Number(data.achievement),
-          notGood: Number(data.notGood),
-          target: Number(data.target),
-          totalQuantity: Number(data.totalQuantity),
-          avgRuntime: data.avgRuntime,
-          avgDowntime: data.avgDowntime,
-          oeeLastMonth: Number(data.oeeLastMonth),
-          totalProcess: Number(data.totalProcess),
-          running: Number(data.running),
-          stop: Number(data.stop),
-          hourlyPerformances: data.hourlyPerformances.map(
+          availability: Number(response.availability),
+          performance: Number(response.performance),
+          quality: Number(response.quality),
+          oeeRealtime: Number(response.oeeRealtime),
+          achievement: Number(response.achievement),
+          notGood: Number(response.notGood),
+          target: Number(response.target),
+          totalQuantity: Number(response.totalQuantity),
+          avgRuntime: response.avgRuntime,
+          avgDowntime: response.avgDowntime,
+          oeeLastMonth: Number(response.oeeLastMonth),
+          totalProcess: Number(response.totalProcess),
+          running: Number(response.running),
+          stop: Number(response.stop),
+          hourlyPerformances: response.hourlyPerformance.map(
             (item: HourlyPerformance) => item
           ),
         })

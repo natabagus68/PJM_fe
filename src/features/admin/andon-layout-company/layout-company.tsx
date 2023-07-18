@@ -48,7 +48,7 @@ export const LayoutCompany = () => {
           </div>
 
           <div className="w-full flex-1 flex flex-col">
-            <companyContex.Provider value={layout.data}>
+            <companyContex.Provider value={layout}>
               <Outlet />
             </companyContex.Provider>
           </div>

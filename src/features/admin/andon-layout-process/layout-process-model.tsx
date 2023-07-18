@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 export const useLayoutProcess = () => {
   const { processName } = useParams();
   const processRepo = new AndonProcessPerformanceSocket(Socket.getInstance());
+  const [location, setLocation] = useState("one");
   const [data, setData] = useState<ProcessPerformance>(
     ProcessPerformance.create({
       availability: "",
@@ -61,7 +62,8 @@ export const useLayoutProcess = () => {
       "andon-process-performance",
       (data: ProcessPerformance) => {
         setData(data);
-      }
+      },
+      location
     );
   };
 
@@ -70,11 +72,12 @@ export const useLayoutProcess = () => {
     Socket.getInstance().io.emit("andon-process-performance", processName);
     listenerProcess();
     // });
-  }, []);
+  }, [location]);
 
   return {
     data,
     newDate,
+    setLocation,
     getDateTime,
   };
 };

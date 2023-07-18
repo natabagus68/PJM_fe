@@ -7,6 +7,7 @@ import { Socket } from "@data/socket/_socket";
 export default function uselayout() {
   const { processName } = useParams();
   const socketAndon = new AndonCompanyPerformanceListener(Socket.getInstance());
+  const [loaction, setLoaction] = useState("one");
   const [data, setData] = useState<CompanyPerformance>(
     CompanyPerformance.create({
       availability: Number(0).toFixed(1),
@@ -70,12 +71,14 @@ export default function uselayout() {
       "andon-company-performance",
       (data: CompanyPerformance) => {
         setData(data);
-      }
+      },
+      loaction
     );
-  }, []);
+  }, [location]);
   return {
     getDateTime,
     getTitleHeader,
     data,
+    setLoaction,
   };
 }

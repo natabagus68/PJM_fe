@@ -5,13 +5,14 @@ import { companyContex } from "@features/admin/andon-layout-company/company-cont
 
 export const useCpPageSatu = () => {
   const navigate = useNavigate();
-  const data = useContext(companyContex);
+  const { data, setLoaction } = useContext(companyContex);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       navigate("../two");
     }, 30 * 1000);
     return () => {
+      setLoaction("two");
       clearInterval(intervalId);
     };
   }, []);
