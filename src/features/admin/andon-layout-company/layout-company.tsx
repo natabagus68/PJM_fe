@@ -16,17 +16,29 @@ export const LayoutCompany = () => {
           </div>
           <div className="flex flex-col py-5 gap-7 items-center">
             <ChartDonut
-              value={layout.data.availability}
+              value={
+                layout.loaction == "one"
+                  ? layout?.datas?.current.availability
+                  : layout?.datas?.thisMonth.availability
+              }
               color={"#F59F00"}
               title={"Availability"}
             />
             <ChartDonut
-              value={layout.data.performance}
+              value={
+                layout.loaction == "one"
+                  ? layout?.datas?.current.performance
+                  : layout?.datas?.thisMonth.performance
+              }
               color={"#2D8DF4"}
               title={"Performance"}
             />
             <ChartDonut
-              value={layout.data.quality}
+              value={
+                layout.loaction == "one"
+                  ? layout?.datas?.current.quality
+                  : layout?.datas?.thisMonth.quality
+              }
               color={"#74B816"}
               title={"Quality"}
             />

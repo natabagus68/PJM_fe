@@ -7,26 +7,8 @@ import { Socket } from "@data/socket/_socket";
 export default function uselayout() {
   const { processName } = useParams();
   const socketAndon = new AndonCompanyPerformanceListener(Socket.getInstance());
-  const [loaction, setLoaction] = useState("one");
-  const [data, setData] = useState<CompanyPerformance>(
-    CompanyPerformance.create({
-      availability: Number(0).toFixed(1),
-      performance: Number(0).toFixed(1),
-      quality: Number(0).toFixed(1),
-      oeeRealtime: Number(0).toFixed(1),
-      achievement: Number(0).toFixed(1),
-      notGood: Number(0).toFixed(1),
-      target: Number(0).toFixed(1),
-      totalQuantity: Number(0).toFixed(1),
-      avgRuntime: "",
-      avgDowntime: "",
-      oeeLastMonth: Number(0).toFixed(1),
-      totalProcess: Number(0).toFixed(1),
-      running: Number(0).toFixed(1),
-      stop: Number(0).toFixed(1),
-      hourlyPerformances: [],
-    })
-  );
+  const [loactionMe, setLoaction] = useState("one");
+  const [datas, setDatas] = useState(null);
   const [newDate, setNewDate] = useState(new Date());
   let location = useLocation();
 
@@ -67,18 +49,16 @@ export default function uselayout() {
     }
   };
   useEffect(() => {
-    socketAndon.onAndonListener(
-      "andon-company-performance",
-      (data: CompanyPerformance) => {
-        setData(data);
-      },
-      loaction
-    );
-  }, [location]);
+    socketAndon.onAndonListener("andon-company-performance", (data) => {
+      console.log(data);
+      setDatas(data);
+    });
+  }, []);
   return {
     getDateTime,
     getTitleHeader,
-    data,
+    datas,
+    loaction: loactionMe,
     setLoaction,
   };
 }
