@@ -74,6 +74,7 @@ export default function useCallerMenuModel() {
         })
       );
       setModalConfirm(false);
+      navigate("/caller/menu/history-calling");
     });
   };
   return {

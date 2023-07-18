@@ -67,6 +67,7 @@ export default function useLogin() {
         ? navigate(`/caller/maintenance-handling`)
         : navigate(`/caller/menu`);
     } catch (error) {
+      setLoading(false);
       setError(true);
     }
   };
@@ -77,6 +78,10 @@ export default function useLogin() {
         ? navigate(`/caller/maintenance-handling`)
         : navigate(`/caller/menu`);
     } catch (error) {}
+  };
+
+  const removeError = () => {
+    setError(false);
   };
 
   useEffect(() => {
@@ -95,5 +100,6 @@ export default function useLogin() {
     form,
     loading,
     handleFormInput,
+    removeError,
   };
 }

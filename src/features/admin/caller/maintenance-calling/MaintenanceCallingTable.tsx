@@ -12,7 +12,7 @@ export default function MaintenanceCalling() {
         handlerChange={model.handleChangeREmark}
         onSave={model.onSubmit}
       />
-      <table className="w-full">
+      <table className="w-full ">
         <thead>
           <tr>
             <th>

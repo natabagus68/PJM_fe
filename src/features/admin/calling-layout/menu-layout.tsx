@@ -14,7 +14,7 @@ export default function MenuLayout() {
       <LoadingIcon className="animate-spin w-[80px] h-[80px]" />
     </main>
   ) : (
-    <main className="w-screen h-screen overflow-hidden bg-[#212121] border-2 border-white flex flex-col">
+    <main className="w-screen h-screen overflow-y-scroll bg-[#212121] border-2 border-white flex flex-col">
       <div className="flex flex-row justify-around">
         {/* <div className={`${ admin?.title !== 'menu' ? 'bg-transparent' : "bg-[#F6F6F6]"}flex justify-center items-center  w-[400px] border-2 overflow-hidden`}> */}
         {admin?.title === "History Calling" ? (

@@ -39,6 +39,7 @@ export default function LoginView() {
             </div>
             <div className="flex flex-col gap-[25px]">
               <div
+                onClick={login.removeError}
                 className={`w-full h-[52px] bg-[#313030] px-[18px] flex items-center gap-[16px] rounded-lg border ${
                   login.error ? "border-red-500" : "border-[#B8B6B6]"
                 }`}
@@ -54,6 +55,7 @@ export default function LoginView() {
                 />
               </div>
               <div
+                onClick={login.removeError}
                 className={`w-full h-[52px] bg-[#313030] px-[18px] flex items-center gap-[16px] rounded-lg border  ${
                   login.error ? "border-red-500" : "border-[#B8B6B6]"
                 }`}
@@ -82,6 +84,7 @@ export default function LoginView() {
                 )}
               </div>
               <div
+                onClick={login.removeError}
                 className={`w-full h-[52px] bg-[#313030] px-[18px] flex items-center gap-[16px] rounded-lg border  ${
                   login.error ? "border-red-500" : "border-[#B8B6B6]"
                 }`}
@@ -104,6 +107,7 @@ export default function LoginView() {
                 </select>
               </div>
               <div
+                onClick={login.removeError}
                 className={`w-full h-[52px] bg-[#313030] px-[18px] flex items-center gap-[16px] rounded-lg border  ${
                   login.error ? "border-red-500" : "border-[#B8B6B6]"
                 }`}

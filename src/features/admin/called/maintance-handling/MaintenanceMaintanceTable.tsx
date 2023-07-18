@@ -20,8 +20,8 @@ export default function MaintenanceHandling() {
         remark={table.temp.problem}
         onChange={table.onChangeHandling}
       />
-      <main className="w-full flex flex-col relative">
-        <div className="block max-h-[97vh] border border-white overflow-y-auto">
+      <main className="w-full flex flex-col relative ">
+        <div className="block max-h-[97vh] border border-white ">
           <table className="w-full border-4 border-white">
             <thead className="text-4xl font-bold text-[#FAB005] bg-[#212121] border-4 border-white sticky top-0">
               <th className="border-4 border-white p-5">Time</th>
