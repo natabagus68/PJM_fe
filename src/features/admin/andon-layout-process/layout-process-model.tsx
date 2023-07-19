@@ -8,25 +8,8 @@ export const useLayoutProcess = () => {
   const { processName } = useParams();
   const processRepo = new AndonProcessPerformanceSocket(Socket.getInstance());
   const [location, setLocation] = useState("one");
-  const [data, setData] = useState<ProcessPerformance>(
-    ProcessPerformance.create({
-      availability: "",
-      performance: "",
-      quality: "",
-      oeeRealtime: "",
-      achievement: "",
-      notGood: "",
-      target: "",
-      totalQuantity: "",
-      avgRuntime: "",
-      avgDowntime: "",
-      oeeLastMonth: "",
-      totalSubProcess: "",
-      running: "",
-      stop: "",
-      hourlyPerformances: [],
-    })
-  );
+  const [key, setKey] = useState("");
+  const [data, setData] = useState(null);
 
   const [newDate, setNewDate] = useState(new Date());
 
@@ -68,15 +51,23 @@ export const useLayoutProcess = () => {
   };
 
   useEffect(() => {
+    const url = window.location.href;
+    const last = url.split("/");
+    setLocation(last[last.length - 1]);
+    setKey(last[last.length - 2].split("%20").join(" ").trim());
+  }, []);
+  useEffect(() => {
     // Socket.getInstance().io.on("connection", () => {
     Socket.getInstance().io.emit("andon-process-performance", processName);
     listenerProcess();
     // });
-  }, [location]);
+  }, []);
 
   return {
     data,
     newDate,
+    location,
+    key,
     setLocation,
     getDateTime,
   };

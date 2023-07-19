@@ -6,6 +6,8 @@ import { useLayoutProcess } from "./layout-process-model";
 import { ProcessContex } from "./prcess-contex";
 export const LayoutProcess = () => {
   const layout = useLayoutProcess();
+  const data = layout.data;
+  // const [key] = Object.keys[data];
   return (
     <>
       <div className="flex h-screen w-screen bg-[#212121] border-4 border-white">
@@ -16,17 +18,29 @@ export const LayoutProcess = () => {
           </div>
           <div className="flex flex-col py-5 gap-7 items-center">
             <ChartDonut
-              value={layout.data.availability}
+              value={
+                layout.location == "one"
+                  ? data?.[layout.key]?.current?.availability ?? ""
+                  : data?.[layout.key]?.thisMonth?.availability ?? ""
+              }
               color={"#F59F00"}
               title={"Availability"}
             />
             <ChartDonut
-              value={layout.data.performance}
+              value={
+                layout.location == "one"
+                  ? data?.[layout.key]?.current?.performance ?? ""
+                  : data?.[layout.key]?.thisMonth?.performance ?? ""
+              }
               color={"#2D8DF4"}
               title={"Performance"}
             />
             <ChartDonut
-              value={layout.data.quality}
+              value={
+                layout.location == "one"
+                  ? data?.[layout.key]?.current?.quality ?? ""
+                  : data?.[layout.key]?.thisMonth?.quality ?? ""
+              }
               color={"#74B816"}
               title={"Quality"}
             />

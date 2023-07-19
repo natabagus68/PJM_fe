@@ -50,6 +50,11 @@ export default function uselayout() {
   };
 
   useEffect(() => {
+    const url = window.location.href;
+    const last = url.split("/");
+    setLoaction(last[last.length - 1]);
+  }, []);
+  useEffect(() => {
     const intervalId = setInterval(() => {
       const url = window.location.href;
       const last = url.split("/");
