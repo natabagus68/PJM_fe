@@ -14,9 +14,9 @@ export default defineConfig({
       }
     }),
   ],
-  server: {
-    host: '192.168.99.58'
-  },
+  // server: {
+  //   host: '192.168.99.58'
+  // },
   resolve: {
     alias: [
       {

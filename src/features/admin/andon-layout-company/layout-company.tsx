@@ -6,6 +6,7 @@ import ChartDonut from "@common/components/charts/ChartDonut";
 import { companyContex } from "./company-contex";
 export const LayoutCompany = () => {
   const layout = uselayout();
+  console.log(layout.loaction);
   return (
     <>
       <div className="flex h-screen w-screen bg-[#212121] border-4 border-white">

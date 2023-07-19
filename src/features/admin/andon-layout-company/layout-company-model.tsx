@@ -48,6 +48,18 @@ export default function uselayout() {
       return "Sub Process Performance";
     }
   };
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const url = window.location.href;
+      const last = url.split("/");
+      setLoaction(last[last.length - 1]);
+    }, 30 * 1000);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   useEffect(() => {
     socketAndon.onAndonListener("andon-company-performance", (data) => {
       console.log(data);
